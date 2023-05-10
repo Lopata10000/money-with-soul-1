@@ -1,12 +1,22 @@
 package com.fanta.moneywithsoul;
 
+import static java.time.LocalTime.now;
+
+import com.fanta.dao.UserDAO;
+import com.fanta.entity.User;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 public class Hibernate {
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    public static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
         try {
@@ -21,30 +31,16 @@ public class Hibernate {
         return sessionFactory;
     }
 
-    Session session = Hibernate.getSessionFactory().openSession();
-    Transaction transaction = null;
-    //
-    // try {
-    //        transaction = session.beginTransaction();
-    //
-    //        User user = new User();
-    //        user.setFirstName("John");
-    //        user.setLastName("Doe");
-    //        user.setEmail("johndoe@example.com");
-    //        user.setPasswordHash("myPasswordHash");
-    //        user.setRegisteredAt(LocalDateTime.now());
-    //        user.setUserStatus("active");
-    //
-    //        session.save(user);
-    //
-    //        transaction.commit();
-    //    } catch (Exception e) {
-    //        if (transaction != null) {
-    //            transaction.rollback();
-    //        }
-    //        e.printStackTrace();
-    //    } finally {
-    //        session.close();
-    //    }
+    public static void main(String[] args) {
+            UserDAO userDAO = new UserDAO();
 
+            User user = new User();
+            user.setFirstName("Іван2");
+            user.setLastName("Іванов");
+            user.setEmail("ivan4.ivanov@example.com");
+            user.setPasswordHash("qwerty");
+            user.setRegisteredAt(Timestamp.valueOf(LocalDateTime.now()));
+            user.setUserStatus("active");
+        userDAO.update(user);
+    }
 }

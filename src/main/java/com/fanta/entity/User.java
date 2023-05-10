@@ -36,6 +36,20 @@ public class User {
     @Column(name = "user_status")
     private String userStatus;
 
+    public User(long user_id, String first_name, String last_name, String email, String password_hash, Timestamp registered_at, String user_status) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.registeredAt = registeredAt;
+        this.userStatus = userStatus;
+    }
+
+    public User() {
+
+    }
+
     public Long getUserId() {
         return userId;
     }

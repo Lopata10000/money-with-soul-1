@@ -4,71 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/HelloApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/HelloController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/DataBaseConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/MigrationFlyway.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Budget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Cost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/CostCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Earning.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/EarningCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/ExchangeRate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlanningCost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Transaction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Logerr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/BudgetRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/CostCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/CostRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/EarningCategoryRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/EarningRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/ExchangeRateRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/PlanningCostRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/Repository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/TransactionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/BudgetRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostCategoryRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningCategoryRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/ExchangeRateRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/MoneyWithSoulRepositoryImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/MoneyWithSoulRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/MoneyWithSoulService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/PlanningCostRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/TransactionRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/UserRepositoryInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/hello-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/V1__seed_data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/ddl.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/migration/dml.sql" afterDir="false" />
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Hibernate">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BaseDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BudgetDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningCategoryDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/ExchangeRateDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/TransactionDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Test.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,7 +44,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2PYcZZ7AH8yiMQYBxKZAgSU3QLf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -88,6 +57,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/fanta/IdeaProjects/money-with-soul-1&quot;
   },
@@ -98,6 +68,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.fanta.dao" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul-1\src\main\resources" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul-1\src\main\java\com\fanta\moneywithsoul1" />
@@ -105,8 +78,11 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul-1\src\main\resources" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.fanta.dao" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.com.fanta.HelloApplication">
+  <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fanta.moneywithsoul1.HelloApplication" />
       <module name="money-with-soul-1" />
@@ -147,8 +123,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1683634150995</updated>
-      <workItem from="1683634153356" duration="5894000" />
+      <workItem from="1683634153356" duration="6706000" />
+      <workItem from="1683710173871" duration="7601000" />
     </task>
+    <task id="LOCAL-00001" summary="Hibernate">
+      <created>1683640914215</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1683640914215</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,5 +149,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Hibernate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hibernate" />
   </component>
 </project>

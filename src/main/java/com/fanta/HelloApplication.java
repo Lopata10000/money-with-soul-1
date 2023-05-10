@@ -2,9 +2,6 @@ package com.fanta;
 
 import static com.fanta.database.MigrationFlyway.migrationWihFlyway;
 
-import com.fanta.database.PoolConfig;
-import com.fanta.moneywithsoul.Test;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,9 +20,6 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-//        launch();
-        PoolConfig config1 = new PoolConfig();
-        config1.Test();
-        migrationWihFlyway();
+
     }
 }
