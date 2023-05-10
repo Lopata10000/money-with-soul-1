@@ -39,7 +39,7 @@ public class ExchangeRate {
         this.nameCurrency = nameCurrency;
     }
 
-    public long getRate() {
+    public BigDecimal getRate() {
         return rate;
     }
 

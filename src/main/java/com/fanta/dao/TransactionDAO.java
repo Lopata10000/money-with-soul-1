@@ -76,7 +76,7 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
                         statement.setTimestamp(3, transaction.getTransactionDate());
                         statement.setBigDecimal(4, transaction.getTransactionAmount());
                         statement.setString(5, transaction.getDescription());
-                        statement.setLong(6, transaction.getExchangeRate().getRate());
+                        statement.setBigDecimal(6, transaction.getExchangeRate().getRate());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -100,7 +100,7 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
                         statement.setTimestamp(3, transaction.getTransactionDate());
                         statement.setBigDecimal(4, transaction.getTransactionAmount());
                         statement.setString(5, transaction.getDescription());
-                        statement.setLong(6, transaction.getExchangeRate().getRate());
+                        statement.setBigDecimal(6, transaction.getExchangeRate().getRate());
                         statement.setLong(7, transaction.getTransactionId());
                         statement.executeUpdate();
                     } catch (SQLException e) {

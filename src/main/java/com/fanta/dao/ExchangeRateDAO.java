@@ -61,7 +61,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
                                             "INSERT INTO exchange_rates (name_currency, rate)"
                                                     + " VALUES (?, ?)")) {
                         statement.setString(1, exchangeRate.getNameCurrency());
-                        statement.setBigDecimal(2, BigDecimal.valueOf(exchangeRate.getRate()));
+                        statement.setBigDecimal(2, exchangeRate.getRate());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -79,7 +79,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
                                             "UPDATE exchange_rates SET name_currency = ?, rate = ?"
                                                     + " WHERE exchange_id = ?")) {
                         statement.setString(1, exchangeRate.getNameCurrency());
-                        statement.setBigDecimal(2, BigDecimal.valueOf(exchangeRate.getRate()));
+                        statement.setBigDecimal(2, exchangeRate.getRate());
                         statement.setLong(3, exchangeRate.getExchangeId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
