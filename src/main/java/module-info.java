@@ -8,7 +8,10 @@ module com.fanta.moneywithsoul1 {
     requires org.flywaydb.core;
     requires java.persistence;
 
-    opens com.fanta.entity to org.hibernate.orm.core;
-    opens com.fanta to javafx.fxml;
+    opens com.fanta.entity to
+            org.hibernate.orm.core;
+    opens com.fanta to
+            javafx.fxml;
+
     exports com.fanta;
 }

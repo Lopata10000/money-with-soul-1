@@ -1,19 +1,7 @@
 package com.fanta.moneywithsoul;
 
-import static java.time.LocalTime.now;
-
-import com.fanta.dao.UserDAO;
-import com.fanta.entity.User;
-
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
-import java.util.Date;
 
 public class Hibernate {
     public static final SessionFactory sessionFactory = buildSessionFactory();
@@ -32,15 +20,17 @@ public class Hibernate {
     }
 
     public static void main(String[] args) {
-            UserDAO userDAO = new UserDAO();
-
-            User user = new User();
-            user.setFirstName("Іван2");
-            user.setLastName("Іванов");
-            user.setEmail("ivan4.ivanov@example.com");
-            user.setPasswordHash("qwerty");
-            user.setRegisteredAt(Timestamp.valueOf(LocalDateTime.now()));
-            user.setUserStatus("active");
-        userDAO.update(user);
+        //        UserDAO userDAO = new UserDAO();
+        //        User user = userDAO.findById(2L);
+        //        user.setUserId(2L);
+        //
+        //        BudgetDAO budgetDAO = new BudgetDAO();
+        //        Budget budget = new Budget();
+        //        budget.setAmount(BigDecimal.valueOf(200));
+        //        budget.setName("Sell");
+        //        budget.setUser(user);
+        //        budget.setStartDate(LocalDate.now());
+        //        budget.setEndDate(LocalDate.now());
+        //        budgetDAO.save(budget);
     }
 }

@@ -1,13 +1,13 @@
 package com.fanta.entity;
 
 import java.math.BigDecimal;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "exchange_rates")
 public class ExchangeRate {
@@ -39,7 +39,7 @@ public class ExchangeRate {
         this.nameCurrency = nameCurrency;
     }
 
-    public BigDecimal getRate() {
+    public long getRate() {
         return rate;
     }
 

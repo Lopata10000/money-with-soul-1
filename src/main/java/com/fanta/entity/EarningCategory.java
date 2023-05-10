@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "earning_categories")
 public class EarningCategory {
@@ -17,6 +18,11 @@ public class EarningCategory {
 
     @Column(name = "earning_category_name")
     private String earningCategoryName;
+
+    public EarningCategory(long earning_category_id, String earning_category_name) {
+        this.earningCategoryId = earning_category_id;
+        this.earningCategoryName = earning_category_name;
+    }
 
     public Long getEarningCategoryId() {
         return earningCategoryId;

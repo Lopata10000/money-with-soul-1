@@ -1,7 +1,6 @@
 package com.fanta.entity;
 
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,7 +35,14 @@ public class User {
     @Column(name = "user_status")
     private String userStatus;
 
-    public User(long user_id, String first_name, String last_name, String email, String password_hash, Timestamp registered_at, String user_status) {
+    public User(
+            long user_id,
+            String first_name,
+            String last_name,
+            String email,
+            String password_hash,
+            Timestamp registered_at,
+            String user_status) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,9 +52,7 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    public User() {
-
-    }
+    public User() {}
 
     public Long getUserId() {
         return userId;

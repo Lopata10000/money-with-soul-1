@@ -9,7 +9,7 @@ public class MoneyWithSoluApplication {
         //        SpringApplication.run(MoneyWithSoluApplication.class, args);
 
         migrationWihFlyway();
-//        PoolConfig.Test();
+        //        PoolConfig.Test();
 
     }
 }

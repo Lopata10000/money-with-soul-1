@@ -5,7 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 
 public class PoolConfig implements DataBaseConfig {
-    private static HikariDataSource dataSource;
+    protected static HikariDataSource dataSource;
 
     static {
         HikariConfig pullConfiguration = new HikariConfig();

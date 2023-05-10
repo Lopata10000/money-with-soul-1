@@ -2,7 +2,6 @@ package com.fanta.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
