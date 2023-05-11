@@ -4,46 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Its work!">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/ExchangeRateDAO.java" afterDir="false" />
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Dao">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/BudgetService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningCategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/ExchangeRateService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/PlanningCostService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/TransactionService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/UserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BaseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BudgetDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BudgetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostCategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/DAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningCategoryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningCategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/ExchangeRateDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/TransactionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/TransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Budget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Cost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Cost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Earning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Earning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/EarningCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/EarningCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/ExchangeRate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlanningCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlanningCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/BudgetRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostCategoryRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningCategoryRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/ExchangeRateRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/MoneyWithSoulRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/MoneyWithSoulRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/MoneyWithSoulService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/PlanningCostRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/TransactionRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/UserRepositoryInterface.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,10 +74,11 @@
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul-1\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.fanta.service" />
       <recent name="com.fanta.dao" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.com.fanta.HelloApplication">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.fanta.moneywithsoul1.HelloApplication" />
       <module name="money-with-soul-1" />
@@ -130,11 +105,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.com.fanta.HelloApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -145,7 +115,8 @@
       <option name="presentableId" value="Default" />
       <updated>1683634150995</updated>
       <workItem from="1683634153356" duration="6706000" />
-      <workItem from="1683710173871" duration="11079000" />
+      <workItem from="1683710173871" duration="12685000" />
+      <workItem from="1683801173910" duration="1345000" />
     </task>
     <task id="LOCAL-00001" summary="Hibernate">
       <created>1683640914215</created>
@@ -161,7 +132,21 @@
       <option name="project" value="LOCAL" />
       <updated>1683718089520</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Dao">
+      <created>1683721317325</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1683721317325</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Dao">
+      <created>1683721540184</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1683721540184</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +166,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hibernate" />
     <MESSAGE value="Its work!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Its work!" />
+    <MESSAGE value="Dao" />
+    <option name="LAST_COMMIT_MESSAGE" value="Dao" />
   </component>
 </project>

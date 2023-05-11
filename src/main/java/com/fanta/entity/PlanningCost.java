@@ -1,7 +1,8 @@
 package com.fanta.entity;
 
 import java.math.BigDecimal;
-import java.security.Timestamp;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -65,11 +66,11 @@ public class PlanningCost {
         this.costCategory = costCategory;
     }
 
-    public Timestamp getPlanningCostDate() {
+    public java.sql.Timestamp getPlanningCostDate() {
         return planningCostDate;
     }
 
-    public void setPlanningCostDate(Timestamp planningCostDate) {
+    public void setPlanningCostDate(java.sql.Timestamp planningCostDate) {
         this.planningCostDate = planningCostDate;
     }
 
@@ -88,4 +89,5 @@ public class PlanningCost {
     public void setPlannedAmount(BigDecimal plannedAmount) {
         this.plannedAmount = plannedAmount;
     }
+
 }
