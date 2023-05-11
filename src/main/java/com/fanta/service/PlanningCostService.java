@@ -6,7 +6,7 @@ import com.fanta.entity.PlanningCost;
 
 import java.util.List;
 
-public class PlanningCostService implements Service<PlanningCost> {
+public class PlanningCostService implements ServiceInterface<PlanningCost> {
     private PlanningCostDAO planningCostDAO;
 
     public PlanningCostService() {

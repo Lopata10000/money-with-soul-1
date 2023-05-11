@@ -1,6 +1,8 @@
 package com.fanta.dao;
 
 import com.fanta.entity.Transaction;
+import com.fanta.entity.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,13 +23,12 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
             if (resultSet.next()) {
                 transaction = new Transaction();
                 transaction.setTransactionId(resultSet.getLong("transaction_id"));
-                transaction.setUser(new UserDAO().findById(resultSet.getLong("user_id")));
+                transaction.setUserId(resultSet.getLong("user_id"));
                 transaction.setTransactionType(resultSet.getString("transaction_type"));
                 transaction.setTransactionDate(resultSet.getTimestamp("transaction_date"));
                 transaction.setTransactionAmount(resultSet.getBigDecimal("transaction_amount"));
                 transaction.setDescription(resultSet.getString("description"));
-                transaction.setExchangeRate(
-                        new ExchangeRateDAO().findById(resultSet.getLong("exchange_id")));
+                transaction.setExchangeId(resultSet.getLong("exchange_id"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,13 +46,12 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
             while (resultSet.next()) {
                 Transaction transaction = new Transaction();
                 transaction.setTransactionId(resultSet.getLong("transaction_id"));
-                transaction.setUser(new UserDAO().findById(resultSet.getLong("user_id")));
+                transaction.setUserId(resultSet.getLong("user_id"));
                 transaction.setTransactionType(resultSet.getString("transaction_type"));
                 transaction.setTransactionDate(resultSet.getTimestamp("transaction_date"));
                 transaction.setTransactionAmount(resultSet.getBigDecimal("transaction_amount"));
                 transaction.setDescription(resultSet.getString("description"));
-                transaction.setExchangeRate(
-                        new ExchangeRateDAO().findById(resultSet.getLong("exchange_id")));
+                transaction.setExchangeId(resultSet.getLong("exchange_id"));
                 transactions.add(transaction);
             }
         } catch (SQLException e) {
@@ -71,12 +71,12 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
                                                 + " transaction_date, transaction_amount,"
                                                 + " description, exchange_id) VALUES (?, ?, ?, ?,"
                                                 + " ?, ?)")) {
-                        statement.setLong(1, transaction.getUser().getUserId());
+                        statement.setLong(1, transaction.getUserId());
                         statement.setString(2, transaction.getTransactionType());
                         statement.setTimestamp(3, transaction.getTransactionDate());
                         statement.setBigDecimal(4, transaction.getTransactionAmount());
                         statement.setString(5, transaction.getDescription());
-                        statement.setBigDecimal(6, transaction.getExchangeRate().getRate());
+                        statement.setLong(6, transaction.getExchangeId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -95,13 +95,12 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
                                                 + " = ?, transaction_date = ?, transaction_amount ="
                                                 + " ?, description = ?, exchange_id = ? WHERE"
                                                 + " transaction_id = ?")) {
-                        statement.setLong(1, transaction.getUser().getUserId());
+                        statement.setLong(1, transaction.getUserId());
                         statement.setString(2, transaction.getTransactionType());
                         statement.setTimestamp(3, transaction.getTransactionDate());
                         statement.setBigDecimal(4, transaction.getTransactionAmount());
                         statement.setString(5, transaction.getDescription());
-                        statement.setBigDecimal(6, transaction.getExchangeRate().getRate());
-                        statement.setLong(7, transaction.getTransactionId());
+                        statement.setLong(6, transaction.getExchangeId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

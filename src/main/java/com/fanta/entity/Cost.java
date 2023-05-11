@@ -46,8 +46,6 @@ public class Cost {
     @Column(name = "cost_description")
     private String costDescription;
 
-    public Cost() {}
-
     public Long getCostId() {
         return costId;
     }
@@ -111,4 +109,16 @@ public class Cost {
     public void setCostDescription(String costDescription) {
         this.costDescription = costDescription;
     }
+
+    public Cost(Long costId, User user, CostCategory costCategory, Budget budget, Transaction transaction, Timestamp costDate, BigDecimal costAmount, String costDescription) {
+        this.costId = costId;
+        this.user = user;
+        this.costCategory = costCategory;
+        this.budget = budget;
+        this.transaction = transaction;
+        this.costDate = costDate;
+        this.costAmount = costAmount;
+        this.costDescription = costDescription;
+    }
+    public Cost() {}
 }

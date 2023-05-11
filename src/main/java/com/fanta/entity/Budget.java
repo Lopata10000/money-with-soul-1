@@ -38,22 +38,9 @@ public class Budget {
     @Column(name = "amount")
     private BigDecimal amount;
 
-    public Budget(
-            long budget_id,
-            User user_id,
-            String name,
-            Date start_date,
-            Date end_date,
-            BigDecimal amount) {
-        this.budgetId = budgetId;
-        this.user = user;
-        this.name = name;
-        this.startDate = start_date.toLocalDate();
-        this.endDate = end_date.toLocalDate();
-        this.amount = amount;
-    }
+    public Budget() {
 
-    public Budget() {}
+    }
 
     public Long getBudgetId() {
         return budgetId;
@@ -101,5 +88,17 @@ public class Budget {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    public Budget(Long budgetId, User user, String name, LocalDate startDate, LocalDate endDate, BigDecimal amount) {
+        this.budgetId = budgetId;
+        this.user = user;
+        this.name = name;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.amount = amount;
+    }
+
+    public Budget(long budget_id, User user_id, String name, Date start_date, Date end_date, BigDecimal amount) {
     }
 }

@@ -43,25 +43,6 @@ public class Earning {
     @Column(name = "earning_amount")
     private BigDecimal earningAmount;
 
-    public Earning(
-            long earning_id,
-            User user_id,
-            EarningCategory earning_category_id,
-            Transaction transaction_id,
-            Budget budget_id,
-            Timestamp earning_date,
-            BigDecimal earning_amount) {
-        this.earningId = earning_id;
-        this.user = user_id;
-        this.earningCategory = earning_category_id;
-        this.transaction = transaction_id;
-        this.budget = budget_id;
-        this.earningDate = earning_date;
-        this.earningAmount = earning_amount;
-    }
-
-    public Earning() {}
-
     public Long getEarningId() {
         return earningId;
     }
@@ -117,4 +98,23 @@ public class Earning {
     public void setEarningAmount(BigDecimal earningAmount) {
         this.earningAmount = earningAmount;
     }
+    public Earning(
+            long earning_id,
+            User user_id,
+            EarningCategory earning_category_id,
+            Transaction transaction_id,
+            Budget budget_id,
+            Timestamp earning_date,
+            BigDecimal earning_amount) {
+        this.earningId = earning_id;
+        this.user = user_id;
+        this.earningCategory = earning_category_id;
+        this.transaction = transaction_id;
+        this.budget = budget_id;
+        this.earningDate = earning_date;
+        this.earningAmount = earning_amount;
+    }
+
+    public Earning() {}
+
 }

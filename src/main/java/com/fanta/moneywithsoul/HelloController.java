@@ -1,4 +1,4 @@
-package com.fanta;
+package com.fanta.moneywithsoul;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

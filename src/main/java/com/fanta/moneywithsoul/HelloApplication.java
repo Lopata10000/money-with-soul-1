@@ -1,4 +1,4 @@
-package com.fanta;
+package com.fanta.moneywithsoul;
 
 import java.io.IOException;
 import javafx.application.Application;

@@ -77,9 +77,9 @@ $$
                 transaction_date   TIMESTAMP      NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 transaction_amount NUMERIC(10, 2) NOT NULL CHECK (transaction_amount >= 0),
                 description        VARCHAR(300),
-                exchange_id        INTEGER REFERENCES exchange_rates (exchange_id),
+                name_currency        INTEGER REFERENCES exchange_rates (name_currency),
                 CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users (user_id),
-                CONSTRAINT fk_exchange_id FOREIGN KEY (exchange_id) REFERENCES exchange_rates (exchange_id)
+                CONSTRAINT fk_name_currency FOREIGN KEY (name_currency) REFERENCES exchange_rates (name_currency)
             );
         ELSE
             RAISE NOTICE 'Table transactions already exists';
@@ -253,8 +253,6 @@ CREATE INDEX IF NOT EXISTS idx_earning_user ON earnings (user_id);
 CREATE INDEX IF NOT EXISTS idx_earning_budget ON earnings (budget_id);
 CREATE INDEX IF NOT EXISTS idx_planning_cost_user ON planning_costs (user_id);
 CREATE INDEX IF NOT EXISTS idx_planning_cost_budget ON planning_costs (budget_id);
-CREATE INDEX IF NOT EXISTS idx_cost_earning_cost ON cost_earning (cost_id);
-CREATE INDEX IF NOT EXISTS idx_cost_earning_earning ON cost_earning (earning_id);
 
 
 

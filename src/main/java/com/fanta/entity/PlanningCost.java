@@ -39,7 +39,6 @@ public class PlanningCost {
 
     @Column(name = "planned_amount")
     private BigDecimal plannedAmount;
-
     // getters and setters
 
     public Long getPlanningCostId() {
@@ -88,6 +87,17 @@ public class PlanningCost {
 
     public void setPlannedAmount(BigDecimal plannedAmount) {
         this.plannedAmount = plannedAmount;
+    }
+
+    public PlanningCost(Long planningCostId, User user, CostCategory costCategory, Timestamp planningCostDate, Budget budget, BigDecimal plannedAmount) {
+        this.planningCostId = planningCostId;
+        this.user = user;
+        this.costCategory = costCategory;
+        this.planningCostDate = planningCostDate;
+        this.budget = budget;
+        this.plannedAmount = plannedAmount;
+    }
+    public PlanningCost() {
     }
 
 }

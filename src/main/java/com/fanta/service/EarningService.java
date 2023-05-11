@@ -5,7 +5,7 @@ import com.fanta.entity.Earning;
 
 import java.util.List;
 
-public class EarningService implements Service<Earning> {
+public class EarningService implements ServiceInterface<Earning> {
     private EarningDAO earningDAO;
 
     public EarningService() {

@@ -5,7 +5,7 @@ import com.fanta.entity.Cost;
 
 import java.util.List;
 
-public class CostService implements Service<Cost> {
+public class CostService implements ServiceInterface<Cost> {
     private CostDAO costDAO;
 
     public CostService() {

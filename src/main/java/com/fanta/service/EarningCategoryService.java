@@ -5,7 +5,7 @@ import com.fanta.entity.EarningCategory;
 
 import java.util.List;
 
-public class EarningCategoryService implements Service<EarningCategory> {
+public class EarningCategoryService implements ServiceInterface<EarningCategory> {
     private EarningCategoryDAO earningCategoryDAO;
 
     public EarningCategoryService() {

@@ -39,4 +39,13 @@ public class EarningCategory {
     public void setEarningCategoryName(String earningCategoryName) {
         this.earningCategoryName = earningCategoryName;
     }
+
+    public EarningCategory(Long earningCategoryId, String earningCategoryName) {
+        this.earningCategoryId = earningCategoryId;
+        this.earningCategoryName = earningCategoryName;
+    }
+
+    public EarningCategory() {
+
+    }
 }

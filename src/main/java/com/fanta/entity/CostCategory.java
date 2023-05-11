@@ -34,4 +34,12 @@ public class CostCategory {
     public void setCostCategoryName(String costCategoryName) {
         this.costCategoryName = costCategoryName;
     }
+
+    public CostCategory(Long costCategoryId, String costCategoryName) {
+        this.costCategoryId = costCategoryId;
+        this.costCategoryName = costCategoryName;
+    }
+
+    public CostCategory() {
+    }
 }

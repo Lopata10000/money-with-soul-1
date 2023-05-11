@@ -46,4 +46,12 @@ public class ExchangeRate {
     public void setRate(BigDecimal rate) {
         this.rate = rate;
     }
+
+    public ExchangeRate(Long exchangeId, String nameCurrency, BigDecimal rate) {
+        this.exchangeId = exchangeId;
+        this.nameCurrency = nameCurrency;
+        this.rate = rate;
+    }
+    public ExchangeRate() {
+    }
 }

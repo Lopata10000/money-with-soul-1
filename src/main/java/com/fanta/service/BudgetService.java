@@ -5,7 +5,7 @@ import com.fanta.entity.Budget;
 
 import java.util.List;
 
-public class BudgetService implements Service<Budget> {
+public class BudgetService implements ServiceInterface<Budget> {
     private BudgetDAO budgetDAO;
 
     public BudgetService() {

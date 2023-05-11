@@ -1,12 +1,21 @@
 package com.fanta.entity;
 
+import com.fanta.validator.PastOrPresentDate;
+
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -16,43 +25,24 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long userId;
-
+    @NotEmpty(message = "Імя не може бути порожнім")
     @Column(name = "first_name")
     private String firstName;
-
+    @NotEmpty(message = "Прізвище не може бути порожнім")
     @Column(name = "last_name")
     private String lastName;
-
+    @Email(message = "Введіть дійсну електронну адресу")
     @Column(name = "email")
     private String email;
-
+    @Size(min = 8, message = "Пароль повинен містити мінімум 8 символів")
     @Column(name = "password_hash")
     private String passwordHash;
-
+    @PastOrPresentDate
     @Column(name = "registered_at")
     private Timestamp registeredAt;
-
+    @Pattern(regexp = "^(active|inactive|admin)$", message = "Статус користувача має бути активний, виключений або адмін")
     @Column(name = "user_status")
     private String userStatus;
-
-    public User(
-            long user_id,
-            String first_name,
-            String last_name,
-            String email,
-            String password_hash,
-            Timestamp registered_at,
-            String user_status) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.passwordHash = passwordHash;
-        this.registeredAt = registeredAt;
-        this.userStatus = userStatus;
-    }
-
-    public User() {}
 
     public Long getUserId() {
         return userId;
@@ -98,8 +88,8 @@ public class User {
         return registeredAt;
     }
 
-    public void setRegisteredAt(Timestamp registeredAt) {
-        this.registeredAt = registeredAt;
+    public void setRegisteredAt() {
+        this.registeredAt =Timestamp.valueOf(LocalDateTime.now());
     }
 
     public String getUserStatus() {
@@ -109,4 +99,21 @@ public class User {
     public void setUserStatus(String userStatus) {
         this.userStatus = userStatus;
     }
+    public User(
+            Long userId,
+            String firstName,
+            String lastName,
+            String email,
+            String passwordHash,
+            Timestamp registeredAt,
+            String userStatus) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.registeredAt = registeredAt;
+        this.userStatus = userStatus;
+    }
+    public User() {}
 }

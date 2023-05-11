@@ -5,7 +5,7 @@ import com.fanta.entity.ExchangeRate;
 
 import java.util.List;
 
-public class ExchangeRateService implements Service<ExchangeRate> {
+public class ExchangeRateService implements ServiceInterface<ExchangeRate> {
     private ExchangeRateDAO exchangeRateDAO;
 
     public ExchangeRateService() {

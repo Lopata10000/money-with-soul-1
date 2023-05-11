@@ -1,7 +1,10 @@
 package com.fanta.entity;
 
+import com.fanta.validator.PastOrPresentDate;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +14,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "transactions")
@@ -22,24 +29,29 @@ public class Transaction {
     private Long transactionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
-
+    @Column(name = "user_id")
+    private Long userId;
+    @NotEmpty
     @Column(name = "transaction_type")
     private String transactionType;
-
+    @PastOrPresentDate
     @Column(name = "transaction_date")
     private Timestamp transactionDate;
-
+    @Positive
     @Column(name = "transaction_amount")
     private BigDecimal transactionAmount;
-
+    @Size(min = 5, max = 200, message = "Мынымальна довжина інформації про транзакцію = 5 символів, а максимальна 200 символів")
     @Column(name = "description")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "exchange_id")
-    private ExchangeRate exchangeRate;
+    @JoinColumn(name = "exchange_id", insertable = false, updatable = false)
+    private ExchangeRate exchangeRateId;
+
+    @Column(name = "exchange_id")
+    private Long exchangeId;
 
     public Long getTransactionId() {
         return transactionId;
@@ -47,14 +59,6 @@ public class Transaction {
 
     public void setTransactionId(Long transactionId) {
         this.transactionId = transactionId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getTransactionType() {
@@ -89,11 +93,35 @@ public class Transaction {
         this.description = description;
     }
 
-    public ExchangeRate getExchangeRate() {
-        return exchangeRate;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setExchangeRate(ExchangeRate exchangeRate) {
-        this.exchangeRate = exchangeRate;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+
+    public Long getExchangeId() {
+        return exchangeId;
+    }
+
+    public void setExchangeId(Long exchangeId) {
+        this.exchangeId = exchangeId;
+    }
+
+    public Transaction(Long transactionId, Long userId, String transactionType, Timestamp transactionDate, BigDecimal transactionAmount, String description, Long exchangeId, String exchangeName) {
+        this.transactionId = transactionId;
+        this.userId = userId;
+        this.transactionType = transactionType;
+        this.transactionDate = transactionDate;
+        this.transactionAmount = transactionAmount;
+        this.description = description;
+        this.exchangeId = exchangeId;
+//        this.exchangeName = exchangeName;
+    }
+
+    public Transaction() {
+
+    }
+
 }
