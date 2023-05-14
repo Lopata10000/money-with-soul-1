@@ -83,7 +83,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
     }
 
     @Override
-    public void update(User user) {
+    public void update(Long userId, User user) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -107,14 +107,14 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
     }
 
     @Override
-    public void delete(User user) {
+    public void delete(Long userId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM users WHERE user_id = ?")) {
-                        statement.setLong(1, user.getUserId());
+                        statement.setLong(1, userId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

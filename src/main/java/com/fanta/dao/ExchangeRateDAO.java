@@ -70,7 +70,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
     }
 
     @Override
-    public void update(ExchangeRate exchangeRate) {
+    public void update(Long exchangeId, ExchangeRate exchangeRate) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -89,14 +89,14 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
     }
 
     @Override
-    public void delete(ExchangeRate exchangeRate) {
+    public void delete(Long exchangeId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM exchange_rates WHERE exchange_id = ?")) {
-                        statement.setLong(1, exchangeRate.getExchangeId());
+                        statement.setLong(1,exchangeId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

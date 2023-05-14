@@ -25,11 +25,11 @@ public class PlanningCostService implements ServiceInterface<PlanningCost> {
         planningCostDAO.save(planningCost);
     }
     @Override
-    public void update(PlanningCost planningCost) {
-        planningCostDAO.update(planningCost);
+    public void update(Long planningCostId, PlanningCost planningCost) {
+        planningCostDAO.update(planningCostId, planningCost);
     }
     @Override
-    public void delete(PlanningCost planningCost) {
-        planningCostDAO.delete(planningCost);
+    public void delete(Long planningCostId) {
+        planningCostDAO.delete(planningCostId);
     }
 }

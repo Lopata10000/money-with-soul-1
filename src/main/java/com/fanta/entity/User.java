@@ -1,6 +1,8 @@
 package com.fanta.entity;
 
+import com.fanta.validator.OnlyLetters;
 import com.fanta.validator.PastOrPresentDate;
+
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -26,11 +28,14 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
     @NotEmpty(message = "Імя не може бути порожнім")
+    @OnlyLetters(message = "Імя може бути вказано тільки в буквах")
     @Column(name = "first_name")
     private String firstName;
     @NotEmpty(message = "Прізвище не може бути порожнім")
+    @OnlyLetters(message = "Прізвище може бути вказано тільки в буквах")
     @Column(name = "last_name")
     private String lastName;
+    @NotEmpty(message = "Електронна адреса не може бути пустою")
     @Email(message = "Введіть дійсну електронну адресу")
     @Column(name = "email")
     private String email;
@@ -99,6 +104,7 @@ public class User {
     public void setUserStatus(String userStatus) {
         this.userStatus = userStatus;
     }
+
     public User(
             Long userId,
             String firstName,

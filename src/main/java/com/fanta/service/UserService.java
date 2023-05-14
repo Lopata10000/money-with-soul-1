@@ -1,9 +1,13 @@
 package com.fanta.service;
 
 import com.fanta.dao.UserDAO;
+import com.fanta.entity.Budget;
 import com.fanta.entity.User;
 
+
 import java.util.List;
+
+import javafx.fxml.LoadException;
 
 public class UserService implements ServiceInterface<User> {
     private UserDAO userDAO;
@@ -14,6 +18,15 @@ public class UserService implements ServiceInterface<User> {
 
     @Override
     public User getById(Long userId) {
+        if (userId == null || userId <= 0) {
+            System.out.println("Недійсний ідентифікатор користувача");
+        }
+        else {
+            User user = userDAO.findById(userId);
+            if (user == null) {
+                System.out.println("Користувача з таким ідентифікатором не знайдено");
+            }
+        }
         return userDAO.findById(userId);
     }
 
@@ -30,18 +43,28 @@ public class UserService implements ServiceInterface<User> {
     }
 
     @Override
-    public void update(User user) {
+    public void update(Long userId, User user) {
         ServiceInterface validatorService = new UserService();
-        validatorService.validateAndUpdate(user);
-        userDAO.update(user);
+        validatorService.validateAndUpdate(userId, user);
+        userDAO.update(userId, user);
     }
 
-    @Override
-    public void delete(User user) {
-        userDAO.delete(user);
+     @Override
+    public void delete(Long userId) {
+        if (userId == null || userId <= 0) {
+            System.out.println("Недійсний ідентифікатор користувача");
+        } else {
+            User existingUser =  userDAO.findById(userId);
+            if (existingUser == null) {
+                System.out.println("Користувача з таким ідентифікатором не знайдено");
+            } else {
+                userDAO.delete(userId);
+            }
+        }
     }
-    public User updateUser(String firstName, String lastName, String email, String password, String userStatus) {
+        public User updateUser1(Long userId, String firstName, String lastName, String email, String password, String userStatus) {
         User user = new User();
+        user.setUserId(userId);
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
@@ -49,6 +72,7 @@ public class UserService implements ServiceInterface<User> {
         user.setRegisteredAt();
         user.setUserStatus(userStatus);
         return user;
+
     }
     public User createUser(String firstName, String lastName, String email, String password, String userStatus) {
         User user = new User();

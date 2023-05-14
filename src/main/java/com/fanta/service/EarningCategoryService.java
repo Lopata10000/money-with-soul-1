@@ -28,12 +28,12 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
     }
 
     @Override
-    public void update(EarningCategory earningCategory) {
-        earningCategoryDAO.update(earningCategory);
+    public void update(Long earningCategoryId, EarningCategory earningCategory) {
+        earningCategoryDAO.update(earningCategoryId, earningCategory);
     }
 
     @Override
-    public void delete(EarningCategory earningCategory) {
-        earningCategoryDAO.delete(earningCategory);
+    public void delete(Long earningCategoryId) {
+        earningCategoryDAO.delete(earningCategoryId);
     }
 }

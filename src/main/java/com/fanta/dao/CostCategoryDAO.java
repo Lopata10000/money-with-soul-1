@@ -66,7 +66,7 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
     }
 
     @Override
-    public void update(CostCategory costCategory) {
+    public void update(Long costCategoryId, CostCategory costCategory) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -84,7 +84,7 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
     }
 
     @Override
-    public void delete(CostCategory costCategory) {
+    public void delete(Long costCategoryId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -92,7 +92,7 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
                                     connection.prepareStatement(
                                             "DELETE FROM cost_categories WHERE cost_category_id"
                                                     + " = ?")) {
-                        statement.setLong(1, costCategory.getCostCategoryId());
+                        statement.setLong(1, costCategoryId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

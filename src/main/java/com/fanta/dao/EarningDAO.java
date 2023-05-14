@@ -86,7 +86,7 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
     }
 
     @Override
-    public void update(Earning earning) {
+    public void update(Long earningId, Earning earning) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -111,14 +111,14 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
     }
 
     @Override
-    public void delete(Earning earning) {
+    public void delete(Long earningId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM earnings WHERE earning_id = ?")) {
-                        statement.setLong(1, earning.getEarningId());
+                        statement.setLong(1,earningId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

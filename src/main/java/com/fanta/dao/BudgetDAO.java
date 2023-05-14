@@ -22,11 +22,12 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
                 budget =
                         new Budget(
                                 resultSet.getLong("budget_id"),
-                                new UserDAO().findById(resultSet.getLong("user_id")),
+                                resultSet.getLong("user_id"),
                                 resultSet.getString("name"),
-                                resultSet.getDate("start_date"),
-                                resultSet.getDate("end_date"),
-                                resultSet.getBigDecimal("amount"));
+                                resultSet.getTimestamp("start_date"),
+                                resultSet.getTimestamp("end_date"),
+                                resultSet.getBigDecimal("amount")
+                                );
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -45,10 +46,10 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
                 Budget budget =
                         new Budget(
                                 resultSet.getLong("budget_id"),
-                                new UserDAO().findById(resultSet.getLong("user_id")),
+                                resultSet.getLong("user_id"),
                                 resultSet.getString("name"),
-                                resultSet.getDate("start_date"),
-                                resultSet.getDate("end_date"),
+                                resultSet.getTimestamp("start_date"),
+                                resultSet.getTimestamp("end_date"),
                                 resultSet.getBigDecimal("amount"));
                 budgets.add(budget);
             }
@@ -69,8 +70,8 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
                                                 + " end_date, amount) VALUES (?, ?, ?, ?, ?)")) {
                         statement.setLong(1, budget.getUser().getUserId());
                         statement.setString(2, budget.getName());
-                        statement.setDate(3, java.sql.Date.valueOf(budget.getStartDate()));
-                        statement.setDate(4, java.sql.Date.valueOf(budget.getEndDate()));
+                        statement.setTimestamp(3, budget.getStartDate());
+                        statement.setTimestamp(4, budget.getEndDate());
                         statement.setBigDecimal(5, budget.getAmount());
                         statement.executeUpdate();
                     } catch (SQLException e) {
@@ -80,37 +81,33 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
     }
 
     @Override
-    public void update(Budget budget) {
-        executeWithTransaction(
-                () -> {
-                    try (Connection connection = dataSource.getConnection();
-                            PreparedStatement statement =
-                                    connection.prepareStatement(
-                                            "UPDATE budgets SET user_id = ?, name = ?, start_date ="
-                                                    + " ?, end_date = ?, amount = ? WHERE budget_id"
-                                                    + " = ?")) {
-                        statement.setLong(1, budget.getUser().getUserId());
-                        statement.setString(2, budget.getName());
-                        statement.setDate(3, java.sql.Date.valueOf(budget.getStartDate()));
-                        statement.setDate(4, java.sql.Date.valueOf(budget.getEndDate()));
-                        statement.setBigDecimal(5, budget.getAmount());
-                        statement.setLong(6, budget.getBudgetId());
-                        statement.executeUpdate();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+    public void update(Long budgetId, Budget updatedBudget) {
+        executeWithTransaction(() -> {
+            try (Connection connection = dataSource.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(
+                         "UPDATE budgets SET user_id = ?, name = ?, start_date = ?, end_date = ?, amount = ? WHERE budget_id = ?")) {
+                statement.setLong(1, updatedBudget.getUser().getUserId());
+                statement.setString(2, updatedBudget.getName());
+                statement.setTimestamp(3, updatedBudget.getStartDate());
+                statement.setTimestamp(4, updatedBudget.getEndDate());
+                statement.setBigDecimal(5, updatedBudget.getAmount());
+                statement.setLong(6, updatedBudget.getBudgetId());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Override
-    public void delete(Budget budget) {
+    public void delete(Long budgetId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM budgets WHERE budget_id = ?")) {
-                        statement.setLong(1, budget.getBudgetId());
+                        statement.setLong(1,budgetId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

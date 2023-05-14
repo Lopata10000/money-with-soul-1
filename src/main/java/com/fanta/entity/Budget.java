@@ -1,8 +1,16 @@
 package com.fanta.entity;
 
+import com.fanta.dao.UserDAO;
+import com.fanta.validator.ChronologicalDates;
+import com.fanta.validator.OnlyLetters;
+import com.fanta.validator.PastOrPresentDate;
+
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +20,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "budgets")
@@ -23,18 +34,25 @@ public class Budget {
     private Long budgetId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
+    @NotNull(message = "Для синхронізації бюджета повинен бути користувач якому належить цей бюджет")
+    @Column(name = "user_id")
+    private Long userId;
+    @NotEmpty(message = "Назва бюджета не може бути порожня")
+    @OnlyLetters(message = "Назва бюджету може бути вказаний тільки в буквах")
     @Column(name = "name")
     private String name;
-
+    @NotNull(message = "Дата початку не може бути порожня")
+    @PastOrPresentDate
     @Column(name = "start_date")
-    private LocalDate startDate;
-
+    private Timestamp startDate;
+    @ChronologicalDates(startDate = "startDate", endDate = "endDate")
     @Column(name = "end_date")
-    private LocalDate endDate;
-
+    private Timestamp endDate;
+    @NotNull(message = "Сума бюджету не може бути порожня")
+    @Digits(integer = 10, fraction = 2, message = "Сума може бути вказана тільки в цифрах")
     @Column(name = "amount")
     private BigDecimal amount;
 
@@ -66,19 +84,19 @@ public class Budget {
         this.name = name;
     }
 
-    public LocalDate getStartDate() {
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
 
-    public LocalDate getEndDate() {
+    public Timestamp getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(LocalDate endDate) {
+    public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
 
@@ -90,15 +108,21 @@ public class Budget {
         this.amount = amount;
     }
 
-    public Budget(Long budgetId, User user, String name, LocalDate startDate, LocalDate endDate, BigDecimal amount) {
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+        this.user = new UserDAO().findById(userId);
+    }
+
+    public Budget(Long budgetId, Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
         this.budgetId = budgetId;
-        this.user = user;
+        this.userId = userId;
         this.name = name;
         this.startDate = startDate;
         this.endDate = endDate;
         this.amount = amount;
-    }
-
-    public Budget(long budget_id, User user_id, String name, Date start_date, Date end_date, BigDecimal amount) {
     }
 }

@@ -28,12 +28,12 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
     }
 
     @Override
-    public void update(CostCategory costCategory) {
-        costCategoryDAO.update(costCategory);
+    public void update(Long costCategoryId, CostCategory costCategory) {
+        costCategoryDAO.update(costCategoryId, costCategory);
     }
 
     @Override
-    public void delete(CostCategory costCategory) {
-        costCategoryDAO.delete(costCategory);
+    public void delete(Long costCategoryId) {
+        costCategoryDAO.delete(costCategoryId);
     }
 }

@@ -89,7 +89,7 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
     }
 
     @Override
-    public void update(Cost cost) {
+    public void update(Long costId, Cost cost) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -115,14 +115,14 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
     }
 
     @Override
-    public void delete(Cost cost) {
+    public void delete(Long costId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM costs WHERE cost_id = ?")) {
-                        statement.setLong(1, cost.getCostId());
+                        statement.setLong(1, costId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

@@ -3,6 +3,8 @@ package com.fanta.service;
 import com.fanta.dao.BudgetDAO;
 import com.fanta.entity.Budget;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
 public class BudgetService implements ServiceInterface<Budget> {
@@ -14,8 +16,18 @@ public class BudgetService implements ServiceInterface<Budget> {
 
     @Override
     public Budget getById(Long budgetId) {
+        if (budgetId == null || budgetId <= 0) {
+            System.out.println("Недійсний ідентифікатор бюджету");
+        }
+        else {
+            Budget budget = budgetDAO.findById(budgetId);
+            if (budget == null) {
+                System.out.println("Бюджет з таким ідентифікатором не знайдено");
+            }
+        }
         return budgetDAO.findById(budgetId);
     }
+
 
     @Override
     public List<Budget> getAll() {
@@ -24,16 +36,49 @@ public class BudgetService implements ServiceInterface<Budget> {
 
     @Override
     public void save(Budget budget) {
+        ServiceInterface validatorService = new BudgetService();
+        validatorService.validateAndSave(budget);
         budgetDAO.save(budget);
     }
 
     @Override
-    public void update(Budget budget) {
-        budgetDAO.update(budget);
+    public void update(Long budgetId, Budget budget) {
+        ServiceInterface validatorService = new BudgetService();
+        validatorService.validateAndSave(budget);
+        budgetDAO.update(budgetId, budget);
     }
 
     @Override
-    public void delete(Budget budget) {
-        budgetDAO.delete(budget);
+    public void delete(Long budgetId) {
+        if (budgetId == null || budgetId <= 0) {
+            System.out.println("Недійсний ідентифікатор бюджету");
+        } else {
+            Budget existingBudget = budgetDAO.findById(budgetId);
+            if (existingBudget == null) {
+                System.out.println("Бюджета з таким ідентифікатором не знайдено");
+            }
+        }
+        budgetDAO.delete(budgetId);
+    }
+
+    public Budget createBudget(Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
+        Budget budget = new Budget();
+        budget.setUserId(userId);
+        budget.setName(name);
+        budget.setStartDate(startDate);
+        budget.setEndDate(endDate);
+        budget.setAmount(amount);
+        return budget;
+    }
+
+    public Budget updateBudget(Long budgetId, Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
+        Budget budget = new Budget();
+        budget.setBudgetId(budgetId);
+        budget.setUserId(userId);
+        budget.setName(name);
+        budget.setStartDate(startDate);
+        budget.setEndDate(endDate);
+        budget.setAmount(amount);
+        return budget;
     }
 }

@@ -85,7 +85,7 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
     }
 
     @Override
-    public void update(Transaction transaction) {
+    public void update(Long transactionId, Transaction transaction) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -101,6 +101,7 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
                         statement.setBigDecimal(4, transaction.getTransactionAmount());
                         statement.setString(5, transaction.getDescription());
                         statement.setLong(6, transaction.getExchangeId());
+                        statement.setLong(7, transaction.getTransactionId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -109,14 +110,14 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
     }
 
     @Override
-    public void delete(Transaction transaction) {
+    public void delete(Long transactionId) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM transactions WHERE transaction_id = ?")) {
-                        statement.setLong(1, transaction.getTransactionId());
+                        statement.setLong(1, transactionId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

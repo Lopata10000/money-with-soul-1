@@ -28,12 +28,12 @@ public class CostService implements ServiceInterface<Cost> {
     }
 
     @Override
-    public void update(Cost cost) {
-        costDAO.update(cost);
+    public void update(Long costId, Cost cost) {
+        costDAO.update(costId, cost);
     }
 
     @Override
-    public void delete(Cost cost) {
-        costDAO.delete(cost);
+    public void delete(Long costId) {
+        costDAO.delete(costId);
     }
 }

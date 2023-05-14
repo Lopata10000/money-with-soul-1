@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @PastOrPresent(message = "Дата не може бути в майбутньому")
 @ReportAsSingleViolation
 public @interface PastOrPresentDate {
-    String message() default "Invalid date";
+    String message() default "Невалідна дата";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

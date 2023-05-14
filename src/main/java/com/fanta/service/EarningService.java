@@ -28,13 +28,13 @@ public class EarningService implements ServiceInterface<Earning> {
     }
 
     @Override
-    public void update(Earning earning) {
-        earningDAO.update(earning);
+    public void update(Long earningId, Earning earning) {
+        earningDAO.update(earningId, earning);
     }
 
     @Override
-    public void delete(Earning earning) {
-        earningDAO.delete(earning);
+    public void delete(Long earningId) {
+        earningDAO.delete(earningId);
     }
 }
 

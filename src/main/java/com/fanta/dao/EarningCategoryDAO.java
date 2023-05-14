@@ -67,7 +67,7 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
     }
 
     @Override
-    public void update(EarningCategory earningCategory) {
+    public void update(Long earningCategoryId, EarningCategory earningCategory) {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
@@ -85,19 +85,16 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
     }
 
     @Override
-    public void delete(EarningCategory earningCategory) {
-        executeWithTransaction(
-                () -> {
-                    try (Connection connection = dataSource.getConnection();
-                            PreparedStatement statement =
-                                    connection.prepareStatement(
-                                            "DELETE FROM earning_categories WHERE"
-                                                    + " earning_category_id = ?")) {
-                        statement.setLong(1, earningCategory.getEarningCategoryId());
-                        statement.executeUpdate();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+    public void delete(Long earningCategoryId) {
+        executeWithTransaction(() -> {
+            try (Connection connection = dataSource.getConnection();
+                 PreparedStatement statement = connection.prepareStatement(
+                         "DELETE FROM earning_categories WHERE earning_category_id = ?")) {
+                statement.setLong(1, earningCategoryId);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 }

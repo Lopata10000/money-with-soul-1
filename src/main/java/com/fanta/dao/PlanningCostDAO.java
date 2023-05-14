@@ -86,7 +86,7 @@ public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<Planni
     }
 
     @Override
-    public void update(PlanningCost planningCost)
+    public void update(Long planningCostId, PlanningCost planningCost)
     {
     executeWithTransaction(() -> {
         try (Connection connection = dataSource.getConnection();
@@ -106,12 +106,12 @@ public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<Planni
 }
 
     @Override
-    public void delete(PlanningCost planningCost) {
+    public void delete(Long planningCostId) {
         executeWithTransaction(() -> {
             try (Connection connection = dataSource.getConnection();
                  PreparedStatement statement = connection.prepareStatement(
                          "DELETE FROM planning_costs WHERE planning_cost_id = ?")) {
-                statement.setLong(1, planningCost.getPlanningCostId());
+                statement.setLong(1, planningCostId);
                 statement.executeUpdate();
             } catch (SQLException e) {
                 throw new RuntimeException(e);
