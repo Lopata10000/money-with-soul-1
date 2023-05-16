@@ -1,17 +1,16 @@
 package com.fanta.moneywithsoul.entity;
-
+import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.validator.OnlyLetters;
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
-
-
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
@@ -39,7 +38,7 @@ public class User {
     private String lastName;
     @NotEmpty(message = "Електронна адреса не може бути пустою")
     @Email(message = "Введіть дійсну електронну адресу")
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Size(min = 8, message = "Пароль повинен містити мінімум 8 символів")
     @Column(name = "password_hash")

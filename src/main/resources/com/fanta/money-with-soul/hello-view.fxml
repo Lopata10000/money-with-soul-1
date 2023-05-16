@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.PasswordField?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.fanta.moneywithsoul.UserController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.layout.VBox?>
 
-    <VBox fx:id="vbox" spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml">
-        <Label text="Create a new User"/>
-        <TextField fx:id="firstNameField" promptText="First Name"/>
-        <TextField fx:id="lastNameField" promptText="Last Name"/>
-        <TextField fx:id="emailField" promptText="Email"/>
-        <PasswordField fx:id="passwordField" promptText="Password"/>
-        <TextField fx:id="userStatusField" promptText="User Status"/>
-        <Button fx:id="createUserButton" text="Create User" onAction="#createUser"/>
-        <Button fx:id="updateUserButton" text="Update User" onAction="#updateUser"/>
-        <TextField fx:id="userIdField" promptText="User ID to Update/Delete"/>
-        <Button fx:id="deleteUserButton" text="Delete User" onAction="#deleteUser"/>
-        <TextField fx:id="searchUserField" promptText="User ID to Search"/>
-        <Button fx:id="searchUserButton" text="Search User" onAction="#searchUser"/>
-        <Button fx:id="getAllUsersButton" text="Get All Users" onAction="#getAllUsers"/>
-        <Label fx:id="resultLabel"/>
-    </VBox>
+<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.UserController">
+    <ComboBox fx:id="tableComboBox" prefWidth="150" promptText="Select a table" />
+
+    <TextField fx:id="firstNameField" promptText="First Name" />
+    <TextField fx:id="lastNameField" promptText="Last Name" />
+    <TextField fx:id="emailField" promptText="Email" />
+    <PasswordField fx:id="passwordField" promptText="Password" />
+    <TextField fx:id="userStatusField" promptText="User Status" />
+    <TextField fx:id="userIdField" promptText="User ID" />
+    <TextField fx:id="searchUserField" promptText="Search User ID" />
+
+    <Button fx:id="getAllUsersButton" text="Get All Users" onAction="#getAllUsers" />
+    <Button text="Create User" onAction="#createUser" />
+    <Button text="Update User" onAction="#updateUser" />
+    <Button text="Delete User" onAction="#deleteUser" />
+
+    <Label fx:id="resultLabel" />
+
+    <TableView fx:id="tableView" />
 </VBox>

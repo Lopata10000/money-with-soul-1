@@ -6,6 +6,10 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 
 import java.util.List;
 
+import javax.xml.validation.Validator;
+
+import javafx.scene.control.Alert;
+
 public class UserService implements ServiceInterface<User> {
     private UserDAO userDAO;
 
@@ -34,16 +38,28 @@ public class UserService implements ServiceInterface<User> {
 
     @Override
     public void save(User user) {
-        ServiceInterface validatorService = new UserService();
-        validatorService.validateAndSave(user);
-        userDAO.save(user);
+        UserDAO userDAO = new UserDAO();
+        boolean emailExists = userDAO.existsByEmail(user.getEmail());
+        if (emailExists) {
+            showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
+        }
+        else {
+            validateAndSave(user);
+            userDAO.save(user);
+        }
     }
 
     @Override
     public void update(Long userId, User user) {
-        ServiceInterface validatorService = new UserService();
-        validatorService.validateAndUpdate(userId, user);
-        userDAO.update(userId, user);
+        UserDAO userDAO = new UserDAO();
+        boolean emailExists = userDAO.existsByEmail(user.getEmail());
+        if (emailExists) {
+            showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
+        }
+        else {
+            validateAndUpdate(userId, user);
+            userDAO.update(userId, user);
+        }
     }
 
      @Override
@@ -81,6 +97,12 @@ public class UserService implements ServiceInterface<User> {
         user.setUserStatus(userStatus);
         return user;
     }
-
+    private void showErrorMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Помилка валідації");
+        alert.setHeaderText("Будь ласка, виправте наступні помилки:");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }
 

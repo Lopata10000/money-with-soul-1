@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.scene.control.Alert;
+
 public class UserDAO extends BaseDAO<User> implements DAO<User> {
 
     @Override
@@ -35,8 +37,24 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         }
         return user;
     }
+    public boolean existsByEmail(String email) {
+        try (Connection connection = dataSource.getConnection()) {
+            String query = "SELECT COUNT(*) FROM users WHERE email = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, email);
 
-    @Override
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
+
+        @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
