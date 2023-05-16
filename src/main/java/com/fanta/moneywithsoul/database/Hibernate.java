@@ -1,4 +1,4 @@
-package com.fanta.moneywithsoul;
+package com.fanta.moneywithsoul.database;
 
 import com.fanta.moneywithsoul.entity.Cost;
 import com.fanta.moneywithsoul.service.CostService;

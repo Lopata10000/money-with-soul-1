@@ -14,4 +14,6 @@ module com {
     exports com.fanta.moneywithsoul.validator;
     exports com.fanta.moneywithsoul;
     opens com.fanta.moneywithsoul;
+    exports com.fanta.moneywithsoul.database;
+    opens com.fanta.moneywithsoul.database;
 }

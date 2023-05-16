@@ -4,13 +4,10 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.UserController">
-    <ComboBox fx:id="tableComboBox" prefWidth="150" promptText="Select a table" />
-
     <TextField fx:id="firstNameField" promptText="First Name" />
     <TextField fx:id="lastNameField" promptText="Last Name" />
     <TextField fx:id="emailField" promptText="Email" />
@@ -18,13 +15,9 @@
     <TextField fx:id="userStatusField" promptText="User Status" />
     <TextField fx:id="userIdField" promptText="User ID" />
     <TextField fx:id="searchUserField" promptText="Search User ID" />
-
     <Button fx:id="getAllUsersButton" text="Get All Users" onAction="#getAllUsers" />
     <Button text="Create User" onAction="#createUser" />
     <Button text="Update User" onAction="#updateUser" />
     <Button text="Delete User" onAction="#deleteUser" />
-
     <Label fx:id="resultLabel" />
-
-    <TableView fx:id="tableView" />
 </VBox>

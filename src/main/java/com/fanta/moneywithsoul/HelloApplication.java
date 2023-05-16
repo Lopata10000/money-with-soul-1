@@ -28,9 +28,8 @@ public class HelloApplication extends Application {
 
         UserController controller = loader.getController();
         tableView = new TableView<>(); // Оголошуємо TableView для користувачів
-        controller.setTableView(tableView); // Передаємо TableView в контролер
 
-        List<String> tableNames = Arrays.asList("users", "budgets", "transaction", "exchange_rate", "planing_costs", "cost", "earning", "cost_categories", "earning_categories"); // Назви таблиць
+        List<String> tableNames = Arrays.asList("users", "budgets", "transactions", "exchange_rates", "planning_costs", "costs", "earnings", "cost_categories", "earning_categories"); // Назви таблиць
 
         VBox radioButtonsContainer = createRadioButtonsContainer(tableNames); // Створюємо контейнер для RadioButton
         vbox.getChildren().add(radioButtonsContainer);

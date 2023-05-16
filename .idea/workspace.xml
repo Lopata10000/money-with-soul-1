@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Simple Interface">
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Dao">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__seed_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/Hibernate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Logerr.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/hello-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +31,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="736cac0a3385c394f2370635fd96af94a06b79f2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -42,29 +49,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/fanta/IdeaProjects/money-with-soul/src/main/resources/db/migration",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fanta/IdeaProjects/money-with-soul/src/main/resources/db/migration&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ],
-    "RunConfigurationTargetLRU": [
-      "cf634777-d39b-4740-9f9e-3985fbd2eadf/database/\"money-with-soul\""
+    &quot;RunConfigurationTargetLRU&quot;: [
+      &quot;cf634777-d39b-4740-9f9e-3985fbd2eadf/database/\&quot;money-with-soul\&quot;&quot;
     ],
-    "com.intellij.ide.scratch.LRUPopupBuilder$1/": [
-      "PostgreSQL"
+    &quot;com.intellij.ide.scratch.LRUPopupBuilder$1/&quot;: [
+      &quot;PostgreSQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.fanta.dao" />
@@ -102,11 +109,11 @@
       </method>
     </configuration>
     <configuration name="Hibernate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.fanta.moneywithsoul.Hibernate" />
+      <option name="MAIN_CLASS_NAME" value="com.fanta.moneywithsoul.database.Hibernate" />
       <module name="money-with-soul" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.fanta.moneywithsoul.*" />
+          <option name="PATTERN" value="com.fanta.moneywithsoul.database.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -132,7 +139,7 @@
       <module name="money-with-soul" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.fanta.moneywithsoul.*" />
+          <option name="PATTERN" value="com.fanta.moneywithsoul.database.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -160,9 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.com.fanta.moneywithsoul.HelloApplication" />
         <item itemvalue="Application.MigrationFlyway" />
         <item itemvalue="Application.Hibernate" />
+        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.com.fanta.moneywithsoul.HelloApplication" />
+        <item itemvalue="Application.com.fanta.moneywithsoul.HelloApplication" />
       </list>
     </recent_temporary>
   </component>

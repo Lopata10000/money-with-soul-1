@@ -29,25 +29,6 @@ public class UserController {
     @FXML
     private Label resultLabel; // Додано поле для мітки результатів
     @FXML
-    private ComboBox<String> tableComboBox; // Додано ComboBox для вибору таблиці
-
-    public void setTableView(TableView tableView) {
-        this.tableView = tableView;
-    }
-
-    public TableView getTableView() {
-        return tableView;
-    }
-
-    public void setResultLabel(Label resultLabel) {
-        this.resultLabel = resultLabel;
-    }
-
-    public Label getResultLabel() {
-        return resultLabel;
-    }
-
-    @FXML
     private TextField firstNameField;
     @FXML
     private TextField lastNameField;
@@ -69,54 +50,6 @@ public class UserController {
     public UserController() {
     }
 
-    @FXML
-    public void initialize() {
-        populateTableComboBox(); // Заповнюємо ComboBox зі списком таблиць
-        tableComboBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            // При зміні вибраної таблиці оновлюємо TableView з відповідними стовпцями
-            if (newValue != null) {
-                updateTableView(newValue);
-            }
-        });
-    }
-
-    private void populateTableComboBox() {
-        try (Connection connection = dataSource.getConnection()) {
-            DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet tables = metaData.getTables(null, null, null, new String[]{"TABLE"});
-
-            List<String> tableNames = new ArrayList<>();
-            while (tables.next()) {
-                String tableName = tables.getString("TABLE_NAME");
-                tableNames.add(tableName);
-            }
-
-            tableComboBox.getItems().addAll(tableNames);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void updateTableView(String tableName) {
-        try (Connection connection = dataSource.getConnection()) {
-            // Оновлюємо код для створення TableView
-
-            tableView.getItems().clear();
-            tableView.getColumns().clear();
-
-            DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet columns = metaData.getColumns(null, null, tableName, null);
-            while (columns.next()) {
-                String columnName = columns.getString("COLUMN_NAME");
-
-                TableColumn<User, String> column = new TableColumn<>(columnName);
-                column.setCellValueFactory(new PropertyValueFactory<>(columnName));
-                tableView.getColumns().add(column);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
             // Отриму
             @FXML
             public void createUser () {
