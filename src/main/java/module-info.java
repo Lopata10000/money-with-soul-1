@@ -1,4 +1,4 @@
-module com.fanta.moneywithsoul1 {
+module com {
     requires javafx.controls;
     requires javafx.fxml;
     requires org.slf4j;
@@ -8,11 +8,10 @@ module com.fanta.moneywithsoul1 {
     requires org.flywaydb.core;
     requires java.persistence;
     requires java.validation;
+    requires com.jfoenix;
     opens db.migration;
-    opens com.fanta.entity;
-    opens com.fanta;
-
+    opens com.fanta.moneywithsoul.entity;
+    exports com.fanta.moneywithsoul.validator;
     exports com.fanta.moneywithsoul;
-    exports com.fanta.validator;
-    opens com.fanta.moneywithsoul to javafx.fxml;
+    opens com.fanta.moneywithsoul;
 }

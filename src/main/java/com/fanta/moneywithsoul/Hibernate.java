@@ -1,15 +1,7 @@
 package com.fanta.moneywithsoul;
 
-import com.fanta.dao.ExchangeRateDAO;
-import com.fanta.dao.TransactionDAO;
-import com.fanta.dao.UserDAO;
-import com.fanta.entity.Budget;
-import com.fanta.entity.ExchangeRate;
-import com.fanta.entity.Transaction;
-import com.fanta.entity.User;
-import com.fanta.service.BudgetService;
-import com.fanta.service.TransactionService;
-import com.fanta.service.UserService;
+import com.fanta.moneywithsoul.entity.Cost;
+import com.fanta.moneywithsoul.service.CostService;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -17,7 +9,6 @@ import org.hibernate.cfg.Configuration;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class Hibernate {
     public static final SessionFactory sessionFactory = buildSessionFactory();
@@ -29,10 +20,6 @@ public class Hibernate {
             System.err.println("Initial SessionFactory creation failed." + ex);
             throw new ExceptionInInitializerError(ex);
         }
-    }
-
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
     }
 
     public static void main(String[] args) {
@@ -47,9 +34,10 @@ public class Hibernate {
 //            System.out.println("-------------------------------------");
 //        ExchangeRateDAO exchangeRateDAO = new ExchangeRateDAO();
 //        ExchangeRate exchangeRate = exchangeRateDAO.findById(1L);
-        BudgetService budgetService = new BudgetService();
-        Budget budget = budgetService.updateBudget( 2L, 3L, "Faanta", Timestamp.valueOf(LocalDateTime.now()),Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(12));
-        budgetService.update(2L, budget);
+
+        CostService costService = new CostService();
+        Cost cost = costService.saveCost( 2L, 3L, 2L,2L, Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(12), "Fanta");
+        costService.save( cost);
 
         //        TransactionService transactionService = new TransactionService();
 //        Transaction transaction = transactionService.createTransaction(1L, "Витрати", Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(20), "Витрати на дім", exchangeRate, "USD");

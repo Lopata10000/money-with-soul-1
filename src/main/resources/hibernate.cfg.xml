@@ -2,23 +2,26 @@
 <!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://containers-us-west-91.railway.app:7090/railway</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">PkFOJmLy036WZ8hpzqbM</property>
+
+        <!-- Налаштування Hibernate -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
         <property name="connection.pool_size">1</property>
         <property name="current_session_context_class">thread</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/money-with-soul</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">45435</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.show_sql">true</property>
-        <mapping class="com.fanta.entity.User"/>
-        <mapping class="com.fanta.entity.Budget"/>
-        <mapping class="com.fanta.entity.Cost"/>
-        <mapping class="com.fanta.entity.Earning"/>
-        <mapping class="com.fanta.entity.Transaction"/>
-        <mapping class="com.fanta.entity.CostCategory"/>
-        <mapping class="com.fanta.entity.EarningCategory"/>
-        <mapping class="com.fanta.entity.PlanningCost"/>
-        <mapping class="com.fanta.entity.ExchangeRate"/>
+        <mapping class="com.fanta.moneywithsoul.entity.User"/>
+        <mapping class="com.fanta.moneywithsoul.entity.Budget"/>
+        <mapping class="com.fanta.moneywithsoul.entity.Cost"/>
+        <mapping class="com.fanta.moneywithsoul.entity.Earning"/>
+        <mapping class="com.fanta.moneywithsoul.entity.Transaction"/>
+        <mapping class="com.fanta.moneywithsoul.entity.CostCategory"/>
+        <mapping class="com.fanta.moneywithsoul.entity.EarningCategory"/>
+        <mapping class="com.fanta.moneywithsoul.entity.PlanningCost"/>
+        <mapping class="com.fanta.moneywithsoul.entity.ExchangeRate"/>
     </session-factory>
 </hibernate-configuration>
