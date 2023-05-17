@@ -2,13 +2,12 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.BudgetDAO;
 import com.fanta.moneywithsoul.entity.Budget;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
 public class BudgetService implements ServiceInterface<Budget> {
-    private BudgetDAO budgetDAO;
+    private final BudgetDAO budgetDAO;
 
     public BudgetService() {
         budgetDAO = new BudgetDAO();
@@ -18,8 +17,7 @@ public class BudgetService implements ServiceInterface<Budget> {
     public Budget getById(Long budgetId) {
         if (budgetId == null || budgetId <= 0) {
             System.out.println("Недійсний ідентифікатор бюджету");
-        }
-        else {
+        } else {
             Budget budget = budgetDAO.findById(budgetId);
             if (budget == null) {
                 System.out.println("Бюджет з таким ідентифікатором не знайдено");
@@ -28,7 +26,6 @@ public class BudgetService implements ServiceInterface<Budget> {
         return budgetDAO.findById(budgetId);
     }
 
-
     @Override
     public List<Budget> getAll() {
         return budgetDAO.findAll();
@@ -36,14 +33,14 @@ public class BudgetService implements ServiceInterface<Budget> {
 
     @Override
     public void save(Budget budget) {
-        ServiceInterface validatorService = new BudgetService();
+        ServiceInterface<Budget> validatorService = new BudgetService();
         validatorService.validateAndSave(budget);
         budgetDAO.save(budget);
     }
 
     @Override
     public void update(Long budgetId, Budget budget) {
-        ServiceInterface validatorService = new BudgetService();
+        ServiceInterface<Budget> validatorService = new BudgetService();
         validatorService.validateAndSave(budget);
         budgetDAO.update(budgetId, budget);
     }
@@ -61,7 +58,8 @@ public class BudgetService implements ServiceInterface<Budget> {
         budgetDAO.delete(budgetId);
     }
 
-    public Budget saveBudget(Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
+    public Budget saveBudget(
+            Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
         Budget budget = new Budget();
         budget.setUserId(userId);
         budget.setName(name);
@@ -71,7 +69,13 @@ public class BudgetService implements ServiceInterface<Budget> {
         return budget;
     }
 
-    public Budget updateBudget(Long budgetId, Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
+    public Budget updateBudget(
+            Long budgetId,
+            Long userId,
+            String name,
+            Timestamp startDate,
+            Timestamp endDate,
+            BigDecimal amount) {
         Budget budget = new Budget();
         budget.setBudgetId(budgetId);
         budget.setUserId(userId);

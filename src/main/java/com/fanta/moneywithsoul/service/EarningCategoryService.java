@@ -1,12 +1,12 @@
 package com.fanta.moneywithsoul.service;
 
-import com.fanta.moneywithsoul.entity.EarningCategory;
 import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
+import com.fanta.moneywithsoul.entity.EarningCategory;
 
 import java.util.List;
 
 public class EarningCategoryService implements ServiceInterface<EarningCategory> {
-    private EarningCategoryDAO earningCategoryDAO;
+    private final EarningCategoryDAO earningCategoryDAO;
 
     public EarningCategoryService() {
         earningCategoryDAO = new EarningCategoryDAO();
@@ -16,8 +16,7 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
     public EarningCategory getById(Long earningCategoryId) {
         if (earningCategoryId == null || earningCategoryId <= 0) {
             System.out.println("Недійсний ідентифікатор категорії прибутку");
-        }
-        else {
+        } else {
             EarningCategory earningCategory = earningCategoryDAO.findById(earningCategoryId);
             if (earningCategory == null) {
                 System.out.println("Категорії прибутку з таким ідентифікатором не знайдено");
@@ -33,14 +32,14 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
 
     @Override
     public void save(EarningCategory earningCategory) {
-        ServiceInterface validatorService = new EarningCategoryService();
+        ServiceInterface<EarningCategory> validatorService = new EarningCategoryService();
         validatorService.validateAndSave(earningCategory);
         earningCategoryDAO.save(earningCategory);
     }
 
     @Override
     public void update(Long earningCategoryId, EarningCategory earningCategory) {
-        ServiceInterface validatorService = new EarningCategoryService();
+        ServiceInterface<EarningCategory> validatorService = new EarningCategoryService();
         validatorService.validateAndUpdate(earningCategoryId, earningCategory);
         earningCategoryDAO.update(earningCategoryId, earningCategory);
     }
@@ -50,12 +49,18 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
         if (earningCategoryId == null || earningCategoryId <= 0) {
             System.out.println("Недійсний ідентифікатор категорії прибутку");
         } else {
-            EarningCategory existingEarningCategoryId = earningCategoryDAO.findById(earningCategoryId);
+            EarningCategory existingEarningCategoryId =
+                    earningCategoryDAO.findById(earningCategoryId);
             if (existingEarningCategoryId == null) {
                 System.out.println("Категорії прибутку з таким ідентифікатором не знайдено");
-            }
-            else
-                earningCategoryDAO.delete(earningCategoryId);
+            } else earningCategoryDAO.delete(earningCategoryId);
         }
+    }
+
+    public EarningCategory saveAndUpdateEarningCategory(Long earningCategoryId, String earningCategoryName) {
+        EarningCategory earningCategory = new EarningCategory();
+        earningCategory.setEarningCategoryId(earningCategoryId);
+        earningCategory.setEarningCategoryName(earningCategoryName);
+        return earningCategory;
     }
 }

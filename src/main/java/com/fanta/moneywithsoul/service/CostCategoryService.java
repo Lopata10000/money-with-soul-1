@@ -2,11 +2,10 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
-
 import java.util.List;
 
 public class CostCategoryService implements ServiceInterface<CostCategory> {
-    private CostCategoryDAO costCategoryDAO;
+    private final CostCategoryDAO costCategoryDAO;
 
     public CostCategoryService() {
         costCategoryDAO = new CostCategoryDAO();
@@ -16,8 +15,7 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
     public CostCategory getById(Long costCategoryId) {
         if (costCategoryId == null || costCategoryId <= 0) {
             System.out.println("Недійсний ідентифікатор категорії витрат");
-        }
-        else {
+        } else {
             CostCategory costCategory = costCategoryDAO.findById(costCategoryId);
             if (costCategory == null) {
                 System.out.println("Категорії витрат з таким ідентифікатором не знайдено");
@@ -33,14 +31,14 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
 
     @Override
     public void save(CostCategory costCategory) {
-        ServiceInterface validatorService = new CostCategoryService();
+        ServiceInterface<CostCategory> validatorService = new CostCategoryService();
         validatorService.validateAndSave(costCategory);
         costCategoryDAO.save(costCategory);
     }
 
     @Override
     public void update(Long costCategoryId, CostCategory costCategory) {
-        ServiceInterface validatorService = new CostCategoryService();
+        ServiceInterface<CostCategory> validatorService = new CostCategoryService();
         validatorService.validateAndUpdate(costCategoryId, costCategory);
         costCategoryDAO.update(costCategoryId, costCategory);
     }
@@ -53,19 +51,12 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
             CostCategory existingCostCategoryId = costCategoryDAO.findById(costCategoryId);
             if (existingCostCategoryId == null) {
                 System.out.println("Категорії витрат з таким ідентифікатором не знайдено");
-            }
-            else
-                costCategoryDAO.delete(costCategoryId);
+            } else costCategoryDAO.delete(costCategoryId);
         }
     }
-    public CostCategory saveCostCategory(Long costCategoryId, String costCategoryName) {
+
+    public CostCategory saveAndUpdateCostCategory(Long costCategoryId, String costCategoryName) {
         CostCategory costCategory = new CostCategory();
-        costCategory.setCostCategoryId(costCategoryId);
-        costCategory.setCostCategoryName(costCategoryName);
-        return costCategory;
-    }
-    public CostCategory updateCostCategory(Long costCategoryId, String costCategoryName) {
-       CostCategory costCategory = new CostCategory();
         costCategory.setCostCategoryId(costCategoryId);
         costCategory.setCostCategoryName(costCategoryName);
         return costCategory;

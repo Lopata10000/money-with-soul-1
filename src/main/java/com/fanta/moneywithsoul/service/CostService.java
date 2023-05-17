@@ -2,7 +2,6 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostDAO;
 import com.fanta.moneywithsoul.entity.Cost;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -23,10 +22,10 @@ public class CostService implements ServiceInterface<Cost> {
             if (cost == null) {
                 System.out.println("Витрати з таким ідентифікатором не знайдено");
             }
-
         }
         return costDAO.findById(costId);
     }
+
     @Override
     public List<Cost> getAll() {
         return costDAO.findAll();
@@ -34,14 +33,14 @@ public class CostService implements ServiceInterface<Cost> {
 
     @Override
     public void save(Cost cost) {
-        ServiceInterface validatorService = new CostService();
+        ServiceInterface<Cost> validatorService = new CostService();
         validatorService.validateAndSave(cost);
         costDAO.save(cost);
     }
 
     @Override
     public void update(Long costId, Cost cost) {
-        ServiceInterface validatorService = new CostService();
+        ServiceInterface<Cost> validatorService = new CostService();
         validatorService.validateAndUpdate(costId, cost);
         costDAO.update(costId, cost);
     }
@@ -54,12 +53,18 @@ public class CostService implements ServiceInterface<Cost> {
             Cost existingCost = costDAO.findById(costId);
             if (existingCost == null) {
                 System.out.println("Витрату з таким ідентифікатором не знайдено");
-            }
-            else
-                costDAO.delete(costId);
+            } else costDAO.delete(costId);
         }
     }
-    public Cost saveCost(Long userId, Long costCategoryId, Long budgetId, Long transactionId, Timestamp costDate, BigDecimal costAmount, String costDescription) {
+
+    public Cost saveCost(
+            Long userId,
+            Long costCategoryId,
+            Long budgetId,
+            Long transactionId,
+            Timestamp costDate,
+            BigDecimal costAmount,
+            String costDescription) {
         Cost cost = new Cost();
         cost.setUserId(userId);
         cost.setCostCategoryId(costCategoryId);
@@ -68,9 +73,18 @@ public class CostService implements ServiceInterface<Cost> {
         cost.setCostDate(costDate);
         cost.setCostAmount(costAmount);
         cost.setCostDescription(costDescription);
-       return cost;
+        return cost;
     }
-    public Cost updateCost(Long costId, Long userId, Long costCategoryId, Long budgetId, Long transactionId, Timestamp costDate, BigDecimal costAmount, String costDescription) {
+
+    public Cost updateCost(
+            Long costId,
+            Long userId,
+            Long costCategoryId,
+            Long budgetId,
+            Long transactionId,
+            Timestamp costDate,
+            BigDecimal costAmount,
+            String costDescription) {
         Cost cost = new Cost();
         cost.setCostId(costId);
         cost.setUserId(userId);

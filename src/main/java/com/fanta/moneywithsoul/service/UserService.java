@@ -1,17 +1,11 @@
 package com.fanta.moneywithsoul.service;
 
-import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.dao.UserDAO;
-
-
+import com.fanta.moneywithsoul.entity.User;
 import java.util.List;
 
-import javax.xml.validation.Validator;
-
-import javafx.scene.control.Alert;
-
 public class UserService implements ServiceInterface<User> {
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
 
     public UserService() {
         userDAO = new UserDAO();
@@ -21,8 +15,7 @@ public class UserService implements ServiceInterface<User> {
     public User getById(Long userId) {
         if (userId == null || userId <= 0) {
             System.out.println("Недійсний ідентифікатор користувача");
-        }
-        else {
+        } else {
             User user = userDAO.findById(userId);
             if (user == null) {
                 System.out.println("Користувача з таким ідентифікатором не знайдено");
@@ -42,8 +35,7 @@ public class UserService implements ServiceInterface<User> {
         boolean emailExists = userDAO.existsByEmail(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
-        }
-        else {
+        } else {
             validateAndSave(user);
             userDAO.save(user);
         }
@@ -55,19 +47,18 @@ public class UserService implements ServiceInterface<User> {
         boolean emailExists = userDAO.existsByEmail(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
-        }
-        else {
+        } else {
             validateAndUpdate(userId, user);
             userDAO.update(userId, user);
         }
     }
 
-     @Override
+    @Override
     public void delete(Long userId) {
         if (userId == null || userId <= 0) {
             System.out.println("Недійсний ідентифікатор користувача");
         } else {
-            User existingUser =  userDAO.findById(userId);
+            User existingUser = userDAO.findById(userId);
             if (existingUser == null) {
                 System.out.println("Користувача з таким ідентифікатором не знайдено");
             } else {
@@ -75,7 +66,14 @@ public class UserService implements ServiceInterface<User> {
             }
         }
     }
-        public User updateUser(Long userId, String firstName, String lastName, String email, String password, String userStatus) {
+
+    public User updateUser(
+            Long userId,
+            String firstName,
+            String lastName,
+            String email,
+            String password,
+            String userStatus) {
         User user = new User();
         user.setUserId(userId);
         user.setFirstName(firstName);
@@ -85,9 +83,10 @@ public class UserService implements ServiceInterface<User> {
         user.setRegisteredAt();
         user.setUserStatus(userStatus);
         return user;
-
     }
-    public User saveUser(String firstName, String lastName, String email, String password, String userStatus) {
+
+    public User saveUser(
+            String firstName, String lastName, String email, String password, String userStatus) {
         User user = new User();
         user.setFirstName(firstName);
         user.setLastName(lastName);
@@ -97,12 +96,4 @@ public class UserService implements ServiceInterface<User> {
         user.setUserStatus(userStatus);
         return user;
     }
-    private void showErrorMessage(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Помилка валідації");
-        alert.setHeaderText("Будь ласка, виправте наступні помилки:");
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
 }
-

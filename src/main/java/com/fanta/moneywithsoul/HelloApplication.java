@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -24,18 +26,17 @@ public class HelloApplication extends Application {
 
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/hello-view.fxml"));
-        VBox vbox = loader.load();
+        BorderPane borderPane = loader.load();
 
         UserController controller = loader.getController();
-        tableView = new TableView<>(); // Оголошуємо TableView для користувачів
+        tableView = controller.getTableView(); // Отримуємо посилання на існуючу таблицю з контролера
 
         List<String> tableNames = Arrays.asList("users", "budgets", "transactions", "exchange_rates", "planning_costs", "costs", "earnings", "cost_categories", "earning_categories"); // Назви таблиць
 
         VBox radioButtonsContainer = createRadioButtonsContainer(tableNames); // Створюємо контейнер для RadioButton
-        vbox.getChildren().add(radioButtonsContainer);
-        vbox.getChildren().add(tableView);
+        borderPane.getChildren().add(radioButtonsContainer);
 
-        Scene scene = new Scene(vbox);
+        Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -100,4 +101,3 @@ public class HelloApplication extends Application {
         return variableName.toString();
     }
 }
-

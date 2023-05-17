@@ -23,36 +23,9 @@ public class Hibernate {
     }
 
     public static void main(String[] args) {
-//        UserService userService = new UserService();
-//        User user = userService.getById(1L);
-//        System.out.println("User ID: " + user.getUserId());
-//            System.out.println("First Name: " + user.getFirstName());
-//            System.out.println("Last Name: " + user.getLastName());
-//            System.out.println("Email: " + user.getEmail());
-//            System.out.println("Registered At: " + user.getRegisteredAt());
-//            System.out.println("User Status: " + user.getUserStatus());
-//            System.out.println("-------------------------------------");
-//        ExchangeRateDAO exchangeRateDAO = new ExchangeRateDAO();
-//        ExchangeRate exchangeRate = exchangeRateDAO.findById(1L);
-
         CostService costService = new CostService();
         Cost cost = costService.saveCost( 2L, 3L, 2L,2L, Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(12), "Fanta");
         costService.save( cost);
-
-        //        TransactionService transactionService = new TransactionService();
-//        Transaction transaction = transactionService.createTransaction(1L, "Витрати", Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(20), "Витрати на дім", exchangeRate, "USD");
-//        transactionService.save(transaction);
-//        List<User> users = userService.getAll();
-//        for (User user : users) {
-//            System.out.println("User ID: " + user.getUserId());
-//            System.out.println("First Name: " + user.getFirstName());
-//            System.out.println("Last Name: " + user.getLastName());
-//            System.out.println("Email: " + user.getEmail());
-//            System.out.println("Registered At: " + user.getRegisteredAt());
-//            System.out.println("User Status: " + user.getUserStatus());
-//            System.out.println("-------------------------------------");
-//        }
-
 
     }
 }

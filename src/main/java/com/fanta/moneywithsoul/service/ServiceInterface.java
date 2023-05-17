@@ -1,19 +1,22 @@
 package com.fanta.moneywithsoul.service;
 
+import java.util.List;
+import java.util.Set;
 import javafx.scene.control.Alert;
-
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.List;
-import java.util.Set;
 
 public interface ServiceInterface<T> {
     T getById(Long id);
+
     List<T> getAll();
+
     void save(T entity);
+
     void update(Long id, T entity);
+
     void delete(Long id);
 
     default void validateAndSave(T object) {
@@ -37,14 +40,18 @@ public interface ServiceInterface<T> {
         if (!violations.isEmpty()) {
             StringBuilder errorMessage = new StringBuilder();
             for (ConstraintViolation<T> violation : violations) {
-                errorMessage.append(violation.getPropertyPath()).append(": ").append(violation.getMessage()).append("\n");
+                errorMessage
+                        .append(violation.getPropertyPath())
+                        .append(": ")
+                        .append(violation.getMessage())
+                        .append("\n");
             }
             showErrorMessage(errorMessage.toString());
-            throw new RuntimeException("Обєкт не може бути створений");
+            throw new RuntimeException();
         }
     }
 
-    private void showErrorMessage(String message) {
+    default void showErrorMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Помилка валідації");
         alert.setHeaderText("Будь ласка, виправте наступні помилки:");
