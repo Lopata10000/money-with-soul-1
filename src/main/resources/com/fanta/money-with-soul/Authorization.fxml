@@ -14,9 +14,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXPasswordField?>
-<AnchorPane fx:id="authorizationPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.AuthorizationController">
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane fx:id="authorizationPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.AuthorizationController">
     <stylesheets>
-        <URL value="@/com/fanta/money-with-soul/styles.css" />
+        <URL value="@/com/fanta/money-with-soul/css/styles.css" />
     </stylesheets>
    <StackPane prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
@@ -51,4 +52,4 @@
          </Pane>
       </children>
    </StackPane>
-</AnchorPane>
+</BorderPane>

@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -29,7 +30,7 @@ public class LeftController implements Initializable {
     JFXButton exchangeRateTableButton;
     @FXML
     JFXButton budgetTableButton;
-    private MainController mainController;
+    private MainController mainController; // Додано приватне поле mainController
     public LeftController(MainController mainController) {
         this.mainController = mainController;
     }
@@ -37,7 +38,7 @@ public class LeftController implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        backButton.setOnAction(event -> backToMainWindow());
     }
     public void backToMainWindow()
     {
@@ -47,4 +48,31 @@ public class LeftController implements Initializable {
         this.mainController = mainController;
     }
 
+    public void usersTable() {
+        mainController.UserWindow();
+    }
+
+    public void budgetTable(ActionEvent actionEvent) {
+    }
+
+    public void transactionsTable(ActionEvent actionEvent) {
+    }
+
+    public void exchangeRateTable(ActionEvent actionEvent) {
+    }
+
+    public void costsTable(ActionEvent actionEvent) {
+    }
+
+    public void earningTable(ActionEvent actionEvent) {
+    }
+
+    public void planingCostsTable(ActionEvent actionEvent) {
+    }
+
+    public void costCategoryTable(ActionEvent actionEvent) {
+    }
+
+    public void earningCategoryTable(ActionEvent actionEvent) {
+    }
 }

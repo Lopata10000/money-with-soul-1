@@ -14,7 +14,7 @@
 <?import com.jfoenix.controls.JFXPasswordField?>
 <AnchorPane fx:id="registrationPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.RegistrationController">
     <stylesheets>
-        <URL value="@/com/fanta/money-with-soul/styles.css" />
+        <URL value="@/com/fanta/money-with-soul/css/styles.css" />
     </stylesheets>
     <JFXButton styleClass="jfx-button-main" fx:id="registrationButton"  onAction="#createUser" layoutX="336.0" layoutY="378.0" text="Registration">
         <font>

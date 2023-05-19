@@ -1,5 +1,6 @@
 package com.fanta.moneywithsoul.controller;
 
+import com.fanta.moneywithsoul.controller.databasecontroller.UserController;
 import com.fanta.moneywithsoul.entity.User;
 import com.jfoenix.controls.JFXButton;
 
@@ -42,6 +43,7 @@ public class MainController {
         authorizationController = new AuthorizationController(this);
         registrationController = new RegistrationController(this);
         leftController = new LeftController(this);
+
     }
 
     public void authorizationWindow() {
@@ -76,24 +78,57 @@ public class MainController {
 
     public void dataBaseWindow() {
         try {
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass().getResource("/com/fanta/money-with-soul/DataBase/LeftList.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/LeftList.fxml"));
             Pane dataBasePane = loader.load();
+
+            LeftController leftController = loader.getController();
+            leftController.setMainController(this);
+
 
             mainApp.setLeft(dataBasePane);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public void mainWindow() {
+    public void UserWindow() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/Main.fxml"));
-            BorderPane mainBorderPane= loader.load();
-            mainApp.setCenter(mainBorderPane);
-            mainApp.setLeft(null); // Очистити ліву панель, якщо необхідно
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/UserTable.fxml"));
+            AnchorPane userController = loader.load();
+
+            UserController userController1 = loader.getController();
+            userController1.setMainController(this);
+
+            mainApp.setCenter(userController);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    public void resetLeftPane() {
+        try {
+            FXMLLoader leftLoader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/Main.fxml"));
+            Pane leftPane = leftLoader.load();
+
+            mainApp.setLeft(leftPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mainWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/Main.fxml"));
+            BorderPane mainBorderPane = loader.load();
+
+            // assuming mainApp is currently displayed
+            mainApp.getScene().setRoot(mainBorderPane);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
 }

@@ -4,151 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Simply авторизація інтерфейс">
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/d/0d20943e11d11771f5dc279a19c5c84502d5458b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/103bd637493ed2ef8c2e80ca141ac07effc51113" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/107e7428d6e9c6fbbf7166b31e187c011a6cbe7e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/14006be27741bfa0b4a6ee7a4ab07f1b6cf215f5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/18f779df119824774395c29cb3faae88d481c030" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/1/218bfba0f123b93b157fff0eacce13578fe04dc3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/297a9311fd9ace6f9277a60f1a15264c0a1e191f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/2/5285a09da0cf69638f2065ad730d4af8e110d51e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/1/8144f886ad431740ec510e2b6482d087a0394170" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88501d29a53234275efe4aca46a24e9a75072ed3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8d5856420b7f621515af10c23f0a36ae6576678b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/1/a19849cc59b76e3b3779999df7fa9ad2378cb601" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/f/af17ca7a878d3276b451483e9c70b346b241b9ea" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b5e4e33f558f003bdea2139e939ddf811fa528a0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/8/b8ee12e52fe8c74d8ff7387754bfe27642288140" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c21e104982e0910da73d7266abbb15ae7ab4abdc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c24c5316b39d061eaf32cb62bb0573c49cd7925c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c4bc6edb1c796a06afb2ee5b53beb3645760bcd1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/6/c6ef8c30508bea5d8f9b685661d85f8cbbe3e0b5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/8/c827dbeacaf95fb050206f1ceb4bf597a907feb4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/a/ca7d63e49b1daf2ba1e42420932518fed4546cf5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/0/d0ee20b6a8e07648269803e5aab629cbd3d51a50" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/b/dbdff6e6943f740248a68d1ed0f7ecd9440e068a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/c/ec9727d20dc5234b4a65b237def4ce6449ce614b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/0/f027eb387288c2e48e353fb6796cbd52e088795b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/7/f7867cc73dc0cebfe958351b574a5b6c9b872fdc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/e/fed866b15866317cd2568bc882f6d6c81da9b565" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/d/0d20943e11d11771f5dc279a19c5c84502d5458b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/0/103bd637493ed2ef8c2e80ca141ac07effc51113" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/0/107e7428d6e9c6fbbf7166b31e187c011a6cbe7e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/4/14006be27741bfa0b4a6ee7a4ab07f1b6cf215f5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/8/18f779df119824774395c29cb3faae88d481c030" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/c/1c89a5491fbfda3fb050196d6a239f20200296e7" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/1/218bfba0f123b93b157fff0eacce13578fe04dc3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/9/297a9311fd9ace6f9277a60f1a15264c0a1e191f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/2/5285a09da0cf69638f2065ad730d4af8e110d51e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/1/8144f886ad431740ec510e2b6482d087a0394170" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/8/88501d29a53234275efe4aca46a24e9a75072ed3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/d/8d5856420b7f621515af10c23f0a36ae6576678b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/1/a19849cc59b76e3b3779999df7fa9ad2378cb601" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/f/af17ca7a878d3276b451483e9c70b346b241b9ea" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/5/b5e4e33f558f003bdea2139e939ddf811fa528a0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/b/8/b8ee12e52fe8c74d8ff7387754bfe27642288140" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/2/c21e104982e0910da73d7266abbb15ae7ab4abdc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/2/c24c5316b39d061eaf32cb62bb0573c49cd7925c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/4/c4bc6edb1c796a06afb2ee5b53beb3645760bcd1" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/6/c6ef8c30508bea5d8f9b685661d85f8cbbe3e0b5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/8/c827dbeacaf95fb050206f1ceb4bf597a907feb4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/a/ca7d63e49b1daf2ba1e42420932518fed4546cf5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/0/d0ee20b6a8e07648269803e5aab629cbd3d51a50" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/b/dbdff6e6943f740248a68d1ed0f7ecd9440e068a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/c/ec9727d20dc5234b4a65b237def4ce6449ce614b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/0/f027eb387288c2e48e353fb6796cbd52e088795b" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/7/f7867cc73dc0cebfe958351b574a5b6c9b872fdc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/e/fed866b15866317cd2568bc882f6d6c81da9b565" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/AuthorizationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/DataBaseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/LeftController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/RegistrationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/BudgetController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/CostCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/CostController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/EarningCategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/EarningController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/ExchangeRateController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/PlanningCostController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/TransactionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/image/email.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/image/password.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Bag.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Budget.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Category.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Costs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Earning.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/ExchangeRate.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Money.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Transaction.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/Users.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/email.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/password.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/images/user.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Authorization.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/Budget.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/Cost.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/CostCategory.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/Earning.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/EarningCaregory.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/ExchangeRate.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/PlanningCost.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/Transaction.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/User.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Registration.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/User.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Чуть чуть баз даних">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/UserTable.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/css/material.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BudgetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BudgetDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostCategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostCategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningCategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningCategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/ExchangeRateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/PlanningCostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/PlanningCostDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/TransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/Hibernate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/MigrationFlyway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/MigrationFlyway.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Budget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Cost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Cost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/CostCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/CostCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Earning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Earning.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/EarningCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/EarningCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/PlanningCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/PlanningCost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningCategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDates.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDatesValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDatesValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OnlyLetters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OnlyLetters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentDate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/LeftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/LeftController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Main.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V5__seed_data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V5__seed_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Authorization.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Authorization.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/User.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Main.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Registration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/Registration.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/css/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,11 +87,11 @@
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\java\com\fanta" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul\css" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\images" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul\DataBase" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources" />
-      <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -351,7 +219,7 @@
       <workItem from="1684237188010" duration="13251000" />
       <workItem from="1684346841810" duration="14544000" />
       <workItem from="1684394255485" duration="710000" />
-      <workItem from="1684430176175" duration="20763000" />
+      <workItem from="1684430176175" duration="28765000" />
     </task>
     <task id="LOCAL-00001" summary="Hibernate">
       <created>1683640914215</created>
@@ -416,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684333449549</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Чуть чуть баз даних">
+      <created>1684456324397</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1684456324397</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -470,7 +345,8 @@
     <MESSAGE value="Simple Interface" />
     <MESSAGE value="New Interface" />
     <MESSAGE value="Simply авторизація інтерфейс" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simply авторизація інтерфейс" />
+    <MESSAGE value="Чуть чуть баз даних" />
+    <option name="LAST_COMMIT_MESSAGE" value="Чуть чуть баз даних" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
