@@ -23,11 +23,6 @@ public class RegistrationController implements Initializable {
     public RegistrationController(MainController mainController) {
         this.mainController = mainController;
     }
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
-    @FXML
-    private Button registrationButton;
     @FXML
     private TextField firstNameTextField;
     @FXML
@@ -39,11 +34,8 @@ public class RegistrationController implements Initializable {
     private UserService userService = new UserService();
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
-    @FXML
     public void createUser() {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
 
-        executor.submit(() -> {
             User user =
                     userService.saveUser(
                             firstNameTextField.getText(),
@@ -52,16 +44,20 @@ public class RegistrationController implements Initializable {
                             passwordTextField.getText(),
                             "active");
             userService.save(user);
+            userService.save(user);
             if (user != null) {
-                Platform.runLater(() -> {
+
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Успіх");
                 alert.setHeaderText("Успішна реєстрація");
                 alert.setContentText("Ви успішно зареєструвалися!");
                 alert.showAndWait();
                 mainController.dataBaseWindow();
-            });
-        }});
-        executor.shutdown();
+            }
+        }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
+
 }

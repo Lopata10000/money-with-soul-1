@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.databasecontroller.EarningController">
+    <children>
+        <Pane layoutX="50.0" layoutY="312.0" prefHeight="231.0" prefWidth="700.0" AnchorPane.topAnchor="312.0">
+            <children>
+                <TextField fx:id="userId" layoutX="12.0" layoutY="14.0" prefWidth="275.0" promptText="User Id" styleClass="jfx-text-field-material">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></TextField>
+                <TextField fx:id="earningCategoryId" layoutX="404.0" layoutY="14.0" prefWidth="275.0" promptText="Earnng category Id" styleClass="jfx-text-field-material">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></TextField>
+                <TextField fx:id="budgetId" layoutX="12.0" layoutY="86.0" prefWidth="275.0" promptText="Budget Id" styleClass="jfx-text-field-material">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></TextField>
+                <TextField fx:id="transactionId" layoutX="404.0" layoutY="48.0" prefWidth="275.0" promptText="Transaction id" styleClass="jfx-text-field-material">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></TextField>
+                <TextField fx:id="earningAmount" layoutX="404.0" layoutY="86.0" prefWidth="275.0" promptText="Amount" styleClass="jfx-text-field-material">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></TextField>
+                <Button fx:id="createButton" layoutX="14.0" layoutY="167.0" mnemonicParsing="false" onAction="#createEarning" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></Button>
+                <Button fx:id="updateButton" layoutX="275.0" layoutY="162.0" mnemonicParsing="false" onAction="#updateEarning" prefHeight="40.0" prefWidth="150.0" styleClass="jfx-button-main" text="Update">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Button>
+                <Button fx:id="deleteButton" layoutX="529.0" layoutY="167.0" mnemonicParsing="false" onAction="#deleteEarning" prefWidth="150.0" styleClass="jfx-button-main" text="Delete">
+                    <font>
+                        <Font name="MS Outlook" size="16.0" />
+                    </font></Button>
+                <DatePicker fx:id="earningDate" layoutX="12.0" layoutY="48.0" prefHeight="30.0" prefWidth="275.0" promptText="Cost date" stylesheets="@/com/fanta/money-with-soul/css/table.css" />
+
+            </children>
+        </Pane>
+        <TableView fx:id="earningTable" layoutY="29.0" onMouseClicked="#handleTableClick" prefHeight="258.0" prefWidth="800.0" style="-fx-background-color: #666666;" styleClass="root" stylesheets="@/com/fanta/money-with-soul/css/table.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
+        <AnchorPane layoutX="249.0" layoutY="268.0" />
+        <TextField fx:id="findByIdField" layoutX="37.0" layoutY="-1.0" onKeyTyped="#searchEarning" prefHeight="30.0" prefWidth="770.0" promptText="Find by id" styleClass="jfx-text-field-material" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="0.0">
+            <font>
+                <Font name="MS Outlook" size="16.0" />
+            </font>
+        </TextField>
+        <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="-1.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../images/Search.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

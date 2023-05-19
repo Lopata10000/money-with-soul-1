@@ -67,15 +67,19 @@ public class LeftController implements Initializable {
         mainController.CostWindow();
     }
 
-    public void earningTable(ActionEvent actionEvent) {
+    public void earningTable() {
+        mainController.EarningWindow();
     }
 
-    public void planingCostsTable(ActionEvent actionEvent) {
+    public void planingCostsTable() {
+        mainController.PlanningCostWindow();
     }
 
     public void costCategoryTable(ActionEvent actionEvent) {
+        mainController.CostCategoryWindow();
     }
 
     public void earningCategoryTable(ActionEvent actionEvent) {
+        mainController.EarningCategoryWindow();
     }
 }

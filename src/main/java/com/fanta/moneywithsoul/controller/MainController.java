@@ -1,8 +1,12 @@
 package com.fanta.moneywithsoul.controller;
 
 import com.fanta.moneywithsoul.controller.databasecontroller.BudgetController;
+import com.fanta.moneywithsoul.controller.databasecontroller.CostCategoryController;
 import com.fanta.moneywithsoul.controller.databasecontroller.CostController;
+import com.fanta.moneywithsoul.controller.databasecontroller.EarningCategoryController;
+import com.fanta.moneywithsoul.controller.databasecontroller.EarningController;
 import com.fanta.moneywithsoul.controller.databasecontroller.ExchangeRateController;
+import com.fanta.moneywithsoul.controller.databasecontroller.PlanningCostController;
 import com.fanta.moneywithsoul.controller.databasecontroller.TransactionController;
 import com.fanta.moneywithsoul.controller.databasecontroller.UserController;
 import com.fanta.moneywithsoul.entity.User;
@@ -145,6 +149,59 @@ public class MainController {
             controller.setMainController(this);
 
             mainApp.setCenter(costController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void EarningWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/EarningTable.fxml"));
+            AnchorPane earningController = loader.load();
+
+            EarningController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainApp.setCenter(earningController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void PlanningCostWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/PlanningCostTable.fxml"));
+            AnchorPane planningCostController = loader.load();
+
+            PlanningCostController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainApp.setCenter(planningCostController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void CostCategoryWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/CostCategoryTable.fxml"));
+            AnchorPane costCategoryController = loader.load();
+
+            CostCategoryController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainApp.setCenter(costCategoryController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void EarningCategoryWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/EarningCategoryTable.fxml"));
+            AnchorPane earningCategoryController = loader.load();
+
+            EarningCategoryController controller = loader.getController();
+            controller.setMainController(this);
+
+
+            mainApp.setCenter(earningCategoryController);
         } catch (IOException e) {
             e.printStackTrace();
         }

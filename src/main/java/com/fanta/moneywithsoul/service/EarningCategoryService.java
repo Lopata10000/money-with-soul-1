@@ -56,10 +56,15 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
         }
     }
 
-    public EarningCategory saveAndUpdateEarningCategory(
+    public EarningCategory updateEarningCategory(
             Long earningCategoryId, String earningCategoryName) {
         EarningCategory earningCategory = new EarningCategory();
         earningCategory.setEarningCategoryId(earningCategoryId);
+        earningCategory.setEarningCategoryName(earningCategoryName);
+        return earningCategory;
+    }
+    public EarningCategory saveEarningCategory(String earningCategoryName) {
+        EarningCategory earningCategory = new EarningCategory();
         earningCategory.setEarningCategoryName(earningCategoryName);
         return earningCategory;
     }

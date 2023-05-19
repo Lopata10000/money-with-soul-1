@@ -13,7 +13,7 @@ import javax.validation.constraints.PastOrPresent;
 @PastOrPresent(message = "Дата не може бути в майбутньому")
 @ReportAsSingleViolation
 public @interface PastOrPresentDate {
-    String message() default "Невалідна дата";
+    String message() default "Невалідна дата1";
 
     Class<?>[] groups() default {};
 

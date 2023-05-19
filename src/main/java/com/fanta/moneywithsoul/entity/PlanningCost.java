@@ -1,6 +1,7 @@
 package com.fanta.moneywithsoul.entity;
 
-import com.fanta.moneywithsoul.validator.PastOrPresentDate;
+import com.fanta.moneywithsoul.validator.OrFutureDate;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.Column;
@@ -44,7 +45,7 @@ public class PlanningCost {
     private Long costCategoryId;
 
     @NotNull(message = "Дата не може бути пустою")
-    @PastOrPresentDate
+    @OrFutureDate
     @Column(name = "planning_cost_date")
     private Timestamp planningCostDate;
 

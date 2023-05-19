@@ -55,9 +55,14 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
         }
     }
 
-    public CostCategory saveAndUpdateCostCategory(Long costCategoryId, String costCategoryName) {
+    public CostCategory updateCostCategory(Long costCategoryId, String costCategoryName) {
         CostCategory costCategory = new CostCategory();
         costCategory.setCostCategoryId(costCategoryId);
+        costCategory.setCostCategoryName(costCategoryName);
+        return costCategory;
+    }
+    public CostCategory saveCostCategory(String costCategoryName) {
+        CostCategory costCategory = new CostCategory();
         costCategory.setCostCategoryName(costCategoryName);
         return costCategory;
     }
