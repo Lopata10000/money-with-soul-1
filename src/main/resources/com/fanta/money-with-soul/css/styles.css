@@ -29,6 +29,7 @@
 }
 .jfx-text-field-material,
 .jfx-password-field-material {
+    -fx-text-fill: #4D4D4D;
     -fx-background-color: rgba(255, 255, 255, 0.5); /* Напівпрозорий фон (задайте власні значення альфа-каналу) */
     -fx-background-radius: 15px; /* Радіус закруглення фону */
     -jfx-focus-color: #4CAF50; /* Колір підсвічування при фокусу */

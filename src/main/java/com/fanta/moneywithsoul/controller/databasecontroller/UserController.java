@@ -5,6 +5,8 @@ import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 import com.fanta.moneywithsoul.controller.MainController;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.UserService;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 
 import java.net.URL;
 import java.sql.Connection;
@@ -13,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,8 +44,7 @@ public class UserController implements Initializable {
     @FXML private TextField userStatusField;
     @FXML private TextField userIdField;
     @FXML private TextField searchUserField;
-    @FXML private Button getAllUsersButton;
-    @FXML private ComboBox<String> tables;
+    @FXML private TextField findByIdField;
     @FXML private BorderPane mainApp;
     private User selectedUser;
 
@@ -57,93 +60,78 @@ public class UserController implements Initializable {
                         passwordField.getText(),
                         userStatusField.getText());
         userService.save(user);
+        refreshTable();
     }
 
-//    @FXML
-//    public void updateUser() {
-//        try {
-//            Long userId = Long.parseLong(userIdField.getText());
-//            User user =
-//                    userService.updateUser(
-//                            userId,
-//                            firstNameField.getText(),
-//                            lastNameField.getText(),
-//                            emailField.getText(),
-//                            passwordField.getText(),
-//                            userStatusField.getText());
-//            userService.update(userId, user);
-//        } catch (NumberFormatException e) {
-//            // Введено неправильний формат числа
-//            showAlert("Неправильний формат числа для Id");
-//        }
-//    }
-//
-//    @FXML
-//    public void deleteUser() {
-//        try {
-//            Long userId = Long.parseLong(userIdField.getText());
-//            userService.delete(userId);
-//        } catch (NumberFormatException e) {
-//            // Введено неправильний формат числа
-//            showAlert("Неправильний формат числа для Id");
-//        }
-//    }
+    @FXML
+    public void updateUser() {
 
-//    @FXML
-//    void searchUser() {
-//        try {
-//            String userIdText = searchUserField.getText();
-//            if (userIdText.isEmpty()) {
-//                resultLabel.setText("Please enter a User ID to search");
-//                return;
-//            }
-//
-//            Long userId = Long.parseLong(userIdText);
-//            User user = userService.getById(userId);
-//            if (user == null) {
-//                resultLabel.setText("User not found");
-//            } else {
-//                resultLabel.setText("User found: " + user);
-//
-//                // Очистити таблицю перед додаванням нових даних
-//                tableView.getItems().clear();
-//
-//                // Додати знайденого користувача до таблиці
-//                tableView.getItems().add(user);
-//            }
-//        } catch (NumberFormatException e) {
-//            // Введено неправильний формат числа
-//            showAlert("Неправильний формат числа для Id");
-//        }
-//    }
-//
-//    private void showAlert(String message) {
-//        Alert alert = new Alert(Alert.AlertType.ERROR);
-//        alert.setTitle("Помилка");
-//        alert.setHeaderText(null);
-//        alert.setContentText(message);
-//        alert.showAndWait();
-//    }
-//
-
-
-    public UserController() {
-
+        try {
+            User selectedUser = userTable.getSelectionModel().getSelectedItem();
+            Long userId = Long.parseLong(String.valueOf(selectedUser.getUserId()));
+            User user =
+                    userService.updateUser(
+                            userId,
+                            firstNameField.getText(),
+                            lastNameField.getText(),
+                            emailField.getText(),
+                            passwordField.getText(),
+                            userStatusField.getText());
+            userService.update(userId, user);
+            refreshTable();
+        } catch (NumberFormatException e) {
+            showAlert("Неправильний формат числа для Id");
+        }
     }
 
-    public UserController(MainController mainController) {
-        this.mainController = mainController;
+    @FXML
+    public void deleteUser() {
+        User selectedUser = userTable.getSelectionModel().getSelectedItem();
+        try {
+            Long userId = Long.parseLong(String.valueOf(selectedUser.getUserId()));
+            userService.delete(userId);
+            refreshTable();
+        } catch (NumberFormatException e) {
+            showAlert("Неправильний формат числа для Id");
+        }
     }
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
+
+    @FXML
+    void searchUser() {
+        try {
+            userTable.getItems().clear();
+            // Додати користувачів до таблиці
+            String userIdText = findByIdField.getText();
+            Long userId = Long.parseLong(userIdText);
+            User users = userService.getById(userId);
+            userTable.getItems().add(users);
+            if (users == null) {
+                showAlert("Такого користувача не знайдено");
+                refreshTable();
+            }
+        } catch (NumberFormatException e) {
+            // Введено неправильний формат числа
+            showAlert("Неправильний формат числа для Id");
+            refreshTable();
+        }
     }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Помилка");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView("users");
-        getAllUsers();
+        refreshTable();
     }
     @FXML
-    private void getAllUsers() {
+    private void refreshTable() {
         List<User> users = userService.getAll();
         // Очистити таблицю перед додаванням нових даних
         userTable.getItems().clear();
@@ -151,18 +139,20 @@ public class UserController implements Initializable {
         // Додати користувачів до таблиці
         userTable.getItems().addAll(users);
     }
-//    @FXML
-//    private void handleTableClick(MouseEvent event) {
-//        if (event.getClickCount() == 1) {
-//            User selectedUser = userTable.getSelectionModel().getSelectedItem();
-//
-//            if (selectedUser != null) {
-//                nameField.setText(selectedUser.getName());
-//                passwordField.setText(selectedUser.getPassword());
-//                emailField.setText(selectedUser.getEmail());
-//            }
-//        }
-//    }
+    @FXML
+    private void handleTableClick(MouseEvent event) {
+        if (event.getClickCount() == 1) {
+            User selectedUser = userTable.getSelectionModel().getSelectedItem();
+
+            if (selectedUser != null) {
+                firstNameField.setText(selectedUser.getFirstName());
+                lastNameField.setText(selectedUser.getLastName());
+                emailField.setText(selectedUser.getEmail());
+                passwordField.setText(selectedUser.getPasswordHash());
+                userStatusField.setText(selectedUser.getUserStatus());
+            }
+        }
+    }
     @FXML
     private void updateTableView(String tableName) {
         try (Connection connection = dataSource.getConnection()) {
@@ -198,4 +188,15 @@ public class UserController implements Initializable {
 
         return variableName.toString();
     }
+    public UserController() {
+
+    }
+
+    public UserController(MainController mainController) {
+        this.mainController = mainController;
+    }
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
 }
+
