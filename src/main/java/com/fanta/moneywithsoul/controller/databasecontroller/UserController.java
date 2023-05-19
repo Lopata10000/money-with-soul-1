@@ -5,9 +5,6 @@ import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 import com.fanta.moneywithsoul.controller.MainController;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.UserService;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextField;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -15,21 +12,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 

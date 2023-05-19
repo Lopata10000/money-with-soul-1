@@ -1,6 +1,7 @@
 package com.fanta.moneywithsoul.validator;
 
 import java.lang.reflect.Field;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -25,10 +26,10 @@ public class ChronologicalDatesValidator
             startDateField.setAccessible(true);
             endDateField.setAccessible(true);
 
-            LocalDate startDate = (LocalDate) startDateField.get(value);
-            LocalDate endDate = (LocalDate) endDateField.get(value);
+            Timestamp startDate = (Timestamp) startDateField.get(value);
+            Timestamp endDate = (Timestamp) endDateField.get(value);
 
-            return endDate == null || startDate == null || !endDate.isBefore(startDate);
+            return endDate == null || startDate == null || endDate.after(startDate);
         } catch (Exception e) {
             return false;
         }

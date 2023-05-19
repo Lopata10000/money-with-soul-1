@@ -16,6 +16,6 @@ public class OnlyLettersValidator implements ConstraintValidator<OnlyLetters, St
             return true; // Допускаємо null значення, можна налаштувати по-іншому за потребою
         }
 
-        return value.matches("^[a-zA-Z]+$"); // Перевірка на наявність тільки букв
+        return value.matches("^[a-zA-Zа-щА-Щью-яЮ-ЯіІїЇєЄґҐ\\s]+$");
     }
 }

@@ -51,11 +51,12 @@ public class LeftController implements Initializable {
     public void usersTable() {
         mainController.UserWindow();
     }
-
-    public void budgetTable(ActionEvent actionEvent) {
+    public void budgetTable() {
+        mainController.BudgetWindow();
     }
 
-    public void transactionsTable(ActionEvent actionEvent) {
+    public void transactionsTable() {
+        mainController.TransactionWindow();
     }
 
     public void exchangeRateTable(ActionEvent actionEvent) {

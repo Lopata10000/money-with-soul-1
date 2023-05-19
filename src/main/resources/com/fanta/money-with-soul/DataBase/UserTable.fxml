@@ -16,11 +16,11 @@
    <children>
       <Pane layoutX="100.0" layoutY="308.0" prefHeight="231.0" prefWidth="600.0">
          <children>
-            <TextField fx:id="firstNameField" prefWidth="275.0" promptText="First Name" styleClass="jfx-text-field-material">
+            <TextField fx:id="firstNameField" prefWidth="275.0" promptText="First name" styleClass="jfx-text-field-material">
                <font>
                   <Font name="MS Outlook" size="16.0" />
                </font></TextField>
-            <TextField fx:id="lastNameField" layoutY="63.0" prefWidth="275.0" promptText="Last Name" styleClass="jfx-text-field-material">
+            <TextField fx:id="lastNameField" layoutY="63.0" prefWidth="275.0" promptText="Last name" styleClass="jfx-text-field-material">
                <font>
                   <Font name="MS Outlook" size="16.0" />
                </font></TextField>
@@ -44,13 +44,13 @@
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button fx:id="deleteButton" onAction="#deleteUser" layoutX="438.0" layoutY="165.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Delead">
+            <Button fx:id="deleteButton" onAction="#deleteUser" layoutX="438.0" layoutY="165.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Delete">
                <font>
                   <Font name="MS Outlook" size="16.0" />
                </font></Button>
          </children>
       </Pane>
-      <TableView fx:id="userTable" onMouseClicked="#handleTableClick" layoutY="29.0" prefHeight="258.0" prefWidth="800.0" style="-fx-background-color: #666666;" styleClass="root" stylesheets="@/com/fanta/money-with-soul/css/material.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
+      <TableView fx:id="userTable" onMouseClicked="#handleTableClick" layoutY="29.0" prefHeight="258.0" prefWidth="800.0" style="-fx-background-color: #666666;" styleClass="root" stylesheets="@/com/fanta/money-with-soul/css/table.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="29.0" />
       <AnchorPane layoutX="249.0" layoutY="268.0" />
       <JFXTextField fx:id="findByIdField" onKeyTyped="#searchUser" layoutX="37.0" layoutY="-1.0" prefHeight="30.0" prefWidth="770.0" promptText="Find by id" styleClass="jfx-text-field-material" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="0.0">
          <font>

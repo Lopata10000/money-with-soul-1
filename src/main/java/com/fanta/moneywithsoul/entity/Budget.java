@@ -43,11 +43,11 @@ public class Budget {
     private String name;
 
     @NotNull(message = "Дата початку не може бути порожня")
-    @PastOrPresentDate
+//    @PastOrPresentDate
     @Column(name = "start_date")
     private Timestamp startDate;
 
-    @ChronologicalDates(startDate = "startDate", endDate = "endDate")
+//    @ChronologicalDates(startDate = "startDate", endDate = "endDate")
     @Column(name = "end_date")
     private Timestamp endDate;
 

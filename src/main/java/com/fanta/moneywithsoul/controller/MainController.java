@@ -1,5 +1,7 @@
 package com.fanta.moneywithsoul.controller;
 
+import com.fanta.moneywithsoul.controller.databasecontroller.BudgetController;
+import com.fanta.moneywithsoul.controller.databasecontroller.TransactionController;
 import com.fanta.moneywithsoul.controller.databasecontroller.UserController;
 import com.fanta.moneywithsoul.entity.User;
 import com.jfoenix.controls.JFXButton;
@@ -21,19 +23,9 @@ public class MainController {
 
     public MainController() {}
 
-    @FXML private TableView<User> tableView;
     private AuthorizationController authorizationController;
     private LeftController leftController;
     private RegistrationController registrationController;
-
-    public void setTableView(TableView<User> tableView) {
-        this.tableView = tableView;
-    }
-
-    public TableView getTableView() {
-        return tableView;
-    }
-
     @FXML
     public void initialize() {
         authorizationButton.setOnAction(event -> authorizationWindow());
@@ -99,6 +91,32 @@ public class MainController {
             userController1.setMainController(this);
 
             mainApp.setCenter(userController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void BudgetWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/BudgetTable.fxml"));
+            AnchorPane budgetController = loader.load();
+
+            BudgetController budgetController1 = loader.getController();
+            budgetController1.setMainController(this);
+
+            mainApp.setCenter(budgetController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void TransactionWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/TransactionTable.fxml"));
+            AnchorPane transactionController = loader.load();
+
+            TransactionController transactionController1 = loader.getController();
+            transactionController1.setMainController(this);
+
+            mainApp.setCenter(transactionController);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -6,6 +6,8 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import java.util.List;
 
+import javafx.scene.control.Alert;
+
 public class UserService implements ServiceInterface<User> {
     private final UserDAO userDAO;
 
@@ -16,11 +18,11 @@ public class UserService implements ServiceInterface<User> {
     @Override
     public User getById(Long userId) {
         if (userId == null || userId <= 0) {
-            System.out.println("Недійсний ідентифікатор користувача");
+            showErrorMessage("Недійсний ідентифікатор користувача");
         } else {
             User user = userDAO.findById(userId);
             if (user == null) {
-                System.out.println("Користувача з таким ідентифікатором не знайдено");
+                showErrorMessage("Користувача з таким ідентифікатором не знайдено");
             }
         }
         return userDAO.findById(userId);
