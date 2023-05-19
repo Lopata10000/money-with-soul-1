@@ -1,0 +1,399 @@
+Index: src/main/java/com/fanta/moneywithsoul/Hibernate.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/fanta/moneywithsoul/Hibernate.java b/src/main/java/com/fanta/moneywithsoul/Hibernate.java
+--- a/src/main/java/com/fanta/moneywithsoul/Hibernate.java	
++++ b/src/main/java/com/fanta/moneywithsoul/Hibernate.java	
+@@ -1,8 +1,14 @@
+ package com.fanta.moneywithsoul;
+ 
++import com.fanta.dao.UserDAO;
++import com.fanta.entity.User;
++
+ import org.hibernate.SessionFactory;
+ import org.hibernate.cfg.Configuration;
+ 
++import java.sql.Timestamp;
++import java.util.List;
++
+ public class Hibernate {
+     public static final SessionFactory sessionFactory = buildSessionFactory();
+ 
+@@ -20,17 +26,26 @@
+     }
+ 
+     public static void main(String[] args) {
+-        //        UserDAO userDAO = new UserDAO();
+-        //        User user = userDAO.findById(2L);
+-        //        user.setUserId(2L);
+-        //
+-        //        BudgetDAO budgetDAO = new BudgetDAO();
+-        //        Budget budget = new Budget();
+-        //        budget.setAmount(BigDecimal.valueOf(200));
+-        //        budget.setName("Sell");
+-        //        budget.setUser(user);
+-        //        budget.setStartDate(LocalDate.now());
+-        //        budget.setEndDate(LocalDate.now());
+-        //        budgetDAO.save(budget);
++        UserDAO userDAO = new UserDAO();
++
++//        // Отримуємо всі об'єкти User з бази даних
++//        List<User> userList = userDAO.findAll();
++//
++//        // Виводимо дані кожного користувача
++//        for (User user : userList) {
++//            System.out.println(user);
++//        }
++        User user = new User();
++        user.setFirstName("John");
++        user.setLastName("Doe");
++        user.setEmail("johndoe@example.com");
++        user.setPasswordHash("password");
++        user.setRegisteredAt(new Timestamp(System.currentTimeMillis()));
++        user.setUserStatus("active");
++
++        // Зберігаємо користувача в базі даних
++        userDAO.save(user);
++
++        System.out.println("Користувач збережений успішно.");
+     }
+ }
+Index: src/main/resources/hibernate.cfg.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/hibernate.cfg.xml b/src/main/resources/hibernate.cfg.xml
+--- a/src/main/resources/hibernate.cfg.xml	
++++ b/src/main/resources/hibernate.cfg.xml	
+@@ -12,13 +12,5 @@
+         <property name="hibernate.hbm2ddl.auto">update</property>
+         <property name="hibernate.show_sql">true</property>
+         <mapping class="com.fanta.entity.User"/>
+-        <mapping class="com.fanta.entity.Budget"/>
+-        <mapping class="com.fanta.entity.Cost"/>
+-        <mapping class="com.fanta.entity.Earning"/>
+-        <mapping class="com.fanta.entity.Transaction"/>
+-        <mapping class="com.fanta.entity.CostCategory"/>
+-        <mapping class="com.fanta.entity.EarningCategory"/>
+-        <mapping class="com.fanta.entity.PlanningCost"/>
+-        <mapping class="com.fanta.entity.ExchangeRate"/>
+     </session-factory>
+ </hibernate-configuration>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,19 +5,49 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Dao">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/BudgetService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostCategoryService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningCategoryService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/ExchangeRateService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/PlanningCostService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/Service.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/TransactionService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/service/UserService.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V1__seed_data.sql" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlanningCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlanningCost.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BaseDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/BudgetDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostCategoryDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/CostDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/DAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningCategoryDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/EarningDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/ExchangeRateDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/PlanningCostDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/TransactionDAO.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/dao/UserDAO.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/database/DataBaseConfig.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/database/MigrationFlyway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/MigrationFlyway.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/database/PoolConfig.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Budget.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Cost.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/CostCategory.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Earning.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/EarningCategory.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/ExchangeRate.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/PlanningCost.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/entity/Transaction.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Hibernate.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Logerr.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/BudgetService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostCategoryService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/CostService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningCategoryService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/EarningService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/ExchangeRateService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/PlanningCostService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/Service.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/TransactionService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/service/UserService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/V1__seed_data.sql" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/ddl.sql" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/migration/dml.sql" beforeDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -33,6 +63,11 @@
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="master" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -46,22 +81,26 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenDatabaseViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/fanta/IdeaProjects/money-with-soul-1&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenDatabaseViewOnStart": "true",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "C:/Users/fanta/IdeaProjects/money-with-soul-1",
++    "settings.editor.selected.configurable": "database.query.execution"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;DatabaseDriversLRU&quot;: [
+-      &quot;postgresql&quot;
++  "keyToStringList": {
++    "DatabaseDriversLRU": [
++      "postgresql"
++    ],
++    "RunConfigurationTargetLRU": [
++      "cf634777-d39b-4740-9f9e-3985fbd2eadf/database/\"money-with-soul\""
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CreateClassDialog.RecentsKey">
+       <recent name="com.fanta.dao" />
+@@ -71,6 +110,7 @@
+       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul-1\src\main\java\com\fanta\moneywithsoul1" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\db" />
+       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul-1\src\main\resources" />
+     </key>
+     <key name="CopyClassDialog.RECENTS_KEY">
+@@ -78,7 +118,7 @@
+       <recent name="com.fanta.dao" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="Application.com.fanta.HelloApplication">
++  <component name="RunManager">
+     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="com.fanta.moneywithsoul1.HelloApplication" />
+       <module name="money-with-soul-1" />
+@@ -104,6 +144,12 @@
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
++    </configuration>
++    <configuration name="V1__seed_data.sql" type="DatabaseScript" editBeforeRun="true" nameIsGenerated="true">
++      <script-file value="$PROJECT_DIR$/src/main/resources/db/migration/V1__seed_data.sql" />
++      <script-mode>FILE</script-mode>
++      <data-source id="cf634777-d39b-4740-9f9e-3985fbd2eadf" namespace="database/&quot;money-with-soul&quot;" />
++      <method v="2" />
+     </configuration>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+Index: src/main/java/module-info.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/module-info.java b/src/main/java/module-info.java
+--- a/src/main/java/module-info.java	
++++ b/src/main/java/module-info.java	
+@@ -12,6 +12,7 @@
+             org.hibernate.orm.core;
+     opens com.fanta to
+             javafx.fxml;
++    opens db.migration;
+ 
+     exports com.fanta;
+ }
+Index: src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java
+===================================================================
+diff --git a/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java b/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java
+--- a/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java	
++++ b/src/main/java/com/fanta/moneywithsoul/MoneyWithSoluApplication.java	
+@@ -6,10 +6,7 @@
+ public class MoneyWithSoluApplication {
+ 
+     public static void main(String[] args) {
+-        //        SpringApplication.run(MoneyWithSoluApplication.class, args);
+-
+         migrationWihFlyway();
+-        //        PoolConfig.Test();
+ 
+     }
+ }
+Index: src/main/java/com/fanta/database/PoolConfig.java
+===================================================================
+diff --git a/src/main/java/com/fanta/database/PoolConfig.java b/src/main/java/com/fanta/database/PoolConfig.java
+--- a/src/main/java/com/fanta/database/PoolConfig.java	
++++ b/src/main/java/com/fanta/database/PoolConfig.java	
+@@ -4,24 +4,18 @@
+ import com.zaxxer.hikari.HikariDataSource;
+ import javax.sql.DataSource;
+ 
+-public class PoolConfig implements DataBaseConfig {
++public class PoolConfig {
+     protected static HikariDataSource dataSource;
+ 
+     static {
++        String url = "jdbc:postgresql://localhost:5432/money-with-soul";
++        String user = "postgres";
++        String password = "45435";
+         HikariConfig pullConfiguration = new HikariConfig();
+         pullConfiguration.setJdbcUrl(url);
+         pullConfiguration.setUsername(user);
+         pullConfiguration.setPassword(password);
+-        pullConfiguration.setMaximumPoolSize(10);
+-        pullConfiguration.setConnectionTimeout(5000);
+-        pullConfiguration.setMaxLifetime(1800000);
+         pullConfiguration.setPoolName("money-with-soul Pool");
+         dataSource = new HikariDataSource(pullConfiguration);
+     }
+-
+-    public void closeDataSource(DataSource dataSource) {
+-        if (dataSource instanceof HikariDataSource) {
+-            ((HikariDataSource) dataSource).close();
+-        }
+-    }
+ }
+Index: src/main/java/com/fanta/database/MigrationFlyway.java
+===================================================================
+diff --git a/src/main/java/com/fanta/database/MigrationFlyway.java b/src/main/java/com/fanta/database/MigrationFlyway.java
+--- a/src/main/java/com/fanta/database/MigrationFlyway.java	
++++ b/src/main/java/com/fanta/database/MigrationFlyway.java	
+@@ -4,11 +4,13 @@
+ import org.slf4j.Logger;
+ import org.slf4j.LoggerFactory;
+ 
+-public class MigrationFlyway implements DataBaseConfig {
++public class MigrationFlyway  {
+     private static final Logger logger = LoggerFactory.getLogger(MigrationFlyway.class);
+ 
+     public static void migrationWihFlyway() {
+-
++        String url = "jdbc:postgresql://localhost:5432/money-with-soul";
++        String user = "postgres";
++        String password = "45435";
+         Flyway flyway =
+                 Flyway.configure().dataSource(url, user, password).locations("db/migration").load();
+         flyway.migrate();
+Index: src/main/java/com/fanta/dao/UserDAO.java
+===================================================================
+diff --git a/src/main/java/com/fanta/dao/UserDAO.java b/src/main/java/com/fanta/dao/UserDAO.java
+--- a/src/main/java/com/fanta/dao/UserDAO.java	
++++ b/src/main/java/com/fanta/dao/UserDAO.java	
+@@ -1,6 +1,13 @@
+ package com.fanta.dao;
+ 
++import static com.fanta.moneywithsoul.Hibernate.sessionFactory;
++
++import com.fanta.database.PoolConfig;
+ import com.fanta.entity.User;
++
++import org.hibernate.Session;
++import org.hibernate.Transaction;
++
+ import java.sql.Connection;
+ import java.sql.PreparedStatement;
+ import java.sql.ResultSet;
+@@ -8,9 +15,9 @@
+ import java.util.ArrayList;
+ import java.util.List;
+ 
+-public class UserDAO extends BaseDAO<User> implements DAO<User> {
++public class UserDAO extends PoolConfig {
+ 
+-    @Override
++
+     public User findById(Long userId) {
+         User user = null;
+         try (Connection connection = dataSource.getConnection()) {
+@@ -35,7 +42,7 @@
+         return user;
+     }
+ 
+-    @Override
++
+     public List<User> findAll() {
+         List<User> users = new ArrayList<>();
+         try (Connection connection = dataSource.getConnection();
+@@ -59,7 +66,6 @@
+         return users;
+     }
+ 
+-    @Override
+     public void save(User user) {
+         executeWithTransaction(
+                 () -> {
+@@ -81,8 +87,17 @@
+                     }
+                 });
+     }
+-
+-    @Override
++    protected void executeWithTransaction(Runnable runnable) {
++        try (Connection connection = dataSource.getConnection();
++             Session session =
++                     sessionFactory.withOptions().connection(connection).openSession()) {
++            Transaction transaction = session.beginTransaction();
++            runnable.run();
++            transaction.commit();
++        } catch (Exception exception) {
++            exception.printStackTrace();
++        }
++    }
+     public void update(User user) {
+         executeWithTransaction(
+                 () -> {
+@@ -106,7 +121,6 @@
+                 });
+     }
+ 
+-    @Override
+     public void delete(User user) {
+         executeWithTransaction(
+                 () -> {

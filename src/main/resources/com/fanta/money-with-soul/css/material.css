@@ -1,0 +1,34 @@
+/* Фоновий колір для TableView */
+.table-view {
+    -fx-background-color: #333333;
+}
+
+/* Колір тексту для заголовків стовпців */
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+}
+
+/* Колір фону для заголовків стовпців */
+.table-view .column-header {
+    -fx-background-color: #444444;
+}
+
+/* Колір фону для вибраного рядка */
+.table-row-cell:selected {
+    -fx-background-color: #555555;
+}
+
+/* Колір фону для наведеного рядка */
+.table-row-cell:hover {
+    -fx-background-color: #666666;
+}
+
+/* Колір тексту для комірок */
+.table-cell {
+    -fx-text-fill: #ffffff;
+}
+
+/* Колір фону для комірок */
+.table-row-cell .table-cell {
+    -fx-background-color: #333333;
+}
