@@ -63,7 +63,8 @@ public class LeftController implements Initializable {
         mainController.ExchangeRateWindow();
     }
 
-    public void costsTable(ActionEvent actionEvent) {
+    public void costsTable() {
+        mainController.CostWindow();
     }
 
     public void earningTable(ActionEvent actionEvent) {

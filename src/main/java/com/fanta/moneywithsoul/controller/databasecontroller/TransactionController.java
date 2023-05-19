@@ -59,10 +59,10 @@ public class TransactionController implements Initializable {
             }
             String transactionNameType = transactionType.getText();
             String descriptionTransaction = description.getText();
-            Timestamp Date = Timestamp.valueOf(transactionDate.getValue().atStartOfDay());
+            Timestamp date = Timestamp.valueOf(transactionDate.getValue().atStartOfDay());
             BigDecimal amountBigDecimal = new BigDecimal(transactionAmount.getText());
             Long exchangeId = Long.valueOf(exchangeRateId.getText());
-            Transaction transaction = transactionService.saveTransaction(userIdLong, transactionNameType, Date, amountBigDecimal, descriptionTransaction,exchangeId);
+            Transaction transaction = transactionService.saveTransaction(userIdLong, transactionNameType, date, amountBigDecimal, descriptionTransaction,exchangeId);
             transactionService.save(transaction);
             refreshTable();
         }catch (Exception e)

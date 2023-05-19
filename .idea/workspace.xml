@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Done transaction">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/ExchangeRateTable.fxml" afterDir="false" />
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Done exchangerate">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/CostTable.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/LeftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/LeftController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/ExchangeRateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/ExchangeRateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/CostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/CostController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/databasecontroller/TransactionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/ExchangeRateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/ExchangeRateDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/ExchangeRate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/ExchangeRate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Transaction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/ExchangeRate.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/DataBase/Cost.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +218,7 @@
       <workItem from="1684346841810" duration="14544000" />
       <workItem from="1684394255485" duration="710000" />
       <workItem from="1684430176175" duration="28765000" />
-      <workItem from="1684481549595" duration="10701000" />
+      <workItem from="1684481549595" duration="12714000" />
     </task>
     <task id="LOCAL-00001" summary="Hibernate">
       <created>1683640914215</created>
@@ -329,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684487566654</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Done exchangerate">
+      <created>1684492301089</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1684492301089</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -396,7 +399,8 @@
     <MESSAGE value="Dao" />
     <MESSAGE value="Done User" />
     <MESSAGE value="Done transaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Done transaction" />
+    <MESSAGE value="Done exchangerate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Done exchangerate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

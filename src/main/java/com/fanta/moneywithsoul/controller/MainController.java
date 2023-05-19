@@ -1,6 +1,7 @@
 package com.fanta.moneywithsoul.controller;
 
 import com.fanta.moneywithsoul.controller.databasecontroller.BudgetController;
+import com.fanta.moneywithsoul.controller.databasecontroller.CostController;
 import com.fanta.moneywithsoul.controller.databasecontroller.ExchangeRateController;
 import com.fanta.moneywithsoul.controller.databasecontroller.TransactionController;
 import com.fanta.moneywithsoul.controller.databasecontroller.UserController;
@@ -131,6 +132,19 @@ public class MainController {
             exchangeRateController1.setMainController(this);
 
             mainApp.setCenter(exchangeRateController);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void CostWindow() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/CostTable.fxml"));
+            AnchorPane costController = loader.load();
+
+            CostController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainApp.setCenter(costController);
         } catch (IOException e) {
             e.printStackTrace();
         }
