@@ -45,7 +45,7 @@ public class Transaction {
     @Column(name = "transaction_type")
     private String transactionType;
 
-    @NotEmpty(message = "Дата транзакції не може бути відсутньою")
+    @NotNull(message = "Дата транзакції не може бути відсутньою")
     @PastOrPresentDate
     @Column(name = "transaction_date")
     private Timestamp transactionDate;

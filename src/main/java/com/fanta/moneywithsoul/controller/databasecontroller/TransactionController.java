@@ -5,9 +5,7 @@ import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 import com.fanta.moneywithsoul.controller.MainController;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Transaction;
-import com.fanta.moneywithsoul.entity.Transaction;
 import com.fanta.moneywithsoul.entity.User;
-import com.fanta.moneywithsoul.service.TransactionService;
 import com.fanta.moneywithsoul.service.TransactionService;
 
 import java.math.BigDecimal;
@@ -18,8 +16,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -89,10 +85,10 @@ public class TransactionController implements Initializable {
             }else {
                 String transactionNameType = transactionType.getText();
                 String descriptionTransaction = description.getText();
-                Timestamp Date = Timestamp.valueOf(transactionDate.getValue().atStartOfDay());
+                LocalDate dateTime = transactionDate.getValue();
                 BigDecimal amountBigDecimal = new BigDecimal(transactionAmount.getText());
                 Long exchangeId = Long.valueOf(exchangeRateId.getText());
-                Transaction transaction = transactionService.updateTransaction(transactionID, userIdLong, transactionNameType, Date, amountBigDecimal, descriptionTransaction,exchangeId);
+                Transaction transaction = transactionService.updateTransaction(transactionID, userIdLong, transactionNameType, Timestamp.valueOf(dateTime.atStartOfDay()), amountBigDecimal, descriptionTransaction,exchangeId);
                 transactionService.update(transactionID, transaction);
                 refreshTable();
             }

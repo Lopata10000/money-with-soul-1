@@ -17,6 +17,6 @@ public class PastOrPresentValidator implements ConstraintValidator<PastOrPresent
             return true; // Дозволяємо значенням null
         }
         Timestamp now = new Timestamp(System.currentTimeMillis());
-        return value.after(now) || value.equals(now);
+        return value.before(now) || value.equals(now);
     }
 }
