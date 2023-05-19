@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.entity;
 
 import com.fanta.moneywithsoul.validator.OnlyLetters;
-
 import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,10 +20,12 @@ public class ExchangeRate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "exchange_id")
     private Long exchangeId;
+
     @NotEmpty
     @OnlyLetters
     @Column(name = "name_currency")
     private String nameCurrency;
+
     @NotNull(message = "Курс не може бути пустим")
     @Digits(integer = 10, fraction = 2, message = "Курс може бути вказаний тільки в цифрах")
     @Column(name = "rate")
@@ -59,6 +60,6 @@ public class ExchangeRate {
         this.nameCurrency = nameCurrency;
         this.rate = rate;
     }
-    public ExchangeRate() {
-    }
+
+    public ExchangeRate() {}
 }

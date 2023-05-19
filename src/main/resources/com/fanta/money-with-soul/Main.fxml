@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<BorderPane fx:id="mainApp" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #4D4D4D;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.MainController">
+   <stylesheets>
+      <URL value="@/com/fanta/money-with-soul/styles.css" />
+   </stylesheets>
+   <left>
+      <Pane prefWidth="200.0" style="-fx-background-color: #3333;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox spacing="20.0" layoutX="30.0"  prefHeight="100.0" prefWidth="2000.0">
+               <children>
+                  <JFXButton fx:id="authorizationButton" mnemonicParsing="false" onAction="#authorizationWindow" styleClass="jfx-button-main" text="Authorization">
+                     <font>
+                        <Font name="MS Outlook" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="registrationButton" mnemonicParsing="false" onAction="#registrationWindow" styleClass="jfx-button-main" text="Registration">
+                     <font>
+                        <Font name="MS Outlook" size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="dataBaseButton" mnemonicParsing="false" onAction="#dataBaseWindow" styleClass="jfx-button-main" text="DataBase">
+                     <font>
+                        <Font name="MS Outlook" size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets top="200.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+   </left>
+   <top>
+      <StackPane prefHeight="70.0" prefWidth="700.0" style="-fx-background-color: #333333;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="MONEY-WITH-SOUL" textAlignment="CENTER" textFill="#ececec">
+               <font>
+                  <Font name="Jokerman" size="40.0" />
+               </font>
+               <padding>
+                  <Insets left="200.0" />
+               </padding>
+            </Label>
+            <ImageView fitHeight="95.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Money.png" />
+               </image>
+               <StackPane.margin>
+                  <Insets right="300.0" />
+               </StackPane.margin>
+            </ImageView>
+         </children>
+      </StackPane>
+   </top>
+   <center>
+      <AnchorPane style="-fx-background-color: #808080;" BorderPane.alignment="CENTER">
+         <children>
+            <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Label prefWidth="750.0" text="Money-With-Soul - це неперевершений додаток, який створений, щоб зробити облік особистих витрат легким і приємним процесом. Це не просто звичайний інструмент для ведення бюджету, але й справжня співробітниця, яка допоможе вам зберігати гармонію між вашими фінансами і життєвим задоволенням.Money-With-Soul відрізняється від інших додатків своїм унікальним підходом до фінансового управління. Він пропонує не тільки ефективний спосіб слідкувати за своїми витратами, але й сприяє пошуку гармонії між грошима та вашими цінностями.Один з найвизначніших аспектів Money-With-Soul - його інтуїтивний і привабливий інтерфейс. Користувачам надається зручна можливість створити персональний профіль, в якому вони можуть відображати свої цілі, мрії і цінності. Додаток пропонує вам визначити свої фінансові цілі, будь то покупка житла, подорожі або інвестиції в освіту, і допомагає вам розвиватися фінансово, дотримуючись цих цілей.Money-With-Soul має потужні аналітичні інструменти, які надають глибокий інсайт в ваші витрати. Він автоматично категоризує витрати, щоб ви могли бачити, на що саме ви витрачаєте свої кошти. Крім того, ви можете налаштувати нагадування про платежі, щоб ніколи не пропустити рахунок або відтермінувати платіж.Додаток також пропонує персоналізовані рекомендації з економії. Він аналізує ваші витрати та запропонує вам способи зменшити витрати, не пожертвуючи вашими задоволеннями. Завдяки інтелектуальним алгоритмам Money-With-Soul зробить фінансове планування простим і досяжним для вас.Однак, найважливіша риса Money-With-Soul - це його підхід, що нагадує вам про те, що гроші - це не єдине, чого ви повинні прагнути в житті. Додаток надихає вас бути свідомими споживачами, розуміти, на що саме ви витрачаєте свої кошти і як це відображається на вашому благополуччі та щасті.Отже, якщо ви хочете, щоб ваші фінанси стали не просто числами, а відображали ваші цінності і відповідали вашим мріям, Money-With-Soul - це саме те, що вам потрібно. Він перетворить облік витрат на важливий і вдумливий процес, допомагаючи вам знаходити гармонію між вашими фінансами і вашим життям." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                     <font>
+                        <Font name="MT Extra" size="16.0" />
+                     </font>
+                  </Label>
+               </children></StackPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

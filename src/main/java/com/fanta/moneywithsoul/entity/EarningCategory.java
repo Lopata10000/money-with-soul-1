@@ -16,6 +16,7 @@ public class EarningCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "earning_category_id")
     private Long earningCategoryId;
+
     @NotEmpty(message = "Назва категорії не може бути пустою")
     @Column(name = "earning_category_name")
     private String earningCategoryName;
@@ -46,7 +47,5 @@ public class EarningCategory {
         this.earningCategoryName = earningCategoryName;
     }
 
-    public EarningCategory() {
-
-    }
+    public EarningCategory() {}
 }

@@ -1,5 +1,7 @@
 package com.fanta.moneywithsoul.service;
 
+import static com.fanta.moneywithsoul.database.DataBaseConfig.password;
+
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import java.util.List;
@@ -31,10 +33,12 @@ public class UserService implements ServiceInterface<User> {
 
     @Override
     public void save(User user) {
+
         UserDAO userDAO = new UserDAO();
         boolean emailExists = userDAO.existsByEmail(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
+            throw new RuntimeException();
         } else {
             validateAndSave(user);
             userDAO.save(user);
@@ -47,6 +51,7 @@ public class UserService implements ServiceInterface<User> {
         boolean emailExists = userDAO.existsByEmail(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
+            throw new RuntimeException();
         } else {
             validateAndUpdate(userId, user);
             userDAO.update(userId, user);

@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.entity;
 
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.Column;
@@ -29,7 +28,9 @@ public class Earning {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @NotNull(message = "Для синхронізації прибутку повинен бути користувач якому належить ця витрата")
+    @NotNull(
+            message =
+                    "Для синхронізації прибутку повинен бути користувач якому належить ця витрата")
     @Column(name = "user_id")
     private Long userId;
 
@@ -45,7 +46,9 @@ public class Earning {
     @JoinColumn(name = "transaction_id", insertable = false, updatable = false)
     private Transaction transaction;
 
-    @NotNull(message = "Для синхронізації прибутку повинна бути транзакція якій належить цей прибуток")
+    @NotNull(
+            message =
+                    "Для синхронізації прибутку повинна бути транзакція якій належить цей прибуток")
     @Column(name = "transaction_id")
     private Long transactionId;
 
@@ -155,7 +158,14 @@ public class Earning {
         this.earningAmount = earningAmount;
     }
 
-    public Earning(Long earningId, Long userId, Long earningCategoryId, Long transactionId, Long budgetId, Timestamp earningDate, BigDecimal earningAmount) {
+    public Earning(
+            Long earningId,
+            Long userId,
+            Long earningCategoryId,
+            Long transactionId,
+            Long budgetId,
+            Timestamp earningDate,
+            BigDecimal earningAmount) {
         this.earningId = earningId;
         this.userId = userId;
         this.earningCategoryId = earningCategoryId;
@@ -166,5 +176,4 @@ public class Earning {
     }
 
     public Earning() {}
-
 }

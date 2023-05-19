@@ -2,7 +2,6 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
 import com.fanta.moneywithsoul.entity.EarningCategory;
-
 import java.util.List;
 
 public class EarningCategoryService implements ServiceInterface<EarningCategory> {
@@ -57,7 +56,8 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
         }
     }
 
-    public EarningCategory saveAndUpdateEarningCategory(Long earningCategoryId, String earningCategoryName) {
+    public EarningCategory saveAndUpdateEarningCategory(
+            Long earningCategoryId, String earningCategoryName) {
         EarningCategory earningCategory = new EarningCategory();
         earningCategory.setEarningCategoryId(earningCategoryId);
         earningCategory.setEarningCategoryName(earningCategoryName);

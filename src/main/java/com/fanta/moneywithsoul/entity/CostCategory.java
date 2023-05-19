@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.entity;
 
 import com.fanta.moneywithsoul.validator.OnlyLetters;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,6 +17,7 @@ public class CostCategory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cost_category_id")
     private Long costCategoryId;
+
     @OnlyLetters
     @NotEmpty(message = "Назва категорії не може бути пустою")
     @Column(name = "cost_category_name")
@@ -44,6 +44,5 @@ public class CostCategory {
         this.costCategoryName = costCategoryName;
     }
 
-    public CostCategory() {
-    }
+    public CostCategory() {}
 }

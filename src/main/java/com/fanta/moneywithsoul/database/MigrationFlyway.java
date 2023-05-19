@@ -1,6 +1,7 @@
 package com.fanta.moneywithsoul.database;
 
 import org.flywaydb.core.Flyway;
+
 public class MigrationFlyway implements DataBaseConfig {
 
     public static void main(String[] args) {

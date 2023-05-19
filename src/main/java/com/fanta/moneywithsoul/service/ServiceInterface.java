@@ -26,7 +26,11 @@ public interface ServiceInterface<T> {
         if (!violations.isEmpty()) {
             StringBuilder errorMessage = new StringBuilder();
             for (ConstraintViolation<T> violation : violations) {
-                errorMessage.append(violation.getPropertyPath()).append(": ").append(violation.getMessage()).append("\n");
+                errorMessage
+                        .append(violation.getPropertyPath())
+                        .append(": ")
+                        .append(violation.getMessage())
+                        .append("\n");
             }
             showErrorMessage(errorMessage.toString());
             throw new RuntimeException();

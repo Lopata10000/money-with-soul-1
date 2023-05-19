@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.EarningCategory;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -87,15 +86,18 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
 
     @Override
     public void delete(Long earningCategoryId) {
-        executeWithTransaction(() -> {
-            try (Connection connection = dataSource.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(
-                         "DELETE FROM earning_categories WHERE earning_category_id = ?")) {
-                statement.setLong(1, earningCategoryId);
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        executeWithTransaction(
+                () -> {
+                    try (Connection connection = dataSource.getConnection();
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "DELETE FROM earning_categories WHERE"
+                                                    + " earning_category_id = ?")) {
+                        statement.setLong(1, earningCategoryId);
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 }

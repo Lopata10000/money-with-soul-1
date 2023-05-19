@@ -4,10 +4,8 @@ import com.fanta.moneywithsoul.dao.ExchangeRateDAO;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.validator.OnlyLetters;
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,28 +32,42 @@ public class Transaction {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
-    @NotNull(message = "Для синхронізації транзакції повинен бути користувач якому належить ця транзакція")
+
+    @NotNull(
+            message =
+                    "Для синхронізації транзакції повинен бути користувач якому належить ця"
+                            + " транзакція")
     @Column(name = "user_id")
     private Long userId;
+
     @NotEmpty(message = "Тип транзакції не може бути пустим")
     @OnlyLetters(message = "Тип транзакції може бути вказаний тільки в буквах")
     @Column(name = "transaction_type")
     private String transactionType;
+
     @NotEmpty(message = "Дата транзакції не може бути відсутньою")
     @PastOrPresentDate
     @Column(name = "transaction_date")
     private Timestamp transactionDate;
+
     @NotNull(message = "Сума транзакції не може бути пустою")
     @Digits(integer = 10, fraction = 2, message = "Сума може бути вказана тільки в цифрах")
     @Column(name = "transaction_amount")
     private BigDecimal transactionAmount;
-    @Size(min = 4, max = 200, message = "Мінімальна довжина інформації про транзакцію = 4 символи, а максимальна 200 символів")
+
+    @Size(
+            min = 4,
+            max = 200,
+            message =
+                    "Мінімальна довжина інформації про транзакцію = 4 символи, а максимальна 200"
+                            + " символів")
     @Column(name = "description")
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "exchange_id", insertable = false, updatable = false)
     private ExchangeRate exchangeRateId;
+
     @NotNull(message = "Валюта транзакції не може бути відсутня")
     @Column(name = "exchange_id")
     private Long exchangeId;
@@ -118,7 +130,14 @@ public class Transaction {
         this.exchangeRateId = new ExchangeRateDAO().findById(exchangeId);
     }
 
-    public Transaction(Long transactionId, Long userId, String transactionType, Timestamp transactionDate, BigDecimal transactionAmount, String description, Long exchangeId) {
+    public Transaction(
+            Long transactionId,
+            Long userId,
+            String transactionType,
+            Timestamp transactionDate,
+            BigDecimal transactionAmount,
+            String description,
+            Long exchangeId) {
         this.transactionId = transactionId;
         this.userId = userId;
         this.transactionType = transactionType;
@@ -128,8 +147,5 @@ public class Transaction {
         this.exchangeId = exchangeId;
     }
 
-    public Transaction() {
-
-    }
-
+    public Transaction() {}
 }

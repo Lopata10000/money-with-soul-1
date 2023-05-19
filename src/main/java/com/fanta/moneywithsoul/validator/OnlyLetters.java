@@ -1,8 +1,8 @@
 package com.fanta.moneywithsoul.validator;
 
+import java.lang.annotation.*;
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = OnlyLettersValidator.class)
@@ -10,7 +10,8 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface OnlyLetters {
 
-    String message() default "Уведено не правильне значення. Використовуйте тільки букви будь ласка.";
+    String message() default
+            "Уведено не правильне значення. Використовуйте тільки букви будь ласка.";
 
     Class<?>[] groups() default {};
 

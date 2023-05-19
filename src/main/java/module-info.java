@@ -9,11 +9,20 @@ module com {
     requires java.persistence;
     requires java.validation;
     requires com.jfoenix;
+
     opens db.migration;
     opens com.fanta.moneywithsoul.entity;
+
     exports com.fanta.moneywithsoul.validator;
     exports com.fanta.moneywithsoul;
+
     opens com.fanta.moneywithsoul;
+
     exports com.fanta.moneywithsoul.database;
+
     opens com.fanta.moneywithsoul.database;
+
+    exports com.fanta.moneywithsoul.controller;
+
+    opens com.fanta.moneywithsoul.controller;
 }

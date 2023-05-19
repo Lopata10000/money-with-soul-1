@@ -1,10 +1,10 @@
 package com.fanta.moneywithsoul.validator;
 
+import java.lang.annotation.*;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.PastOrPresent;
-import java.lang.annotation.*;
 
 @Documented
 @Constraint(validatedBy = {PastOrPresentValidator.class})
@@ -14,6 +14,8 @@ import java.lang.annotation.*;
 @ReportAsSingleViolation
 public @interface PastOrPresentDate {
     String message() default "Невалідна дата";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

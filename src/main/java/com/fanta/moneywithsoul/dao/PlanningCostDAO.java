@@ -1,14 +1,12 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.PlanningCost;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<PlanningCost> {
 
@@ -49,7 +47,8 @@ public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<Planni
     public List<PlanningCost> findAll() {
         List<PlanningCost> planningCosts = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM planning_costs")) {
+                PreparedStatement statement =
+                        connection.prepareStatement("SELECT * FROM planning_costs")) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 PlanningCost planningCost = new PlanningCost();
@@ -69,54 +68,64 @@ public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<Planni
 
     @Override
     public void save(PlanningCost planningCost) {
-        executeWithTransaction(() -> {
-            try (Connection connection = dataSource.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(
-                         "INSERT INTO planning_costs (user_id, cost_category_id, planning_cost_date, budget_id, planned_amount) VALUES (?, ?, ?, ?, ?)")) {
-                statement.setLong(1, planningCost.getUserId());
-                statement.setLong(2, planningCost.getCostCategoryId());
-                statement.setTimestamp(3, planningCost.getPlanningCostDate());
-                statement.setLong(4, planningCost.getBudgetId());
-                statement.setBigDecimal(5, planningCost.getPlannedAmount());
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        executeWithTransaction(
+                () -> {
+                    try (Connection connection = dataSource.getConnection();
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "INSERT INTO planning_costs (user_id, cost_category_id,"
+                                                + " planning_cost_date, budget_id, planned_amount)"
+                                                + " VALUES (?, ?, ?, ?, ?)")) {
+                        statement.setLong(1, planningCost.getUserId());
+                        statement.setLong(2, planningCost.getCostCategoryId());
+                        statement.setTimestamp(3, planningCost.getPlanningCostDate());
+                        statement.setLong(4, planningCost.getBudgetId());
+                        statement.setBigDecimal(5, planningCost.getPlannedAmount());
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 
     @Override
-    public void update(Long planningCostId, PlanningCost planningCost)
-    {
-    executeWithTransaction(() -> {
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement(
-                     "UPDATE planning_costs SET user_id = ?, cost_category_id = ?, planning_cost_date = ?, budget_id = ?, planned_amount = ? WHERE planning_cost_id = ?")) {
-            statement.setLong(1, planningCost.getUserId());
-            statement.setLong(2, planningCost.getCostCategoryId());
-            statement.setTimestamp(3, planningCost.getPlanningCostDate());
-            statement.setLong(4, planningCost.getBudgetId());
-            statement.setBigDecimal(5, planningCost.getPlannedAmount());
-            statement.setLong(6, planningCost.getPlanningCostId());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    });
-}
+    public void update(Long planningCostId, PlanningCost planningCost) {
+        executeWithTransaction(
+                () -> {
+                    try (Connection connection = dataSource.getConnection();
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "UPDATE planning_costs SET user_id = ?,"
+                                                + " cost_category_id = ?, planning_cost_date = ?,"
+                                                + " budget_id = ?, planned_amount = ? WHERE"
+                                                + " planning_cost_id = ?")) {
+                        statement.setLong(1, planningCost.getUserId());
+                        statement.setLong(2, planningCost.getCostCategoryId());
+                        statement.setTimestamp(3, planningCost.getPlanningCostDate());
+                        statement.setLong(4, planningCost.getBudgetId());
+                        statement.setBigDecimal(5, planningCost.getPlannedAmount());
+                        statement.setLong(6, planningCost.getPlanningCostId());
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+    }
 
     @Override
     public void delete(Long planningCostId) {
-        executeWithTransaction(() -> {
-            try (Connection connection = dataSource.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(
-                         "DELETE FROM planning_costs WHERE planning_cost_id = ?")) {
-                statement.setLong(1, planningCostId);
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        executeWithTransaction(
+                () -> {
+                    try (Connection connection = dataSource.getConnection();
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "DELETE FROM planning_costs WHERE planning_cost_id"
+                                                    + " = ?")) {
+                        statement.setLong(1, planningCostId);
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 }
-

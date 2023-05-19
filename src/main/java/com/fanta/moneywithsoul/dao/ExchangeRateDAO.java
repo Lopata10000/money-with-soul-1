@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.ExchangeRate;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -96,7 +95,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM exchange_rates WHERE exchange_id = ?")) {
-                        statement.setLong(1,exchangeId);
+                        statement.setLong(1, exchangeId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

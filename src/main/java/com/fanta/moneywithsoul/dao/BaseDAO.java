@@ -1,4 +1,5 @@
 package com.fanta.moneywithsoul.dao;
+
 import com.fanta.moneywithsoul.database.DataBaseConfig;
 import com.fanta.moneywithsoul.database.Hibernate;
 import com.fanta.moneywithsoul.database.PoolConfig;

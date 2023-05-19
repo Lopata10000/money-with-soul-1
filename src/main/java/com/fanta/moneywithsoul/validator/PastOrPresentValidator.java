@@ -1,8 +1,8 @@
 package com.fanta.moneywithsoul.validator;
 
+import java.sql.Timestamp;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.sql.Timestamp;
 
 public class PastOrPresentValidator implements ConstraintValidator<PastOrPresentDate, Timestamp> {
 

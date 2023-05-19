@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class EarningService implements ServiceInterface<Earning> {
-    private  final EarningDAO earningDAO;
+    private final EarningDAO earningDAO;
 
     public EarningService() {
         earningDAO = new EarningDAO();

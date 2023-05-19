@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.Budget;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,8 +26,7 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
                                 resultSet.getString("name"),
                                 resultSet.getTimestamp("start_date"),
                                 resultSet.getTimestamp("end_date"),
-                                resultSet.getBigDecimal("amount")
-                                );
+                                resultSet.getBigDecimal("amount"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -83,21 +81,25 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
 
     @Override
     public void update(Long budgetId, Budget updatedBudget) {
-        executeWithTransaction(() -> {
-            try (Connection connection = dataSource.getConnection();
-                 PreparedStatement statement = connection.prepareStatement(
-                         "UPDATE budgets SET user_id = ?, name = ?, start_date = ?, end_date = ?, amount = ? WHERE budget_id = ?")) {
-                statement.setLong(1, updatedBudget.getUser().getUserId());
-                statement.setString(2, updatedBudget.getName());
-                statement.setTimestamp(3, updatedBudget.getStartDate());
-                statement.setTimestamp(4, updatedBudget.getEndDate());
-                statement.setBigDecimal(5, updatedBudget.getAmount());
-                statement.setLong(6, updatedBudget.getBudgetId());
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        });
+        executeWithTransaction(
+                () -> {
+                    try (Connection connection = dataSource.getConnection();
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "UPDATE budgets SET user_id = ?, name = ?, start_date ="
+                                                    + " ?, end_date = ?, amount = ? WHERE budget_id"
+                                                    + " = ?")) {
+                        statement.setLong(1, updatedBudget.getUser().getUserId());
+                        statement.setString(2, updatedBudget.getName());
+                        statement.setTimestamp(3, updatedBudget.getStartDate());
+                        statement.setTimestamp(4, updatedBudget.getEndDate());
+                        statement.setBigDecimal(5, updatedBudget.getAmount());
+                        statement.setLong(6, updatedBudget.getBudgetId());
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
     }
 
     @Override
@@ -108,7 +110,7 @@ public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "DELETE FROM budgets WHERE budget_id = ?")) {
-                        statement.setLong(1,budgetId);
+                        statement.setLong(1, budgetId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

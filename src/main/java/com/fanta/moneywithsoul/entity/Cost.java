@@ -2,10 +2,8 @@ package com.fanta.moneywithsoul.entity;
 
 import com.fanta.moneywithsoul.validator.OnlyLetters;
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,7 +46,10 @@ public class Cost {
     @JoinColumn(name = "budget_id", insertable = false, updatable = false)
     private Budget budget;
 
-    @NotNull(message = "Для синхронізації витрат повинен бути бюджет в межах якого була здійснена ця витрата")
+    @NotNull(
+            message =
+                    "Для синхронізації витрат повинен бути бюджет в межах якого була здійснена ця"
+                            + " витрата")
     @Column(name = "budget_id")
     private Long budgetId;
 
@@ -171,7 +172,15 @@ public class Cost {
         this.transactionId = transactionId;
     }
 
-    public Cost(Long costId, Long userId, Long costCategoryId, Long budgetId, Long transactionId, Timestamp costDate, BigDecimal costAmount, String costDescription) {
+    public Cost(
+            Long costId,
+            Long userId,
+            Long costCategoryId,
+            Long budgetId,
+            Long transactionId,
+            Timestamp costDate,
+            BigDecimal costAmount,
+            String costDescription) {
         this.costId = costId;
         this.userId = userId;
         this.costCategoryId = costCategoryId;
@@ -182,6 +191,5 @@ public class Cost {
         this.costDescription = costDescription;
     }
 
-    public Cost() {
-    }
+    public Cost() {}
 }

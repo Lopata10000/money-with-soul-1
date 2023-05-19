@@ -1,13 +1,11 @@
 package com.fanta.moneywithsoul.entity;
 
+import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.validator.ChronologicalDates;
 import com.fanta.moneywithsoul.validator.OnlyLetters;
-import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -34,28 +32,31 @@ public class Budget {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @NotNull(message = "Для синхронізації бюджета повинен бути користувач якому належить цей бюджет")
+    @NotNull(
+            message = "Для синхронізації бюджета повинен бути користувач якому належить цей бюджет")
     @Column(name = "user_id")
     private Long userId;
+
     @NotEmpty(message = "Назва бюджета не може бути порожня")
     @OnlyLetters(message = "Назва бюджету може бути вказаний тільки в буквах")
     @Column(name = "name")
     private String name;
+
     @NotNull(message = "Дата початку не може бути порожня")
     @PastOrPresentDate
     @Column(name = "start_date")
     private Timestamp startDate;
+
     @ChronologicalDates(startDate = "startDate", endDate = "endDate")
     @Column(name = "end_date")
     private Timestamp endDate;
+
     @NotNull(message = "Сума бюджету не може бути порожня")
     @Digits(integer = 10, fraction = 2, message = "Сума може бути вказана тільки в цифрах")
     @Column(name = "amount")
     private BigDecimal amount;
 
-    public Budget() {
-
-    }
+    public Budget() {}
 
     public Long getBudgetId() {
         return budgetId;
@@ -114,7 +115,13 @@ public class Budget {
         this.user = new UserDAO().findById(userId);
     }
 
-    public Budget(Long budgetId, Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
+    public Budget(
+            Long budgetId,
+            Long userId,
+            String name,
+            Timestamp startDate,
+            Timestamp endDate,
+            BigDecimal amount) {
         this.budgetId = budgetId;
         this.userId = userId;
         this.name = name;

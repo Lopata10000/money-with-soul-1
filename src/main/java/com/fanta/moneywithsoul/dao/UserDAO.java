@@ -1,15 +1,15 @@
 package com.fanta.moneywithsoul.dao;
 
+import com.fanta.moneywithsoul.database.Hibernate;
 import com.fanta.moneywithsoul.entity.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javafx.scene.control.Alert;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 public class UserDAO extends BaseDAO<User> implements DAO<User> {
 
@@ -37,6 +37,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         }
         return user;
     }
+
     public boolean existsByEmail(String email) {
         try (Connection connection = dataSource.getConnection()) {
             String query = "SELECT COUNT(*) FROM users WHERE email = ?";
@@ -54,7 +55,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         return false;
     }
 
-        @Override
+    @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
@@ -123,6 +124,32 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                         throw new RuntimeException(e);
                     }
                 });
+    }
+
+    public User findUserByEmailAndPassword(String email, String password) {
+        final User[] userHolder =
+                new User[1]; // Остаточний (final) масив для зберігання об'єкта користувача
+        executeWithTransaction(
+                () -> {
+                    try (Session session = Hibernate.sessionFactory.openSession()) {
+                        Query<User> query =
+                                session.createQuery(
+                                        "SELECT u FROM User u WHERE u.email = :email AND"
+                                                + " u.passwordHash = :password",
+                                        User.class);
+                        query.setParameter("email", email);
+                        query.setParameter("password", password);
+                        User user = query.uniqueResult();
+
+                        userHolder[0] =
+                                user; // Присвоєння об'єкта користувача до остаточного (final)
+                        // масиву
+
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                });
+        return userHolder[0]; // Повернення об'єкта користувача
     }
 
     @Override

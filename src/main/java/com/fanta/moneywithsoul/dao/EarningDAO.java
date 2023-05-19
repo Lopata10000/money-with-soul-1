@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.Earning;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,8 +39,8 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
     public List<Earning> findAll() {
         List<Earning> earnings = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM earnings")) {
+                PreparedStatement statement =
+                        connection.prepareStatement("SELECT * FROM earnings")) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Earning earning =
@@ -66,11 +65,11 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
-                         PreparedStatement statement =
-                                 connection.prepareStatement(
-                                         "INSERT INTO earnings (user_id, earning_category_id,"
-                                                 + " transaction_id, budget_id, earning_date,"
-                                                 + " earning_amount) VALUES (?, ?, ?, ?, ?, ?)")) {
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "INSERT INTO earnings (user_id, earning_category_id,"
+                                                + " transaction_id, budget_id, earning_date,"
+                                                + " earning_amount) VALUES (?, ?, ?, ?, ?, ?)")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
                         statement.setLong(3, earning.getTransactionId());
@@ -89,12 +88,12 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
-                         PreparedStatement statement =
-                                 connection.prepareStatement(
-                                         "UPDATE earnings SET user_id = ?, earning_category_id ="
-                                                 + " ?, transaction_id = ?, budget_id = ?,"
-                                                 + " earning_date = ?, earning_amount = ? WHERE"
-                                                 + " earning_id = ?")) {
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "UPDATE earnings SET user_id = ?, earning_category_id ="
+                                                    + " ?, transaction_id = ?, budget_id = ?,"
+                                                    + " earning_date = ?, earning_amount = ? WHERE"
+                                                    + " earning_id = ?")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
                         statement.setLong(3, earning.getTransactionId());
@@ -114,9 +113,9 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
-                         PreparedStatement statement =
-                                 connection.prepareStatement(
-                                         "DELETE FROM earnings WHERE earning_id = ?")) {
+                            PreparedStatement statement =
+                                    connection.prepareStatement(
+                                            "DELETE FROM earnings WHERE earning_id = ?")) {
                         statement.setLong(1, earningId);
                         statement.executeUpdate();
                     } catch (SQLException e) {

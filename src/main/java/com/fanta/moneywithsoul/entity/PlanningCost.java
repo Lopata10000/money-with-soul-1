@@ -1,10 +1,8 @@
 package com.fanta.moneywithsoul.entity;
 
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,7 +28,10 @@ public class PlanningCost {
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-    @NotNull(message = "Для синхронізації плавнових витрат повинен бути користувач якому належить ця планова витрата")
+    @NotNull(
+            message =
+                    "Для синхронізації плавнових витрат повинен бути користувач якому належить ця"
+                            + " планова витрата")
     @Column(name = "user_id")
     private Long userId;
 
@@ -59,6 +60,7 @@ public class PlanningCost {
     @Digits(integer = 10, fraction = 2, message = "Сума може бути вказана тільки в цифрах")
     @Column(name = "planned_amount")
     private BigDecimal plannedAmount;
+
     public Long getPlanningCostId() {
         return planningCostId;
     }
@@ -131,7 +133,13 @@ public class PlanningCost {
         this.budgetId = budgetId;
     }
 
-    public PlanningCost(Long planningCostId, Long userId, Long costCategoryId, Timestamp planningCostDate, Long budgetId, BigDecimal plannedAmount) {
+    public PlanningCost(
+            Long planningCostId,
+            Long userId,
+            Long costCategoryId,
+            Timestamp planningCostDate,
+            Long budgetId,
+            BigDecimal plannedAmount) {
         this.planningCostId = planningCostId;
         this.userId = userId;
         this.costCategoryId = costCategoryId;
@@ -139,7 +147,6 @@ public class PlanningCost {
         this.budgetId = budgetId;
         this.plannedAmount = plannedAmount;
     }
-    public PlanningCost() {
-    }
 
+    public PlanningCost() {}
 }

@@ -186,6 +186,7 @@ $$;
 
 -- створюємо індекси для підвищення швидкодії запитів
 CREATE INDEX IF NOT EXISTS idx_cost_user ON costs (user_id);
+CREATE INDEX IF NOT EXISTS idx_email_user ON users (email);
 CREATE INDEX IF NOT EXISTS idx_cost_budget ON costs (budget_id);
 CREATE INDEX IF NOT EXISTS idx_earning_user ON earnings (user_id);
 CREATE INDEX IF NOT EXISTS idx_earning_budget ON earnings (budget_id);
