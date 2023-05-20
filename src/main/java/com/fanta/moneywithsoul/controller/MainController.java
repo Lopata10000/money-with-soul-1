@@ -1,22 +1,19 @@
 package com.fanta.moneywithsoul.controller;
 
-import com.fanta.moneywithsoul.controller.databasecontroller.BudgetController;
-import com.fanta.moneywithsoul.controller.databasecontroller.CostCategoryController;
-import com.fanta.moneywithsoul.controller.databasecontroller.CostController;
-import com.fanta.moneywithsoul.controller.databasecontroller.EarningCategoryController;
-import com.fanta.moneywithsoul.controller.databasecontroller.EarningController;
-import com.fanta.moneywithsoul.controller.databasecontroller.ExchangeRateController;
-import com.fanta.moneywithsoul.controller.databasecontroller.PlanningCostController;
-import com.fanta.moneywithsoul.controller.databasecontroller.TransactionController;
-import com.fanta.moneywithsoul.controller.databasecontroller.UserController;
-import com.fanta.moneywithsoul.entity.User;
+import com.fanta.moneywithsoul.controller.tablecontroller.BudgetController;
+import com.fanta.moneywithsoul.controller.tablecontroller.CostCategoryController;
+import com.fanta.moneywithsoul.controller.tablecontroller.CostController;
+import com.fanta.moneywithsoul.controller.tablecontroller.EarningCategoryController;
+import com.fanta.moneywithsoul.controller.tablecontroller.EarningController;
+import com.fanta.moneywithsoul.controller.tablecontroller.ExchangeRateController;
+import com.fanta.moneywithsoul.controller.tablecontroller.PlanningCostController;
+import com.fanta.moneywithsoul.controller.tablecontroller.TransactionController;
+import com.fanta.moneywithsoul.controller.tablecontroller.UserController;
 import com.jfoenix.controls.JFXButton;
 
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -36,7 +33,6 @@ public class MainController {
     public void initialize() {
         authorizationButton.setOnAction(event -> authorizationWindow());
         registrationButton.setOnAction(event -> registrationWindow());
-        dataBaseButton.setOnAction(event -> dataBaseWindow());
 
         authorizationController = new AuthorizationController(this);
         registrationController = new RegistrationController(this);
@@ -88,7 +84,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void UserWindow() {
+    public void userWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/UserTable.fxml"));
             AnchorPane userController = loader.load();
@@ -101,7 +97,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void BudgetWindow() {
+    public void budgetWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/BudgetTable.fxml"));
             AnchorPane budgetController = loader.load();
@@ -114,7 +110,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void TransactionWindow() {
+    public void transactionWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/TransactionTable.fxml"));
             AnchorPane transactionController = loader.load();
@@ -127,7 +123,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void ExchangeRateWindow() {
+    public void exchangeRateWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/ExchangeRateTable.fxml"));
             AnchorPane exchangeRateController = loader.load();
@@ -140,7 +136,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void CostWindow() {
+    public void costWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/CostTable.fxml"));
             AnchorPane costController = loader.load();
@@ -153,7 +149,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void EarningWindow() {
+    public void earningWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/EarningTable.fxml"));
             AnchorPane earningController = loader.load();
@@ -166,7 +162,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void PlanningCostWindow() {
+    public void planningCostWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/PlanningCostTable.fxml"));
             AnchorPane planningCostController = loader.load();
@@ -179,7 +175,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void CostCategoryWindow() {
+    public void costCategoryWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/CostCategoryTable.fxml"));
             AnchorPane costCategoryController = loader.load();
@@ -192,7 +188,7 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    public void EarningCategoryWindow() {
+    public void earningCategoryWindow() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/DataBase/EarningCategoryTable.fxml"));
             AnchorPane earningCategoryController = loader.load();

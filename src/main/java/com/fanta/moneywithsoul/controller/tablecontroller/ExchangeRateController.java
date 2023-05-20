@@ -1,13 +1,9 @@
-package com.fanta.moneywithsoul.controller.databasecontroller;
+package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 
 import com.fanta.moneywithsoul.controller.MainController;
-import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.ExchangeRate;
-import com.fanta.moneywithsoul.entity.ExchangeRate;
-import com.fanta.moneywithsoul.entity.User;
-import com.fanta.moneywithsoul.service.ExchangeRateService;
 import com.fanta.moneywithsoul.service.ExchangeRateService;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -18,16 +14,11 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;

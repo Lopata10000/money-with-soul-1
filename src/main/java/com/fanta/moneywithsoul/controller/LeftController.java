@@ -49,37 +49,37 @@ public class LeftController implements Initializable {
     }
 
     public void usersTable() {
-        mainController.UserWindow();
+        mainController.userWindow();
     }
     public void budgetTable() {
-        mainController.BudgetWindow();
+        mainController.budgetWindow();
     }
 
     public void transactionsTable() {
-        mainController.TransactionWindow();
+        mainController.transactionWindow();
     }
 
     public void exchangeRateTable() {
-        mainController.ExchangeRateWindow();
+        mainController.exchangeRateWindow();
     }
 
     public void costsTable() {
-        mainController.CostWindow();
+        mainController.costWindow();
     }
 
     public void earningTable() {
-        mainController.EarningWindow();
+        mainController.earningWindow();
     }
 
     public void planingCostsTable() {
-        mainController.PlanningCostWindow();
+        mainController.planningCostWindow();
     }
 
     public void costCategoryTable(ActionEvent actionEvent) {
-        mainController.CostCategoryWindow();
+        mainController.costCategoryWindow();
     }
 
     public void earningCategoryTable(ActionEvent actionEvent) {
-        mainController.EarningCategoryWindow();
+        mainController.earningCategoryWindow();
     }
 }

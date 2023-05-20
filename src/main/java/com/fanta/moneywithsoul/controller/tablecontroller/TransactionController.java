@@ -1,4 +1,4 @@
-package com.fanta.moneywithsoul.controller.databasecontroller;
+package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 

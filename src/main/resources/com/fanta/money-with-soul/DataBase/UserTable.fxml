@@ -12,7 +12,7 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.paint.Color?>
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.databasecontroller.UserController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #808080;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.tablecontroller.UserController">
    <children>
       <Pane layoutX="100.0" layoutY="308.0" prefHeight="231.0" prefWidth="600.0">
          <children>

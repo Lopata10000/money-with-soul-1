@@ -33,11 +33,6 @@
                         <Font name="MS Outlook" size="16.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="dataBaseButton" mnemonicParsing="false" onAction="#dataBaseWindow" styleClass="jfx-button-main" text="DataBase">
-                     <font>
-                        <Font name="MS Outlook" size="16.0" />
-                     </font>
-                  </JFXButton>
                </children>
             </VBox>
          </children>

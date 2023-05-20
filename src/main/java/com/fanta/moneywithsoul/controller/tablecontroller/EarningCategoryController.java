@@ -1,11 +1,11 @@
-package com.fanta.moneywithsoul.controller.databasecontroller;
+package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 import com.fanta.moneywithsoul.controller.MainController;
-import com.fanta.moneywithsoul.entity.CostCategory;
-import com.fanta.moneywithsoul.service.CostCategoryService;
+import com.fanta.moneywithsoul.entity.EarningCategory;
+import com.fanta.moneywithsoul.service.EarningCategoryService;
 import org.hibernate.exception.ConstraintViolationException;
-import java.math.BigDecimal;
+
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -24,27 +24,27 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
 
-public class CostCategoryController implements Initializable {
+public class EarningCategoryController implements Initializable {
     @FXML
-    private TableView<CostCategory> costCategoryTable;
+    private TableView<EarningCategory> earningCategoryTable;
     private MainController mainController;
-    @FXML private TextField costCategoryName;
+    @FXML private TextField earningCategoryName;
     @FXML private TextField findByIdField;
     @FXML private BorderPane mainApp;
-    private CostCategory selectedCostCategory;
+    private EarningCategory selectedEarningCategory;
 
-    private CostCategoryService costCategoryService = new CostCategoryService();
+    private EarningCategoryService earningCategoryService = new EarningCategoryService();
 
     @FXML
-    public void createCostCategory() {
+    public void createEarningCategory() {
         try {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
-            String costName = costCategoryName.getText();
-            CostCategory costCategory = costCategoryService.saveCostCategory(costName);
-            costCategoryService.save(costCategory);
+            EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
+            String costName = earningCategoryName.getText();
+            EarningCategory earningCategory = earningCategoryService.saveEarningCategory(costName);
+            earningCategoryService.save(earningCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
-            showAlert("Категорія витрат з таким іменем уже існує");
+            showAlert("Категорія прибутка з таким іменем уже існує");
         }
         catch (Exception e)
         {
@@ -53,16 +53,16 @@ public class CostCategoryController implements Initializable {
     }
 
     @FXML
-    public void updateCostCategory() {
+    public void updateEarningCategory() {
         try {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
-            Long costCategoryId = Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
-            String costName = costCategoryName.getText();
-            CostCategory costCategory = costCategoryService.updateCostCategory( costCategoryId, costName);
-            costCategoryService.update(costCategoryId.longValue(), costCategory);
+            EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
+            Long earningCategoryId = Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
+            String costName = earningCategoryName.getText();
+            EarningCategory earningCategory = earningCategoryService.updateEarningCategory( earningCategoryId, costName);
+            earningCategoryService.update(earningCategoryId.longValue(), earningCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
-            showAlert("Категорія витрат з таким іменем уже існує");
+            showAlert("Категорія прибутку з таким іменем уже існує");
         }
         catch (Exception e)
         {
@@ -71,11 +71,11 @@ public class CostCategoryController implements Initializable {
     }
 
     @FXML
-    public void deleteCostCategory() {
+    public void deleteEarningCategory() {
+        EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
         try {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
-            Long costCategoryId = Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
-            costCategoryService.delete(costCategoryId);
+            Long earningCategoryId = Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
+            earningCategoryService.delete(earningCategoryId);
             refreshTable();
         } catch (NumberFormatException e) {
             showAlert("Неправильний формат числа для Id");
@@ -83,14 +83,14 @@ public class CostCategoryController implements Initializable {
     }
 
     @FXML
-    void searchCostCategory() {
+    void searchEarningCategory() {
         try {
-            costCategoryTable.getItems().clear();
-            String costCategoryIdText = findByIdField.getText();
-            Long costCategoryId = Long.parseLong(costCategoryIdText);
-            CostCategory costCategorys = costCategoryService.getById(costCategoryId);
-            costCategoryTable.getItems().add(costCategorys);
-            if (costCategorys == null) {
+            earningCategoryTable.getItems().clear();
+            String earningCategoryIdText = findByIdField.getText();
+            Long earningCategoryId = Long.parseLong(earningCategoryIdText);
+            EarningCategory earningCategorys = earningCategoryService.getById(earningCategoryId);
+            earningCategoryTable.getItems().add(earningCategorys);
+            if (earningCategorys == null) {
                 showAlert("Такої категорії витрат не знайдено");
                 refreshTable();
             }
@@ -111,25 +111,25 @@ public class CostCategoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("cost_categories");
+        updateTableView("earning_categories");
         refreshTable();
     }
     @FXML
     private void refreshTable() {
-        List<CostCategory> costCategorys = costCategoryService.getAll();
+        List<EarningCategory> earningCategorys = earningCategoryService.getAll();
         // Очистити таблицю перед додаванням нових даних
-        costCategoryTable.getItems().clear();
+        earningCategoryTable.getItems().clear();
 
         // Додати користувачів до таблиці
-        costCategoryTable.getItems().addAll(costCategorys);
+        earningCategoryTable.getItems().addAll(earningCategorys);
     }
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
+            EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
 
-            if (selectedCostCategory != null) {
-                costCategoryName.setText(String.valueOf(selectedCostCategory.getCostCategoryName()));
+            if (selectedEarningCategory != null) {
+                earningCategoryName.setText(String.valueOf(selectedEarningCategory.getEarningCategoryName()));
             }
         }
     }
@@ -137,18 +137,18 @@ public class CostCategoryController implements Initializable {
     private void updateTableView(String tableName) {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
-            ResultSet columns = metaData.getColumns(null, null, "cost_categories", null);
+            ResultSet columns = metaData.getColumns(null, null, "earning_categories", null);
             while (columns.next()) {
                 String columnName = columns.getString("COLUMN_NAME");
 
-                TableColumn<CostCategory, String> column = new TableColumn<>(columnName);
+                TableColumn<EarningCategory, String> column = new TableColumn<>(columnName);
 
-                // Отримуємо відповідну назву змінної у класі CostCategory
+                // Отримуємо відповідну назву змінної у класі EarningCategory
                 String variableName = convertColumnNameToVariableName(columnName);
 
                 // Встановлюємо PropertyValueFactory з використанням назви змінної
                 column.setCellValueFactory(new PropertyValueFactory<>(variableName));
-                costCategoryTable.getColumns().add(column);
+                earningCategoryTable.getColumns().add(column);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -168,11 +168,11 @@ public class CostCategoryController implements Initializable {
 
         return variableName.toString();
     }
-    public CostCategoryController() {
+    public EarningCategoryController() {
 
     }
 
-    public CostCategoryController(MainController mainController) {
+    public EarningCategoryController(MainController mainController) {
         this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {

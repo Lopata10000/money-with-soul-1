@@ -12,8 +12,8 @@ module com {
 
     opens db.migration;
     opens com.fanta.moneywithsoul.entity;
-    opens com.fanta.moneywithsoul.controller.databasecontroller to javafx.fxml;
-    exports com.fanta.moneywithsoul.controller.databasecontroller;
+    opens com.fanta.moneywithsoul.controller.tablecontroller to javafx.fxml;
+    exports com.fanta.moneywithsoul.controller.tablecontroller;
     exports com.fanta.moneywithsoul.validator;
     exports com.fanta.moneywithsoul;
 
