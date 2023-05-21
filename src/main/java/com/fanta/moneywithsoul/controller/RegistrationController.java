@@ -5,14 +5,9 @@ import com.fanta.moneywithsoul.service.UserService;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class RegistrationController implements Initializable {
@@ -31,7 +26,7 @@ public class RegistrationController implements Initializable {
     private TextField emailTextField;
     @FXML
     private TextField passwordTextField;
-    private UserService userService = new UserService();
+    private final UserService userService = new UserService();
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
     public void createUser() {
@@ -43,7 +38,6 @@ public class RegistrationController implements Initializable {
                             emailTextField.getText(),
                             passwordTextField.getText(),
                             "active");
-            userService.save(user);
             userService.save(user);
             if (user != null) {
 

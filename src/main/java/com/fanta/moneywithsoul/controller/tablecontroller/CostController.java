@@ -26,13 +26,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class CostController implements Initializable {
     @FXML
     private TableView<Cost> costTable;
-    private MainController mainController;
     @FXML private TextField userId;
     @FXML private TextField costCategoryId;
     @FXML private DatePicker costDate;
@@ -41,10 +39,7 @@ public class CostController implements Initializable {
     @FXML private TextField costAmount;
     @FXML private TextField costDescription;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private Cost selectedCost;
-
-    private CostService costService = new CostService();
+    private final CostService costService = new CostService();
 
     @FXML
     public void createCost() {
@@ -56,7 +51,6 @@ public class CostController implements Initializable {
             {
                 showAlert("Користувача з таким id не існує");
             }
-            Long userID = Long.valueOf(userId.getText());
             Long costCategory = Long.valueOf(costCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
             Long transactionID = Long.valueOf(transactionId.getText());
@@ -85,8 +79,7 @@ public class CostController implements Initializable {
                 {
                     showAlert("Користувача з таким id не існує");
                 }
-                Long userID = Long.valueOf(userId.getText());
-                Long costCategory = Long.valueOf(costCategoryId.getText());
+            Long costCategory = Long.valueOf(costCategoryId.getText());
                 Long budgetID = Long.valueOf(budgetId.getText());
                 Long transactionID = Long.valueOf(transactionId.getText());
                 Timestamp dateCost = Timestamp.valueOf(costDate.getValue().atStartOfDay());
@@ -143,7 +136,7 @@ public class CostController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("costs");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -172,7 +165,7 @@ public class CostController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "costs", null);
@@ -211,10 +204,8 @@ public class CostController implements Initializable {
     }
 
     public CostController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

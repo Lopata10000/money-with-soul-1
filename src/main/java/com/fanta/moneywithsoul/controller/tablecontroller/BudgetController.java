@@ -27,24 +27,19 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class BudgetController implements Initializable {
     @FXML
     private TableView<Budget> budgetTable;
-    private MainController mainController;
     @FXML private TextField userId;
     @FXML private TextField amount;
     @FXML private TextField budgetName;
     @FXML private DatePicker startDate;
     @FXML private DatePicker endDate;
-    @FXML private TextField searchBudgetField;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private Budget selectedBudget;
 
-    private BudgetService budgetService = new BudgetService();
+    private final BudgetService budgetService = new BudgetService();
 
     @FXML
     public void createBudget() {
@@ -140,7 +135,7 @@ public class BudgetController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("budgets");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -167,7 +162,7 @@ public class BudgetController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "budgets", null);
@@ -206,10 +201,8 @@ public class BudgetController implements Initializable {
     }
 
     public BudgetController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

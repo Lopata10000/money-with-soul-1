@@ -20,25 +20,20 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class UserController implements Initializable {
     @FXML
     private TableView<User> userTable;
-    private MainController mainController;
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
     @FXML private TextField emailField;
     @FXML private TextField passwordField;
     @FXML private TextField userStatusField;
-    @FXML private TextField userIdField;
-    @FXML private TextField searchUserField;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private User selectedUser;
 
-    private UserService userService = new UserService();
+
+    private final UserService userService = new UserService();
 
     @FXML
     public void createUser() {
@@ -117,7 +112,7 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("users");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -144,7 +139,7 @@ public class UserController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "users", null);
@@ -183,10 +178,8 @@ public class UserController implements Initializable {
     }
 
     public UserController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

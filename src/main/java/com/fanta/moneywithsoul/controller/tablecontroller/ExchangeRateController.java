@@ -24,29 +24,24 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class ExchangeRateController implements Initializable {
     @FXML
     private TableView<ExchangeRate> exchangeRateTable;
-    private MainController mainController;
     @FXML private TextField exchangeId;
     @FXML private TextField currencyName;
     @FXML private TextField rate;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private ExchangeRate selectedExchangeRate;
 
-    private ExchangeRateService exchangeRateService = new ExchangeRateService();
+    private final ExchangeRateService exchangeRateService = new ExchangeRateService();
 
     @FXML
     public void createExchangeRate() {
         try {
-            ExchangeRate selectedExchangeRate = exchangeRateTable.getSelectionModel().getSelectedItem();
             String exchangeRateName = currencyName.getText();
-            BigDecimal Rate = BigDecimal.valueOf(Double.valueOf(rate.getText()));
-            ExchangeRate exchangeRate = exchangeRateService.saveExchangeRate( exchangeRateName, Rate);
+            BigDecimal rate1 = BigDecimal.valueOf(Double.parseDouble(rate.getText()));
+            ExchangeRate exchangeRate = exchangeRateService.saveExchangeRate( exchangeRateName, rate1);
             exchangeRateService.save(exchangeRate);
             refreshTable();
 
@@ -65,9 +60,9 @@ public class ExchangeRateController implements Initializable {
         ExchangeRate selectedExchangeRate = exchangeRateTable.getSelectionModel().getSelectedItem();
         Long exchangeRateId = Long.parseLong(String.valueOf(selectedExchangeRate.getExchangeId()));
         String exchangeRateName = currencyName.getText();
-        Double Rate = Double.valueOf((rate.getText()));
-        ExchangeRate exchangeRate = exchangeRateService.updateExchangeRate( exchangeRateId, exchangeRateName, BigDecimal.valueOf(Rate));
-        exchangeRateService.update(exchangeRateId.longValue(), exchangeRate);
+        double rate1 = Double.parseDouble((rate.getText()));
+        ExchangeRate exchangeRate = exchangeRateService.updateExchangeRate( exchangeRateId, exchangeRateName, BigDecimal.valueOf(rate1));
+        exchangeRateService.update(exchangeRateId, exchangeRate);
         refreshTable();
     } catch (ConstraintViolationException e) {
         showAlert("Валюта з таким іменем уже існує");
@@ -119,7 +114,7 @@ public class ExchangeRateController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("exchange_rates");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -144,7 +139,7 @@ public class ExchangeRateController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "exchange_rates", null);
@@ -183,10 +178,8 @@ public class ExchangeRateController implements Initializable {
     }
 
     public ExchangeRateController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

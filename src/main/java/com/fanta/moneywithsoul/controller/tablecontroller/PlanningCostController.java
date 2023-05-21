@@ -26,23 +26,20 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
+
 
 
 public class PlanningCostController implements Initializable {
     @FXML
     private TableView<PlanningCost> planningCostTable;
-    private MainController mainController;
     @FXML private TextField userId;
     @FXML private TextField planningCostCategoryId;
     @FXML private DatePicker planningCostDate;
     @FXML private TextField budgetId;
     @FXML private TextField planningCostAmount;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private PlanningCost selectedPlanningCost;
 
-    private PlanningCostService planningCostService = new PlanningCostService();
+    private final PlanningCostService planningCostService = new PlanningCostService();
 
     @FXML
     public void createPlanningCost() {
@@ -54,7 +51,6 @@ public class PlanningCostController implements Initializable {
             {
                 showAlert("Користувача з таким id не існує");
             }
-            Long userID = Long.valueOf(userId.getText());
             Long planningCostCategory = Long.valueOf(planningCostCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
             Timestamp datePlanningCost = Timestamp.valueOf(planningCostDate.getValue().atStartOfDay());
@@ -138,7 +134,7 @@ public class PlanningCostController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("planning_costs");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -165,7 +161,7 @@ public class PlanningCostController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "planning_costs", null);
@@ -204,10 +200,8 @@ public class PlanningCostController implements Initializable {
     }
 
     public PlanningCostController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

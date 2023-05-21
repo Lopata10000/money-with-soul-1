@@ -21,22 +21,14 @@ import javafx.scene.layout.Pane;
 public class MainController {
     @FXML private BorderPane mainApp;
     @FXML private JFXButton registrationButton;
-    @FXML private JFXButton dataBaseButton;
     @FXML private JFXButton authorizationButton;
 
     public MainController() {}
 
-    private AuthorizationController authorizationController;
-    private LeftController leftController;
-    private RegistrationController registrationController;
     @FXML
     public void initialize() {
         authorizationButton.setOnAction(event -> authorizationWindow());
         registrationButton.setOnAction(event -> registrationWindow());
-
-        authorizationController = new AuthorizationController(this);
-        registrationController = new RegistrationController(this);
-        leftController = new LeftController(this);
 
     }
 

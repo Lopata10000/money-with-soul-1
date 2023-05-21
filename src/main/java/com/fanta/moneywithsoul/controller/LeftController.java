@@ -1,11 +1,8 @@
 package com.fanta.moneywithsoul.controller;
 
 import com.jfoenix.controls.JFXButton;
-
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
@@ -28,8 +25,6 @@ public class LeftController implements Initializable {
     JFXButton costCategoryTableButton;
     @FXML
     JFXButton exchangeRateTableButton;
-    @FXML
-    JFXButton budgetTableButton;
     private MainController mainController; // Додано приватне поле mainController
     public LeftController(MainController mainController) {
         this.mainController = mainController;
@@ -75,11 +70,11 @@ public class LeftController implements Initializable {
         mainController.planningCostWindow();
     }
 
-    public void costCategoryTable(ActionEvent actionEvent) {
+    public void costCategoryTable() {
         mainController.costCategoryWindow();
     }
 
-    public void earningCategoryTable(ActionEvent actionEvent) {
+    public void earningCategoryTable() {
         mainController.earningCategoryWindow();
     }
 }

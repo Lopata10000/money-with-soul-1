@@ -21,24 +21,18 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class EarningCategoryController implements Initializable {
     @FXML
     private TableView<EarningCategory> earningCategoryTable;
-    private MainController mainController;
     @FXML private TextField earningCategoryName;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private EarningCategory selectedEarningCategory;
-
-    private EarningCategoryService earningCategoryService = new EarningCategoryService();
+    private final EarningCategoryService earningCategoryService = new EarningCategoryService();
 
     @FXML
     public void createEarningCategory() {
         try {
-            EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
             String costName = earningCategoryName.getText();
             EarningCategory earningCategory = earningCategoryService.saveEarningCategory(costName);
             earningCategoryService.save(earningCategory);
@@ -59,7 +53,7 @@ public class EarningCategoryController implements Initializable {
             Long earningCategoryId = Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
             String costName = earningCategoryName.getText();
             EarningCategory earningCategory = earningCategoryService.updateEarningCategory( earningCategoryId, costName);
-            earningCategoryService.update(earningCategoryId.longValue(), earningCategory);
+            earningCategoryService.update(earningCategoryId, earningCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія прибутку з таким іменем уже існує");
@@ -111,7 +105,7 @@ public class EarningCategoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("earning_categories");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -134,7 +128,7 @@ public class EarningCategoryController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "earning_categories", null);
@@ -173,10 +167,8 @@ public class EarningCategoryController implements Initializable {
     }
 
     public EarningCategoryController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

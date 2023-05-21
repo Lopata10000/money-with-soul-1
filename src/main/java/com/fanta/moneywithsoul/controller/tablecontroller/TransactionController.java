@@ -27,25 +27,20 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class TransactionController implements Initializable {
     @FXML
     private TableView<Transaction> transactionTable;
-    private MainController mainController;
     @FXML private TextField userId;
     @FXML private TextField transactionType;
     @FXML private DatePicker transactionDate;
     @FXML private TextField transactionAmount;
     @FXML private TextField description;
-    @FXML private TextField searchTransactionField;
     @FXML private TextField findByIdField;
     @FXML private TextField exchangeRateId;
-    @FXML private BorderPane mainApp;
-    private Transaction selectedTransaction;
 
-    private TransactionService transactionService = new TransactionService();
+    private final TransactionService transactionService = new TransactionService();
 
     @FXML
     public void createTransaction() {
@@ -138,7 +133,7 @@ public class TransactionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("transactions");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -166,7 +161,7 @@ public class TransactionController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "transactions", null);
@@ -205,10 +200,8 @@ public class TransactionController implements Initializable {
     }
 
     public TransactionController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

@@ -26,13 +26,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-
 
 public class EarningController implements Initializable {
     @FXML
     private TableView<Earning> earningTable;
-    private MainController mainController;
     @FXML private TextField userId;
     @FXML private TextField earningCategoryId;
     @FXML private DatePicker earningDate;
@@ -41,10 +38,8 @@ public class EarningController implements Initializable {
     @FXML private TextField earningAmount;
 
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private Earning selectedEarning;
 
-    private EarningService earningService = new EarningService();
+    private final EarningService earningService = new EarningService();
 
     @FXML
     public void createEarning() {
@@ -78,9 +73,6 @@ public class EarningController implements Initializable {
             Earning selectedEarning = earningTable.getSelectionModel().getSelectedItem();
             Long earningID = Long.parseLong(String.valueOf(selectedEarning.getEarningId()));
             Long userIdLong = Long.valueOf(userId.getText());
-            UserDAO userDAO = new UserDAO();
-            User user = userDAO.findById(userIdLong);
-            Long userID = Long.valueOf(userId.getText());
             Long earningCategory = Long.valueOf(earningCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
             Long transactionID = Long.valueOf(transactionId.getText());
@@ -136,7 +128,7 @@ public class EarningController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("earnings");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -164,7 +156,7 @@ public class EarningController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "earnings", null);
@@ -203,10 +195,8 @@ public class EarningController implements Initializable {
     }
 
     public EarningController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

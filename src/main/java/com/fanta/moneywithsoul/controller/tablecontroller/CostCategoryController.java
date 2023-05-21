@@ -21,24 +21,19 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 
 
 public class CostCategoryController implements Initializable {
     @FXML
     private TableView<CostCategory> costCategoryTable;
-    private MainController mainController;
     @FXML private TextField costCategoryName;
     @FXML private TextField findByIdField;
-    @FXML private BorderPane mainApp;
-    private CostCategory selectedCostCategory;
 
-    private CostCategoryService costCategoryService = new CostCategoryService();
+    private final CostCategoryService costCategoryService = new CostCategoryService();
 
     @FXML
     public void createCostCategory() {
         try {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
             String costName = costCategoryName.getText();
             CostCategory costCategory = costCategoryService.saveCostCategory(costName);
             costCategoryService.save(costCategory);
@@ -59,7 +54,7 @@ public class CostCategoryController implements Initializable {
             Long costCategoryId = Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
             String costName = costCategoryName.getText();
             CostCategory costCategory = costCategoryService.updateCostCategory( costCategoryId, costName);
-            costCategoryService.update(costCategoryId.longValue(), costCategory);
+            costCategoryService.update(costCategoryId, costCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія витрат з таким іменем уже існує");
@@ -111,7 +106,7 @@ public class CostCategoryController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        updateTableView("cost_categories");
+        updateTableView();
         refreshTable();
     }
     @FXML
@@ -134,7 +129,7 @@ public class CostCategoryController implements Initializable {
         }
     }
     @FXML
-    private void updateTableView(String tableName) {
+    private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
             DatabaseMetaData metaData = connection.getMetaData();
             ResultSet columns = metaData.getColumns(null, null, "cost_categories", null);
@@ -173,10 +168,8 @@ public class CostCategoryController implements Initializable {
     }
 
     public CostCategoryController(MainController mainController) {
-        this.mainController = mainController;
     }
     public void setMainController(MainController mainController) {
-        this.mainController = mainController;
     }
 }
 

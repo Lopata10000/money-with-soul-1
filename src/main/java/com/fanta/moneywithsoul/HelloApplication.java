@@ -1,16 +1,12 @@
 package com.fanta.moneywithsoul;
 
-import com.fanta.moneywithsoul.entity.User;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class HelloApplication extends Application {
-    private ToggleGroup tableToggleGroup;
-    private TableView<User> tableView;
 
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader =
