@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The type Earning.
+ */
 @Entity
 @Table(name = "earnings")
 public class Earning {
@@ -70,94 +73,215 @@ public class Earning {
     @Column(name = "earning_amount")
     private BigDecimal earningAmount;
 
+    /**
+     * Gets earning id.
+     *
+     * @return the earning id
+     */
     public Long getEarningId() {
         return earningId;
     }
 
+    /**
+     * Sets earning id.
+     *
+     * @param earningId the earning id
+     */
     public void setEarningId(Long earningId) {
         this.earningId = earningId;
     }
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Gets earning category.
+     *
+     * @return the earning category
+     */
     public EarningCategory getEarningCategory() {
         return earningCategory;
     }
 
+    /**
+     * Sets earning category.
+     *
+     * @param earningCategory the earning category
+     */
     public void setEarningCategory(EarningCategory earningCategory) {
         this.earningCategory = earningCategory;
     }
 
+    /**
+     * Gets transaction.
+     *
+     * @return the transaction
+     */
     public Transaction getTransaction() {
         return transaction;
     }
 
+    /**
+     * Sets transaction.
+     *
+     * @param transaction the transaction
+     */
     public void setTransaction(Transaction transaction) {
         this.transaction = transaction;
     }
 
+    /**
+     * Gets budget.
+     *
+     * @return the budget
+     */
     public Budget getBudget() {
         return budget;
     }
 
+    /**
+     * Sets budget.
+     *
+     * @param budget the budget
+     */
     public void setBudget(Budget budget) {
         this.budget = budget;
     }
 
+    /**
+     * Gets earning date.
+     *
+     * @return the earning date
+     */
     public Timestamp getEarningDate() {
         return earningDate;
     }
 
+    /**
+     * Sets earning date.
+     *
+     * @param earningDate the earning date
+     */
     public void setEarningDate(Timestamp earningDate) {
         this.earningDate = earningDate;
     }
 
+    /**
+     * Gets earning amount.
+     *
+     * @return the earning amount
+     */
     public BigDecimal getEarningAmount() {
         return earningAmount;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public Long getUserId() {
         return userId;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userId the user id
+     */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
+    /**
+     * Gets earning category id.
+     *
+     * @return the earning category id
+     */
     public Long getEarningCategoryId() {
         return earningCategoryId;
     }
 
+    /**
+     * Sets earning category id.
+     *
+     * @param earningCategoryId the earning category id
+     */
     public void setEarningCategoryId(Long earningCategoryId) {
         this.earningCategoryId = earningCategoryId;
     }
 
+    /**
+     * Gets transaction id.
+     *
+     * @return the transaction id
+     */
     public Long getTransactionId() {
         return transactionId;
     }
 
+    /**
+     * Sets transaction id.
+     *
+     * @param transactionId the transaction id
+     */
     public void setTransactionId(Long transactionId) {
         this.transactionId = transactionId;
     }
 
+    /**
+     * Gets budget id.
+     *
+     * @return the budget id
+     */
     public Long getBudgetId() {
         return budgetId;
     }
 
+    /**
+     * Sets budget id.
+     *
+     * @param budgetId the budget id
+     */
     public void setBudgetId(Long budgetId) {
         this.budgetId = budgetId;
     }
 
+    /**
+     * Sets earning amount.
+     *
+     * @param earningAmount the earning amount
+     */
     public void setEarningAmount(BigDecimal earningAmount) {
         this.earningAmount = earningAmount;
     }
 
+    /**
+     * Instantiates a new Earning.
+     *
+     * @param earningId         the earning id
+     * @param userId            the user id
+     * @param earningCategoryId the earning category id
+     * @param transactionId     the transaction id
+     * @param budgetId          the budget id
+     * @param earningDate       the earning date
+     * @param earningAmount     the earning amount
+     */
     public Earning(
             Long earningId,
             Long userId,
@@ -175,5 +299,8 @@ public class Earning {
         this.earningAmount = earningAmount;
     }
 
+    /**
+     * Instantiates a new Earning.
+     */
     public Earning() {}
 }

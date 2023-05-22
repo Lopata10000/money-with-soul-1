@@ -6,9 +6,15 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * The type Cost service.
+ */
 public class CostService implements ServiceInterface<Cost> {
     private CostDAO costDAO;
 
+    /**
+     * Instantiates a new Cost service.
+     */
     public CostService() {
         costDAO = new CostDAO();
     }
@@ -57,6 +63,18 @@ public class CostService implements ServiceInterface<Cost> {
         }
     }
 
+    /**
+     * Save cost cost.
+     *
+     * @param userId          the user id
+     * @param costCategoryId  the cost category id
+     * @param budgetId        the budget id
+     * @param transactionId   the transaction id
+     * @param costDate        the cost date
+     * @param costAmount      the cost amount
+     * @param costDescription the cost description
+     * @return the cost
+     */
     public Cost saveCost(
             Long userId,
             Long costCategoryId,
@@ -76,6 +94,19 @@ public class CostService implements ServiceInterface<Cost> {
         return cost;
     }
 
+    /**
+     * Update cost cost.
+     *
+     * @param costId          the cost id
+     * @param userId          the user id
+     * @param costCategoryId  the cost category id
+     * @param budgetId        the budget id
+     * @param transactionId   the transaction id
+     * @param costDate        the cost date
+     * @param costAmount      the cost amount
+     * @param costDescription the cost description
+     * @return the cost
+     */
     public Cost updateCost(
             Long costId,
             Long userId,

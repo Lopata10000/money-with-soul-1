@@ -7,7 +7,6 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Earning;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.EarningService;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,9 +26,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * The type Earning controller.
+ */
 public class EarningController implements Initializable {
-    @FXML
-    private TableView<Earning> earningTable;
+    @FXML private TableView<Earning> earningTable;
     @FXML private TextField userId;
     @FXML private TextField earningCategoryId;
     @FXML private DatePicker earningDate;
@@ -41,14 +42,16 @@ public class EarningController implements Initializable {
 
     private final EarningService earningService = new EarningService();
 
+    /**
+     * Create earning.
+     */
     @FXML
     public void createEarning() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
             }
             Long userID = Long.valueOf(userId.getText());
@@ -58,15 +61,24 @@ public class EarningController implements Initializable {
             Timestamp dateEarning = Timestamp.valueOf(earningDate.getValue().atStartOfDay());
             BigDecimal amountEarning = new BigDecimal(earningAmount.getText());
 
-            Earning earning = earningService.saveEarning(userID, earningCategory, transactionID, budgetID, dateEarning, amountEarning);
+            Earning earning =
+                    earningService.saveEarning(
+                            userID,
+                            earningCategory,
+                            transactionID,
+                            budgetID,
+                            dateEarning,
+                            amountEarning);
             earningService.save(earning);
             refreshTable();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Update earning.
+     */
     @FXML
     public void updateEarning() {
         try {
@@ -78,15 +90,25 @@ public class EarningController implements Initializable {
             Long transactionID = Long.valueOf(transactionId.getText());
             Timestamp dateEarning = Timestamp.valueOf(earningDate.getValue().atStartOfDay());
             BigDecimal amountEarning = new BigDecimal(earningAmount.getText());
-            Earning earning = earningService.updateEarning(earningID, userIdLong, earningCategory, budgetID, transactionID, dateEarning, amountEarning);
+            Earning earning =
+                    earningService.updateEarning(
+                            earningID,
+                            userIdLong,
+                            earningCategory,
+                            budgetID,
+                            transactionID,
+                            dateEarning,
+                            amountEarning);
             earningService.update(earningID, earning);
             refreshTable();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Delete earning.
+     */
     @FXML
     public void deleteEarning() {
         Earning selectedEarning = earningTable.getSelectionModel().getSelectedItem();
@@ -99,6 +121,9 @@ public class EarningController implements Initializable {
         }
     }
 
+    /**
+     * Search earning.
+     */
     @FXML
     void searchEarning() {
         try {
@@ -125,12 +150,12 @@ public class EarningController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<Earning> earnings = earningService.getAll();
@@ -140,6 +165,7 @@ public class EarningController implements Initializable {
         // Додати користувачів до таблиці
         earningTable.getItems().addAll(earnings);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
@@ -150,11 +176,13 @@ public class EarningController implements Initializable {
                 earningCategoryId.setText(String.valueOf(selectedEarning.getEarningCategoryId()));
                 budgetId.setText(String.valueOf(selectedEarning.getBudgetId()));
                 transactionId.setText(String.valueOf(selectedEarning.getTransactionId()));
-                earningDate.setValue(selectedEarning.getEarningDate().toLocalDateTime().toLocalDate());
+                earningDate.setValue(
+                        selectedEarning.getEarningDate().toLocalDateTime().toLocalDate());
                 earningAmount.setText(String.valueOf(selectedEarning.getEarningAmount()));
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -190,13 +218,23 @@ public class EarningController implements Initializable {
 
         return variableName.toString();
     }
-    public EarningController() {
 
-    }
+    /**
+     * Instantiates a new Earning controller.
+     */
+    public EarningController() {}
 
-    public EarningController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Earning controller.
+     *
+     * @param mainController the main controller
+     */
+    public EarningController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

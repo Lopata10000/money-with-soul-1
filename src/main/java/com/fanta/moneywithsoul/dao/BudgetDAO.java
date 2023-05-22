@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Budget dao.
+ */
 public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
 
     @Override

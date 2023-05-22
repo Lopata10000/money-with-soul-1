@@ -8,7 +8,13 @@ import java.time.LocalDateTime;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * The type Hibernate.
+ */
 public class Hibernate {
+    /**
+     * The constant sessionFactory.
+     */
     public static final SessionFactory sessionFactory = buildSessionFactory();
 
     private static SessionFactory buildSessionFactory() {
@@ -20,6 +26,11 @@ public class Hibernate {
         }
     }
 
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         CostService costService = new CostService();
         Cost cost =

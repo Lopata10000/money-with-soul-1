@@ -4,9 +4,15 @@ import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
 import java.util.List;
 
+/**
+ * The type Cost category service.
+ */
 public class CostCategoryService implements ServiceInterface<CostCategory> {
     private final CostCategoryDAO costCategoryDAO;
 
+    /**
+     * Instantiates a new Cost category service.
+     */
     public CostCategoryService() {
         costCategoryDAO = new CostCategoryDAO();
     }
@@ -55,12 +61,26 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
         }
     }
 
+    /**
+     * Update cost category cost category.
+     *
+     * @param costCategoryId   the cost category id
+     * @param costCategoryName the cost category name
+     * @return the cost category
+     */
     public CostCategory updateCostCategory(Long costCategoryId, String costCategoryName) {
         CostCategory costCategory = new CostCategory();
         costCategory.setCostCategoryId(costCategoryId);
         costCategory.setCostCategoryName(costCategoryName);
         return costCategory;
     }
+
+    /**
+     * Save cost category cost category.
+     *
+     * @param costCategoryName the cost category name
+     * @return the cost category
+     */
     public CostCategory saveCostCategory(String costCategoryName) {
         CostCategory costCategory = new CostCategory();
         costCategory.setCostCategoryName(costCategoryName);

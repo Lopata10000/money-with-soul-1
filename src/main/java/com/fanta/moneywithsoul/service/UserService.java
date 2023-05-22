@@ -6,11 +6,15 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import java.util.List;
 
-import javafx.scene.control.Alert;
-
+/**
+ * The type User service.
+ */
 public class UserService implements ServiceInterface<User> {
     private final UserDAO userDAO;
 
+    /**
+     * Instantiates a new User service.
+     */
     public UserService() {
         userDAO = new UserDAO();
     }
@@ -74,6 +78,17 @@ public class UserService implements ServiceInterface<User> {
         }
     }
 
+    /**
+     * Update user user.
+     *
+     * @param userId     the user id
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param email      the email
+     * @param password   the password
+     * @param userStatus the user status
+     * @return the user
+     */
     public User updateUser(
             Long userId,
             String firstName,
@@ -92,6 +107,16 @@ public class UserService implements ServiceInterface<User> {
         return user;
     }
 
+    /**
+     * Save user user.
+     *
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param email      the email
+     * @param password   the password
+     * @param userStatus the user status
+     * @return the user
+     */
     public User saveUser(
             String firstName, String lastName, String email, String password, String userStatus) {
         User user = new User();

@@ -1,11 +1,10 @@
 package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
+
 import com.fanta.moneywithsoul.controller.MainController;
 import com.fanta.moneywithsoul.entity.EarningCategory;
 import com.fanta.moneywithsoul.service.EarningCategoryService;
-import org.hibernate.exception.ConstraintViolationException;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -21,15 +20,20 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.hibernate.exception.ConstraintViolationException;
 
-
+/**
+ * The type Earning category controller.
+ */
 public class EarningCategoryController implements Initializable {
-    @FXML
-    private TableView<EarningCategory> earningCategoryTable;
+    @FXML private TableView<EarningCategory> earningCategoryTable;
     @FXML private TextField earningCategoryName;
     @FXML private TextField findByIdField;
     private final EarningCategoryService earningCategoryService = new EarningCategoryService();
 
+    /**
+     * Create earning category.
+     */
     @FXML
     public void createEarningCategory() {
         try {
@@ -39,36 +43,43 @@ public class EarningCategoryController implements Initializable {
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія прибутка з таким іменем уже існує");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Не правильний формат");
         }
     }
 
+    /**
+     * Update earning category.
+     */
     @FXML
     public void updateEarningCategory() {
         try {
-            EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
-            Long earningCategoryId = Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
+            EarningCategory selectedEarningCategory =
+                    earningCategoryTable.getSelectionModel().getSelectedItem();
+            Long earningCategoryId =
+                    Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
             String costName = earningCategoryName.getText();
-            EarningCategory earningCategory = earningCategoryService.updateEarningCategory( earningCategoryId, costName);
+            EarningCategory earningCategory =
+                    earningCategoryService.updateEarningCategory(earningCategoryId, costName);
             earningCategoryService.update(earningCategoryId, earningCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія прибутку з таким іменем уже існує");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Не правильний формат");
         }
     }
 
+    /**
+     * Delete earning category.
+     */
     @FXML
     public void deleteEarningCategory() {
-        EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
+        EarningCategory selectedEarningCategory =
+                earningCategoryTable.getSelectionModel().getSelectedItem();
         try {
-            Long earningCategoryId = Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
+            Long earningCategoryId =
+                    Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
             earningCategoryService.delete(earningCategoryId);
             refreshTable();
         } catch (NumberFormatException e) {
@@ -76,6 +87,9 @@ public class EarningCategoryController implements Initializable {
         }
     }
 
+    /**
+     * Search earning category.
+     */
     @FXML
     void searchEarningCategory() {
         try {
@@ -102,12 +116,12 @@ public class EarningCategoryController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<EarningCategory> earningCategorys = earningCategoryService.getAll();
@@ -117,16 +131,20 @@ public class EarningCategoryController implements Initializable {
         // Додати користувачів до таблиці
         earningCategoryTable.getItems().addAll(earningCategorys);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            EarningCategory selectedEarningCategory = earningCategoryTable.getSelectionModel().getSelectedItem();
+            EarningCategory selectedEarningCategory =
+                    earningCategoryTable.getSelectionModel().getSelectedItem();
 
             if (selectedEarningCategory != null) {
-                earningCategoryName.setText(String.valueOf(selectedEarningCategory.getEarningCategoryName()));
+                earningCategoryName.setText(
+                        String.valueOf(selectedEarningCategory.getEarningCategoryName()));
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -162,13 +180,23 @@ public class EarningCategoryController implements Initializable {
 
         return variableName.toString();
     }
-    public EarningCategoryController() {
 
-    }
+    /**
+     * Instantiates a new Earning category controller.
+     */
+    public EarningCategoryController() {}
 
-    public EarningCategoryController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Earning category controller.
+     *
+     * @param mainController the main controller
+     */
+    public EarningCategoryController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

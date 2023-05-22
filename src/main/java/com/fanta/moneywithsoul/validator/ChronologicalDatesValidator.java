@@ -2,10 +2,12 @@ package com.fanta.moneywithsoul.validator;
 
 import java.lang.reflect.Field;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+/**
+ * The type Chronological dates validator.
+ */
 public class ChronologicalDatesValidator
         implements ConstraintValidator<ChronologicalDates, Object> {
     private String startDateFieldName;

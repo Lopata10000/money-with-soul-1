@@ -11,6 +11,9 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+/**
+ * The type User dao.
+ */
 public class UserDAO extends BaseDAO<User> implements DAO<User> {
 
     @Override
@@ -38,6 +41,12 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         return user;
     }
 
+    /**
+     * Exists by email boolean.
+     *
+     * @param email the email
+     * @return the boolean
+     */
     public boolean existsByEmail(String email) {
         try (Connection connection = dataSource.getConnection()) {
             String query = "SELECT COUNT(*) FROM users WHERE email = ?";
@@ -126,6 +135,13 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                 });
     }
 
+    /**
+     * Find user by email and password user.
+     *
+     * @param email    the email
+     * @param password the password
+     * @return the user
+     */
     public User findUserByEmailAndPassword(String email, String password) {
         final User[] userHolder =
                 new User[1]; // Остаточний (final) масив для зберігання об'єкта користувача

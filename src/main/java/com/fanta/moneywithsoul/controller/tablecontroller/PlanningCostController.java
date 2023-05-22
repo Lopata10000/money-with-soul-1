@@ -7,7 +7,6 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.PlanningCost;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.PlanningCostService;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,11 +26,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-
-
+/**
+ * The type Planning cost controller.
+ */
 public class PlanningCostController implements Initializable {
-    @FXML
-    private TableView<PlanningCost> planningCostTable;
+    @FXML private TableView<PlanningCost> planningCostTable;
     @FXML private TextField userId;
     @FXML private TextField planningCostCategoryId;
     @FXML private DatePicker planningCostDate;
@@ -41,63 +40,85 @@ public class PlanningCostController implements Initializable {
 
     private final PlanningCostService planningCostService = new PlanningCostService();
 
+    /**
+     * Create planning cost.
+     */
     @FXML
     public void createPlanningCost() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
             }
             Long planningCostCategory = Long.valueOf(planningCostCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
-            Timestamp datePlanningCost = Timestamp.valueOf(planningCostDate.getValue().atStartOfDay());
+            Timestamp datePlanningCost =
+                    Timestamp.valueOf(planningCostDate.getValue().atStartOfDay());
             BigDecimal amountPlanningCost = new BigDecimal(planningCostAmount.getText());
 
-            PlanningCost planningCost = planningCostService.savePlaningCost(userIdLong, planningCostCategory, datePlanningCost, budgetID , amountPlanningCost);
+            PlanningCost planningCost =
+                    planningCostService.savePlaningCost(
+                            userIdLong,
+                            planningCostCategory,
+                            datePlanningCost,
+                            budgetID,
+                            amountPlanningCost);
             planningCostService.save(planningCost);
             refreshTable();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Update planning cost.
+     */
     @FXML
     public void updatePlanningCost() {
         try {
-            PlanningCost selectedPlanningCost = planningCostTable.getSelectionModel().getSelectedItem();
-            Long planningCostID = Long.parseLong(String.valueOf(selectedPlanningCost.getPlanningCostId()));
+            PlanningCost selectedPlanningCost =
+                    planningCostTable.getSelectionModel().getSelectedItem();
+            Long planningCostID =
+                    Long.parseLong(String.valueOf(selectedPlanningCost.getPlanningCostId()));
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
-            }
-            else {
+            } else {
                 Long planningCostCategory = Long.valueOf(planningCostCategoryId.getText());
                 Long budgetID = Long.valueOf(budgetId.getText());
-                Timestamp datePlanningCost = Timestamp.valueOf(planningCostDate.getValue().atStartOfDay());
+                Timestamp datePlanningCost =
+                        Timestamp.valueOf(planningCostDate.getValue().atStartOfDay());
                 BigDecimal amountPlanningCost = new BigDecimal(planningCostAmount.getText());
 
-                PlanningCost planningCost = planningCostService.updatePlaningCost(planningCostID, userIdLong, planningCostCategory, datePlanningCost, budgetID, amountPlanningCost);
+                PlanningCost planningCost =
+                        planningCostService.updatePlaningCost(
+                                planningCostID,
+                                userIdLong,
+                                planningCostCategory,
+                                datePlanningCost,
+                                budgetID,
+                                amountPlanningCost);
                 planningCostService.update(planningCostID, planningCost);
                 refreshTable();
             }
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Delete planning cost.
+     */
     @FXML
     public void deletePlanningCost() {
         PlanningCost selectedPlanningCost = planningCostTable.getSelectionModel().getSelectedItem();
         try {
-            Long planningCostId = Long.parseLong(String.valueOf(selectedPlanningCost.getPlanningCostId()));
+            Long planningCostId =
+                    Long.parseLong(String.valueOf(selectedPlanningCost.getPlanningCostId()));
             planningCostService.delete(planningCostId);
             refreshTable();
         } catch (NumberFormatException e) {
@@ -105,6 +126,9 @@ public class PlanningCostController implements Initializable {
         }
     }
 
+    /**
+     * Search planning cost.
+     */
     @FXML
     void searchPlanningCost() {
         try {
@@ -131,12 +155,12 @@ public class PlanningCostController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<PlanningCost> planningCosts = planningCostService.getAll();
@@ -146,20 +170,25 @@ public class PlanningCostController implements Initializable {
         // Додати користувачів до таблиці
         planningCostTable.getItems().addAll(planningCosts);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            PlanningCost selectedPlanningCost = planningCostTable.getSelectionModel().getSelectedItem();
+            PlanningCost selectedPlanningCost =
+                    planningCostTable.getSelectionModel().getSelectedItem();
 
             if (selectedPlanningCost != null) {
                 userId.setText(String.valueOf(selectedPlanningCost.getUserId()));
-                planningCostCategoryId.setText(String.valueOf(selectedPlanningCost.getCostCategoryId()));
+                planningCostCategoryId.setText(
+                        String.valueOf(selectedPlanningCost.getCostCategoryId()));
                 budgetId.setText(String.valueOf(selectedPlanningCost.getBudgetId()));
-                planningCostDate.setValue(selectedPlanningCost.getPlanningCostDate().toLocalDateTime().toLocalDate());
+                planningCostDate.setValue(
+                        selectedPlanningCost.getPlanningCostDate().toLocalDateTime().toLocalDate());
                 planningCostAmount.setText(String.valueOf(selectedPlanningCost.getPlannedAmount()));
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -195,13 +224,23 @@ public class PlanningCostController implements Initializable {
 
         return variableName.toString();
     }
-    public PlanningCostController() {
 
-    }
+    /**
+     * Instantiates a new Planning cost controller.
+     */
+    public PlanningCostController() {}
 
-    public PlanningCostController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Planning cost controller.
+     *
+     * @param mainController the main controller
+     */
+    public PlanningCostController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

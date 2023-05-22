@@ -7,7 +7,6 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Budget;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.BudgetService;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,73 +26,108 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-
-
+/**
+ * Клас контролера для управління бюджетами.
+ * Реалізує інтерфейс Initializable для ініціалізації контролера при завантаженні FXML-файлу.
+ *
+ * @author fanta
+ * @version 1.0
+ */
 public class BudgetController implements Initializable {
     @FXML
     private TableView<Budget> budgetTable;
-    @FXML private TextField userId;
-    @FXML private TextField amount;
-    @FXML private TextField budgetName;
-    @FXML private DatePicker startDate;
-    @FXML private DatePicker endDate;
-    @FXML private TextField findByIdField;
+    @FXML
+    private TextField userId;
+    @FXML
+    private TextField amount;
+    @FXML
+    private TextField budgetName;
+    @FXML
+    private DatePicker startDate;
+    @FXML
+    private DatePicker endDate;
+    @FXML
+    private TextField findByIdField;
 
     private final BudgetService budgetService = new BudgetService();
 
+    /**
+     * Метод для створення бюджету.
+     * Викликається при натисканні на кнопку "Створити бюджет".
+     */
     @FXML
     public void createBudget() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
             }
             String budgetNameStr = budgetName.getText();
 
             Timestamp startTimestamp = Timestamp.valueOf(startDate.getValue().atStartOfDay());
-            Timestamp endTimestamp = Timestamp.from(endDate.getValue().atStartOfDay().toInstant(ZoneOffset.UTC));
+            Timestamp endTimestamp =
+                    Timestamp.from(endDate.getValue().atStartOfDay().toInstant(ZoneOffset.UTC));
 
             BigDecimal amountBigDecimal = new BigDecimal(amount.getText());
-            Budget budget = budgetService.saveBudget(userIdLong, budgetNameStr, startTimestamp, endTimestamp, amountBigDecimal);
+            Budget budget =
+                    budgetService.saveBudget(
+                            userIdLong,
+                            budgetNameStr,
+                            startTimestamp,
+                            endTimestamp,
+                            amountBigDecimal);
             budgetService.save(budget);
             refreshTable();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Метод для оновлення бюджету.
+     * Викликається при натисканні на кнопку "Оновити бюджет".
+     */
     @FXML
     public void updateBudget() {
         try {
             Budget selectedBudget = budgetTable.getSelectionModel().getSelectedItem();
             Long budgetID = Long.parseLong(String.valueOf(selectedBudget.getBudgetId()));
-                Long userIdLong = Long.valueOf(userId.getText());
-                UserDAO userDAO = new UserDAO();
-                User user = userDAO.findById(userIdLong);
-                if (user == null)
-                {
-                    showAlert("Користувача з таким id не існує");
-                }else {
-                    String budgetNameStr = budgetName.getText();
+            Long userIdLong = Long.valueOf(userId.getText());
+            UserDAO userDAO = new UserDAO();
+            User user = userDAO.findById(userIdLong);
+            if (user == null) {
+                showAlert("Користувача з таким id не існує");
+            } else {
+                String budgetNameStr = budgetName.getText();
 
-                    Timestamp startTimestamp = Timestamp.valueOf(startDate.getValue().atStartOfDay());
-                    Timestamp endTimestamp = Timestamp.from(endDate.getValue().atStartOfDay().toInstant(ZoneOffset.UTC));
+                Timestamp startTimestamp = Timestamp.valueOf(startDate.getValue().atStartOfDay());
+                Timestamp endTimestamp =
+                        Timestamp.from(endDate.getValue().atStartOfDay().toInstant(ZoneOffset.UTC));
 
-                    BigDecimal amountBigDecimal = new BigDecimal(amount.getText());
+                BigDecimal amountBigDecimal = new BigDecimal(amount.getText());
 
-                    Budget budget = budgetService.updateBudget(budgetID, userIdLong, budgetNameStr, startTimestamp, endTimestamp, amountBigDecimal);
-                    budgetService.update(budgetID, budget);
-                    refreshTable();
-                }
+                Budget budget =
+                        budgetService.updateBudget(
+                                budgetID,
+                                userIdLong,
+                                budgetNameStr,
+                                startTimestamp,
+                                endTimestamp,
+                                amountBigDecimal);
+                budgetService.update(budgetID, budget);
+                refreshTable();
+            }
         } catch (NumberFormatException e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Метод для видалення бюджету.
+     * Викликається при натисканні на кнопку "Видалити бюджет".
+     */
     @FXML
     public void deleteBudget() {
         Budget selectedBudget = budgetTable.getSelectionModel().getSelectedItem();
@@ -106,6 +140,10 @@ public class BudgetController implements Initializable {
         }
     }
 
+    /**
+     * Метод для пошуку бюджету за Id.
+     * Викликається при натисканні на кнопку "Знайти бюджет".
+     */
     @FXML
     void searchBudget() {
         try {
@@ -124,6 +162,11 @@ public class BudgetController implements Initializable {
         }
     }
 
+    /**
+     * Метод для показу повідомлення про помилку.
+     *
+     * @param message Повідомлення про помилку.
+     */
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Помилка");
@@ -132,12 +175,15 @@ public class BudgetController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
+    /**
+     * Метод для оновлення таблиці бюджетів.
+     */
     @FXML
     private void refreshTable() {
         List<Budget> budgets = budgetService.getAll();
@@ -147,6 +193,12 @@ public class BudgetController implements Initializable {
         // Додати користувачів до таблиці
         budgetTable.getItems().addAll(budgets);
     }
+
+    /**
+     * Метод для обробки події кліку на таблицю.
+     *
+     * @param event Подія кліку мишею.
+     */
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
@@ -161,6 +213,11 @@ public class BudgetController implements Initializable {
             }
         }
     }
+
+    /**
+     * Метод для оновлення структури таблиці бюджетів.
+     * Використовується для відображення відповідних стовпців у таблиці.
+     */
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -183,6 +240,12 @@ public class BudgetController implements Initializable {
         }
     }
 
+    /**
+     * Метод для перетворення назви стовпця в назву змінної.
+     *
+     * @param columnName Назва стовпця.
+     * @return Назва змінної.
+     */
     private String convertColumnNameToVariableName(String columnName) {
         // Розділяємо назву стовпця по символу "_"
         String[] words = columnName.split("_");
@@ -196,13 +259,26 @@ public class BudgetController implements Initializable {
 
         return variableName.toString();
     }
-    public BudgetController() {
 
+    /**
+     * Конструктор класу BudgetController.
+     */
+    public BudgetController() {
     }
 
+    /**
+     * Конструктор класу BudgetController з параметром.
+     *
+     * @param mainController Об'єкт головного контролера.
+     */
     public BudgetController(MainController mainController) {
     }
+
+    /**
+     * Метод для встановлення головного контролера.
+     *
+     * @param mainController Об'єкт головного контролера.
+     */
     public void setMainController(MainController mainController) {
     }
 }
-

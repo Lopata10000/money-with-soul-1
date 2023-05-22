@@ -1,7 +1,6 @@
 package com.fanta.moneywithsoul.entity;
 
 import com.fanta.moneywithsoul.validator.OrFutureDate;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.Column;
@@ -16,6 +15,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
+/**
+ * The type Planning cost.
+ */
 @Entity
 @Table(name = "planning_costs")
 public class PlanningCost {
@@ -62,78 +64,178 @@ public class PlanningCost {
     @Column(name = "planned_amount")
     private BigDecimal plannedAmount;
 
+    /**
+     * Gets planning cost id.
+     *
+     * @return the planning cost id
+     */
     public Long getPlanningCostId() {
         return planningCostId;
     }
 
+    /**
+     * Sets planning cost id.
+     *
+     * @param planningCostId the planning cost id
+     */
     public void setPlanningCostId(Long planningCostId) {
         this.planningCostId = planningCostId;
     }
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Gets cost category.
+     *
+     * @return the cost category
+     */
     public CostCategory getCostCategory() {
         return costCategory;
     }
 
+    /**
+     * Sets cost category.
+     *
+     * @param costCategory the cost category
+     */
     public void setCostCategory(CostCategory costCategory) {
         this.costCategory = costCategory;
     }
 
+    /**
+     * Gets planning cost date.
+     *
+     * @return the planning cost date
+     */
     public java.sql.Timestamp getPlanningCostDate() {
         return planningCostDate;
     }
 
+    /**
+     * Sets planning cost date.
+     *
+     * @param planningCostDate the planning cost date
+     */
     public void setPlanningCostDate(java.sql.Timestamp planningCostDate) {
         this.planningCostDate = planningCostDate;
     }
 
+    /**
+     * Gets budget.
+     *
+     * @return the budget
+     */
     public Budget getBudget() {
         return budget;
     }
 
+    /**
+     * Sets budget.
+     *
+     * @param budget the budget
+     */
     public void setBudget(Budget budget) {
         this.budget = budget;
     }
 
+    /**
+     * Gets planned amount.
+     *
+     * @return the planned amount
+     */
     public BigDecimal getPlannedAmount() {
         return plannedAmount;
     }
 
+    /**
+     * Sets planned amount.
+     *
+     * @param plannedAmount the planned amount
+     */
     public void setPlannedAmount(BigDecimal plannedAmount) {
         this.plannedAmount = plannedAmount;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public Long getUserId() {
         return userId;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userId the user id
+     */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
+    /**
+     * Gets cost category id.
+     *
+     * @return the cost category id
+     */
     public Long getCostCategoryId() {
         return costCategoryId;
     }
 
+    /**
+     * Sets cost category id.
+     *
+     * @param costCategoryId the cost category id
+     */
     public void setCostCategoryId(Long costCategoryId) {
         this.costCategoryId = costCategoryId;
     }
 
+    /**
+     * Gets budget id.
+     *
+     * @return the budget id
+     */
     public Long getBudgetId() {
         return budgetId;
     }
 
+    /**
+     * Sets budget id.
+     *
+     * @param budgetId the budget id
+     */
     public void setBudgetId(Long budgetId) {
         this.budgetId = budgetId;
     }
 
+    /**
+     * Instantiates a new Planning cost.
+     *
+     * @param planningCostId   the planning cost id
+     * @param userId           the user id
+     * @param costCategoryId   the cost category id
+     * @param planningCostDate the planning cost date
+     * @param budgetId         the budget id
+     * @param plannedAmount    the planned amount
+     */
     public PlanningCost(
             Long planningCostId,
             Long userId,
@@ -149,5 +251,8 @@ public class PlanningCost {
         this.plannedAmount = plannedAmount;
     }
 
+    /**
+     * Instantiates a new Planning cost.
+     */
     public PlanningCost() {}
 }

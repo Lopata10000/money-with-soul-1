@@ -6,9 +6,15 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * The type Planning cost service.
+ */
 public class PlanningCostService implements ServiceInterface<PlanningCost> {
     private final PlanningCostDAO planningCostDAO;
 
+    /**
+     * Instantiates a new Planning cost service.
+     */
     public PlanningCostService() {
         planningCostDAO = new PlanningCostDAO();
     }
@@ -57,6 +63,16 @@ public class PlanningCostService implements ServiceInterface<PlanningCost> {
         }
     }
 
+    /**
+     * Save planing cost planning cost.
+     *
+     * @param userId           the user id
+     * @param costCategoryId   the cost category id
+     * @param planningCostDate the planning cost date
+     * @param budgetId         the budget id
+     * @param plannedAmount    the planned amount
+     * @return the planning cost
+     */
     public PlanningCost savePlaningCost(
             Long userId,
             Long costCategoryId,
@@ -72,6 +88,17 @@ public class PlanningCostService implements ServiceInterface<PlanningCost> {
         return planningCost;
     }
 
+    /**
+     * Update planing cost planning cost.
+     *
+     * @param planningCostId   the planning cost id
+     * @param userId           the user id
+     * @param costCategoryId   the cost category id
+     * @param planningCostDate the planning cost date
+     * @param budgetId         the budget id
+     * @param plannedAmount    the planned amount
+     * @return the planning cost
+     */
     public PlanningCost updatePlaningCost(
             Long planningCostId,
             Long userId,

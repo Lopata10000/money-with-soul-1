@@ -21,10 +21,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-
+/**
+ * The type User controller.
+ */
 public class UserController implements Initializable {
-    @FXML
-    private TableView<User> userTable;
+    @FXML private TableView<User> userTable;
     @FXML private TextField firstNameField;
     @FXML private TextField lastNameField;
     @FXML private TextField emailField;
@@ -32,9 +33,11 @@ public class UserController implements Initializable {
     @FXML private TextField userStatusField;
     @FXML private TextField findByIdField;
 
-
     private final UserService userService = new UserService();
 
+    /**
+     * Create user.
+     */
     @FXML
     public void createUser() {
         User user =
@@ -48,6 +51,9 @@ public class UserController implements Initializable {
         refreshTable();
     }
 
+    /**
+     * Update user.
+     */
     @FXML
     public void updateUser() {
 
@@ -69,6 +75,9 @@ public class UserController implements Initializable {
         }
     }
 
+    /**
+     * Delete user.
+     */
     @FXML
     public void deleteUser() {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
@@ -81,6 +90,9 @@ public class UserController implements Initializable {
         }
     }
 
+    /**
+     * Search user.
+     */
     @FXML
     void searchUser() {
         try {
@@ -109,12 +121,12 @@ public class UserController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<User> users = userService.getAll();
@@ -124,6 +136,7 @@ public class UserController implements Initializable {
         // Додати користувачів до таблиці
         userTable.getItems().addAll(users);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
@@ -138,6 +151,7 @@ public class UserController implements Initializable {
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -173,13 +187,23 @@ public class UserController implements Initializable {
 
         return variableName.toString();
     }
-    public UserController() {
 
-    }
+    /**
+     * Instantiates a new User controller.
+     */
+    public UserController() {}
 
-    public UserController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new User controller.
+     *
+     * @param mainController the main controller
+     */
+    public UserController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

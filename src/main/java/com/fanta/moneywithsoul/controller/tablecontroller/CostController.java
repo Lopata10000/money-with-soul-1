@@ -7,7 +7,6 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Cost;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.CostService;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,10 +26,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-
+/**
+ * The type Cost controller.
+ */
 public class CostController implements Initializable {
-    @FXML
-    private TableView<Cost> costTable;
+    @FXML private TableView<Cost> costTable;
     @FXML private TextField userId;
     @FXML private TextField costCategoryId;
     @FXML private DatePicker costDate;
@@ -41,14 +41,16 @@ public class CostController implements Initializable {
     @FXML private TextField findByIdField;
     private final CostService costService = new CostService();
 
+    /**
+     * Create cost.
+     */
     @FXML
     public void createCost() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
             }
             Long costCategory = Long.valueOf(costCategoryId.getText());
@@ -58,43 +60,63 @@ public class CostController implements Initializable {
             BigDecimal amountCost = new BigDecimal(costAmount.getText());
             String descriptionsCost = costDescription.getText();
 
-            Cost cost = costService.saveCost(userIdLong, costCategory, budgetID, transactionID, dateCost, amountCost, descriptionsCost);
+            Cost cost =
+                    costService.saveCost(
+                            userIdLong,
+                            costCategory,
+                            budgetID,
+                            transactionID,
+                            dateCost,
+                            amountCost,
+                            descriptionsCost);
             costService.save(cost);
             refreshTable();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Update cost.
+     */
     @FXML
     public void updateCost() {
         try {
             Cost selectedCost = costTable.getSelectionModel().getSelectedItem();
             Long costID = Long.parseLong(String.valueOf(selectedCost.getCostId()));
-                Long userIdLong = Long.valueOf(userId.getText());
-                UserDAO userDAO = new UserDAO();
-                User user = userDAO.findById(userIdLong);
-                if (user == null)
-                {
-                    showAlert("Користувача з таким id не існує");
-                }
-            Long costCategory = Long.valueOf(costCategoryId.getText());
-                Long budgetID = Long.valueOf(budgetId.getText());
-                Long transactionID = Long.valueOf(transactionId.getText());
-                Timestamp dateCost = Timestamp.valueOf(costDate.getValue().atStartOfDay());
-                BigDecimal amountCost = new BigDecimal(costAmount.getText());
-                String descriptionCost = costDescription.getText();
-
-                Cost cost = costService.updateCost(costID, userIdLong, costCategory, budgetID, transactionID, dateCost, amountCost, descriptionCost);
-                costService.update(costID, cost);
-                refreshTable();
-            }catch (Exception e)
-            {
-                showAlert("Неправильний формат");
+            Long userIdLong = Long.valueOf(userId.getText());
+            UserDAO userDAO = new UserDAO();
+            User user = userDAO.findById(userIdLong);
+            if (user == null) {
+                showAlert("Користувача з таким id не існує");
             }
+            Long costCategory = Long.valueOf(costCategoryId.getText());
+            Long budgetID = Long.valueOf(budgetId.getText());
+            Long transactionID = Long.valueOf(transactionId.getText());
+            Timestamp dateCost = Timestamp.valueOf(costDate.getValue().atStartOfDay());
+            BigDecimal amountCost = new BigDecimal(costAmount.getText());
+            String descriptionCost = costDescription.getText();
+
+            Cost cost =
+                    costService.updateCost(
+                            costID,
+                            userIdLong,
+                            costCategory,
+                            budgetID,
+                            transactionID,
+                            dateCost,
+                            amountCost,
+                            descriptionCost);
+            costService.update(costID, cost);
+            refreshTable();
+        } catch (Exception e) {
+            showAlert("Неправильний формат");
+        }
     }
 
+    /**
+     * Delete cost.
+     */
     @FXML
     public void deleteCost() {
         Cost selectedCost = costTable.getSelectionModel().getSelectedItem();
@@ -107,6 +129,9 @@ public class CostController implements Initializable {
         }
     }
 
+    /**
+     * Search cost.
+     */
     @FXML
     void searchCost() {
         try {
@@ -133,12 +158,12 @@ public class CostController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<Cost> costs = costService.getAll();
@@ -148,6 +173,7 @@ public class CostController implements Initializable {
         // Додати користувачів до таблиці
         costTable.getItems().addAll(costs);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
@@ -164,6 +190,7 @@ public class CostController implements Initializable {
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -199,13 +226,23 @@ public class CostController implements Initializable {
 
         return variableName.toString();
     }
-    public CostController() {
 
-    }
+    /**
+     * Instantiates a new Cost controller.
+     */
+    public CostController() {}
 
-    public CostController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Cost controller.
+     *
+     * @param mainController the main controller
+     */
+    public CostController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

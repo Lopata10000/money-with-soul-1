@@ -6,9 +6,15 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * The type Earning service.
+ */
 public class EarningService implements ServiceInterface<Earning> {
     private final EarningDAO earningDAO;
 
+    /**
+     * Instantiates a new Earning service.
+     */
     public EarningService() {
         earningDAO = new EarningDAO();
     }
@@ -57,6 +63,18 @@ public class EarningService implements ServiceInterface<Earning> {
         }
     }
 
+    /**
+     * Update earning earning.
+     *
+     * @param earningId         the earning id
+     * @param userId            the user id
+     * @param earningCategoryId the earning category id
+     * @param transactionId     the transaction id
+     * @param budgetId          the budget id
+     * @param earningDate       the earning date
+     * @param earningAmount     the earning amount
+     * @return the earning
+     */
     public Earning updateEarning(
             Long earningId,
             Long userId,
@@ -76,6 +94,17 @@ public class EarningService implements ServiceInterface<Earning> {
         return earning;
     }
 
+    /**
+     * Save earning earning.
+     *
+     * @param userId            the user id
+     * @param earningCategoryId the earning category id
+     * @param transactionId     the transaction id
+     * @param budgetId          the budget id
+     * @param earningDate       the earning date
+     * @param earningAmount     the earning amount
+     * @return the earning
+     */
     public Earning saveEarning(
             Long userId,
             Long earningCategoryId,

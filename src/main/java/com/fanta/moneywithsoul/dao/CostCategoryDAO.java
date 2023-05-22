@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Cost category dao.
+ */
 public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCategory> {
 
     @Override

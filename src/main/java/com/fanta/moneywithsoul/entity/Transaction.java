@@ -20,6 +20,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+/**
+ * The type Transaction.
+ */
 @Entity
 @Table(name = "transactions")
 public class Transaction {
@@ -72,64 +75,145 @@ public class Transaction {
     @Column(name = "exchange_id")
     private Long exchangeId;
 
+    /**
+     * Gets transaction id.
+     *
+     * @return the transaction id
+     */
     public Long getTransactionId() {
         return transactionId;
     }
 
+    /**
+     * Sets transaction id.
+     *
+     * @param transactionId the transaction id
+     */
     public void setTransactionId(Long transactionId) {
         this.transactionId = transactionId;
     }
 
+    /**
+     * Gets transaction type.
+     *
+     * @return the transaction type
+     */
     public String getTransactionType() {
         return transactionType;
     }
 
+    /**
+     * Sets transaction type.
+     *
+     * @param transactionType the transaction type
+     */
     public void setTransactionType(String transactionType) {
         this.transactionType = transactionType;
     }
 
+    /**
+     * Gets transaction date.
+     *
+     * @return the transaction date
+     */
     public Timestamp getTransactionDate() {
         return transactionDate;
     }
 
+    /**
+     * Sets transaction date.
+     *
+     * @param transactionDate the transaction date
+     */
     public void setTransactionDate(Timestamp transactionDate) {
         this.transactionDate = transactionDate;
     }
 
+    /**
+     * Gets transaction amount.
+     *
+     * @return the transaction amount
+     */
     public BigDecimal getTransactionAmount() {
         return transactionAmount;
     }
 
+    /**
+     * Sets transaction amount.
+     *
+     * @param transactionAmount the transaction amount
+     */
     public void setTransactionAmount(BigDecimal transactionAmount) {
         this.transactionAmount = transactionAmount;
     }
 
+    /**
+     * Gets description.
+     *
+     * @return the description
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * Sets description.
+     *
+     * @param description the description
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public Long getUserId() {
         return userId;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userId the user id
+     */
     public void setUserId(Long userId) {
         this.userId = userId;
         this.user = new UserDAO().findById(userId);
     }
 
+    /**
+     * Gets exchange id.
+     *
+     * @return the exchange id
+     */
     public Long getExchangeId() {
         return exchangeId;
     }
 
+    /**
+     * Sets exchange id.
+     *
+     * @param exchangeId the exchange id
+     */
     public void setExchangeId(Long exchangeId) {
         this.exchangeId = exchangeId;
         this.exchangeRateId = new ExchangeRateDAO().findById(exchangeId);
     }
 
+    /**
+     * Instantiates a new Transaction.
+     *
+     * @param transactionId     the transaction id
+     * @param userId            the user id
+     * @param transactionType   the transaction type
+     * @param transactionDate   the transaction date
+     * @param transactionAmount the transaction amount
+     * @param description       the description
+     * @param exchangeId        the exchange id
+     */
     public Transaction(
             Long transactionId,
             Long userId,
@@ -147,5 +231,8 @@ public class Transaction {
         this.exchangeId = exchangeId;
     }
 
+    /**
+     * Instantiates a new Transaction.
+     */
     public Transaction() {}
 }

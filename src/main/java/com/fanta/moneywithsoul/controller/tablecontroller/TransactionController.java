@@ -7,7 +7,6 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Transaction;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.TransactionService;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -28,10 +27,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-
+/**
+ * The type Transaction controller.
+ */
 public class TransactionController implements Initializable {
-    @FXML
-    private TableView<Transaction> transactionTable;
+    @FXML private TableView<Transaction> transactionTable;
     @FXML private TextField userId;
     @FXML private TextField transactionType;
     @FXML private DatePicker transactionDate;
@@ -42,14 +42,16 @@ public class TransactionController implements Initializable {
 
     private final TransactionService transactionService = new TransactionService();
 
+    /**
+     * Create transaction.
+     */
     @FXML
     public void createTransaction() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
             }
             String transactionNameType = transactionType.getText();
@@ -57,33 +59,51 @@ public class TransactionController implements Initializable {
             Timestamp date = Timestamp.valueOf(transactionDate.getValue().atStartOfDay());
             BigDecimal amountBigDecimal = new BigDecimal(transactionAmount.getText());
             Long exchangeId = Long.valueOf(exchangeRateId.getText());
-            Transaction transaction = transactionService.saveTransaction(userIdLong, transactionNameType, date, amountBigDecimal, descriptionTransaction,exchangeId);
+            Transaction transaction =
+                    transactionService.saveTransaction(
+                            userIdLong,
+                            transactionNameType,
+                            date,
+                            amountBigDecimal,
+                            descriptionTransaction,
+                            exchangeId);
             transactionService.save(transaction);
             refreshTable();
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Неправильний формат");
         }
     }
 
+    /**
+     * Update transaction.
+     */
     @FXML
     public void updateTransaction() {
         try {
-            Transaction selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
-            Long transactionID = Long.parseLong(String.valueOf(selectedTransaction.getTransactionId()));
+            Transaction selectedTransaction =
+                    transactionTable.getSelectionModel().getSelectedItem();
+            Long transactionID =
+                    Long.parseLong(String.valueOf(selectedTransaction.getTransactionId()));
             Long userIdLong = Long.valueOf(userId.getText());
             UserDAO userDAO = new UserDAO();
             User user = userDAO.findById(userIdLong);
-            if (user == null)
-            {
+            if (user == null) {
                 showAlert("Користувача з таким id не існує");
-            }else {
+            } else {
                 String transactionNameType = transactionType.getText();
                 String descriptionTransaction = description.getText();
                 LocalDate dateTime = transactionDate.getValue();
                 BigDecimal amountBigDecimal = new BigDecimal(transactionAmount.getText());
                 Long exchangeId = Long.valueOf(exchangeRateId.getText());
-                Transaction transaction = transactionService.updateTransaction(transactionID, userIdLong, transactionNameType, Timestamp.valueOf(dateTime.atStartOfDay()), amountBigDecimal, descriptionTransaction,exchangeId);
+                Transaction transaction =
+                        transactionService.updateTransaction(
+                                transactionID,
+                                userIdLong,
+                                transactionNameType,
+                                Timestamp.valueOf(dateTime.atStartOfDay()),
+                                amountBigDecimal,
+                                descriptionTransaction,
+                                exchangeId);
                 transactionService.update(transactionID, transaction);
                 refreshTable();
             }
@@ -92,11 +112,15 @@ public class TransactionController implements Initializable {
         }
     }
 
+    /**
+     * Delete transaction.
+     */
     @FXML
     public void deleteTransaction() {
         Transaction selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
         try {
-            Long transactionId = Long.parseLong(String.valueOf(selectedTransaction.getTransactionId()));
+            Long transactionId =
+                    Long.parseLong(String.valueOf(selectedTransaction.getTransactionId()));
             transactionService.delete(transactionId);
             refreshTable();
         } catch (NumberFormatException e) {
@@ -104,6 +128,9 @@ public class TransactionController implements Initializable {
         }
     }
 
+    /**
+     * Search transaction.
+     */
     @FXML
     void searchTransaction() {
         try {
@@ -130,12 +157,12 @@ public class TransactionController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<Transaction> transactions = transactionService.getAll();
@@ -145,21 +172,26 @@ public class TransactionController implements Initializable {
         // Додати користувачів до таблиці
         transactionTable.getItems().addAll(transactions);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            Transaction selectedTransaction = transactionTable.getSelectionModel().getSelectedItem();
+            Transaction selectedTransaction =
+                    transactionTable.getSelectionModel().getSelectedItem();
 
             if (selectedTransaction != null) {
                 userId.setText(String.valueOf(selectedTransaction.getUserId()));
                 transactionType.setText(selectedTransaction.getTransactionType());
-                transactionDate.setValue(selectedTransaction.getTransactionDate().toLocalDateTime().toLocalDate());
-                transactionAmount.setText(String.valueOf(selectedTransaction.getTransactionAmount()));
+                transactionDate.setValue(
+                        selectedTransaction.getTransactionDate().toLocalDateTime().toLocalDate());
+                transactionAmount.setText(
+                        String.valueOf(selectedTransaction.getTransactionAmount()));
                 description.setText(String.valueOf(selectedTransaction.getDescription()));
                 exchangeRateId.setText(String.valueOf(selectedTransaction.getExchangeId()));
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -195,13 +227,23 @@ public class TransactionController implements Initializable {
 
         return variableName.toString();
     }
-    public TransactionController() {
 
-    }
+    /**
+     * Instantiates a new Transaction controller.
+     */
+    public TransactionController() {}
 
-    public TransactionController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Transaction controller.
+     *
+     * @param mainController the main controller
+     */
+    public TransactionController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

@@ -6,9 +6,15 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * The type Transaction service.
+ */
 public class TransactionService implements ServiceInterface<Transaction> {
     private final TransactionDAO transactionDAO;
 
+    /**
+     * Instantiates a new Transaction service.
+     */
     public TransactionService() {
         transactionDAO = new TransactionDAO();
     }
@@ -57,6 +63,17 @@ public class TransactionService implements ServiceInterface<Transaction> {
         }
     }
 
+    /**
+     * Save transaction transaction.
+     *
+     * @param userId            the user id
+     * @param transactionType   the transaction type
+     * @param transactionDate   the transaction date
+     * @param transactionAmount the transaction amount
+     * @param description       the description
+     * @param exchangeId        the exchange id
+     * @return the transaction
+     */
     public Transaction saveTransaction(
             Long userId,
             String transactionType,
@@ -74,6 +91,18 @@ public class TransactionService implements ServiceInterface<Transaction> {
         return transaction;
     }
 
+    /**
+     * Update transaction transaction.
+     *
+     * @param transactionId     the transaction id
+     * @param userId            the user id
+     * @param transactionType   the transaction type
+     * @param transactionDate   the transaction date
+     * @param transactionAmount the transaction amount
+     * @param description       the description
+     * @param exchangeId        the exchange id
+     * @return the transaction
+     */
     public Transaction updateTransaction(
             Long transactionId,
             Long userId,

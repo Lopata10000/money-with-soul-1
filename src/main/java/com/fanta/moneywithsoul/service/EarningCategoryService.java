@@ -4,9 +4,15 @@ import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
 import com.fanta.moneywithsoul.entity.EarningCategory;
 import java.util.List;
 
+/**
+ * The type Earning category service.
+ */
 public class EarningCategoryService implements ServiceInterface<EarningCategory> {
     private final EarningCategoryDAO earningCategoryDAO;
 
+    /**
+     * Instantiates a new Earning category service.
+     */
     public EarningCategoryService() {
         earningCategoryDAO = new EarningCategoryDAO();
     }
@@ -56,6 +62,13 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
         }
     }
 
+    /**
+     * Update earning category earning category.
+     *
+     * @param earningCategoryId   the earning category id
+     * @param earningCategoryName the earning category name
+     * @return the earning category
+     */
     public EarningCategory updateEarningCategory(
             Long earningCategoryId, String earningCategoryName) {
         EarningCategory earningCategory = new EarningCategory();
@@ -63,6 +76,13 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
         earningCategory.setEarningCategoryName(earningCategoryName);
         return earningCategory;
     }
+
+    /**
+     * Save earning category earning category.
+     *
+     * @param earningCategoryName the earning category name
+     * @return the earning category
+     */
     public EarningCategory saveEarningCategory(String earningCategoryName) {
         EarningCategory earningCategory = new EarningCategory();
         earningCategory.setEarningCategoryName(earningCategoryName);

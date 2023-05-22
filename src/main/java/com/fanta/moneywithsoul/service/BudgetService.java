@@ -6,9 +6,15 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * The type Budget service.
+ */
 public class BudgetService implements ServiceInterface<Budget> {
     private final BudgetDAO budgetDAO;
 
+    /**
+     * Instantiates a new Budget service.
+     */
     public BudgetService() {
         budgetDAO = new BudgetDAO();
     }
@@ -58,6 +64,16 @@ public class BudgetService implements ServiceInterface<Budget> {
         budgetDAO.delete(budgetId);
     }
 
+    /**
+     * Save budget budget.
+     *
+     * @param userId    the user id
+     * @param name      the name
+     * @param startDate the start date
+     * @param endDate   the end date
+     * @param amount    the amount
+     * @return the budget
+     */
     public Budget saveBudget(
             Long userId, String name, Timestamp startDate, Timestamp endDate, BigDecimal amount) {
         Budget budget = new Budget();
@@ -69,6 +85,17 @@ public class BudgetService implements ServiceInterface<Budget> {
         return budget;
     }
 
+    /**
+     * Update budget budget.
+     *
+     * @param budgetId  the budget id
+     * @param userId    the user id
+     * @param name      the name
+     * @param startDate the start date
+     * @param endDate   the end date
+     * @param amount    the amount
+     * @return the budget
+     */
     public Budget updateBudget(
             Long budgetId,
             Long userId,

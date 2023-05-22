@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Earning category dao.
+ */
 public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<EarningCategory> {
     @Override
     public EarningCategory findById(Long earningCategoryId) {

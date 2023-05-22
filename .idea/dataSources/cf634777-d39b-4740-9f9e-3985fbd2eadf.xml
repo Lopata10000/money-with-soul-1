@@ -3,9 +3,17 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.43">
     <root id="1">
       <DateStyle>dmy</DateStyle>
-      <IntrospectionStateNumber>2143</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+4||-9223372036854775808|c|G
+4||10|c|G
+4||10|C|G
+4||10|T|G</Grants>
+      <IntrospectionStateNumber>2161</IntrospectionStateNumber>
       <ServerVersion>15.2</ServerVersion>
-      <StartupTime>1684232872</StartupTime>
+      <StartupTime>1684684179</StartupTime>
       <TimeZones>true ACDT
 true ACSST
 false ACST
@@ -801,8 +809,18 @@ false Zulu
 13183||10|C|G
 13183||-9223372036854775808|U|G
 13183||10|U|G</Grants>
-      <IntrospectionStateNumber>2143</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2161</IntrospectionStateNumber>
       <ObjectId>19064</ObjectId>
+      <Relations>sequence|table|28379|28380|1
+sequence|table|28389|28390|1
+sequence|table|28399|28400|1
+sequence|table|28418|28419|1
+sequence|table|28433|28434|1
+sequence|table|28440|28441|1
+sequence|table|28447|28448|1
+sequence|table|28475|28476|1
+sequence|table|28504|28505|1
+</Relations>
       <OwnerName>postgres</OwnerName>
     </database>
     <database id="3" parent="1" name="postgres">
@@ -4215,10 +4233,923 @@ false Zulu
     <schema id="262" parent="2" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>2143</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2161</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>518</StateNumber>
       <OwnerName>pg_database_owner</OwnerName>
     </schema>
+    <sequence id="263" parent="262" name="budgets_budget_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28418</ObjectId>
+      <StateNumber>2147</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="264" parent="262" name="cost_categories_cost_category_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28433</ObjectId>
+      <StateNumber>2148</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="265" parent="262" name="costs_cost_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28447</ObjectId>
+      <StateNumber>2150</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="266" parent="262" name="earning_categories_earning_category_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28440</ObjectId>
+      <StateNumber>2149</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="267" parent="262" name="earnings_earning_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28475</ObjectId>
+      <StateNumber>2151</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="268" parent="262" name="exchange_rates_exchange_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28389</ObjectId>
+      <StateNumber>2145</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="269" parent="262" name="planning_costs_planning_cost_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28504</ObjectId>
+      <StateNumber>2152</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="270" parent="262" name="transactions_transaction_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28399</ObjectId>
+      <StateNumber>2146</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <sequence id="271" parent="262" name="users_user_id_seq">
+      <DataType>integer|0s</DataType>
+      <ObjectId>28379</ObjectId>
+      <StateNumber>2144</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </sequence>
+    <table id="272" parent="262" name="budgets">
+      <ObjectId>28419</ObjectId>
+      <StateNumber>2147</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="273" parent="262" name="cost_categories">
+      <ObjectId>28434</ObjectId>
+      <StateNumber>2150</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="274" parent="262" name="costs">
+      <ObjectId>28448</ObjectId>
+      <StateNumber>2150</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="275" parent="262" name="earning_categories">
+      <ObjectId>28441</ObjectId>
+      <StateNumber>2151</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="276" parent="262" name="earnings">
+      <ObjectId>28476</ObjectId>
+      <StateNumber>2151</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="277" parent="262" name="exchange_rates">
+      <ObjectId>28390</ObjectId>
+      <StateNumber>2146</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="278" parent="262" name="planning_costs">
+      <ObjectId>28505</ObjectId>
+      <StateNumber>2152</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="279" parent="262" name="transactions">
+      <ObjectId>28400</ObjectId>
+      <StateNumber>2146</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <table id="280" parent="262" name="users">
+      <ObjectId>28380</ObjectId>
+      <StateNumber>2146</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>postgres</OwnerName>
+    </table>
+    <check id="281" parent="272" name="budgets_amount_check">
+      <ColNames>amount</ColNames>
+      <ObjectId>28425</ObjectId>
+      <Predicate>amount &gt;= (0)::numeric</Predicate>
+      <StateNumber>2147</StateNumber>
+    </check>
+    <check id="282" parent="272" name="budgets_check1">
+      <ColNames>end_date
+start_date</ColNames>
+      <ObjectId>28424</ObjectId>
+      <Predicate>end_date &gt;= start_date</Predicate>
+      <StateNumber>2147</StateNumber>
+    </check>
+    <check id="283" parent="272" name="budgets_check">
+      <ColNames>start_date
+end_date</ColNames>
+      <ObjectId>28423</ObjectId>
+      <Predicate>start_date &lt;= end_date</Predicate>
+      <StateNumber>2147</StateNumber>
+    </check>
+    <column id="284" parent="272" name="budget_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;budgets_budget_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2147</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="285" parent="272" name="user_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2147</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="286" parent="272" name="name">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2147</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="287" parent="272" name="start_date">
+      <DataType>date|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2147</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="288" parent="272" name="end_date">
+      <DataType>date|0s</DataType>
+      <Position>5</Position>
+      <StateNumber>2147</StateNumber>
+      <TypeId>1082</TypeId>
+    </column>
+    <column id="289" parent="272" name="amount">
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>2147</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <foreign-key id="290" parent="272" name="budgets_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28428</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2147</StateNumber>
+      <RefTableId>28380</RefTableId>
+      <RefTableName>users</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="291" parent="272" name="budgets_pkey">
+      <ColNames>budget_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28426</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2147</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="292" parent="272" name="budgets_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28427</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2147</StateNumber>
+      <UnderlyingIndexId>28426</UnderlyingIndexId>
+    </key>
+    <column id="293" parent="273" name="cost_category_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;cost_categories_cost_category_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2148</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="294" parent="273" name="cost_category_name">
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2148</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="295" parent="273" name="cost_categories_pkey">
+      <ColNames>cost_category_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28438</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2148</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="296" parent="273" name="cost_categories_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28439</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2148</StateNumber>
+      <UnderlyingIndexId>28438</UnderlyingIndexId>
+    </key>
+    <check id="297" parent="274" name="costs_cost_amount_check">
+      <ColNames>cost_amount</ColNames>
+      <ObjectId>28452</ObjectId>
+      <Predicate>cost_amount &gt;= (0)::numeric</Predicate>
+      <StateNumber>2150</StateNumber>
+    </check>
+    <column id="298" parent="274" name="cost_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;costs_cost_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="299" parent="274" name="user_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="300" parent="274" name="cost_category_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="301" parent="274" name="budget_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="302" parent="274" name="transaction_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="303" parent="274" name="cost_date">
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="304" parent="274" name="cost_amount">
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="305" parent="274" name="cost_description">
+      <DataType>varchar(300)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>8</Position>
+      <StateNumber>2150</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="306" parent="274" name="costs_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28455</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2150</StateNumber>
+      <RefTableId>28380</RefTableId>
+      <RefTableName>users</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="307" parent="274" name="costs_cost_category_id_fkey">
+      <ColNames>cost_category_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28460</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>cost_category_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2150</StateNumber>
+      <RefTableId>28434</RefTableId>
+      <RefTableName>cost_categories</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="308" parent="274" name="costs_budget_id_fkey">
+      <ColNames>budget_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28465</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>budget_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2150</StateNumber>
+      <RefTableId>28419</RefTableId>
+      <RefTableName>budgets</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="309" parent="274" name="costs_transaction_id_fkey">
+      <ColNames>transaction_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28470</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>transaction_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2150</StateNumber>
+      <RefTableId>28400</RefTableId>
+      <RefTableName>transactions</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="310" parent="274" name="costs_pkey">
+      <ColNames>cost_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28453</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2150</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="311" parent="274" name="idx_cost_user">
+      <ColNames>user_id</ColNames>
+      <ObjectId>28528</ObjectId>
+      <StateNumber>2153</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="312" parent="274" name="idx_cost_budget">
+      <ColNames>budget_id</ColNames>
+      <ObjectId>28530</ObjectId>
+      <StateNumber>2155</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="313" parent="274" name="costs_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28454</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2150</StateNumber>
+      <UnderlyingIndexId>28453</UnderlyingIndexId>
+    </key>
+    <column id="314" parent="275" name="earning_category_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;earning_categories_earning_category_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2149</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="315" parent="275" name="earning_category_name">
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2149</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="316" parent="275" name="earning_categories_pkey">
+      <ColNames>earning_category_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28445</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2149</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="317" parent="275" name="earning_categories_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28446</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2149</StateNumber>
+      <UnderlyingIndexId>28445</UnderlyingIndexId>
+    </key>
+    <check id="318" parent="276" name="earnings_earning_amount_check">
+      <ColNames>earning_amount</ColNames>
+      <ObjectId>28481</ObjectId>
+      <Predicate>earning_amount &gt;= (0)::numeric</Predicate>
+      <StateNumber>2151</StateNumber>
+    </check>
+    <column id="319" parent="276" name="earning_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;earnings_earning_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="320" parent="276" name="user_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="321" parent="276" name="earning_category_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="322" parent="276" name="earning_date">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="323" parent="276" name="earning_amount">
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="324" parent="276" name="transaction_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="325" parent="276" name="budget_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>2151</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="326" parent="276" name="earnings_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28484</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2151</StateNumber>
+      <RefTableId>28380</RefTableId>
+      <RefTableName>users</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="327" parent="276" name="earnings_earning_category_id_fkey">
+      <ColNames>earning_category_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28489</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>earning_category_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2151</StateNumber>
+      <RefTableId>28441</RefTableId>
+      <RefTableName>earning_categories</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="328" parent="276" name="earnings_transaction_id_fkey">
+      <ColNames>transaction_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28494</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>transaction_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2151</StateNumber>
+      <RefTableId>28400</RefTableId>
+      <RefTableName>transactions</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="329" parent="276" name="earnings_budget_id_fkey">
+      <ColNames>budget_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28499</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>budget_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2151</StateNumber>
+      <RefTableId>28419</RefTableId>
+      <RefTableName>budgets</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="330" parent="276" name="earnings_pkey">
+      <ColNames>earning_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28482</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2151</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="331" parent="276" name="idx_earning_user">
+      <ColNames>user_id</ColNames>
+      <ObjectId>28531</ObjectId>
+      <StateNumber>2156</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="332" parent="276" name="idx_earning_budget">
+      <ColNames>budget_id</ColNames>
+      <ObjectId>28532</ObjectId>
+      <StateNumber>2157</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="333" parent="276" name="earnings_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28483</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2151</StateNumber>
+      <UnderlyingIndexId>28482</UnderlyingIndexId>
+    </key>
+    <check id="334" parent="277" name="exchange_rates_rate_check">
+      <ColNames>rate</ColNames>
+      <ObjectId>28394</ObjectId>
+      <Predicate>rate &gt;= (0)::numeric</Predicate>
+      <StateNumber>2145</StateNumber>
+    </check>
+    <column id="335" parent="277" name="exchange_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;exchange_rates_exchange_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2145</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="336" parent="277" name="name_currency">
+      <DataType>varchar(10)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2145</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="337" parent="277" name="rate">
+      <DataType>numeric(10,4 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2145</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <index id="338" parent="277" name="exchange_rates_pkey">
+      <ColNames>exchange_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28395</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2145</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="339" parent="277" name="exchange_rates_name_currency_key">
+      <ColNames>name_currency</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28397</ObjectId>
+      <StateNumber>2145</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="340" parent="277" name="exchange_rates_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28396</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2145</StateNumber>
+      <UnderlyingIndexId>28395</UnderlyingIndexId>
+    </key>
+    <key id="341" parent="277" name="exchange_rates_name_currency_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28398</ObjectId>
+      <StateNumber>2145</StateNumber>
+      <UnderlyingIndexId>28397</UnderlyingIndexId>
+    </key>
+    <check id="342" parent="278" name="planning_costs_planned_amount_check">
+      <ColNames>planned_amount</ColNames>
+      <ObjectId>28510</ObjectId>
+      <Predicate>planned_amount &gt;= (0)::numeric</Predicate>
+      <StateNumber>2152</StateNumber>
+    </check>
+    <check id="343" parent="278" name="planning_costs_planning_cost_date_check">
+      <ColNames>planning_cost_date</ColNames>
+      <ObjectId>28509</ObjectId>
+      <Predicate>planning_cost_date &gt;= CURRENT_TIMESTAMP</Predicate>
+      <StateNumber>2152</StateNumber>
+    </check>
+    <column id="344" parent="278" name="planning_cost_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;planning_costs_planning_cost_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2152</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="345" parent="278" name="user_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2152</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="346" parent="278" name="cost_category_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2152</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="347" parent="278" name="planning_cost_date">
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2152</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="348" parent="278" name="budget_id">
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>2152</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="349" parent="278" name="planned_amount">
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>2152</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <foreign-key id="350" parent="278" name="planning_costs_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28513</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2152</StateNumber>
+      <RefTableId>28380</RefTableId>
+      <RefTableName>users</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="351" parent="278" name="planning_costs_cost_category_id_fkey">
+      <ColNames>cost_category_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28518</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>cost_category_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2152</StateNumber>
+      <RefTableId>28434</RefTableId>
+      <RefTableName>cost_categories</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="352" parent="278" name="planning_costs_budget_id_fkey">
+      <ColNames>budget_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28523</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>budget_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2152</StateNumber>
+      <RefTableId>28419</RefTableId>
+      <RefTableName>budgets</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="353" parent="278" name="planning_costs_pkey">
+      <ColNames>planning_cost_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28511</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2152</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="354" parent="278" name="idx_planning_cost_user">
+      <ColNames>user_id</ColNames>
+      <ObjectId>28533</ObjectId>
+      <StateNumber>2158</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="355" parent="278" name="idx_planning_cost_budget">
+      <ColNames>budget_id</ColNames>
+      <ObjectId>28534</ObjectId>
+      <StateNumber>2159</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="356" parent="278" name="planning_costs_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28512</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2152</StateNumber>
+      <UnderlyingIndexId>28511</UnderlyingIndexId>
+    </key>
+    <check id="357" parent="279" name="transactions_transaction_amount_check">
+      <ColNames>transaction_amount</ColNames>
+      <ObjectId>28405</ObjectId>
+      <Predicate>transaction_amount &gt;= (0)::numeric</Predicate>
+      <StateNumber>2146</StateNumber>
+    </check>
+    <column id="358" parent="279" name="transaction_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;transactions_transaction_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="359" parent="279" name="user_id">
+      <DataType>integer|0s</DataType>
+      <Position>2</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="360" parent="279" name="transaction_type">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="361" parent="279" name="transaction_date">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="362" parent="279" name="transaction_amount">
+      <DataType>numeric(10,2 digit)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>1700</TypeId>
+    </column>
+    <column id="363" parent="279" name="description">
+      <DataType>varchar(300)|0s</DataType>
+      <Position>6</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="364" parent="279" name="exchange_id">
+      <DataType>integer|0s</DataType>
+      <Position>7</Position>
+      <StateNumber>2146</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <foreign-key id="365" parent="279" name="transactions_user_id_fkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28408</ObjectId>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>user_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2146</StateNumber>
+      <RefTableId>28380</RefTableId>
+      <RefTableName>users</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <foreign-key id="366" parent="279" name="transactions_exchange_id_fkey">
+      <ColNames>exchange_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28413</ObjectId>
+      <OnDelete>set-null</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
+      <RefColNames>exchange_id</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <StateNumber>2146</StateNumber>
+      <RefTableId>28390</RefTableId>
+      <RefTableName>exchange_rates</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <index id="367" parent="279" name="transactions_pkey">
+      <ColNames>transaction_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28406</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2146</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <key id="368" parent="279" name="transactions_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28407</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2146</StateNumber>
+      <UnderlyingIndexId>28406</UnderlyingIndexId>
+    </key>
+    <column id="369" parent="280" name="user_id">
+      <DataType>integer|0s</DataType>
+      <DefaultExpression>nextval(&apos;users_user_id_seq&apos;::regclass)</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="370" parent="280" name="first_name">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="371" parent="280" name="last_name">
+      <DataType>varchar(50)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>3</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="372" parent="280" name="email">
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="373" parent="280" name="password_hash">
+      <DataType>varchar(100)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="374" parent="280" name="registered_at">
+      <DataType>timestamp|0s</DataType>
+      <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>1114</TypeId>
+    </column>
+    <column id="375" parent="280" name="user_status">
+      <DataType>varchar(20)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StateNumber>2144</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="376" parent="280" name="users_pkey">
+      <ColNames>user_id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28385</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2144</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+    </index>
+    <index id="377" parent="280" name="users_email_key">
+      <ColNames>email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28387</ObjectId>
+      <StateNumber>2144</StateNumber>
+      <Unique>1</Unique>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <index id="378" parent="280" name="idx_email_user">
+      <ColNames>email</ColNames>
+      <ObjectId>28529</ObjectId>
+      <StateNumber>2154</StateNumber>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationNames>default</CollationNames>
+      <CollationIds>100</CollationIds>
+      <CollationParentNames>pg_catalog</CollationParentNames>
+    </index>
+    <key id="379" parent="280" name="users_pkey">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28386</ObjectId>
+      <Primary>1</Primary>
+      <StateNumber>2144</StateNumber>
+      <UnderlyingIndexId>28385</UnderlyingIndexId>
+    </key>
+    <key id="380" parent="280" name="users_email_key">
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>28388</ObjectId>
+      <StateNumber>2144</StateNumber>
+      <UnderlyingIndexId>28387</UnderlyingIndexId>
+    </key>
   </database-model>
 </dataSource>

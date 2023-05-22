@@ -5,9 +5,15 @@ import com.fanta.moneywithsoul.entity.ExchangeRate;
 import java.math.BigDecimal;
 import java.util.List;
 
+/**
+ * The type Exchange rate service.
+ */
 public class ExchangeRateService implements ServiceInterface<ExchangeRate> {
     private final ExchangeRateDAO exchangeRateDAO;
 
+    /**
+     * Instantiates a new Exchange rate service.
+     */
     public ExchangeRateService() {
         exchangeRateDAO = new ExchangeRateDAO();
     }
@@ -56,6 +62,13 @@ public class ExchangeRateService implements ServiceInterface<ExchangeRate> {
         }
     }
 
+    /**
+     * Save exchange rate exchange rate.
+     *
+     * @param nameCurrency the name currency
+     * @param rate         the rate
+     * @return the exchange rate
+     */
     public ExchangeRate saveExchangeRate(String nameCurrency, BigDecimal rate) {
         ExchangeRate exchangeRate = new ExchangeRate();
         exchangeRate.setNameCurrency(nameCurrency);
@@ -63,6 +76,14 @@ public class ExchangeRateService implements ServiceInterface<ExchangeRate> {
         return exchangeRate;
     }
 
+    /**
+     * Update exchange rate exchange rate.
+     *
+     * @param exchangeId   the exchange id
+     * @param nameCurrency the name currency
+     * @param rate         the rate
+     * @return the exchange rate
+     */
     public ExchangeRate updateExchangeRate(Long exchangeId, String nameCurrency, BigDecimal rate) {
         ExchangeRate exchangeRate = new ExchangeRate();
         exchangeRate.setExchangeId(exchangeId);

@@ -8,12 +8,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Planning cost dao.
+ */
 public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<PlanningCost> {
 
     private UserDAO userDAO;
     private CostCategoryDAO costCategoryDAO;
     private BudgetDAO budgetDAO;
 
+    /**
+     * Instantiates a new Planning cost dao.
+     */
     public PlanningCostDAO() {
         userDAO = new UserDAO();
         costCategoryDAO = new CostCategoryDAO();

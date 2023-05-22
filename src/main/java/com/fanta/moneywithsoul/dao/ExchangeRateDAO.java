@@ -1,18 +1,18 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.ExchangeRate;
-
-import org.hibernate.exception.ConstraintViolationException;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.scene.control.Alert;
+import org.hibernate.exception.ConstraintViolationException;
 
+/**
+ * The type Exchange rate dao.
+ */
 public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<ExchangeRate> {
 
     @Override
@@ -67,7 +67,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
                         statement.setString(1, exchangeRate.getNameCurrency());
                         statement.setBigDecimal(2, exchangeRate.getRate());
                         statement.executeUpdate();
-                    } catch (SQLException  e) {
+                    } catch (SQLException e) {
                         showAlert("Валюта з таким іменем уже існує");
                         throw new RuntimeException(e);
                     }
@@ -89,8 +89,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
-                    }
-                    catch (ConstraintViolationException e) {
+                    } catch (ConstraintViolationException e) {
                         showAlert("Валюта з таким іменем уже існує");
                     }
                 });
@@ -111,6 +110,7 @@ public class ExchangeRateDAO extends BaseDAO<ExchangeRate> implements DAO<Exchan
                     }
                 });
     }
+
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Помилка");

@@ -15,6 +15,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+/**
+ * The type User.
+ */
 @Entity
 @Table(name = "users")
 public class User {
@@ -53,62 +56,141 @@ public class User {
     @Column(name = "user_status")
     private String userStatus;
 
+    /**
+     * Gets user id.
+     *
+     * @return the user id
+     */
     public Long getUserId() {
         return userId;
     }
 
+    /**
+     * Sets user id.
+     *
+     * @param userId the user id
+     */
     public void setUserId(Long userId) {
         this.userId = userId;
     }
 
+    /**
+     * Gets first name.
+     *
+     * @return the first name
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * Sets first name.
+     *
+     * @param firstName the first name
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * Gets last name.
+     *
+     * @return the last name
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     * Sets last name.
+     *
+     * @param lastName the last name
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * Gets email.
+     *
+     * @return the email
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Gets password hash.
+     *
+     * @return the password hash
+     */
     public String getPasswordHash() {
         return passwordHash;
     }
 
+    /**
+     * Sets password hash.
+     *
+     * @param passwordHash the password hash
+     */
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
+    /**
+     * Gets registered at.
+     *
+     * @return the registered at
+     */
     public Timestamp getRegisteredAt() {
         return registeredAt;
     }
 
+    /**
+     * Sets registered at.
+     */
     public void setRegisteredAt() {
         this.registeredAt = Timestamp.valueOf(LocalDateTime.now());
     }
 
+    /**
+     * Gets user status.
+     *
+     * @return the user status
+     */
     public String getUserStatus() {
         return userStatus;
     }
 
+    /**
+     * Sets user status.
+     *
+     * @param userStatus the user status
+     */
     public void setUserStatus(String userStatus) {
         this.userStatus = userStatus;
     }
 
+    /**
+     * Instantiates a new User.
+     *
+     * @param userId       the user id
+     * @param firstName    the first name
+     * @param lastName     the last name
+     * @param email        the email
+     * @param passwordHash the password hash
+     * @param registeredAt the registered at
+     * @param userStatus   the user status
+     */
     public User(
             Long userId,
             String firstName,
@@ -126,5 +208,8 @@ public class User {
         this.userStatus = userStatus;
     }
 
+    /**
+     * Instantiates a new User.
+     */
     public User() {}
 }

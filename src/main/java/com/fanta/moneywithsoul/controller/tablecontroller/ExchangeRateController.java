@@ -5,9 +5,6 @@ import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 import com.fanta.moneywithsoul.controller.MainController;
 import com.fanta.moneywithsoul.entity.ExchangeRate;
 import com.fanta.moneywithsoul.service.ExchangeRateService;
-
-import org.hibernate.exception.ConstraintViolationException;
-
 import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,11 +21,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.hibernate.exception.ConstraintViolationException;
 
-
+/**
+ * The type Exchange rate controller.
+ */
 public class ExchangeRateController implements Initializable {
-    @FXML
-    private TableView<ExchangeRate> exchangeRateTable;
+    @FXML private TableView<ExchangeRate> exchangeRateTable;
     @FXML private TextField exchangeId;
     @FXML private TextField currencyName;
     @FXML private TextField rate;
@@ -36,48 +35,59 @@ public class ExchangeRateController implements Initializable {
 
     private final ExchangeRateService exchangeRateService = new ExchangeRateService();
 
+    /**
+     * Create exchange rate.
+     */
     @FXML
     public void createExchangeRate() {
         try {
             String exchangeRateName = currencyName.getText();
             BigDecimal rate1 = BigDecimal.valueOf(Double.parseDouble(rate.getText()));
-            ExchangeRate exchangeRate = exchangeRateService.saveExchangeRate( exchangeRateName, rate1);
+            ExchangeRate exchangeRate =
+                    exchangeRateService.saveExchangeRate(exchangeRateName, rate1);
             exchangeRateService.save(exchangeRate);
             refreshTable();
 
         } catch (ConstraintViolationException e) {
-           showAlert("Валюта з таким іменем уже існує");
-        }
-        catch (Exception e)
-        {
+            showAlert("Валюта з таким іменем уже існує");
+        } catch (Exception e) {
             showAlert("Не правильний формат");
         }
     }
 
+    /**
+     * Update exchange rate.
+     */
     @FXML
     public void updateExchangeRate() {
         try {
-        ExchangeRate selectedExchangeRate = exchangeRateTable.getSelectionModel().getSelectedItem();
-        Long exchangeRateId = Long.parseLong(String.valueOf(selectedExchangeRate.getExchangeId()));
-        String exchangeRateName = currencyName.getText();
-        double rate1 = Double.parseDouble((rate.getText()));
-        ExchangeRate exchangeRate = exchangeRateService.updateExchangeRate( exchangeRateId, exchangeRateName, BigDecimal.valueOf(rate1));
-        exchangeRateService.update(exchangeRateId, exchangeRate);
-        refreshTable();
-    } catch (ConstraintViolationException e) {
-        showAlert("Валюта з таким іменем уже існує");
-    }
-        catch (Exception e)
-        {
+            ExchangeRate selectedExchangeRate =
+                    exchangeRateTable.getSelectionModel().getSelectedItem();
+            Long exchangeRateId =
+                    Long.parseLong(String.valueOf(selectedExchangeRate.getExchangeId()));
+            String exchangeRateName = currencyName.getText();
+            double rate1 = Double.parseDouble((rate.getText()));
+            ExchangeRate exchangeRate =
+                    exchangeRateService.updateExchangeRate(
+                            exchangeRateId, exchangeRateName, BigDecimal.valueOf(rate1));
+            exchangeRateService.update(exchangeRateId, exchangeRate);
+            refreshTable();
+        } catch (ConstraintViolationException e) {
+            showAlert("Валюта з таким іменем уже існує");
+        } catch (Exception e) {
             showAlert("Не правильний формат");
         }
     }
 
+    /**
+     * Delete exchange rate.
+     */
     @FXML
     public void deleteExchangeRate() {
         ExchangeRate selectedExchangeRate = exchangeRateTable.getSelectionModel().getSelectedItem();
         try {
-            Long exchangeRateId = Long.parseLong(String.valueOf(selectedExchangeRate.getExchangeId()));
+            Long exchangeRateId =
+                    Long.parseLong(String.valueOf(selectedExchangeRate.getExchangeId()));
             exchangeRateService.delete(exchangeRateId);
             refreshTable();
         } catch (NumberFormatException e) {
@@ -85,6 +95,9 @@ public class ExchangeRateController implements Initializable {
         }
     }
 
+    /**
+     * Search exchange rate.
+     */
     @FXML
     void searchExchangeRate() {
         try {
@@ -111,12 +124,12 @@ public class ExchangeRateController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<ExchangeRate> exchangeRates = exchangeRateService.getAll();
@@ -126,10 +139,12 @@ public class ExchangeRateController implements Initializable {
         // Додати користувачів до таблиці
         exchangeRateTable.getItems().addAll(exchangeRates);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            ExchangeRate selectedExchangeRate = exchangeRateTable.getSelectionModel().getSelectedItem();
+            ExchangeRate selectedExchangeRate =
+                    exchangeRateTable.getSelectionModel().getSelectedItem();
 
             if (selectedExchangeRate != null) {
                 exchangeId.setText(String.valueOf(selectedExchangeRate.getExchangeId()));
@@ -138,6 +153,7 @@ public class ExchangeRateController implements Initializable {
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -173,13 +189,23 @@ public class ExchangeRateController implements Initializable {
 
         return variableName.toString();
     }
-    public ExchangeRateController() {
 
-    }
+    /**
+     * Instantiates a new Exchange rate controller.
+     */
+    public ExchangeRateController() {}
 
-    public ExchangeRateController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Exchange rate controller.
+     *
+     * @param mainController the main controller
+     */
+    public ExchangeRateController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-

@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Earning dao.
+ */
 public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
 
     @Override

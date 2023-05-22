@@ -1,11 +1,10 @@
 package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
+
 import com.fanta.moneywithsoul.controller.MainController;
 import com.fanta.moneywithsoul.entity.CostCategory;
 import com.fanta.moneywithsoul.service.CostCategoryService;
-import org.hibernate.exception.ConstraintViolationException;
-
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -21,16 +20,21 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import org.hibernate.exception.ConstraintViolationException;
 
-
+/**
+ * The type Cost category controller.
+ */
 public class CostCategoryController implements Initializable {
-    @FXML
-    private TableView<CostCategory> costCategoryTable;
+    @FXML private TableView<CostCategory> costCategoryTable;
     @FXML private TextField costCategoryName;
     @FXML private TextField findByIdField;
 
     private final CostCategoryService costCategoryService = new CostCategoryService();
 
+    /**
+     * Create cost category.
+     */
     @FXML
     public void createCostCategory() {
         try {
@@ -40,36 +44,43 @@ public class CostCategoryController implements Initializable {
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія витрат з таким іменем уже існує");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Не правильний формат");
         }
     }
 
+    /**
+     * Update cost category.
+     */
     @FXML
     public void updateCostCategory() {
         try {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
-            Long costCategoryId = Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
+            CostCategory selectedCostCategory =
+                    costCategoryTable.getSelectionModel().getSelectedItem();
+            Long costCategoryId =
+                    Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
             String costName = costCategoryName.getText();
-            CostCategory costCategory = costCategoryService.updateCostCategory( costCategoryId, costName);
+            CostCategory costCategory =
+                    costCategoryService.updateCostCategory(costCategoryId, costName);
             costCategoryService.update(costCategoryId, costCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія витрат з таким іменем уже існує");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             showAlert("Не правильний формат");
         }
     }
 
+    /**
+     * Delete cost category.
+     */
     @FXML
     public void deleteCostCategory() {
         try {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
-            Long costCategoryId = Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
+            CostCategory selectedCostCategory =
+                    costCategoryTable.getSelectionModel().getSelectedItem();
+            Long costCategoryId =
+                    Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
             costCategoryService.delete(costCategoryId);
             refreshTable();
         } catch (NumberFormatException e) {
@@ -77,6 +88,9 @@ public class CostCategoryController implements Initializable {
         }
     }
 
+    /**
+     * Search cost category.
+     */
     @FXML
     void searchCostCategory() {
         try {
@@ -103,12 +117,12 @@ public class CostCategoryController implements Initializable {
         alert.showAndWait();
     }
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         updateTableView();
         refreshTable();
     }
+
     @FXML
     private void refreshTable() {
         List<CostCategory> costCategorys = costCategoryService.getAll();
@@ -118,16 +132,20 @@ public class CostCategoryController implements Initializable {
         // Додати користувачів до таблиці
         costCategoryTable.getItems().addAll(costCategorys);
     }
+
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
-            CostCategory selectedCostCategory = costCategoryTable.getSelectionModel().getSelectedItem();
+            CostCategory selectedCostCategory =
+                    costCategoryTable.getSelectionModel().getSelectedItem();
 
             if (selectedCostCategory != null) {
-                costCategoryName.setText(String.valueOf(selectedCostCategory.getCostCategoryName()));
+                costCategoryName.setText(
+                        String.valueOf(selectedCostCategory.getCostCategoryName()));
             }
         }
     }
+
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -163,13 +181,23 @@ public class CostCategoryController implements Initializable {
 
         return variableName.toString();
     }
-    public CostCategoryController() {
 
-    }
+    /**
+     * Instantiates a new Cost category controller.
+     */
+    public CostCategoryController() {}
 
-    public CostCategoryController(MainController mainController) {
-    }
-    public void setMainController(MainController mainController) {
-    }
+    /**
+     * Instantiates a new Cost category controller.
+     *
+     * @param mainController the main controller
+     */
+    public CostCategoryController(MainController mainController) {}
+
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
+    public void setMainController(MainController mainController) {}
 }
-
