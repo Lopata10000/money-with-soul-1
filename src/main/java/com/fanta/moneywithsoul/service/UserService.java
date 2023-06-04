@@ -6,6 +6,8 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.enumrole.UserRole;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
@@ -53,7 +55,14 @@ public class UserService implements ServiceInterface<User> {
             userDAO.save(user);
             Properties properties = new Properties();
             properties.setProperty("id", String.valueOf(user.getUserId()));
+
             String filePath = System.getProperty("user.dir") + "/file.properties";
+
+            try (FileOutputStream output = new FileOutputStream(filePath)) {
+                properties.store(output, "User Properties");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

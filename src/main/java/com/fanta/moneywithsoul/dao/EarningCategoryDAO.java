@@ -31,7 +31,25 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
         }
         return earningCategory;
     }
-
+    public List<EarningCategory> findByUser(Long userId) {
+        List<EarningCategory> earningCategories = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM earning_categories")) {
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                EarningCategory earningCategory =
+                        new EarningCategory(
+                                resultSet.getLong("earning_category_id"),
+                                resultSet.getString("earning_category_name"));
+                earningCategories.add(earningCategory);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return earningCategories;
+    }
     @Override
     public List<EarningCategory> findAll() {
         List<EarningCategory> earningCategories = new ArrayList<>();

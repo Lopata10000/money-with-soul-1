@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * The type Cost dao.
@@ -37,7 +39,29 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
         }
         return cost;
     }
-
+    public List<Cost> findByUser(Long userId) {
+        List<Cost> costs = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM costs WHERE user_id = ?")) {
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Cost cost = new Cost();
+                cost.setCostId(resultSet.getLong("cost_id"));
+                cost.setUserId(resultSet.getLong("user_id"));
+                cost.setCostCategoryId(resultSet.getLong("cost_category_id"));
+                cost.setBudgetId(resultSet.getLong("budget_id"));
+                cost.setTransactionId(resultSet.getLong("transaction_id"));
+                cost.setCostDate(resultSet.getTimestamp("cost_date"));
+                cost.setCostAmount(resultSet.getBigDecimal("cost_amount"));
+                cost.setCostDescription(resultSet.getString("cost_description"));
+                costs.add(cost);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return costs;
+    }
     @Override
     public List<Cost> findAll() {
         List<Cost> costs = new ArrayList<>();

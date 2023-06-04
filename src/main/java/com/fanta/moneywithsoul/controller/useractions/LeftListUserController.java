@@ -29,6 +29,10 @@ public class LeftListUserController {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+    public void backToMenu()
+    {
+        mainController.mainWindow();
+    }
 
 
 }

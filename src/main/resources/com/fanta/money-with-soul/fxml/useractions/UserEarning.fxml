@@ -6,9 +6,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.fanta.moneywithsoul.controller.useractions.UserEarningNodeController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import com.jfoenix.controls.JFXButton?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.fanta.moneywithsoul.controller.useractions.UserBudgetNodeController"
+      styleClass="rounded-stackpane-main" spacing="10">
+    <Label fx:id="earningCategoryLabel" styleClass="label-info" style="-fx-padding: 0 20 0 20;"/>
+    <Label fx:id="earningDateLabel" styleClass="label-info"/>
+    <Label fx:id="earningAmountLabel" styleClass="label-info"/>
+    <StackPane>
+        <JFXButton fx:id="editEarningButton" mnemonicParsing="false" text="edit" styleClass="jfx-button-item" />
+    </StackPane>
+</VBox>

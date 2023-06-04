@@ -5,6 +5,8 @@ import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.validator.Message;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -62,7 +64,14 @@ public class AuthorizationController extends Message implements Initializable {
                     if (user != null) {
                         Properties properties = new Properties();
                         properties.setProperty("id", String.valueOf(user.getUserId()));
+
                         String filePath = System.getProperty("user.dir") + "/file.properties";
+
+                        try (FileOutputStream output = new FileOutputStream(filePath)) {
+                            properties.store(output, "User Properties");
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         Platform.runLater(
 
                                 () -> {

@@ -37,7 +37,30 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         }
         return earning;
     }
-
+    public List<Earning> findByUser(Long userId) {
+        List<Earning> earnings = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM earnings WHERE user_id = ?")) {
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Earning earning =
+                        new Earning(
+                                resultSet.getLong("earning_id"),
+                                resultSet.getLong("user_id"),
+                                resultSet.getLong("earning_category_id"),
+                                resultSet.getLong("transaction_id"),
+                                resultSet.getLong("budget_id"),
+                                resultSet.getTimestamp("earning_date"),
+                                resultSet.getBigDecimal("earning_amount"));
+                earnings.add(earning);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return earnings;
+    }
     @Override
     public List<Earning> findAll() {
         List<Earning> earnings = new ArrayList<>();

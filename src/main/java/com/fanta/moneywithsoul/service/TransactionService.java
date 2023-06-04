@@ -22,14 +22,25 @@ public class TransactionService implements ServiceInterface<Transaction> {
     @Override
     public Transaction getById(Long transactionId) {
         if (transactionId == null || transactionId <= 0) {
-            System.out.println("Недійсний ідентифікатор транзакції");
+            showErrorMessage("Недійсний ідентифікатор транзакції");
         } else {
             Transaction transaction = transactionDAO.findById(transactionId);
             if (transaction == null) {
-                System.out.println("Транзакці. з таким ідентифікатором не знайдено");
+                showErrorMessage("Транзакції з таким ідентифікатором не знайдено");
             }
         }
         return transactionDAO.findById(transactionId);
+    }
+    public Transaction getByUser(Long userId) {
+        if (userId == null || userId <= 0) {
+            showErrorMessage("Недійсний ідентифікатор користувача");
+        } else {
+            Transaction transaction = transactionDAO.findById(userId);
+            if (transaction == null) {
+                showErrorMessage("Транзакції за таким користувачем");
+            }
+        }
+        return transactionDAO.findById(userId);
     }
 
     @Override

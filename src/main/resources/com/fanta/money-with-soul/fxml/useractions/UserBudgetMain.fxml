@@ -1,15 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
 <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgb(0,250,247,0.0)" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserBudgetController">
-   <ScrollPane styleClass="scroll-pane">
-    <FlowPane fx:id="boxInfo" hgap="20" orientation="HORIZONTAL">
+    <Pane maxHeight="600.0" maxWidth="958.0" prefHeight="700.0" prefWidth="958.0" style="-fx-background-color: rgb(0,0,0, 0.0);">
         <children>
+            <ScrollPane layoutX="479.0" layoutY="400.0" maxHeight="200.0" maxWidth="479.0" prefHeight="200.0" prefWidth="479.0" styleClass="scroll-pane">
+                <FlowPane fx:id="boxEarning" hgap="20" layoutX="20" layoutY="20" orientation="VERTICAL" vgap="20">
+                    <children>
+
+                    </children>
+                </FlowPane>
+            </ScrollPane>
+            <ScrollPane layoutY="400.0" maxHeight="200.0" maxWidth="479.0" prefHeight="200.0" prefWidth="479.0" styleClass="scroll-pane">
+                <FlowPane fx:id="boxCosts" hgap="20" layoutX="20" layoutY="20" orientation="VERTICAL" vgap="20">
+                    <children>
+
+                    </children>
+                </FlowPane>
+            </ScrollPane>
+         <Label layoutX="187.0" layoutY="361.0" styleClass="label-info" text="Ur Costs">
+            <font>
+               <Font name="Jokerman" size="24.0" />
+            </font>
+         </Label>
+         <Label layoutX="642.0" layoutY="361.0" styleClass="label-info" text="Ur Earnings">
+            <font>
+               <Font name="Jokerman" size="24.0" />
+            </font>
+         </Label>
+         <Pane fx:id="infoPane" prefHeight="360.0" prefWidth="474.0">
+             <children>
+
+             </children>
+         </Pane>
+         <Pane fx:id="budgetActions" layoutX="479.0" prefHeight="360.0" prefWidth="479.0" />
 
         </children>
-    </FlowPane>
-   </ScrollPane>
+    </Pane>
 </StackPane>

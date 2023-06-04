@@ -2,6 +2,8 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
+import com.fanta.moneywithsoul.entity.EarningCategory;
+
 import java.util.List;
 
 /**
@@ -20,16 +22,26 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
     @Override
     public CostCategory getById(Long costCategoryId) {
         if (costCategoryId == null || costCategoryId <= 0) {
-            System.out.println("Недійсний ідентифікатор категорії витрат");
+            showErrorMessage("Недійсний ідентифікатор категорії витрат");
         } else {
             CostCategory costCategory = costCategoryDAO.findById(costCategoryId);
             if (costCategory == null) {
-                System.out.println("Категорії витрат з таким ідентифікатором не знайдено");
+                showErrorMessage("Категорії витрат з таким ідентифікатором не знайдено");
             }
         }
         return costCategoryDAO.findById(costCategoryId);
     }
-
+    public List<CostCategory> getByUser(Long userId) {
+        if (userId == null || userId <= 0) {
+            showErrorMessage("Недійсний ідентифікатор користувача");
+        } else {
+            CostCategory costCategory = costCategoryDAO.findById(userId);
+            if (costCategory == null) {
+                showErrorMessage("Категорії витрат за таким користувача не знайдено");
+            }
+        }
+        return costCategoryDAO.findByUser(userId);
+    }
     @Override
     public List<CostCategory> getAll() {
         return costCategoryDAO.findAll();

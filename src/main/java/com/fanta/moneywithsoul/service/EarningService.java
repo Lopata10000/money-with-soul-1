@@ -22,16 +22,26 @@ public class EarningService implements ServiceInterface<Earning> {
     @Override
     public Earning getById(Long earningId) {
         if (earningId == null || earningId <= 0) {
-            System.out.println("Недійсний ідентифікатор прибутку");
+            showErrorMessage("Недійсний ідентифікатор прибутку");
         } else {
             Earning earning = earningDAO.findById(earningId);
             if (earning == null) {
-                System.out.println("Прибтку з таким ідентифікатором не знайдено");
+                showErrorMessage("Прибтку з таким ідентифікатором не знайдено");
             }
         }
         return earningDAO.findById(earningId);
     }
-
+    public  List<Earning> getByUser(Long userId) {
+        if (userId == null || userId <= 0) {
+            showErrorMessage("Недійсний ідентифікатор прибутку");
+        } else {
+            Earning earning = earningDAO.findById(userId);
+            if (earning == null) {
+                showErrorMessage("Прибуку з таким ідентифікатором не знайдено");
+            }
+        }
+        return earningDAO.findByUser(userId);
+    }
     @Override
     public List<Earning> getAll() {
         return earningDAO.findAll();

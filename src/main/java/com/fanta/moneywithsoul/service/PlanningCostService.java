@@ -22,7 +22,7 @@ public class PlanningCostService implements ServiceInterface<PlanningCost> {
     @Override
     public PlanningCost getById(Long planningCostId) {
         if (planningCostId == null || planningCostId <= 0) {
-            System.out.println("Недійсний ідентифікатор планованого платежу");
+            showErrorMessage("Недійсний ідентифікатор планованого платежу");
         } else {
             PlanningCost planningCost = planningCostDAO.findById(planningCostId);
             if (planningCost == null) {
@@ -31,7 +31,17 @@ public class PlanningCostService implements ServiceInterface<PlanningCost> {
         }
         return planningCostDAO.findById(planningCostId);
     }
-
+    public PlanningCost getByUser(Long userId) {
+        if (userId == null || userId <= 0) {
+            showErrorMessage("Недійсний ідентифікатор користувача");
+        } else {
+            PlanningCost planningCost = planningCostDAO.findById(userId);
+            if (planningCost == null) {
+                showErrorMessage("Планованого платежу за таким користувачем не знайдено");
+            }
+        }
+        return planningCostDAO.findByUser(userId);
+    }
     @Override
     public List<PlanningCost> getAll() {
         return planningCostDAO.findAll();

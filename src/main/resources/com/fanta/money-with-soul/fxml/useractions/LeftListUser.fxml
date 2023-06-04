@@ -66,7 +66,7 @@
                      <Font name="MS Outlook" size="16.0" />
                   </font>
                </JFXButton>
-               <JFXButton styleClass="jfx-button-fab" fx:id="backButton" prefWidth="150.0" text="Back to Menu">
+               <JFXButton styleClass="jfx-button-fab" fx:id="backButton" onAction="#backToMenu" prefWidth="150.0" text="Back to Menu">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
                   </font>

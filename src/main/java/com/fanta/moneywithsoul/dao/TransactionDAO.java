@@ -36,7 +36,28 @@ public class TransactionDAO extends BaseDAO<Transaction> implements DAO<Transact
         }
         return transaction;
     }
-
+    public Transaction findByUser(Long userId) {
+        Transaction transaction = null;
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT * FROM transactions WHERE user_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                transaction = new Transaction();
+                transaction.setTransactionId(resultSet.getLong("transaction_id"));
+                transaction.setUserId(resultSet.getLong("user_id"));
+                transaction.setTransactionType(resultSet.getString("transaction_type"));
+                transaction.setTransactionDate(resultSet.getTimestamp("transaction_date"));
+                transaction.setTransactionAmount(resultSet.getBigDecimal("transaction_amount"));
+                transaction.setDescription(resultSet.getString("description"));
+                transaction.setExchangeId(resultSet.getLong("exchange_id"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return transaction;
+    }
     @Override
     public List<Transaction> findAll() {
         List<Transaction> transactions = new ArrayList<>();

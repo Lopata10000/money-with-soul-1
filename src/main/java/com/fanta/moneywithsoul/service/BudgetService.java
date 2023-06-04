@@ -22,16 +22,26 @@ public class BudgetService implements ServiceInterface<Budget> {
     @Override
     public Budget getById(Long budgetId) {
         if (budgetId == null || budgetId <= 0) {
-            System.out.println("Недійсний ідентифікатор бюджету");
+            showErrorMessage("Недійсний ідентифікатор бюджету");
         } else {
             Budget budget = budgetDAO.findById(budgetId);
             if (budget == null) {
-                System.out.println("Бюджет з таким ідентифікатором не знайдено");
+                showErrorMessage("Бюджет з таким ідентифікатором не знайдено");
             }
         }
         return budgetDAO.findById(budgetId);
     }
-
+    public Budget getByUser(Long userId) {
+        if (userId == null || userId <= 0) {
+            showErrorMessage("Недійсний ідентифікатор користувача");
+        } else {
+            Budget budget = budgetDAO.findById(userId);
+            if (budget == null) {
+                showErrorMessage("Бюджет з таким користувачем не знайдено");
+            }
+        }
+        return budgetDAO.findByUser(userId);
+    }
     @Override
     public List<Budget> getAll() {
         return budgetDAO.findAll();

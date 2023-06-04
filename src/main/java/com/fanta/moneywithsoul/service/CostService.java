@@ -22,16 +22,26 @@ public class CostService implements ServiceInterface<Cost> {
     @Override
     public Cost getById(Long costId) {
         if (costId == null || costId <= 0) {
-            System.out.println("Недійсний ідентифікатор витрати");
+            showErrorMessage("Недійсний ідентифікатор витрати");
         } else {
             Cost cost = costDAO.findById(costId);
             if (cost == null) {
-                System.out.println("Витрати з таким ідентифікатором не знайдено");
+                showErrorMessage("Витрати з таким ідентифікатором не знайдено");
             }
         }
         return costDAO.findById(costId);
     }
-
+    public List<Cost> getByUser(Long userId) {
+        if (userId == null || userId <= 0) {
+            showErrorMessage("Недійсний ідентифікатор користувача");
+        } else {
+            Cost cost = costDAO.findById(userId);
+            if (cost == null) {
+                showErrorMessage("Витрати за таким користувачем");
+            }
+        }
+        return costDAO.findByUser(userId);
+    }
     @Override
     public List<Cost> getAll() {
         return costDAO.findAll();

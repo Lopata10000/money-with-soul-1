@@ -48,6 +48,27 @@ public class PlanningCostDAO extends BaseDAO<PlanningCost> implements DAO<Planni
         }
         return planningCost;
     }
+    public PlanningCost findByUser(Long userId) {
+        PlanningCost planningCost = null;
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT * FROM planning_costs WHERE user_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                planningCost = new PlanningCost();
+                planningCost.setPlanningCostId(resultSet.getLong("planning_cost_id"));
+                planningCost.setUserId(resultSet.getLong("user_id"));
+                planningCost.setCostCategoryId(resultSet.getLong("cost_category_id"));
+                planningCost.setPlanningCostDate(resultSet.getTimestamp("planning_cost_date"));
+                planningCost.setBudgetId(resultSet.getLong("budget_id"));
+                planningCost.setPlannedAmount(resultSet.getBigDecimal("planned_amount"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return planningCost;
+    }
 
     @Override
     public List<PlanningCost> findAll() {
