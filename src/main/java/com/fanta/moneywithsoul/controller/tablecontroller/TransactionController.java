@@ -2,7 +2,7 @@ package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 
-import com.fanta.moneywithsoul.controller.MainController;
+import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Transaction;
 import com.fanta.moneywithsoul.entity.User;

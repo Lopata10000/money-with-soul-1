@@ -4,7 +4,10 @@ import static com.fanta.moneywithsoul.database.DataBaseConfig.password;
 
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
+import com.fanta.moneywithsoul.enumrole.UserRole;
+
 import java.util.List;
+import java.util.Properties;
 
 /**
  * The type User service.
@@ -48,13 +51,16 @@ public class UserService implements ServiceInterface<User> {
         } else {
             validateAndSave(user);
             userDAO.save(user);
+            Properties properties = new Properties();
+            properties.setProperty("id", String.valueOf(user.getUserId()));
+            String filePath = System.getProperty("user.dir") + "/file.properties";
         }
     }
 
     @Override
     public void update(Long userId, User user) {
         UserDAO userDAO = new UserDAO();
-        boolean emailExists = userDAO.existsByEmail(user.getEmail());
+        boolean emailExists = userDAO.existsByEmailUpdate(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
             throw new RuntimeException();
@@ -95,7 +101,7 @@ public class UserService implements ServiceInterface<User> {
             String lastName,
             String email,
             String password,
-            String userStatus) {
+            UserRole userStatus) {
         User user = new User();
         user.setUserId(userId);
         user.setFirstName(firstName);
@@ -125,7 +131,7 @@ public class UserService implements ServiceInterface<User> {
         user.setEmail(email);
         user.setPasswordHash(password);
         user.setRegisteredAt();
-        user.setUserStatus(userStatus);
+        user.setUserStatus(UserRole.valueOf(userStatus));
         return user;
     }
 }

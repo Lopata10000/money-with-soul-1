@@ -1,11 +1,14 @@
 package com.fanta.moneywithsoul.entity;
 
+import com.fanta.moneywithsoul.enumrole.UserRole;
 import com.fanta.moneywithsoul.validator.OnlyLetters;
 import com.fanta.moneywithsoul.validator.PastOrPresentDate;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,11 +53,9 @@ public class User {
     @Column(name = "registered_at")
     private Timestamp registeredAt;
 
-    @Pattern(
-            regexp = "^(active|inactive|admin)$",
-            message = "Статус користувача має бути активний, виключений або адмін")
+    @Enumerated(EnumType.STRING)
     @Column(name = "user_status")
-    private String userStatus;
+    private UserRole userStatus =UserRole.active;
 
     /**
      * Gets user id.
@@ -167,7 +168,7 @@ public class User {
      *
      * @return the user status
      */
-    public String getUserStatus() {
+    public UserRole getUserStatus() {
         return userStatus;
     }
 
@@ -176,7 +177,7 @@ public class User {
      *
      * @param userStatus the user status
      */
-    public void setUserStatus(String userStatus) {
+    public void setUserStatus(UserRole userStatus) {
         this.userStatus = userStatus;
     }
 
@@ -198,7 +199,7 @@ public class User {
             String email,
             String passwordHash,
             Timestamp registeredAt,
-            String userStatus) {
+            UserRole userStatus) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;

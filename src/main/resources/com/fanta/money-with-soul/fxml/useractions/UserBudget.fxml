@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.fanta.moneywithsoul.controller.useractions.UserBudgetNodeController"
+      styleClass="rounded-stackpane-main" spacing="10">
+    <Label fx:id="nameLabel" styleClass="label-info"/>
+    <Label fx:id="startDateLabel" styleClass="label-info" />
+    <Label fx:id="endDateLabel" styleClass="label-info" />
+    <Label fx:id="amountLabel" styleClass="label-info" />
+    <StackPane>
+        <JFXButton fx:id="editBudgetButton" mnemonicParsing="false" text="edit" styleClass="jfx-button-item" />
+    </StackPane>
+</VBox>

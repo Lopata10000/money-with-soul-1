@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<Pane id="leftController" styleClass="rounded-pane-left" fx:controller="com.fanta.moneywithsoul.controller.useractions.LeftListUserController" prefWidth="242.0" style="-fx-background-color: rgb(7, 7, 7, 0.3);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@/com/fanta/money-with-soul/css/styles.css" />
+   </stylesheets>
+   <children>
+      <HBox layoutX="20" layoutY="45" spacing="10.0">
+         <children>
+            <VBox spacing="10.0">
+               <children>
+                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Budget.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Costs.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Earning.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Costs.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+            <VBox spacing="10.0">
+               <JFXButton styleClass="jfx-button-fab" fx:id="userBudgetsButton" onAction="#userBudgets" prefWidth="150.0" text="Budgets">
+                  <font>
+                     <Font name="MS Outlook" size="16.0" />
+                  </font>
+               </JFXButton>
+               <JFXButton styleClass="jfx-button-fab" fx:id="userCostsButton"   prefWidth="150.0" text="Costs">
+                  <font>
+                     <Font name="MS Outlook" size="16.0" />
+                  </font>
+               </JFXButton>
+               <JFXButton styleClass="jfx-button-fab" fx:id="usersEarningButton"   prefWidth="150.0" text="Earning">
+                  <font>
+                     <Font name="MS Outlook" size="16.0" />
+                  </font>
+               </JFXButton>
+               <JFXButton styleClass="jfx-button-fab"  fx:id="planingCostsTableButton"   prefWidth="150.0" text="Planing Costs">
+                  <font>
+                     <Font name="MS Outlook" size="16.0" />
+                  </font>
+               </JFXButton>
+               <JFXButton styleClass="jfx-button-fab" fx:id="backButton" prefWidth="150.0" text="Back to Menu">
+                  <font>
+                     <Font name="MS Outlook" size="16.0" />
+                  </font>
+               </JFXButton>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</Pane>

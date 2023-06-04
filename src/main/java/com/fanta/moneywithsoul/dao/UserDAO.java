@@ -2,6 +2,8 @@ package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.database.Hibernate;
 import com.fanta.moneywithsoul.entity.User;
+import com.fanta.moneywithsoul.enumrole.UserRole;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,6 +27,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
+                UserRole userStatus = UserRole.valueOf(resultSet.getString("user_status"));
                 user =
                         new User(
                                 resultSet.getLong("user_id"),
@@ -33,7 +36,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                                 resultSet.getString("email"),
                                 resultSet.getString("password_hash"),
                                 resultSet.getTimestamp("registered_at"),
-                                resultSet.getString("user_status"));
+                               userStatus);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -63,7 +66,22 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         }
         return false;
     }
+    public boolean existsByEmailUpdate(String email) {
+        try (Connection connection = dataSource.getConnection()) {
+            String query = "SELECT COUNT(*) FROM users WHERE email = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, email);
 
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int count = resultSet.getInt(1);
+                return count > 1;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
@@ -71,6 +89,8 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM users")) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
+                UserRole userStatus = UserRole.valueOf(resultSet.getString("user_status"));
+
                 User user =
                         new User(
                                 resultSet.getLong("user_id"),
@@ -79,7 +99,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                                 resultSet.getString("email"),
                                 resultSet.getString("password_hash"),
                                 resultSet.getTimestamp("registered_at"),
-                                resultSet.getString("user_status"));
+                               userStatus);
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -103,7 +123,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                         statement.setString(3, user.getEmail());
                         statement.setString(4, user.getPasswordHash());
                         statement.setTimestamp(5, user.getRegisteredAt());
-                        statement.setString(6, user.getUserStatus());
+                        statement.setString(6, String.valueOf(user.getUserStatus()));
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -126,7 +146,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                         statement.setString(3, user.getEmail());
                         statement.setString(4, user.getPasswordHash());
                         statement.setTimestamp(5, user.getRegisteredAt());
-                        statement.setString(6, user.getUserStatus());
+                        statement.setString(6, String.valueOf(user.getUserStatus()));
                         statement.setLong(7, user.getUserId());
                         statement.executeUpdate();
                     } catch (SQLException e) {

@@ -25,23 +25,4 @@ public class Hibernate {
             throw new ExceptionInInitializerError(ex);
         }
     }
-
-    /**
-     * The entry point of application.
-     *
-     * @param args the input arguments
-     */
-    public static void main(String[] args) {
-        CostService costService = new CostService();
-        Cost cost =
-                costService.saveCost(
-                        2L,
-                        3L,
-                        2L,
-                        2L,
-                        Timestamp.valueOf(LocalDateTime.now()),
-                        BigDecimal.valueOf(12),
-                        "Fanta");
-        costService.save(cost);
-    }
 }

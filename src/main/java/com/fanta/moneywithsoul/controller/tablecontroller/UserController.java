@@ -2,8 +2,9 @@ package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 
-import com.fanta.moneywithsoul.controller.MainController;
+import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.entity.User;
+import com.fanta.moneywithsoul.enumrole.UserRole;
 import com.fanta.moneywithsoul.service.UserService;
 import java.net.URL;
 import java.sql.Connection;
@@ -60,17 +61,24 @@ public class UserController implements Initializable {
         try {
             User selectedUser = userTable.getSelectionModel().getSelectedItem();
             Long userId = Long.parseLong(String.valueOf(selectedUser.getUserId()));
-            User user =
-                    userService.updateUser(
-                            userId,
-                            firstNameField.getText(),
-                            lastNameField.getText(),
-                            emailField.getText(),
-                            passwordField.getText(),
-                            userStatusField.getText());
-            userService.update(userId, user);
-            refreshTable();
-        } catch (NumberFormatException e) {
+            String userStatusText = userStatusField.getText();
+            if (userStatusText.equals("active") || userStatusText.equals("inactive") || userStatusText.equals("admin")) {
+                User user =
+                        userService.updateUser(
+                                userId,
+                                firstNameField.getText(),
+                                lastNameField.getText(),
+                                emailField.getText(),
+                                passwordField.getText(),
+                                UserRole.valueOf(userStatusField.getText()));
+                userService.update(userId, user);
+                refreshTable();
+            }
+            else
+            {
+                showAlert("Статус користувача може бути : active, inactive, admin");
+            }
+        } catch (NullPointerException e) {
             showAlert("Неправильний формат числа для Id");
         }
     }
@@ -147,7 +155,7 @@ public class UserController implements Initializable {
                 lastNameField.setText(selectedUser.getLastName());
                 emailField.setText(selectedUser.getEmail());
                 passwordField.setText(selectedUser.getPasswordHash());
-                userStatusField.setText(selectedUser.getUserStatus());
+                userStatusField.setText(String.valueOf(selectedUser.getUserStatus()));
             }
         }
     }

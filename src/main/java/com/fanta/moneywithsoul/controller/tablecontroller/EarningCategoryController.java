@@ -2,7 +2,7 @@ package com.fanta.moneywithsoul.controller.tablecontroller;
 
 import static com.fanta.moneywithsoul.database.PoolConfig.dataSource;
 
-import com.fanta.moneywithsoul.controller.MainController;
+import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.entity.EarningCategory;
 import com.fanta.moneywithsoul.service.EarningCategoryService;
 import java.net.URL;

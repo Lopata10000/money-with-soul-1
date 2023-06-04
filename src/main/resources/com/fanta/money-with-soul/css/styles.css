@@ -1,6 +1,18 @@
-
+.rounded-stackpane {
+    -fx-background-radius: 0 0 20 0; /* Задаємо радіус завкруглення */
+}
+.rounded-pane-left {
+    -fx-background-radius: 0 20 20 0; /* Задаємо радіус завкруглення */
+}
+.rounded-stackpane-main {
+    -fx-background-radius: 30 30 30 30; /* Задаємо радіус завкруглення */
+    -fx-background-color: linear-gradient(rgb(200, 50, 150), rgb(150, 0, 150));
+}
+.rounded-anchorpane-main {
+    -fx-background-radius: 20 20 20 20; /* Задаємо радіус завкруглення */
+   -fx-background-color: rgb(7, 7, 7, 0.8);}
 .jfx-button-fab {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: rgb(0, 140, 250);
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-background-radius: 10px; /* Радіус закруглення фону */
@@ -14,7 +26,7 @@
     -fx-pref-width: 150px;
 }
 .jfx-button-main {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: linear-gradient(rgb(150, 0, 150), rgb(0, 140, 250));
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-background-radius: 15px; /* Радіус закруглення фону */
@@ -32,16 +44,51 @@
     -fx-text-fill: #4D4D4D;
     -fx-background-color: rgba(255, 255, 255, 0.5); /* Напівпрозорий фон (задайте власні значення альфа-каналу) */
     -fx-background-radius: 15px; /* Радіус закруглення фону */
-    -jfx-focus-color: #4CAF50; /* Колір підсвічування при фокусу */
+    -jfx-focus-color: linear-gradient(rgb(150, 0, 150), rgb(0, 140, 250)); /* Колір підсвічування при фокусу */
     -jfx-unfocus-color: #9E9E9E; /* Колір без фокусу */
     -jfx-label-float: true; /* Анімація переходу мітки наверх поля */
     -fx-min-width: 275px;
     -fx-pref-width: 275px;
 }
+.label-info{
+    -fx-text-fill: rgb(250,250,250);
+}
+.jfx-button-item {
+    -fx-background-color: rgb(0, 140, 250);
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-background-radius: 10px; /* Радіус закруглення фону */
+    -fx-border-radius: 20px;
+    -fx-border-radius: 50%;
+    -jfx-button-type: RAISED;
+    -fx-cursor: hand;
+    -fx-min-height: 35px;
+    -fx-pref-height: 35px;
+    -fx-min-width: 70px;
+    -fx-pref-width: 100px;
+}
 .jfx-button-fab:hover {
-    -fx-background-color: #81C784;
+    -fx-background-color: linear-gradient(rgb(252, 90, 80), rgb(0, 140, 250));
 }
 
 .jfx-button-fab:pressed {
-    -fx-background-color: #388E3C;
+    -fx-background-color: rgb(202, 60, 50);
+}
+.jfx-button-main:hover {
+    -fx-background-color: rgb(252, 90, 80);
+}
+
+.jfx-button-main:pressed {
+    -fx-background-color: rgb(202, 60, 50);
+}
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .content {
+    -fx-background-color: transparent;
 }

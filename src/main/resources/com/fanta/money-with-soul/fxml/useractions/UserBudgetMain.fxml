@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: rgb(0,250,247,0.0)" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserBudgetController">
+   <ScrollPane styleClass="scroll-pane">
+    <FlowPane fx:id="boxInfo" hgap="20" orientation="HORIZONTAL">
+        <children>
+
+        </children>
+    </FlowPane>
+   </ScrollPane>
+</StackPane>

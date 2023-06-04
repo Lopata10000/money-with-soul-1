@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * The type Budget dao.
  */
-public class BudgetDAO extends BaseDAO<Budget> implements DAO<Budget> {
+public class BudgetDAO extends BaseDAO implements DAO<Budget> {
 
     @Override
     public Budget findById(Long budgetId) {
