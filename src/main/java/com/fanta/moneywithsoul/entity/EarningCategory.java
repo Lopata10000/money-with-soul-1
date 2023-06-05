@@ -8,9 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
-/**
- * The type Earning category.
- */
+/** The type Earning category. */
 @Entity
 @Table(name = "earning_categories")
 public class EarningCategory {
@@ -27,7 +25,7 @@ public class EarningCategory {
     /**
      * Instantiates a new Earning category.
      *
-     * @param earning_category_id   the earning category id
+     * @param earning_category_id the earning category id
      * @param earning_category_name the earning category name
      */
     public EarningCategory(long earning_category_id, String earning_category_name) {
@@ -74,7 +72,7 @@ public class EarningCategory {
     /**
      * Instantiates a new Earning category.
      *
-     * @param earningCategoryId   the earning category id
+     * @param earningCategoryId the earning category id
      * @param earningCategoryName the earning category name
      */
     public EarningCategory(Long earningCategoryId, String earningCategoryName) {
@@ -82,8 +80,6 @@ public class EarningCategory {
         this.earningCategoryName = earningCategoryName;
     }
 
-    /**
-     * Instantiates a new Earning category.
-     */
+    /** Instantiates a new Earning category. */
     public EarningCategory() {}
 }

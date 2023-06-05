@@ -15,9 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-/**
- * The type Earning.
- */
+/** The type Earning. */
 @Entity
 @Table(name = "earnings")
 public class Earning {
@@ -44,16 +42,6 @@ public class Earning {
     @NotNull(message = "Поле не може бути порожнім")
     @Column(name = "earning_category_id")
     private Long earningCategoryId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "transaction_id", insertable = false, updatable = false)
-    private Transaction transaction;
-
-    @NotNull(
-            message =
-                    "Для синхронізації прибутку повинна бути транзакція якій належить цей прибуток")
-    @Column(name = "transaction_id")
-    private Long transactionId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "budget_id", insertable = false, updatable = false)
@@ -125,24 +113,6 @@ public class Earning {
      */
     public void setEarningCategory(EarningCategory earningCategory) {
         this.earningCategory = earningCategory;
-    }
-
-    /**
-     * Gets transaction.
-     *
-     * @return the transaction
-     */
-    public Transaction getTransaction() {
-        return transaction;
-    }
-
-    /**
-     * Sets transaction.
-     *
-     * @param transaction the transaction
-     */
-    public void setTransaction(Transaction transaction) {
-        this.transaction = transaction;
     }
 
     /**
@@ -226,23 +196,6 @@ public class Earning {
         this.earningCategoryId = earningCategoryId;
     }
 
-    /**
-     * Gets transaction id.
-     *
-     * @return the transaction id
-     */
-    public Long getTransactionId() {
-        return transactionId;
-    }
-
-    /**
-     * Sets transaction id.
-     *
-     * @param transactionId the transaction id
-     */
-    public void setTransactionId(Long transactionId) {
-        this.transactionId = transactionId;
-    }
 
     /**
      * Gets budget id.
@@ -274,33 +227,29 @@ public class Earning {
     /**
      * Instantiates a new Earning.
      *
-     * @param earningId         the earning id
-     * @param userId            the user id
+     * @param earningId the earning id
+     * @param userId the user id
      * @param earningCategoryId the earning category id
-     * @param transactionId     the transaction id
-     * @param budgetId          the budget id
-     * @param earningDate       the earning date
-     * @param earningAmount     the earning amount
+     * @param transactionId the transaction id
+     * @param budgetId the budget id
+     * @param earningDate the earning date
+     * @param earningAmount the earning amount
      */
     public Earning(
             Long earningId,
             Long userId,
             Long earningCategoryId,
-            Long transactionId,
             Long budgetId,
             Timestamp earningDate,
             BigDecimal earningAmount) {
         this.earningId = earningId;
         this.userId = userId;
         this.earningCategoryId = earningCategoryId;
-        this.transactionId = transactionId;
         this.budgetId = budgetId;
         this.earningDate = earningDate;
         this.earningAmount = earningAmount;
     }
 
-    /**
-     * Instantiates a new Earning.
-     */
+    /** Instantiates a new Earning. */
     public Earning() {}
 }

@@ -6,9 +6,7 @@ import javax.validation.Payload;
 import javax.validation.ReportAsSingleViolation;
 import javax.validation.constraints.PastOrPresent;
 
-/**
- * The interface Past or present date.
- */
+/** The interface Past or present date. */
 @Documented
 @Constraint(validatedBy = {PastOrPresentValidator.class})
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})

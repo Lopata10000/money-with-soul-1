@@ -22,9 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/**
- * The type User controller.
- */
+/** The type User controller. */
 public class UserController implements Initializable {
     @FXML private TableView<User> userTable;
     @FXML private TextField firstNameField;
@@ -36,9 +34,7 @@ public class UserController implements Initializable {
 
     private final UserService userService = new UserService();
 
-    /**
-     * Create user.
-     */
+    /** Create user. */
     @FXML
     public void createUser() {
         User user =
@@ -52,9 +48,7 @@ public class UserController implements Initializable {
         refreshTable();
     }
 
-    /**
-     * Update user.
-     */
+    /** Update user. */
     @FXML
     public void updateUser() {
 
@@ -62,7 +56,9 @@ public class UserController implements Initializable {
             User selectedUser = userTable.getSelectionModel().getSelectedItem();
             Long userId = Long.parseLong(String.valueOf(selectedUser.getUserId()));
             String userStatusText = userStatusField.getText();
-            if (userStatusText.equals("active") || userStatusText.equals("inactive") || userStatusText.equals("admin")) {
+            if (userStatusText.equals("active")
+                    || userStatusText.equals("inactive")
+                    || userStatusText.equals("admin")) {
                 User user =
                         userService.updateUser(
                                 userId,
@@ -73,9 +69,7 @@ public class UserController implements Initializable {
                                 UserRole.valueOf(userStatusField.getText()));
                 userService.update(userId, user);
                 refreshTable();
-            }
-            else
-            {
+            } else {
                 showAlert("Статус користувача може бути : active, inactive, admin");
             }
         } catch (NullPointerException e) {
@@ -83,9 +77,7 @@ public class UserController implements Initializable {
         }
     }
 
-    /**
-     * Delete user.
-     */
+    /** Delete user. */
     @FXML
     public void deleteUser() {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
@@ -98,9 +90,7 @@ public class UserController implements Initializable {
         }
     }
 
-    /**
-     * Search user.
-     */
+    /** Search user. */
     @FXML
     void searchUser() {
         try {
@@ -196,9 +186,7 @@ public class UserController implements Initializable {
         return variableName.toString();
     }
 
-    /**
-     * Instantiates a new User controller.
-     */
+    /** Instantiates a new User controller. */
     public UserController() {}
 
     /**

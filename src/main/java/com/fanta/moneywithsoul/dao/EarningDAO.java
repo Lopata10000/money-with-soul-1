@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The type Earning dao.
- */
+/** The type Earning dao. */
 public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
 
     @Override
@@ -27,7 +25,6 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                                 resultSet.getLong("earning_id"),
                                 resultSet.getLong("user_id"),
                                 resultSet.getLong("earning_category_id"),
-                                resultSet.getLong("transaction_id"),
                                 resultSet.getLong("budget_id"),
                                 resultSet.getTimestamp("earning_date"),
                                 resultSet.getBigDecimal("earning_amount"));
@@ -37,23 +34,23 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         }
         return earning;
     }
-    public List<Earning> findByUser(Long userId) {
+
+    public List<Earning> searchEarningsByUserAndBudget(long userId, long budgetId) {
         List<Earning> earnings = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM earnings WHERE user_id = ?")) {
+                     connection.prepareStatement("SELECT * FROM earnings WHERE user_id = ? AND budget_id = ?")) {
             statement.setLong(1, userId);
+            statement.setLong(2, budgetId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                Earning earning =
-                        new Earning(
-                                resultSet.getLong("earning_id"),
-                                resultSet.getLong("user_id"),
-                                resultSet.getLong("earning_category_id"),
-                                resultSet.getLong("transaction_id"),
-                                resultSet.getLong("budget_id"),
-                                resultSet.getTimestamp("earning_date"),
-                                resultSet.getBigDecimal("earning_amount"));
+                Earning earning = new Earning();
+                earning.setEarningId(resultSet.getLong("earning_id"));
+                earning.setUserId(resultSet.getLong("user_id"));
+                earning.setEarningCategoryId(resultSet.getLong("earning_category_id"));
+                earning.setBudgetId(resultSet.getLong("budget_id"));
+                earning.setEarningDate(resultSet.getTimestamp("earning_date"));
+                earning.setEarningAmount(resultSet.getBigDecimal("earning_amount"));
                 earnings.add(earning);
             }
         } catch (SQLException e) {
@@ -61,6 +58,7 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         }
         return earnings;
     }
+
     @Override
     public List<Earning> findAll() {
         List<Earning> earnings = new ArrayList<>();
@@ -74,7 +72,6 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                                 resultSet.getLong("earning_id"),
                                 resultSet.getLong("user_id"),
                                 resultSet.getLong("earning_category_id"),
-                                resultSet.getLong("transaction_id"),
                                 resultSet.getLong("budget_id"),
                                 resultSet.getTimestamp("earning_date"),
                                 resultSet.getBigDecimal("earning_amount"));
@@ -98,7 +95,6 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                                                 + " earning_amount) VALUES (?, ?, ?, ?, ?, ?)")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
-                        statement.setLong(3, earning.getTransactionId());
                         statement.setLong(4, earning.getBudgetId());
                         statement.setTimestamp(5, earning.getEarningDate());
                         statement.setBigDecimal(6, earning.getEarningAmount());
@@ -122,7 +118,6 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                                                     + " earning_id = ?")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
-                        statement.setLong(3, earning.getTransactionId());
                         statement.setLong(4, earning.getBudgetId());
                         statement.setTimestamp(5, earning.getEarningDate());
                         statement.setBigDecimal(6, earning.getEarningAmount());

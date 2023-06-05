@@ -26,9 +26,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/**
- * The type Planning cost controller.
- */
+/** The type Planning cost controller. */
 public class PlanningCostController implements Initializable {
     @FXML private TableView<PlanningCost> planningCostTable;
     @FXML private TextField userId;
@@ -40,9 +38,7 @@ public class PlanningCostController implements Initializable {
 
     private final PlanningCostService planningCostService = new PlanningCostService();
 
-    /**
-     * Create planning cost.
-     */
+    /** Create planning cost. */
     @FXML
     public void createPlanningCost() {
         try {
@@ -72,9 +68,7 @@ public class PlanningCostController implements Initializable {
         }
     }
 
-    /**
-     * Update planning cost.
-     */
+    /** Update planning cost. */
     @FXML
     public void updatePlanningCost() {
         try {
@@ -110,9 +104,7 @@ public class PlanningCostController implements Initializable {
         }
     }
 
-    /**
-     * Delete planning cost.
-     */
+    /** Delete planning cost. */
     @FXML
     public void deletePlanningCost() {
         PlanningCost selectedPlanningCost = planningCostTable.getSelectionModel().getSelectedItem();
@@ -126,9 +118,7 @@ public class PlanningCostController implements Initializable {
         }
     }
 
-    /**
-     * Search planning cost.
-     */
+    /** Search planning cost. */
     @FXML
     void searchPlanningCost() {
         try {
@@ -225,9 +215,7 @@ public class PlanningCostController implements Initializable {
         return variableName.toString();
     }
 
-    /**
-     * Instantiates a new Planning cost controller.
-     */
+    /** Instantiates a new Planning cost controller. */
     public PlanningCostController() {}
 
     /**

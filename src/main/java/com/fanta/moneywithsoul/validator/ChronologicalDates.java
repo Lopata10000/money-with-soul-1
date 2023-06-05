@@ -4,9 +4,7 @@ import java.lang.annotation.*;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-/**
- * The interface Chronological dates.
- */
+/** The interface Chronological dates. */
 @Documented
 @Constraint(validatedBy = ChronologicalDatesValidator.class)
 @Target({ElementType.FIELD, ElementType.TYPE})
@@ -47,9 +45,7 @@ public @interface ChronologicalDates {
      */
     String endDate();
 
-    /**
-     * The interface List.
-     */
+    /** The interface List. */
     @Target({})
     @Retention(RetentionPolicy.RUNTIME)
     @Documented

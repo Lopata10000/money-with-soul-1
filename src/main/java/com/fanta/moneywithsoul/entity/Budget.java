@@ -17,9 +17,7 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-/**
- * The type Budget.
- */
+/** The type Budget. */
 @Entity
 @Table(name = "budgets")
 public class Budget {
@@ -57,9 +55,7 @@ public class Budget {
     @Column(name = "amount")
     private BigDecimal amount;
 
-    /**
-     * Instantiates a new Budget.
-     */
+    /** Instantiates a new Budget. */
     public Budget() {}
 
     /**
@@ -192,12 +188,12 @@ public class Budget {
     /**
      * Instantiates a new Budget.
      *
-     * @param budgetId  the budget id
-     * @param userId    the user id
-     * @param name      the name
+     * @param budgetId the budget id
+     * @param userId the user id
+     * @param name the name
      * @param startDate the start date
-     * @param endDate   the end date
-     * @param amount    the amount
+     * @param endDate the end date
+     * @param amount the amount
      */
     public Budget(
             Long budgetId,

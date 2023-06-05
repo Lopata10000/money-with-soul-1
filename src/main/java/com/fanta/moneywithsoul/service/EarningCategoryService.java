@@ -4,15 +4,11 @@ import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
 import com.fanta.moneywithsoul.entity.EarningCategory;
 import java.util.List;
 
-/**
- * The type Earning category service.
- */
+/** The type Earning category service. */
 public class EarningCategoryService implements ServiceInterface<EarningCategory> {
     private final EarningCategoryDAO earningCategoryDAO;
 
-    /**
-     * Instantiates a new Earning category service.
-     */
+    /** Instantiates a new Earning category service. */
     public EarningCategoryService() {
         earningCategoryDAO = new EarningCategoryDAO();
     }
@@ -28,17 +24,6 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
             }
         }
         return earningCategoryDAO.findById(earningCategoryId);
-    }
-    public List<EarningCategory> getByUser(Long earningCategoryId) {
-        if (earningCategoryId == null || earningCategoryId <= 0) {
-            showErrorMessage("Недійсний ідентифікатор користувача");
-        } else {
-            EarningCategory earningCategory = earningCategoryDAO.findById(earningCategoryId);
-            if (earningCategory == null) {
-                showErrorMessage("Категорії прибутку за таким користувачем");
-            }
-        }
-        return earningCategoryDAO.findByUser(earningCategoryId);
     }
 
     @Override
@@ -76,7 +61,7 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
     /**
      * Update earning category earning category.
      *
-     * @param earningCategoryId   the earning category id
+     * @param earningCategoryId the earning category id
      * @param earningCategoryName the earning category name
      * @return the earning category
      */

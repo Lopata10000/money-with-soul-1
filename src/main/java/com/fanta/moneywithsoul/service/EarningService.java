@@ -6,15 +6,11 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * The type Earning service.
- */
+/** The type Earning service. */
 public class EarningService implements ServiceInterface<Earning> {
     private final EarningDAO earningDAO;
 
-    /**
-     * Instantiates a new Earning service.
-     */
+    /** Instantiates a new Earning service. */
     public EarningService() {
         earningDAO = new EarningDAO();
     }
@@ -31,7 +27,8 @@ public class EarningService implements ServiceInterface<Earning> {
         }
         return earningDAO.findById(earningId);
     }
-    public  List<Earning> getByUser(Long userId) {
+
+    public List<Earning> getByUser(Long userId, Long budgetId) {
         if (userId == null || userId <= 0) {
             showErrorMessage("Недійсний ідентифікатор прибутку");
         } else {
@@ -40,8 +37,9 @@ public class EarningService implements ServiceInterface<Earning> {
                 showErrorMessage("Прибуку з таким ідентифікатором не знайдено");
             }
         }
-        return earningDAO.findByUser(userId);
+        return earningDAO.searchEarningsByUserAndBudget(userId, budgetId);
     }
+
     @Override
     public List<Earning> getAll() {
         return earningDAO.findAll();
@@ -76,20 +74,18 @@ public class EarningService implements ServiceInterface<Earning> {
     /**
      * Update earning earning.
      *
-     * @param earningId         the earning id
-     * @param userId            the user id
+     * @param earningId the earning id
+     * @param userId the user id
      * @param earningCategoryId the earning category id
-     * @param transactionId     the transaction id
-     * @param budgetId          the budget id
-     * @param earningDate       the earning date
-     * @param earningAmount     the earning amount
+     * @param budgetId the budget id
+     * @param earningDate the earning date
+     * @param earningAmount the earning amount
      * @return the earning
      */
     public Earning updateEarning(
             Long earningId,
             Long userId,
             Long earningCategoryId,
-            Long transactionId,
             Long budgetId,
             Timestamp earningDate,
             BigDecimal earningAmount) {
@@ -97,7 +93,6 @@ public class EarningService implements ServiceInterface<Earning> {
         earning.setEarningId(earningId);
         earning.setUserId(userId);
         earning.setEarningCategoryId(earningCategoryId);
-        earning.setTransactionId(transactionId);
         earning.setBudgetId(budgetId);
         earning.setEarningDate(earningDate);
         earning.setEarningAmount(earningAmount);
@@ -107,25 +102,22 @@ public class EarningService implements ServiceInterface<Earning> {
     /**
      * Save earning earning.
      *
-     * @param userId            the user id
+     * @param userId the user id
      * @param earningCategoryId the earning category id
-     * @param transactionId     the transaction id
-     * @param budgetId          the budget id
-     * @param earningDate       the earning date
-     * @param earningAmount     the earning amount
+     * @param budgetId the budget id
+     * @param earningDate the earning date
+     * @param earningAmount the earning amount
      * @return the earning
      */
     public Earning saveEarning(
             Long userId,
             Long earningCategoryId,
-            Long transactionId,
             Long budgetId,
             Timestamp earningDate,
             BigDecimal earningAmount) {
         Earning earning = new Earning();
         earning.setUserId(userId);
         earning.setEarningCategoryId(earningCategoryId);
-        earning.setTransactionId(transactionId);
         earning.setBudgetId(budgetId);
         earning.setEarningDate(earningDate);
         earning.setEarningAmount(earningAmount);

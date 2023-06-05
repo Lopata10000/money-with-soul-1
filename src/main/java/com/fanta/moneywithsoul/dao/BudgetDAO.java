@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The type Budget dao.
- */
+/** The type Budget dao. */
 public class BudgetDAO extends BaseDAO implements DAO<Budget> {
 
     @Override
@@ -36,15 +34,16 @@ public class BudgetDAO extends BaseDAO implements DAO<Budget> {
         }
         return budget;
     }
-    public Budget findByUser(Long userId) {
-        Budget budget = null;
-        try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT * FROM budgets WHERE user_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
+
+    public List<Budget> findByUser(Long userId) {
+        List<Budget> budgets = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM budgets WHERE user_id = ?")) {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                budget =
+            while (resultSet.next()) {
+                Budget budget =
                         new Budget(
                                 resultSet.getLong("budget_id"),
                                 resultSet.getLong("user_id"),
@@ -52,12 +51,14 @@ public class BudgetDAO extends BaseDAO implements DAO<Budget> {
                                 resultSet.getTimestamp("start_date"),
                                 resultSet.getTimestamp("end_date"),
                                 resultSet.getBigDecimal("amount"));
+                budgets.add(budget);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
-        return budget;
+        return budgets;
     }
+
     @Override
     public List<Budget> findAll() {
         List<Budget> budgets = new ArrayList<>();

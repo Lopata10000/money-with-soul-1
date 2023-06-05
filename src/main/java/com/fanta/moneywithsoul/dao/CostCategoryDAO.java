@@ -8,9 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * The type Cost category dao.
- */
+/** The type Cost category dao. */
 public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCategory> {
 
     @Override
@@ -31,24 +29,8 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
         }
         return costCategory;
     }
-    public List<CostCategory> findByUser(Long userId) {
-        List<CostCategory> costCategories = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM cost_categories")) {
-            statement.setLong(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                CostCategory costCategory = new CostCategory();
-                costCategory.setCostCategoryId(resultSet.getLong("cost_category_id"));
-                costCategory.setCostCategoryName(resultSet.getString("cost_category_name"));
-                costCategories.add(costCategory);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return costCategories;
-    }
+
+
     @Override
     public List<CostCategory> findAll() {
         List<CostCategory> costCategories = new ArrayList<>();

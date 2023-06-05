@@ -6,9 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
+<?import com.jfoenix.controls.JFXButton?>
+<VBox xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostCategoryController"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostNodeController"
+      styleClass="rounded-stackpane-main" spacing="10">
+    <Label fx:id="nameCostCategoryLabel" styleClass="label-info" style="-fx-padding: 0 20 0 20;"/>
 
-</AnchorPane>
+    <StackPane>
+        <JFXButton fx:id="deleteCostCategoryButton"  onAction="#deleteCostCategory" mnemonicParsing="false" text="Delete" styleClass="jfx-button-item" />
+    </StackPane>
+</VBox>

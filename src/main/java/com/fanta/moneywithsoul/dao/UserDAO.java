@@ -3,7 +3,6 @@ package com.fanta.moneywithsoul.dao;
 import com.fanta.moneywithsoul.database.Hibernate;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.enumrole.UserRole;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +12,7 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-/**
- * The type User dao.
- */
+/** The type User dao. */
 public class UserDAO extends BaseDAO<User> implements DAO<User> {
 
     @Override
@@ -36,7 +33,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                                 resultSet.getString("email"),
                                 resultSet.getString("password_hash"),
                                 resultSet.getTimestamp("registered_at"),
-                               userStatus);
+                                userStatus);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,6 +63,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         }
         return false;
     }
+
     public boolean existsByEmailUpdate(String email) {
         try (Connection connection = dataSource.getConnection()) {
             String query = "SELECT COUNT(*) FROM users WHERE email = ?";
@@ -82,6 +80,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         }
         return false;
     }
+
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
@@ -99,7 +98,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                                 resultSet.getString("email"),
                                 resultSet.getString("password_hash"),
                                 resultSet.getTimestamp("registered_at"),
-                               userStatus);
+                                userStatus);
                 users.add(user);
             }
         } catch (SQLException e) {
@@ -158,7 +157,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
     /**
      * Find user by email and password user.
      *
-     * @param email    the email
+     * @param email the email
      * @param password the password
      * @return the user
      */

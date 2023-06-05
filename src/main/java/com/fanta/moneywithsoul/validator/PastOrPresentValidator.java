@@ -4,9 +4,7 @@ import java.sql.Timestamp;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/**
- * The type Past or present validator.
- */
+/** The type Past or present validator. */
 public class PastOrPresentValidator implements ConstraintValidator<PastOrPresentDate, Timestamp> {
 
     @Override

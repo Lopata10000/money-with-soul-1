@@ -9,44 +9,96 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Design">
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Budget">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/PropertiesLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCost2.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/migration/V3__seed_data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/money_with_soul_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/money_with_soul_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/authentication/AuthorizationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/authentication/AuthorizationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/authentication/RegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/authentication/RegistrationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/main/LeftController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/main/LeftController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/main/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/main/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/BudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/BudgetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/CostCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/CostCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/CostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/CostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/EarningCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/EarningCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/EarningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/EarningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/ExchangeRateController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/PlanningCostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/PlanningCostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/TransactionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/LeftListUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/LeftListUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetNodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetNodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostCategoryNodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostNodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostNodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningNodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningNodeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BudgetDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/BudgetDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostCategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostCategoryDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningCategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningCategoryDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/EarningDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/ExchangeRateDAO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/PlanningCostDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/PlanningCostDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/TransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/TransactionDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/DataBaseConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/DataBaseConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/Hibernate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/Hibernate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/MigrationFlyway.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/MigrationFlyway.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/PoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/PoolConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Budget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Budget.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Cost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Cost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/CostCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/CostCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Earning.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Earning.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/EarningCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/EarningCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/ExchangeRate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/PlanningCost.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/PlanningCost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Transaction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/BudgetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/BudgetService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/CostCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/CostCategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/CostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/CostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningCategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningCategoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/EarningService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ExchangeRateService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/PlanningCostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/PlanningCostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/TransactionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/TransactionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/TransactionService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDates.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDates.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDatesValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/ChronologicalDatesValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OnlyLetters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OnlyLetters.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OnlyLettersValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OnlyLettersValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OrFutureDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OrFutureDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OrFutureValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/OrFutureValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/validator/PastOrPresentValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/BudgetTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/BudgetTable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/CostCategoryTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/CostCategoryTable.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/CostTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/CostTable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/EarningCategoryTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/EarningCategoryTable.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/EarningTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/EarningTable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/ExchangeRateTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/ExchangeRateTable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/PlanningCostTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/PlanningCostTable.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/TransactionTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/TransactionTable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/ExchangeRateTable.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/database/TransactionTable.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/main/LeftListAdmin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/main/LeftListAdmin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/main/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/main/Main.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/LeftListUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/LeftListUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudget.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgetMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgetMain.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCost.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCost.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCostCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCostCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserEarning.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserEarning.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserEarningCategory.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserEarningCategory.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +155,7 @@
     "last_opened_file_path": "C:/Users/fanta/IdeaProjects/money-with-soul/src/main/resources/com/fanta/money-with-soul/fxml/useractions",
     "list.type.of.created.stylesheet": "CSS",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
+    "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.4",
     "run.code.analysis.last.selected.profile": "pProject Default",
@@ -127,10 +179,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul\fxml\useractions" />
+      <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\db\migration" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul\fxml\main" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul" />
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\java\com\fanta\moneywithsoul\controller" />
-      <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fanta\IdeaProjects\money-with-soul\src\main\resources\com\fanta\money-with-soul\fxml\useractions" />
@@ -241,7 +293,8 @@
       <workItem from="1685541095875" duration="1818000" />
       <workItem from="1685556006623" duration="8000" />
       <workItem from="1685557223919" duration="605000" />
-      <workItem from="1685773588733" duration="59036000" />
+      <workItem from="1685773588733" duration="69934000" />
+      <workItem from="1685920396583" duration="20289000" />
     </task>
     <task id="LOCAL-00001" summary="Hibernate">
       <created>1683640914215</created>
@@ -390,7 +443,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685880240739</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Budget">
+      <created>1685909367923</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1685909367923</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -463,7 +523,8 @@
     <MESSAGE value="Test" />
     <MESSAGE value="Well done" />
     <MESSAGE value="Design" />
-    <option name="LAST_COMMIT_MESSAGE" value="Design" />
+    <MESSAGE value="Budget" />
+    <option name="LAST_COMMIT_MESSAGE" value="Budget" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

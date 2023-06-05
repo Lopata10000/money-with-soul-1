@@ -9,6 +9,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
 <Pane id="leftController" styleClass="rounded-pane-left" fx:controller="com.fanta.moneywithsoul.controller.useractions.LeftListUserController" prefWidth="242.0" style="-fx-background-color: rgb(7, 7, 7, 0.3);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <stylesheets>
       <URL value="@/com/fanta/money-with-soul/css/styles.css" />
@@ -46,12 +47,13 @@
                </children>
             </VBox>
             <VBox spacing="10.0">
-               <JFXButton styleClass="jfx-button-fab" fx:id="userBudgetsButton" onAction="#userBudgets" prefWidth="150.0" text="Budgets">
-                  <font>
-                     <Font name="MS Outlook" size="16.0" />
-                  </font>
-               </JFXButton>
-               <JFXButton styleClass="jfx-button-fab" fx:id="userCostsButton"   prefWidth="150.0" text="Costs">
+               <ComboBox fx:id="budgetsListComboBox" onAction="#userBudgets" promptText="Budget" styleClass="combo-box">
+                  <items>
+
+                  </items>
+
+               </ComboBox>
+               <JFXButton styleClass="jfx-button-fab" fx:id="userCostsButton" onAction="#userCost"   prefWidth="150.0" text="Costs">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
                   </font>

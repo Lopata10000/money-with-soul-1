@@ -4,13 +4,9 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 
-/**
- * The type Pool config.
- */
+/** The type Pool config. */
 public class PoolConfig implements DataBaseConfig {
-    /**
-     * The constant dataSource.
-     */
+    /** The constant dataSource. */
     public static final HikariDataSource dataSource;
 
     static {
@@ -20,7 +16,7 @@ public class PoolConfig implements DataBaseConfig {
         pullConfiguration.setPassword(password);
         pullConfiguration.setMaximumPoolSize(10);
         pullConfiguration.setConnectionTimeout(5000);
-        pullConfiguration.setMaxLifetime(1800000);
+        pullConfiguration.setMaxLifetime(18000000);
         pullConfiguration.setPoolName("money-with-soul Pool");
         dataSource = new HikariDataSource(pullConfiguration);
     }

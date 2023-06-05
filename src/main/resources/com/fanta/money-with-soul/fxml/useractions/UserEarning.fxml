@@ -14,7 +14,4 @@
     <Label fx:id="earningCategoryLabel" styleClass="label-info" style="-fx-padding: 0 20 0 20;"/>
     <Label fx:id="earningDateLabel" styleClass="label-info"/>
     <Label fx:id="earningAmountLabel" styleClass="label-info"/>
-    <StackPane>
-        <JFXButton fx:id="editEarningButton" mnemonicParsing="false" text="edit" styleClass="jfx-button-item" />
-    </StackPane>
 </VBox>

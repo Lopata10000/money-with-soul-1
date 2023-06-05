@@ -15,9 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 
-/**
- * The type Planning cost.
- */
+/** The type Planning cost. */
 @Entity
 @Table(name = "planning_costs")
 public class PlanningCost {
@@ -229,12 +227,12 @@ public class PlanningCost {
     /**
      * Instantiates a new Planning cost.
      *
-     * @param planningCostId   the planning cost id
-     * @param userId           the user id
-     * @param costCategoryId   the cost category id
+     * @param planningCostId the planning cost id
+     * @param userId the user id
+     * @param costCategoryId the cost category id
      * @param planningCostDate the planning cost date
-     * @param budgetId         the budget id
-     * @param plannedAmount    the planned amount
+     * @param budgetId the budget id
+     * @param plannedAmount the planned amount
      */
     public PlanningCost(
             Long planningCostId,
@@ -251,8 +249,6 @@ public class PlanningCost {
         this.plannedAmount = plannedAmount;
     }
 
-    /**
-     * Instantiates a new Planning cost.
-     */
+    /** Instantiates a new Planning cost. */
     public PlanningCost() {}
 }

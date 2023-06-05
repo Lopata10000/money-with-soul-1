@@ -2,19 +2,13 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
-import com.fanta.moneywithsoul.entity.EarningCategory;
-
 import java.util.List;
 
-/**
- * The type Cost category service.
- */
+/** The type Cost category service. */
 public class CostCategoryService implements ServiceInterface<CostCategory> {
     private final CostCategoryDAO costCategoryDAO;
 
-    /**
-     * Instantiates a new Cost category service.
-     */
+    /** Instantiates a new Cost category service. */
     public CostCategoryService() {
         costCategoryDAO = new CostCategoryDAO();
     }
@@ -31,17 +25,7 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
         }
         return costCategoryDAO.findById(costCategoryId);
     }
-    public List<CostCategory> getByUser(Long userId) {
-        if (userId == null || userId <= 0) {
-            showErrorMessage("Недійсний ідентифікатор користувача");
-        } else {
-            CostCategory costCategory = costCategoryDAO.findById(userId);
-            if (costCategory == null) {
-                showErrorMessage("Категорії витрат за таким користувача не знайдено");
-            }
-        }
-        return costCategoryDAO.findByUser(userId);
-    }
+
     @Override
     public List<CostCategory> getAll() {
         return costCategoryDAO.findAll();
@@ -76,7 +60,7 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
     /**
      * Update cost category cost category.
      *
-     * @param costCategoryId   the cost category id
+     * @param costCategoryId the cost category id
      * @param costCategoryName the cost category name
      * @return the cost category
      */

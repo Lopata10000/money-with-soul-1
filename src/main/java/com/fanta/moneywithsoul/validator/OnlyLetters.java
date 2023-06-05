@@ -4,9 +4,7 @@ import java.lang.annotation.*;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-/**
- * The interface Only letters.
- */
+/** The interface Only letters. */
 @Documented
 @Constraint(validatedBy = OnlyLettersValidator.class)
 @Target({ElementType.FIELD, ElementType.PARAMETER})

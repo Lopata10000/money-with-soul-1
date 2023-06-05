@@ -2,19 +2,17 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostDAO;
 import com.fanta.moneywithsoul.entity.Cost;
+import com.fanta.moneywithsoul.entity.CostCategory;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * The type Cost service.
- */
+/** The type Cost service. */
 public class CostService implements ServiceInterface<Cost> {
     private CostDAO costDAO;
 
-    /**
-     * Instantiates a new Cost service.
-     */
+    /** Instantiates a new Cost service. */
     public CostService() {
         costDAO = new CostDAO();
     }
@@ -31,17 +29,15 @@ public class CostService implements ServiceInterface<Cost> {
         }
         return costDAO.findById(costId);
     }
-    public List<Cost> getByUser(Long userId) {
-        if (userId == null || userId <= 0) {
-            showErrorMessage("Недійсний ідентифікатор користувача");
-        } else {
-            Cost cost = costDAO.findById(userId);
-            if (cost == null) {
-                showErrorMessage("Витрати за таким користувачем");
-            }
-        }
-        return costDAO.findByUser(userId);
+
+    public List<Cost> getByUser(Long userId, Long budgerId) {
+        Cost cost = costDAO.findById(userId);
+        return costDAO.searchCostsByUserAndBudget(userId, budgerId);
     }
+    public List<CostCategory> searchUniqueCostCategoriesByUser(Long userId) {
+        return costDAO.searchUniqueCostCategoriesByUserAndBudget(userId);
+    }
+
     @Override
     public List<Cost> getAll() {
         return costDAO.findAll();
@@ -76,12 +72,11 @@ public class CostService implements ServiceInterface<Cost> {
     /**
      * Save cost cost.
      *
-     * @param userId          the user id
-     * @param costCategoryId  the cost category id
-     * @param budgetId        the budget id
-     * @param transactionId   the transaction id
-     * @param costDate        the cost date
-     * @param costAmount      the cost amount
+     * @param userId the user id
+     * @param costCategoryId the cost category id
+     * @param budgetId the budget id
+     * @param costDate the cost date
+     * @param costAmount the cost amount
      * @param costDescription the cost description
      * @return the cost
      */
@@ -89,7 +84,6 @@ public class CostService implements ServiceInterface<Cost> {
             Long userId,
             Long costCategoryId,
             Long budgetId,
-            Long transactionId,
             Timestamp costDate,
             BigDecimal costAmount,
             String costDescription) {
@@ -97,7 +91,6 @@ public class CostService implements ServiceInterface<Cost> {
         cost.setUserId(userId);
         cost.setCostCategoryId(costCategoryId);
         cost.setBudgetId(budgetId);
-        cost.setTransactionId(transactionId);
         cost.setCostDate(costDate);
         cost.setCostAmount(costAmount);
         cost.setCostDescription(costDescription);
@@ -107,13 +100,12 @@ public class CostService implements ServiceInterface<Cost> {
     /**
      * Update cost cost.
      *
-     * @param costId          the cost id
-     * @param userId          the user id
-     * @param costCategoryId  the cost category id
-     * @param budgetId        the budget id
-     * @param transactionId   the transaction id
-     * @param costDate        the cost date
-     * @param costAmount      the cost amount
+     * @param costId the cost id
+     * @param userId the user id
+     * @param costCategoryId the cost category id
+     * @param budgetId the budget id
+     * @param costDate the cost date
+     * @param costAmount the cost amount
      * @param costDescription the cost description
      * @return the cost
      */
@@ -122,7 +114,6 @@ public class CostService implements ServiceInterface<Cost> {
             Long userId,
             Long costCategoryId,
             Long budgetId,
-            Long transactionId,
             Timestamp costDate,
             BigDecimal costAmount,
             String costDescription) {
@@ -131,7 +122,6 @@ public class CostService implements ServiceInterface<Cost> {
         cost.setUserId(userId);
         cost.setCostCategoryId(costCategoryId);
         cost.setBudgetId(budgetId);
-        cost.setTransactionId(transactionId);
         cost.setCostDate(costDate);
         cost.setCostAmount(costAmount);
         cost.setCostDescription(costDescription);

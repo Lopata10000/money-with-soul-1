@@ -3,9 +3,7 @@ package com.fanta.moneywithsoul.validator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/**
- * The type Only letters validator.
- */
+/** The type Only letters validator. */
 public class OnlyLettersValidator implements ConstraintValidator<OnlyLetters, String> {
 
     @Override

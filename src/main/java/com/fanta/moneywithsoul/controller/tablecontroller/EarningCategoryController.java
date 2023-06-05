@@ -22,18 +22,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.hibernate.exception.ConstraintViolationException;
 
-/**
- * The type Earning category controller.
- */
+/** The type Earning category controller. */
 public class EarningCategoryController implements Initializable {
     @FXML private TableView<EarningCategory> earningCategoryTable;
     @FXML private TextField earningCategoryName;
     @FXML private TextField findByIdField;
     private final EarningCategoryService earningCategoryService = new EarningCategoryService();
 
-    /**
-     * Create earning category.
-     */
+    /** Create earning category. */
     @FXML
     public void createEarningCategory() {
         try {
@@ -48,9 +44,7 @@ public class EarningCategoryController implements Initializable {
         }
     }
 
-    /**
-     * Update earning category.
-     */
+    /** Update earning category. */
     @FXML
     public void updateEarningCategory() {
         try {
@@ -70,9 +64,7 @@ public class EarningCategoryController implements Initializable {
         }
     }
 
-    /**
-     * Delete earning category.
-     */
+    /** Delete earning category. */
     @FXML
     public void deleteEarningCategory() {
         EarningCategory selectedEarningCategory =
@@ -87,9 +79,7 @@ public class EarningCategoryController implements Initializable {
         }
     }
 
-    /**
-     * Search earning category.
-     */
+    /** Search earning category. */
     @FXML
     void searchEarningCategory() {
         try {
@@ -181,9 +171,7 @@ public class EarningCategoryController implements Initializable {
         return variableName.toString();
     }
 
-    /**
-     * Instantiates a new Earning category controller.
-     */
+    /** Instantiates a new Earning category controller. */
     public EarningCategoryController() {}
 
     /**

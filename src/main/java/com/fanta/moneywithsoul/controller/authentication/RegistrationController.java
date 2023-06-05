@@ -5,7 +5,6 @@ import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.enumrole.UserRole;
 import com.fanta.moneywithsoul.service.UserService;
 import com.fanta.moneywithsoul.validator.Message;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -13,15 +12,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/**
- * The type Registration controller.
- */
+/** The type Registration controller. */
 public class RegistrationController extends Message implements Initializable {
     private MainController mainController;
 
-    /**
-     * Instantiates a new Registration controller.
-     */
+    /** Instantiates a new Registration controller. */
     public RegistrationController() {}
 
     /**
@@ -42,9 +37,7 @@ public class RegistrationController extends Message implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
 
-    /**
-     * Create user.
-     */
+    /** Create user. */
     public void createUser() {
 
         User user =
@@ -58,8 +51,9 @@ public class RegistrationController extends Message implements Initializable {
         if (user != null) {
             successfulUserAuthorization();
         }
-    }    public void successfulUserAuthorization()
-    {
+    }
+
+    public void successfulUserAuthorization() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Успіх");
         alert.setHeaderText("Успішний вхід!");

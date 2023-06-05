@@ -5,21 +5,16 @@ import static com.fanta.moneywithsoul.database.DataBaseConfig.password;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.enumrole.UserRole;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-/**
- * The type User service.
- */
+/** The type User service. */
 public class UserService implements ServiceInterface<User> {
     private final UserDAO userDAO;
 
-    /**
-     * Instantiates a new User service.
-     */
+    /** Instantiates a new User service. */
     public UserService() {
         userDAO = new UserDAO();
     }
@@ -96,11 +91,11 @@ public class UserService implements ServiceInterface<User> {
     /**
      * Update user user.
      *
-     * @param userId     the user id
-     * @param firstName  the first name
-     * @param lastName   the last name
-     * @param email      the email
-     * @param password   the password
+     * @param userId the user id
+     * @param firstName the first name
+     * @param lastName the last name
+     * @param email the email
+     * @param password the password
      * @param userStatus the user status
      * @return the user
      */
@@ -125,10 +120,10 @@ public class UserService implements ServiceInterface<User> {
     /**
      * Save user user.
      *
-     * @param firstName  the first name
-     * @param lastName   the last name
-     * @param email      the email
-     * @param password   the password
+     * @param firstName the first name
+     * @param lastName the last name
+     * @param email the email
+     * @param password the password
      * @param userStatus the user status
      * @return the user
      */

@@ -39,7 +39,7 @@ public interface ServiceInterface<T> {
     /**
      * Update.
      *
-     * @param id     the id
+     * @param id the id
      * @param entity the entity
      */
     void update(Long id, T entity);
@@ -77,7 +77,7 @@ public interface ServiceInterface<T> {
     /**
      * Validate and update.
      *
-     * @param id     the id
+     * @param id the id
      * @param object the object
      */
     default void validateAndUpdate(Long id, T object) {

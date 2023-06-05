@@ -30,16 +30,6 @@
                   </ImageView>
                   <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../images/Transaction.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/ExchangeRate.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../../images/Costs.png" />
                      </image>
                   </ImageView>
@@ -77,16 +67,6 @@
                   </font>
                </JFXButton>
                <JFXButton styleClass="jfx-button-fab" fx:id="budgetsTableButton"  onAction="#budgetTable" prefWidth="150.0" text="Budgets">
-                  <font>
-                     <Font name="MS Outlook" size="16.0" />
-                  </font>
-               </JFXButton>
-               <JFXButton styleClass="jfx-button-fab" fx:id="transactionsTableButton" onAction="#transactionsTable" prefWidth="150.0" text="Transactions">
-                  <font>
-                     <Font name="MS Outlook" size="16.0" />
-                  </font>
-               </JFXButton>
-               <JFXButton styleClass="jfx-button-fab" fx:id="exchangeRateTableButton"  onAction="#exchangeRateTable" prefWidth="150.0" text="Exchange Rate">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
                   </font>

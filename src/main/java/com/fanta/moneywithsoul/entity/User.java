@@ -15,12 +15,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-/**
- * The type User.
- */
+/** The type User. */
 @Entity
 @Table(name = "users")
 public class User {
@@ -55,7 +52,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_status")
-    private UserRole userStatus =UserRole.active;
+    private UserRole userStatus = UserRole.active;
 
     /**
      * Gets user id.
@@ -156,9 +153,7 @@ public class User {
         return registeredAt;
     }
 
-    /**
-     * Sets registered at.
-     */
+    /** Sets registered at. */
     public void setRegisteredAt() {
         this.registeredAt = Timestamp.valueOf(LocalDateTime.now());
     }
@@ -184,13 +179,13 @@ public class User {
     /**
      * Instantiates a new User.
      *
-     * @param userId       the user id
-     * @param firstName    the first name
-     * @param lastName     the last name
-     * @param email        the email
+     * @param userId the user id
+     * @param firstName the first name
+     * @param lastName the last name
+     * @param email the email
      * @param passwordHash the password hash
      * @param registeredAt the registered at
-     * @param userStatus   the user status
+     * @param userStatus the user status
      */
     public User(
             Long userId,
@@ -209,8 +204,6 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    /**
-     * Instantiates a new User.
-     */
+    /** Instantiates a new User. */
     public User() {}
 }

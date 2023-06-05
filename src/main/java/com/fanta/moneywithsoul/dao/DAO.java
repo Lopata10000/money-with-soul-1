@@ -33,7 +33,7 @@ public interface DAO<T> {
     /**
      * Update.
      *
-     * @param id     the id
+     * @param id the id
      * @param entity the entity
      */
     void update(Long id, T entity);

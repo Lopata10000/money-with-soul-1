@@ -2,19 +2,17 @@ package com.fanta.moneywithsoul.controller.useractions;
 
 import com.fanta.moneywithsoul.controller.main.MainController;
 
-public class UserCostCategoryController {
+public class UserCostCategoryNodeController {
     private MainController mainController;
-    public UserCostCategoryController(MainController mainController) {
+
+    public UserCostCategoryNodeController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    /**
-     * Instantiates a new Left controller.
-     */
-    public UserCostCategoryController() {}
+    /** Instantiates a new Left controller. */
+    public UserCostCategoryNodeController() {}
+
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
-
-
 }

@@ -6,46 +6,27 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-/**
- * The type Left controller.
- */
+/** The type Left controller. */
 public class LeftController implements Initializable {
-    /**
-     * The Back button.
-     */
+    /** The Back button. */
     @FXML JFXButton backButton;
-    /**
-     * The Users table button.
-     */
+    /** The Users table button. */
     @FXML JFXButton usersTableButton;
-    /**
-     * The Transactions table button.
-     */
+    /** The Transactions table button. */
     @FXML JFXButton transactionsTableButton;
-    /**
-     * The Costs table button.
-     */
+    /** The Costs table button. */
     @FXML JFXButton costsTableButton;
-    /**
-     * The Planing costs table button.
-     */
+    /** The Planing costs table button. */
     @FXML JFXButton planingCostsTableButton;
-    /**
-     * The Earning category table button.
-     */
+    /** The Earning category table button. */
     @FXML JFXButton earningCategoryTableButton;
-    /**
-     * The Earning table button.
-     */
+    /** The Earning table button. */
     @FXML JFXButton earningTableButton;
-    /**
-     * The Cost category table button.
-     */
+    /** The Cost category table button. */
     @FXML JFXButton costCategoryTableButton;
-    /**
-     * The Exchange rate table button.
-     */
+    /** The Exchange rate table button. */
     @FXML JFXButton exchangeRateTableButton;
+
     private MainController mainController; // Додано приватне поле mainController
 
     /**
@@ -57,9 +38,7 @@ public class LeftController implements Initializable {
         this.mainController = mainController;
     }
 
-    /**
-     * Instantiates a new Left controller.
-     */
+    /** Instantiates a new Left controller. */
     public LeftController() {}
 
     @Override
@@ -67,9 +46,7 @@ public class LeftController implements Initializable {
         backButton.setOnAction(event -> backToMainWindow());
     }
 
-    /**
-     * Back to main window.
-     */
+    /** Back to main window. */
     public void backToMainWindow() {
         mainController.mainWindow();
     }
@@ -83,65 +60,38 @@ public class LeftController implements Initializable {
         this.mainController = mainController;
     }
 
-    /**
-     * Users table.
-     */
+    /** Users table. */
     public void usersTable() {
         mainController.userWindow();
     }
 
-    /**
-     * Budget table.
-     */
+    /** Budget table. */
     public void budgetTable() {
         mainController.budgetWindow();
     }
 
-    /**
-     * Transactions table.
-     */
-    public void transactionsTable() {
-        mainController.transactionWindow();
-    }
 
-    /**
-     * Exchange rate table.
-     */
-    public void exchangeRateTable() {
-        mainController.exchangeRateWindow();
-    }
-
-    /**
-     * Costs table.
-     */
+    /** Costs table. */
     public void costsTable() {
         mainController.costWindow();
     }
 
-    /**
-     * Earning table.
-     */
+    /** Earning table. */
     public void earningTable() {
         mainController.earningWindow();
     }
 
-    /**
-     * Planing costs table.
-     */
+    /** Planing costs table. */
     public void planingCostsTable() {
         mainController.planningCostWindow();
     }
 
-    /**
-     * Cost category table.
-     */
+    /** Cost category table. */
     public void costCategoryTable() {
         mainController.costCategoryWindow();
     }
 
-    /**
-     * Earning category table.
-     */
+    /** Earning category table. */
     public void earningCategoryTable() {
         mainController.earningCategoryWindow();
     }

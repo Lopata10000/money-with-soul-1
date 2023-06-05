@@ -4,7 +4,6 @@ import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.validator.Message;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -12,23 +11,18 @@ import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/**
- * The type Authorization controller.
- */
+/** The type Authorization controller. */
 public class AuthorizationController extends Message implements Initializable {
     private MainController mainController;
 
-    @FXML
-    private TextField emailTextField;
-    @FXML
-    private TextField passwordTextField;
+    @FXML private TextField emailTextField;
+    @FXML private TextField passwordTextField;
 
     /**
      * Instantiates a new Authorization controller.
@@ -39,19 +33,13 @@ public class AuthorizationController extends Message implements Initializable {
         this.mainController = mainController;
     }
 
-    /**
-     * Instantiates a new Authorization controller.
-     */
-    public AuthorizationController() {
-    }
+    /** Instantiates a new Authorization controller. */
+    public AuthorizationController() {}
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
+    public void initialize(URL location, ResourceBundle resources) {}
 
-    /**
-     * Authorization.
-     */
+    /** Authorization. */
     @FXML
     public void authorization() {
         ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -73,10 +61,8 @@ public class AuthorizationController extends Message implements Initializable {
                             throw new RuntimeException(e);
                         }
                         Platform.runLater(
-
                                 () -> {
-                                    switch (user.getUserStatus())
-                                    {
+                                    switch (user.getUserStatus()) {
                                         case active -> successfulUserAuthorization();
                                         case admin -> successfulAdminAuthorization();
                                         case inactive -> inactiveUser();
@@ -85,7 +71,7 @@ public class AuthorizationController extends Message implements Initializable {
                     } else {
                         Platform.runLater(
                                 () -> {
-                                   failedAuthorization();
+                                    failedAuthorization();
                                 });
                     }
                 });
@@ -99,8 +85,8 @@ public class AuthorizationController extends Message implements Initializable {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
-    public void successfulUserAuthorization()
-    {
+
+    public void successfulUserAuthorization() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Успіх");
         alert.setHeaderText("Успішний вхід!");
@@ -108,8 +94,8 @@ public class AuthorizationController extends Message implements Initializable {
         alert.showAndWait();
         mainController.userActionsWindow();
     }
-    public void successfulAdminAuthorization()
-    {
+
+    public void successfulAdminAuthorization() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Успіх");
         alert.setHeaderText("Успішн авторизація");

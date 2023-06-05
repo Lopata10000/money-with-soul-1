@@ -1,14 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostController"
-            prefHeight="400.0" prefWidth="600.0">
+<StackPane prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostController">
+    <Pane styleClass="rounded-pane-main">
+        <children>
+            <Label layoutX="175.0" styleClass="label-info" text="Your Costs">
+                <font>
+                    <Font name="Jokerman" size="24.0" />
+                </font>
+            </Label>
+            <TextField fx:id="costCategoryName" layoutX="581.0" layoutY="59.0" prefWidth="275.0" promptText="Cost category name" styleClass="jfx-text-field-material">
+                <font>
+                    <Font name="MS Outlook" size="16.0" />
+                </font>
+            </TextField>
+            <Button fx:id="createCostCategoryButton" onAction="#createCostCategory" layoutX="643.0" layoutY="120.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+                <font>
+                    <Font name="MS Outlook" size="16.0" />
+                </font>
+            </Button>
+            <ComboBox fx:id="costCategoryIdComboBox" layoutX="102.0" layoutY="44.0" prefWidth="275.0" promptText="Cost category Id" styleClass="jfx-text-field-material">
+            </ComboBox>
+            <TextField fx:id="costAmount" layoutX="102.0" layoutY="88.0" prefWidth="275.0" promptText="Amount" styleClass="jfx-text-field-material">
+                <font>
+                    <Font name="MS Outlook" size="16.0" />
+                </font>
+            </TextField>
+            <TextField fx:id="costDescription" layoutX="102.0" layoutY="134.0" prefWidth="275.0" promptText="Description" styleClass="jfx-text-field-material">
+                <font>
+                    <Font name="MS Outlook" size="16.0" />
+                </font>
+            </TextField>
+            <Button fx:id="createCostButton" onAction="#createCost" layoutX="164.0" layoutY="170.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+                <font>
+                    <Font name="MS Outlook" size="16.0" />
+                </font>
+            </Button>
+            <ScrollPane layoutX="479.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="479.0" styleClass="scroll-pane">
+           <FlowPane fx:id="costCategoryBox" hgap="20" vgap="20">
+               <children>
 
-</AnchorPane>
+               </children>
+           </FlowPane>
+            </ScrollPane>
+            <ScrollPane layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="479.0" styleClass="scroll-pane">
+                <FlowPane fx:id="costBox" hgap="20" vgap="20">
+                    <children>
+
+                    </children>
+                </FlowPane>
+            </ScrollPane>
+         <Label layoutX="595.0" styleClass="label-info" text="Your Costs Category">
+            <font>
+               <Font name="Jokerman" size="24.0" />
+            </font>
+         </Label>
+        </children>
+    </Pane>
+</StackPane>

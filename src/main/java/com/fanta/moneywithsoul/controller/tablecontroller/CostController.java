@@ -26,24 +26,19 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/**
- * The type Cost controller.
- */
+/** The type Cost controller. */
 public class CostController implements Initializable {
     @FXML private TableView<Cost> costTable;
     @FXML private TextField userId;
     @FXML private TextField costCategoryId;
     @FXML private DatePicker costDate;
-    @FXML private TextField transactionId;
     @FXML private TextField budgetId;
     @FXML private TextField costAmount;
     @FXML private TextField costDescription;
     @FXML private TextField findByIdField;
     private final CostService costService = new CostService();
 
-    /**
-     * Create cost.
-     */
+    /** Create cost. */
     @FXML
     public void createCost() {
         try {
@@ -55,7 +50,6 @@ public class CostController implements Initializable {
             }
             Long costCategory = Long.valueOf(costCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
-            Long transactionID = Long.valueOf(transactionId.getText());
             Timestamp dateCost = Timestamp.valueOf(costDate.getValue().atStartOfDay());
             BigDecimal amountCost = new BigDecimal(costAmount.getText());
             String descriptionsCost = costDescription.getText();
@@ -65,7 +59,6 @@ public class CostController implements Initializable {
                             userIdLong,
                             costCategory,
                             budgetID,
-                            transactionID,
                             dateCost,
                             amountCost,
                             descriptionsCost);
@@ -76,9 +69,7 @@ public class CostController implements Initializable {
         }
     }
 
-    /**
-     * Update cost.
-     */
+    /** Update cost. */
     @FXML
     public void updateCost() {
         try {
@@ -92,7 +83,6 @@ public class CostController implements Initializable {
             }
             Long costCategory = Long.valueOf(costCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
-            Long transactionID = Long.valueOf(transactionId.getText());
             Timestamp dateCost = Timestamp.valueOf(costDate.getValue().atStartOfDay());
             BigDecimal amountCost = new BigDecimal(costAmount.getText());
             String descriptionCost = costDescription.getText();
@@ -103,7 +93,6 @@ public class CostController implements Initializable {
                             userIdLong,
                             costCategory,
                             budgetID,
-                            transactionID,
                             dateCost,
                             amountCost,
                             descriptionCost);
@@ -114,9 +103,7 @@ public class CostController implements Initializable {
         }
     }
 
-    /**
-     * Delete cost.
-     */
+    /** Delete cost. */
     @FXML
     public void deleteCost() {
         Cost selectedCost = costTable.getSelectionModel().getSelectedItem();
@@ -129,9 +116,7 @@ public class CostController implements Initializable {
         }
     }
 
-    /**
-     * Search cost.
-     */
+    /** Search cost. */
     @FXML
     void searchCost() {
         try {
@@ -183,7 +168,6 @@ public class CostController implements Initializable {
                 userId.setText(String.valueOf(selectedCost.getUserId()));
                 costCategoryId.setText(String.valueOf(selectedCost.getCostCategoryId()));
                 budgetId.setText(String.valueOf(selectedCost.getBudgetId()));
-                transactionId.setText(String.valueOf(selectedCost.getTransactionId()));
                 costDate.setValue(selectedCost.getCostDate().toLocalDateTime().toLocalDate());
                 costAmount.setText(String.valueOf(selectedCost.getCostAmount()));
                 costDescription.setText(selectedCost.getCostDescription());
@@ -227,9 +211,7 @@ public class CostController implements Initializable {
         return variableName.toString();
     }
 
-    /**
-     * Instantiates a new Cost controller.
-     */
+    /** Instantiates a new Cost controller. */
     public CostController() {}
 
     /**

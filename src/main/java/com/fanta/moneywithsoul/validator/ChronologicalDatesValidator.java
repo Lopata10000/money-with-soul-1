@@ -5,9 +5,7 @@ import java.sql.Timestamp;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/**
- * The type Chronological dates validator.
- */
+/** The type Chronological dates validator. */
 public class ChronologicalDatesValidator
         implements ConstraintValidator<ChronologicalDates, Object> {
     private String startDateFieldName;

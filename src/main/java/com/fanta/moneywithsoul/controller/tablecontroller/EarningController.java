@@ -26,15 +26,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/**
- * The type Earning controller.
- */
+/** The type Earning controller. */
 public class EarningController implements Initializable {
     @FXML private TableView<Earning> earningTable;
     @FXML private TextField userId;
     @FXML private TextField earningCategoryId;
     @FXML private DatePicker earningDate;
-    @FXML private TextField transactionId;
     @FXML private TextField budgetId;
     @FXML private TextField earningAmount;
 
@@ -42,9 +39,7 @@ public class EarningController implements Initializable {
 
     private final EarningService earningService = new EarningService();
 
-    /**
-     * Create earning.
-     */
+    /** Create earning. */
     @FXML
     public void createEarning() {
         try {
@@ -57,7 +52,6 @@ public class EarningController implements Initializable {
             Long userID = Long.valueOf(userId.getText());
             Long earningCategory = Long.valueOf(earningCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
-            Long transactionID = Long.valueOf(transactionId.getText());
             Timestamp dateEarning = Timestamp.valueOf(earningDate.getValue().atStartOfDay());
             BigDecimal amountEarning = new BigDecimal(earningAmount.getText());
 
@@ -65,7 +59,6 @@ public class EarningController implements Initializable {
                     earningService.saveEarning(
                             userID,
                             earningCategory,
-                            transactionID,
                             budgetID,
                             dateEarning,
                             amountEarning);
@@ -76,9 +69,7 @@ public class EarningController implements Initializable {
         }
     }
 
-    /**
-     * Update earning.
-     */
+    /** Update earning. */
     @FXML
     public void updateEarning() {
         try {
@@ -87,7 +78,6 @@ public class EarningController implements Initializable {
             Long userIdLong = Long.valueOf(userId.getText());
             Long earningCategory = Long.valueOf(earningCategoryId.getText());
             Long budgetID = Long.valueOf(budgetId.getText());
-            Long transactionID = Long.valueOf(transactionId.getText());
             Timestamp dateEarning = Timestamp.valueOf(earningDate.getValue().atStartOfDay());
             BigDecimal amountEarning = new BigDecimal(earningAmount.getText());
             Earning earning =
@@ -96,7 +86,6 @@ public class EarningController implements Initializable {
                             userIdLong,
                             earningCategory,
                             budgetID,
-                            transactionID,
                             dateEarning,
                             amountEarning);
             earningService.update(earningID, earning);
@@ -106,9 +95,7 @@ public class EarningController implements Initializable {
         }
     }
 
-    /**
-     * Delete earning.
-     */
+    /** Delete earning. */
     @FXML
     public void deleteEarning() {
         Earning selectedEarning = earningTable.getSelectionModel().getSelectedItem();
@@ -121,9 +108,7 @@ public class EarningController implements Initializable {
         }
     }
 
-    /**
-     * Search earning.
-     */
+    /** Search earning. */
     @FXML
     void searchEarning() {
         try {
@@ -175,7 +160,6 @@ public class EarningController implements Initializable {
                 userId.setText(String.valueOf(selectedEarning.getUserId()));
                 earningCategoryId.setText(String.valueOf(selectedEarning.getEarningCategoryId()));
                 budgetId.setText(String.valueOf(selectedEarning.getBudgetId()));
-                transactionId.setText(String.valueOf(selectedEarning.getTransactionId()));
                 earningDate.setValue(
                         selectedEarning.getEarningDate().toLocalDateTime().toLocalDate());
                 earningAmount.setText(String.valueOf(selectedEarning.getEarningAmount()));
@@ -219,9 +203,7 @@ public class EarningController implements Initializable {
         return variableName.toString();
     }
 
-    /**
-     * Instantiates a new Earning controller.
-     */
+    /** Instantiates a new Earning controller. */
     public EarningController() {}
 
     /**

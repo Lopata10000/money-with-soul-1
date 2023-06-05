@@ -6,15 +6,11 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
-/**
- * The type Budget service.
- */
+/** The type Budget service. */
 public class BudgetService implements ServiceInterface<Budget> {
     private final BudgetDAO budgetDAO;
 
-    /**
-     * Instantiates a new Budget service.
-     */
+    /** Instantiates a new Budget service. */
     public BudgetService() {
         budgetDAO = new BudgetDAO();
     }
@@ -31,7 +27,8 @@ public class BudgetService implements ServiceInterface<Budget> {
         }
         return budgetDAO.findById(budgetId);
     }
-    public Budget getByUser(Long userId) {
+
+    public List<Budget> getByUser(Long userId) {
         if (userId == null || userId <= 0) {
             showErrorMessage("Недійсний ідентифікатор користувача");
         } else {
@@ -42,6 +39,7 @@ public class BudgetService implements ServiceInterface<Budget> {
         }
         return budgetDAO.findByUser(userId);
     }
+
     @Override
     public List<Budget> getAll() {
         return budgetDAO.findAll();
@@ -77,11 +75,11 @@ public class BudgetService implements ServiceInterface<Budget> {
     /**
      * Save budget budget.
      *
-     * @param userId    the user id
-     * @param name      the name
+     * @param userId the user id
+     * @param name the name
      * @param startDate the start date
-     * @param endDate   the end date
-     * @param amount    the amount
+     * @param endDate the end date
+     * @param amount the amount
      * @return the budget
      */
     public Budget saveBudget(
@@ -98,12 +96,12 @@ public class BudgetService implements ServiceInterface<Budget> {
     /**
      * Update budget budget.
      *
-     * @param budgetId  the budget id
-     * @param userId    the user id
-     * @param name      the name
+     * @param budgetId the budget id
+     * @param userId the user id
+     * @param name the name
      * @param startDate the start date
-     * @param endDate   the end date
-     * @param amount    the amount
+     * @param endDate the end date
+     * @param amount the amount
      * @return the budget
      */
     public Budget updateBudget(

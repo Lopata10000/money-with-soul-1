@@ -1,18 +1,18 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.Cost;
+import com.fanta.moneywithsoul.entity.CostCategory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
-/**
- * The type Cost dao.
- */
+/** The type Cost dao. */
 public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
 
     @Override
@@ -29,7 +29,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                 cost.setUserId(resultSet.getLong("user_id"));
                 cost.setCostCategoryId(resultSet.getLong("cost_category_id"));
                 cost.setBudgetId(resultSet.getLong("budget_id"));
-                cost.setTransactionId(resultSet.getLong("transaction_id"));
                 cost.setCostDate(resultSet.getTimestamp("cost_date"));
                 cost.setCostAmount(resultSet.getBigDecimal("cost_amount"));
                 cost.setCostDescription(resultSet.getString("cost_description"));
@@ -39,11 +38,14 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
         }
         return cost;
     }
-    public List<Cost> findByUser(Long userId) {
+
+    public List<Cost> searchCostsByUserAndBudget(long userId, long budgetId) {
         List<Cost> costs = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM costs WHERE user_id = ?")) {
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM costs WHERE user_id = ? AND budget_id = ?")) {
             statement.setLong(1, userId);
+            statement.setLong(2, budgetId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Cost cost = new Cost();
@@ -51,7 +53,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                 cost.setUserId(resultSet.getLong("user_id"));
                 cost.setCostCategoryId(resultSet.getLong("cost_category_id"));
                 cost.setBudgetId(resultSet.getLong("budget_id"));
-                cost.setTransactionId(resultSet.getLong("transaction_id"));
                 cost.setCostDate(resultSet.getTimestamp("cost_date"));
                 cost.setCostAmount(resultSet.getBigDecimal("cost_amount"));
                 cost.setCostDescription(resultSet.getString("cost_description"));
@@ -62,6 +63,25 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
         }
         return costs;
     }
+
+    public List<CostCategory> searchUniqueCostCategoriesByUserAndBudget(long userId) {
+        List<CostCategory> costCategories = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM costs WHERE user_id = ?")) {
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                CostCategory costCategory = new CostCategory();
+                costCategory.setCostCategoryId(resultSet.getLong("cost_category_id"));
+                costCategories.add(costCategory);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return costCategories;
+    }
+
     @Override
     public List<Cost> findAll() {
         List<Cost> costs = new ArrayList<>();
@@ -74,7 +94,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                 cost.setUserId(resultSet.getLong("user_id"));
                 cost.setCostCategoryId(resultSet.getLong("cost_category_id"));
                 cost.setBudgetId(resultSet.getLong("budget_id"));
-                cost.setTransactionId(resultSet.getLong("transaction_id"));
                 cost.setCostDate(resultSet.getTimestamp("cost_date"));
                 cost.setCostAmount(resultSet.getBigDecimal("cost_amount"));
                 cost.setCostDescription(resultSet.getString("cost_description"));
@@ -100,7 +119,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                         statement.setLong(1, cost.getUserId());
                         statement.setLong(2, cost.getCostCategoryId());
                         statement.setLong(3, cost.getBudgetId());
-                        statement.setLong(4, cost.getTransactionId());
                         statement.setTimestamp(5, cost.getCostDate());
                         statement.setBigDecimal(6, cost.getCostAmount());
                         statement.setString(7, cost.getCostDescription());
@@ -125,7 +143,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                         statement.setLong(1, cost.getUserId());
                         statement.setLong(2, cost.getCostCategoryId());
                         statement.setLong(3, cost.getBudgetId());
-                        statement.setLong(4, cost.getTransactionId());
                         statement.setTimestamp(5, cost.getCostDate());
                         statement.setBigDecimal(6, cost.getCostAmount());
                         statement.setString(7, cost.getCostDescription());
