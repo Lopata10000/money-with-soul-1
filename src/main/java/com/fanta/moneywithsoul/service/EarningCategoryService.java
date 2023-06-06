@@ -15,15 +15,8 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
 
     @Override
     public EarningCategory getById(Long earningCategoryId) {
-        if (earningCategoryId == null || earningCategoryId <= 0) {
-            showErrorMessage("Недійсний ідентифікатор категорії прибутку");
-        } else {
             EarningCategory earningCategory = earningCategoryDAO.findById(earningCategoryId);
-            if (earningCategory == null) {
-                showErrorMessage("Категорії прибутку з таким ідентифікатором не знайдено");
-            }
-        }
-        return earningCategoryDAO.findById(earningCategoryId);
+            return earningCategory;
     }
 
     @Override

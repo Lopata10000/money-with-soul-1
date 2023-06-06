@@ -64,23 +64,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
         return costs;
     }
 
-    public List<CostCategory> searchUniqueCostCategoriesByUserAndBudget(long userId) {
-        List<CostCategory> costCategories = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM costs WHERE user_id = ?")) {
-            statement.setLong(1, userId);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                CostCategory costCategory = new CostCategory();
-                costCategory.setCostCategoryId(resultSet.getLong("cost_category_id"));
-                costCategories.add(costCategory);
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return costCategories;
-    }
 
     @Override
     public List<Cost> findAll() {
@@ -113,15 +96,15 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "INSERT INTO costs (user_id, cost_category_id,"
-                                                + " budget_id, transaction_id, cost_date,"
+                                                + " budget_id, cost_date,"
                                                 + " cost_amount, cost_description) VALUES (?, ?, ?,"
-                                                + " ?, ?, ?, ?)")) {
+                                                + " ?, ?, ?)")) {
                         statement.setLong(1, cost.getUserId());
                         statement.setLong(2, cost.getCostCategoryId());
                         statement.setLong(3, cost.getBudgetId());
-                        statement.setTimestamp(5, cost.getCostDate());
-                        statement.setBigDecimal(6, cost.getCostAmount());
-                        statement.setString(7, cost.getCostDescription());
+                        statement.setTimestamp(4, cost.getCostDate());
+                        statement.setBigDecimal(5, cost.getCostAmount());
+                        statement.setString(6, cost.getCostDescription());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -137,16 +120,16 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "UPDATE costs SET user_id= ?, cost_category_id = ?,"
-                                                + " budget_id = ?, transaction_id = ?, cost_date ="
+                                                + " budget_id = ?, cost_date ="
                                                 + " ?, cost_amount = ?, cost_description = ? WHERE"
                                                 + " cost_id = ?")) {
                         statement.setLong(1, cost.getUserId());
                         statement.setLong(2, cost.getCostCategoryId());
                         statement.setLong(3, cost.getBudgetId());
-                        statement.setTimestamp(5, cost.getCostDate());
-                        statement.setBigDecimal(6, cost.getCostAmount());
-                        statement.setString(7, cost.getCostDescription());
-                        statement.setLong(8, cost.getCostId());
+                        statement.setTimestamp(4, cost.getCostDate());
+                        statement.setBigDecimal(5, cost.getCostAmount());
+                        statement.setString(6, cost.getCostDescription());
+                        statement.setLong(7, cost.getCostId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

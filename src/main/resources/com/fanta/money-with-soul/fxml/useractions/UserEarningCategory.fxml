@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.fanta.moneywithsoul.controller.useractions.UserEarningCategoryController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.fanta.moneywithsoul.controller.useractions.UserEarningNodeController"
+      styleClass="rounded-stackpane-main" spacing="10">
+    <Label fx:id="nameEarningCategoryLabel" styleClass="label-info" style="-fx-padding: 0 20 0 20;"/>
 
-</AnchorPane>
+    <StackPane>
+        <JFXButton fx:id="deleteEarningCategoryButton" onAction="#deleteEarningCategory" mnemonicParsing="false" text="Delete" styleClass="jfx-button-item" />
+    </StackPane>
+</VBox>

@@ -5,6 +5,8 @@ import javafx.scene.control.Alert;
 
 public class Message {
     private MainController mainController;
+    protected Alert alert = new Alert(Alert.AlertType.ERROR);
+
 
     public Message(MainController mainController) {
         this.mainController = mainController;
@@ -26,7 +28,6 @@ public class Message {
     }
 
     public void failedAuthorization() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Помилка");
         alert.setHeaderText("Помилка авторизації");
         alert.setContentText("Невірна електронна адреса або пароль!");

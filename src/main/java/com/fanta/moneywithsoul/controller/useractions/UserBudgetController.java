@@ -104,10 +104,10 @@ public class UserBudgetController extends LeftListUserController implements Init
     }
 
     private Node createEarningNode(Earning earning) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/fxml/useractions/UserEarning.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/fxml/useractions/UserEarningForBudget.fxml"));
         Node node = loader.load();
 
-        UserBudgetNodeController controller = loader.getController();
+        UserEarningNodeController controller = loader.getController();
         controller.displayEarningData(earning);
 
         return node;

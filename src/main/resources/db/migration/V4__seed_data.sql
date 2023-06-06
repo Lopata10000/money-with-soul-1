@@ -65,37 +65,40 @@ $$
     END
 $$;
 
--- таблиця категорій витрат
+--- таблиця категорій витрат
 DO
 $$
-    BEGIN
+BEGIN
         IF NOT EXISTS(SELECT 1 FROM pg_catalog.pg_tables WHERE tablename = 'cost_categories' AND schemaname = 'public') THEN
-            CREATE TABLE cost_categories
-            (
-                cost_category_id   SERIAL PRIMARY KEY,
-                cost_category_name VARCHAR(100) NOT NULL
-            );
-        ELSE
+CREATE TABLE cost_categories
+(
+    cost_category_id   SERIAL PRIMARY KEY,
+    cost_category_name VARCHAR(100) NOT NULL,
+    user_id            INT REFERENCES users(user_id) NOT NULL
+);
+ELSE
             RAISE NOTICE 'Table cost_categories already exists';
-        END IF;
-    END
+END IF;
+END
 $$;
 
 -- таблиця категорій доходів
 DO
 $$
-    BEGIN
+BEGIN
         IF NOT EXISTS(SELECT 1 FROM pg_catalog.pg_tables WHERE tablename = 'earning_categories' AND schemaname = 'public') THEN
-            CREATE TABLE earning_categories
-            (
-                earning_category_id   SERIAL PRIMARY KEY,
-                earning_category_name VARCHAR(100) NOT NULL
-            );
-        ELSE
+CREATE TABLE earning_categories
+(
+    earning_category_id   SERIAL PRIMARY KEY,
+    earning_category_name VARCHAR(100) NOT NULL,
+    user_id               INT REFERENCES users(user_id) NOT NULL
+);
+ELSE
             RAISE NOTICE 'Table earning_categories already exists';
-        END IF;
-    END
+END IF;
+END
 $$;
+
 
 -- таблиця витрат
 DO
@@ -207,33 +210,33 @@ VALUES (1, 'January Budget', '2022-01-01', '2022-01-31', 1000.00),
        (1, 'Monthly Budget', '2023-05-01', '2023-05-31', 2500.00),
        (2, 'Weekly Budget', '2023-05-01', '2023-05-07', 1500.00),
        (8, 'Yearly Budget', '2023-01-01', '2023-12-31', 10000.00);
-INSERT INTO cost_categories (cost_category_name)
-VALUES ('Food'),
-       ('Housing'),
-       ('Transportation'),
-       ('Entertainment'),
-       ('Rent'),
-       ('Utilities'),
-       ('Clothing'),
-       ('Healthcare'),
-       ('Education'),
-       ('Travel'),
-       ('Home Maintenance'),
-       ('Hobbies'),
-       ('Charity');
-INSERT INTO earning_categories (earning_category_name)
-VALUES ('Salary'),
-       ('Freelance work'),
-       ('Investment'),
-       ('Bonus'),
-       ('Rental Income'),
-       ('Dividends'),
-       ('Commissions'),
-       ('Royalties'),
-       ('Gifts'),
-       ('Consulting'),
-       ('Online Sales'),
-       ('Rentals');
+INSERT INTO cost_categories (cost_category_name, user_id)
+VALUES ('Food', 1),
+       ('Housing', 2),
+       ('Transportation', 3),
+       ('Entertainment', 4),
+       ('Rent', 5),
+       ('Utilities', 6),
+       ('Clothing', 7),
+       ('Healthcare',8 ),
+       ('Education', 9),
+       ('Travel', 10),
+       ('Home Maintenance', 1),
+       ('Hobbies', 1),
+       ('Charity', 11);
+INSERT INTO earning_categories (earning_category_name, user_id)
+VALUES ('Salary', 1),
+       ('Freelance work', 2),
+       ('Investment', 3),
+       ('Bonus', 4),
+       ('Rental Income', 5),
+       ('Dividends', 6),
+       ('Commissions', 7),
+       ('Royalties', 8),
+       ('Gifts', 9),
+       ('Consulting', 10),
+       ('Online Sales', 11),
+       ('Rentals', 1);
 INSERT INTO costs (user_id, cost_category_id, budget_id, cost_date, cost_amount, cost_description)
 VALUES (1, 1, 1, CURRENT_TIMESTAMP, 50.00, 'Lunch'),
        (2, 2, 2, CURRENT_TIMESTAMP, 20.00, 'Bus fare'),

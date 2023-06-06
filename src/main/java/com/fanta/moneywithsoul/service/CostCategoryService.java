@@ -2,6 +2,8 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
+import com.fanta.moneywithsoul.entity.User;
+
 import java.util.List;
 
 /** The type Cost category service. */

@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-/** The type Earning category. */
 @Entity
 @Table(name = "earning_categories")
 public class EarningCategory {
@@ -18,68 +20,57 @@ public class EarningCategory {
     @Column(name = "earning_category_id")
     private Long earningCategoryId;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @NotNull(message = "Для синхронізації прибутку повинен бути користувач, якому належить ця категорія")
+    @Column(name = "user_id", insertable = false , updatable = false)
+    private Long userId;
+
     @NotEmpty(message = "Назва категорії не може бути пустою")
     @Column(name = "earning_category_name")
     private String earningCategoryName;
 
-    /**
-     * Instantiates a new Earning category.
-     *
-     * @param earning_category_id the earning category id
-     * @param earning_category_name the earning category name
-     */
-    public EarningCategory(long earning_category_id, String earning_category_name) {
-        this.earningCategoryId = earning_category_id;
-        this.earningCategoryName = earning_category_name;
+    public EarningCategory(String earningCategoryName, Long userId) {
+        this.earningCategoryName = earningCategoryName;
+        this.userId = userId;
     }
 
-    /**
-     * Gets earning category id.
-     *
-     * @return the earning category id
-     */
+    public EarningCategory(Long earning_category_id, Long user_id, String earning_category_name) {
+    }
+
     public Long getEarningCategoryId() {
         return earningCategoryId;
     }
 
-    /**
-     * Sets earning category id.
-     *
-     * @param earningCategoryId the earning category id
-     */
     public void setEarningCategoryId(Long earningCategoryId) {
         this.earningCategoryId = earningCategoryId;
     }
 
-    /**
-     * Gets earning category name.
-     *
-     * @return the earning category name
-     */
     public String getEarningCategoryName() {
         return earningCategoryName;
     }
 
-    /**
-     * Sets earning category name.
-     *
-     * @param earningCategoryName the earning category name
-     */
     public void setEarningCategoryName(String earningCategoryName) {
         this.earningCategoryName = earningCategoryName;
     }
 
-    /**
-     * Instantiates a new Earning category.
-     *
-     * @param earningCategoryId the earning category id
-     * @param earningCategoryName the earning category name
-     */
-    public EarningCategory(Long earningCategoryId, String earningCategoryName) {
-        this.earningCategoryId = earningCategoryId;
-        this.earningCategoryName = earningCategoryName;
+    public EarningCategory() {}
+
+    public User getUser() {
+        return user;
     }
 
-    /** Instantiates a new Earning category. */
-    public EarningCategory() {}
+    public void setUser(User user) {
+        this.userId = user.getUserId();
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

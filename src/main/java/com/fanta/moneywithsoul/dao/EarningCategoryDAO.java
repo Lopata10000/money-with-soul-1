@@ -1,6 +1,8 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.EarningCategory;
+import com.fanta.moneywithsoul.entity.User;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
                 earningCategory =
                         new EarningCategory(
                                 resultSet.getLong("earning_category_id"),
+                               resultSet.getLong("user_id"),
                                 resultSet.getString("earning_category_name"));
             }
         } catch (SQLException e) {
@@ -29,6 +32,26 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
         }
         return earningCategory;
     }
+    public List<EarningCategory> findByUserId(Long userId) {
+        List<EarningCategory> earningCategories = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection()) {
+            String sql = "SELECT * FROM earning_categories WHERE user_id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setLong(1, userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                EarningCategory earningCategory = new EarningCategory();
+                earningCategory.setEarningCategoryId(resultSet.getLong("earning_category_id"));
+                earningCategory.setEarningCategoryName(resultSet.getString("earning_category_name"));
+                earningCategories.add(earningCategory);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return earningCategories;
+    }
+
+
 
 
     @Override
@@ -42,6 +65,7 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
                 EarningCategory earningCategory =
                         new EarningCategory(
                                 resultSet.getLong("earning_category_id"),
+                                resultSet.getLong("user_id"),
                                 resultSet.getString("earning_category_name"));
                 earningCategories.add(earningCategory);
             }
@@ -56,11 +80,30 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
         executeWithTransaction(
                 () -> {
                     try (Connection connection = dataSource.getConnection();
-                            PreparedStatement statement =
-                                    connection.prepareStatement(
-                                            "INSERT INTO earning_categories (earning_category_name)"
-                                                    + " VALUES (?)")) {
+                         PreparedStatement statement =
+                                 connection.prepareStatement(
+                                         "INSERT INTO earning_categories (earning_category_name, user_id)"
+                                                 + " VALUES (?, ?)")) {
                         statement.setString(1, earningCategory.getEarningCategoryName());
+                        statement.setLong(2, earningCategory.getUserId());
+                        statement.executeUpdate();
+                    } catch (SQLException e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+                }
+
+    @Override
+    public void update(Long earningCategoryId, EarningCategory earningCategory) {
+        executeWithTransaction(
+                () -> {
+                    try (Connection connection = dataSource.getConnection();
+                         PreparedStatement statement =
+                                 connection.prepareStatement(
+                                         "UPDATE earning_categories SET earning_category_name = ?, user_id = ?"
+                                                 + " WHERE earning_category_id = ?")) {
+                        statement.setString(1, earningCategory.getEarningCategoryName());
+                        statement.setLong(2, earningCategory.getUser().getUserId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -68,23 +111,6 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
                 });
     }
 
-    @Override
-    public void update(Long earningCategoryId, EarningCategory earningCategory) {
-        executeWithTransaction(
-                () -> {
-                    try (Connection connection = dataSource.getConnection();
-                            PreparedStatement statement =
-                                    connection.prepareStatement(
-                                            "UPDATE earning_categories SET earning_category_name ="
-                                                    + " ? WHERE earning_category_id = ?")) {
-                        statement.setString(1, earningCategory.getEarningCategoryName());
-                        statement.setLong(2, earningCategory.getEarningCategoryId());
-                        statement.executeUpdate();
-                    } catch (SQLException e) {
-                        throw new RuntimeException(e);
-                    }
-                });
-    }
 
     @Override
     public void delete(Long earningCategoryId) {
