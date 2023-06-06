@@ -6,10 +6,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
-/** The type Cost category. */
 @Entity
 @Table(name = "cost_categories")
 public class CostCategory {
@@ -24,52 +26,50 @@ public class CostCategory {
     @Column(name = "cost_category_name")
     private String costCategoryName;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    /**
-     * Gets cost category id.
-     *
-     * @return the cost category id
-     */
+    @NotNull(message = "Для синхронізації прибутку повинен бути користувач, якому належить ця витрата")
+    @Column(name = "user_id", insertable = false, updatable = false)
+    private Long userId;
+
+    public CostCategory(String costCategoryName, Long userId) {
+        this.costCategoryName = costCategoryName;
+        this.userId = userId;
+    }
+
     public Long getCostCategoryId() {
         return costCategoryId;
     }
 
-    /**
-     * Sets cost category id.
-     *
-     * @param costCategoryId the cost category id
-     */
     public void setCostCategoryId(Long costCategoryId) {
         this.costCategoryId = costCategoryId;
     }
 
-    /**
-     * Gets cost category name.
-     *
-     * @return the cost category name
-     */
     public String getCostCategoryName() {
         return costCategoryName;
     }
 
-    /**
-     * Sets cost category name.
-     *
-     * @param costCategoryName the cost category name
-     */
     public void setCostCategoryName(String costCategoryName) {
         this.costCategoryName = costCategoryName;
     }
 
-    /**
-     * Instantiates a new Cost category.
-     *
-     * @param costCategoryName the cost category name
-     */
-    public CostCategory(String costCategoryName) {
-        this.costCategoryName = costCategoryName;
+    public CostCategory() {}
+
+    public User getUser() {
+        return user;
     }
 
-    /** Instantiates a new Cost category. */
-    public CostCategory() {}
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 }

@@ -34,10 +34,6 @@ public class CostService implements ServiceInterface<Cost> {
         Cost cost = costDAO.findById(userId);
         return costDAO.searchCostsByUserAndBudget(userId, budgerId);
     }
-    public List<CostCategory> searchUniqueCostCategoriesByUser(Long userId) {
-        return costDAO.searchUniqueCostCategoriesByUserAndBudget(userId);
-    }
-
     @Override
     public List<Cost> getAll() {
         return costDAO.findAll();

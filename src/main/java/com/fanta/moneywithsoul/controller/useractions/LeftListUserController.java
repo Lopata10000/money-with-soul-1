@@ -76,6 +76,10 @@ public class LeftListUserController implements Initializable {
     {
         mainController.userCostWindow();
     }
+    public void userEarning()
+    {
+        mainController.userEarningWindow();
+    }
 
     public void selectedBudget() {
         String newSelection = budgetsListComboBox.getValue();

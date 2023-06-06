@@ -227,22 +227,18 @@ public class Earning {
     /**
      * Instantiates a new Earning.
      *
-     * @param earningId the earning id
      * @param userId the user id
      * @param earningCategoryId the earning category id
-     * @param transactionId the transaction id
      * @param budgetId the budget id
      * @param earningDate the earning date
      * @param earningAmount the earning amount
      */
     public Earning(
-            Long earningId,
             Long userId,
             Long earningCategoryId,
             Long budgetId,
             Timestamp earningDate,
             BigDecimal earningAmount) {
-        this.earningId = earningId;
         this.userId = userId;
         this.earningCategoryId = earningCategoryId;
         this.budgetId = budgetId;

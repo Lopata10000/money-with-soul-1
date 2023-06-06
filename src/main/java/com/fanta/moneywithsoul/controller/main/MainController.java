@@ -11,9 +11,7 @@ import com.fanta.moneywithsoul.controller.tablecontroller.PlanningCostController
 import com.fanta.moneywithsoul.controller.tablecontroller.UserController;
 import com.fanta.moneywithsoul.controller.useractions.LeftListUserController;
 import com.fanta.moneywithsoul.controller.useractions.UserBudgetController;
-import com.fanta.moneywithsoul.controller.useractions.UserCostCategoryNodeController;
 import com.fanta.moneywithsoul.controller.useractions.UserCostController;
-import com.fanta.moneywithsoul.controller.useractions.UserEarningCategoryController;
 import com.fanta.moneywithsoul.controller.useractions.UserEarningController;
 import java.io.IOException;
 import javafx.fxml.FXML;
@@ -25,7 +23,8 @@ import javafx.scene.layout.StackPane;
 
 /** The type Main controller. */
 public class MainController {
-    @FXML private BorderPane mainApp;
+    @FXML
+    protected BorderPane mainApp;
     @FXML private Button registrationButton;
     @FXML private Button authorizationButton;
 
@@ -178,41 +177,6 @@ public class MainController {
         }
     }
 
-    public void userEarningCategoryWindow() {
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass()
-                                    .getResource(
-                                            "/com/fanta/money-with-soul/fxml/useractions/UserEarningCategory.fxml"));
-            StackPane userEarningCategory = loader.load();
-
-            UserEarningCategoryController userEarningCategoryController = loader.getController();
-            userEarningCategoryController.setMainController(this);
-
-            mainApp.setCenter(userEarningCategory);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void userCostCategoryWindow() {
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass()
-                                    .getResource(
-                                            "/com/fanta/money-with-soul/fxml/useractions/UserCostCategory.fxml"));
-            StackPane userCostCategory = loader.load();
-
-            UserCostCategoryNodeController userCostCategoryController = loader.getController();
-            userCostCategoryController.setMainController(this);
-
-            mainApp.setCenter(userCostCategory);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     /** User window. */
     public void userWindow() {
         try {

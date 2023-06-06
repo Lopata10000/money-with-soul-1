@@ -22,7 +22,6 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
             if (resultSet.next()) {
                 earning =
                         new Earning(
-                                resultSet.getLong("earning_id"),
                                 resultSet.getLong("user_id"),
                                 resultSet.getLong("earning_category_id"),
                                 resultSet.getLong("budget_id"),
@@ -69,7 +68,6 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
             while (resultSet.next()) {
                 Earning earning =
                         new Earning(
-                                resultSet.getLong("earning_id"),
                                 resultSet.getLong("user_id"),
                                 resultSet.getLong("earning_category_id"),
                                 resultSet.getLong("budget_id"),
@@ -91,13 +89,13 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "INSERT INTO earnings (user_id, earning_category_id,"
-                                                + " transaction_id, budget_id, earning_date,"
-                                                + " earning_amount) VALUES (?, ?, ?, ?, ?, ?)")) {
+                                                + " budget_id, earning_date,"
+                                                + " earning_amount) VALUES (?, ?, ?, ?, ?)")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
-                        statement.setLong(4, earning.getBudgetId());
-                        statement.setTimestamp(5, earning.getEarningDate());
-                        statement.setBigDecimal(6, earning.getEarningAmount());
+                        statement.setLong(3, earning.getBudgetId());
+                        statement.setTimestamp(4, earning.getEarningDate());
+                        statement.setBigDecimal(5, earning.getEarningAmount());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);
@@ -113,15 +111,15 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "UPDATE earnings SET user_id = ?, earning_category_id ="
-                                                    + " ?, transaction_id = ?, budget_id = ?,"
+                                                    + " ?, budget_id = ?,"
                                                     + " earning_date = ?, earning_amount = ? WHERE"
                                                     + " earning_id = ?")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
-                        statement.setLong(4, earning.getBudgetId());
-                        statement.setTimestamp(5, earning.getEarningDate());
-                        statement.setBigDecimal(6, earning.getEarningAmount());
-                        statement.setLong(7, earning.getEarningId());
+                        statement.setLong(3, earning.getBudgetId());
+                        statement.setTimestamp(4, earning.getEarningDate());
+                        statement.setBigDecimal(5, earning.getEarningAmount());
+                        statement.setLong(6, earning.getEarningId());
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

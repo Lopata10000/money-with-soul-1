@@ -15,6 +15,5 @@
     <Label fx:id="earningDateLabel" styleClass="label-info"/>
     <Label fx:id="earningAmountLabel" styleClass="label-info"/>
     <StackPane>
-        <JFXButton fx:id="deleteEarningButton" onAction="#deleteEarning" mnemonicParsing="false" text="Delete" styleClass="jfx-button-item" />
     </StackPane>
 </VBox>

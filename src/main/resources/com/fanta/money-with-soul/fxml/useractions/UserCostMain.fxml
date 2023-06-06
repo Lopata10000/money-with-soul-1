@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostController">
+<StackPane prefHeight="600.0" fx:id="mainStackPane" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostController">
     <Pane styleClass="rounded-pane-main">
         <children>
             <Label layoutX="175.0" styleClass="label-info" text="Your Costs">
@@ -46,11 +46,11 @@
                 </font>
             </Button>
             <ScrollPane layoutX="479.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="479.0" styleClass="scroll-pane">
-           <FlowPane fx:id="costCategoryBox" hgap="20" vgap="20">
-               <children>
+                <FlowPane fx:id="costCategoryBox" hgap="20" vgap="20">
+                    <children>
 
-               </children>
-           </FlowPane>
+                    </children>
+                </FlowPane>
             </ScrollPane>
             <ScrollPane layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="479.0" styleClass="scroll-pane">
                 <FlowPane fx:id="costBox" hgap="20" vgap="20">
@@ -59,11 +59,11 @@
                     </children>
                 </FlowPane>
             </ScrollPane>
-         <Label layoutX="595.0" styleClass="label-info" text="Your Costs Category">
-            <font>
-               <Font name="Jokerman" size="24.0" />
-            </font>
-         </Label>
+            <Label layoutX="595.0" styleClass="label-info" text="Your Costs Category">
+                <font>
+                    <Font name="Jokerman" size="24.0" />
+                </font>
+            </Label>
         </children>
     </Pane>
 </StackPane>

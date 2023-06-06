@@ -51,14 +51,13 @@
                   <items>
 
                   </items>
-
                </ComboBox>
                <JFXButton styleClass="jfx-button-fab" fx:id="userCostsButton" onAction="#userCost"   prefWidth="150.0" text="Costs">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
                   </font>
                </JFXButton>
-               <JFXButton styleClass="jfx-button-fab" fx:id="usersEarningButton"   prefWidth="150.0" text="Earning">
+               <JFXButton styleClass="jfx-button-fab" fx:id="usersEarningButton" onAction="#userEarning"  prefWidth="150.0" text="Earning">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
                   </font>

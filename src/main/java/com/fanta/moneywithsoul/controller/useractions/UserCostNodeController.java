@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 
 public class UserCostNodeController {
     private MainController mainController;
@@ -49,7 +50,6 @@ public class UserCostNodeController {
     public void deleteCost()
     {
         costService.delete(Long.valueOf(String.valueOf(deleteCostButton.getUserData())));
-
     }
     public void deleteCostCategory()
     {
