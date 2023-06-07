@@ -33,12 +33,12 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
         }
         return costCategory;
     }
-    public List<CostCategory> findByUserId(Long userId) {
+    @Override
+    public List<CostCategory> findAll() {
         List<CostCategory> costCategories = new ArrayList<>();
-        try (Connection connection = dataSource.getConnection()) {
-            String sql = "SELECT * FROM cost_categories WHERE user_id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setLong(1, userId);
+        try (Connection connection = dataSource.getConnection();
+                PreparedStatement statement =
+                        connection.prepareStatement("SELECT * FROM cost_categories")) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 CostCategory costCategory = new CostCategory();
@@ -48,16 +48,16 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
                 costCategories.add(costCategory);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         return costCategories;
     }
-    @Override
-    public List<CostCategory> findAll() {
+    public List<CostCategory> findyByUser(Long userId) {
         List<CostCategory> costCategories = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-                PreparedStatement statement =
-                        connection.prepareStatement("SELECT * FROM cost_categories")) {
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM cost_categories WHERE user_id = ?")) {
+            statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 CostCategory costCategory = new CostCategory();

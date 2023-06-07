@@ -36,7 +36,7 @@
          </Label>
          <Pane fx:id="infoCostPane" layoutY="40.0" maxHeight="360.0" maxWidth="479.0" prefHeight="360.0" prefWidth="479.0">
             <children>
-               <Label fx:id="budgetAmountLabel" layoutX="427.0" layoutY="333.0" styleClass="label-info" text="Your balance =">
+               <Label fx:id="budgetAmountLabel" layoutX="14.0" layoutY="333.0" styleClass="label-info" text="Your balance =">
                   <font>
                      <Font name="Jokerman" size="16.0" />
                   </font>

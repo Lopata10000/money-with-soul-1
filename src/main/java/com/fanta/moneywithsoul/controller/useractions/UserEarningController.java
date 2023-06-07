@@ -18,7 +18,9 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.ResourceBundle;
 import java.util.logging.ErrorManager;
@@ -45,13 +47,13 @@ public class UserEarningController extends Message implements Initializable {
     @FXML private Button createEarningButton;
     @FXML private StackPane mainStackPane;
     @FXML private ComboBox earningCategoryIdComboBox;
+    private Map<String, String> hiddenParams;
     @FXML private TextField earningAmount;
     private BudgetService budgetService = new BudgetService();
     private EarningService earningService = new EarningService();
     private UserService userService = new UserService();
     private EarningCategoryDAO earningCategoryDAO = new EarningCategoryDAO();
     private EarningCategoryService earningCategoryService = new EarningCategoryService();
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadInfo();
@@ -62,7 +64,6 @@ public class UserEarningController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     private Node createEarningNode(Earning earning) throws IOException {
@@ -74,6 +75,7 @@ public class UserEarningController extends Message implements Initializable {
 
         return node;
     }
+
     public void createEarningCategory() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties properties;
@@ -91,7 +93,6 @@ public class UserEarningController extends Message implements Initializable {
                                     .getResource(
                                             "/com/fanta/money-with-soul/fxml/useractions/UserEarningMain.fxml"));
             StackPane userEarning = loader.load();
-            // Replace the children of the StackPane with the new root node
             mainStackPane.getChildren().setAll(userEarning);
         } catch (IOException e) {
             e.printStackTrace();
@@ -107,15 +108,9 @@ public class UserEarningController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String selectedEarningCategory = (String) earningCategoryIdComboBox.getValue();
-        Long earningCategoryId = null;
-
-        if (selectedEarningCategory != null) {
-            // assuming the selected item from the combo box is the ID of the EarningCategory
-            earningCategoryId = Long.parseLong(selectedEarningCategory);
-        }
-
-        Earning earning = new Earning(Long.valueOf(properties.getProperty("id")), earningCategoryId, Long.valueOf(properties.getProperty("budgetId")), Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
+        String selectedCategoryName = earningCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
+        Long selectedEarningCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
+        Earning earning = new Earning(Long.valueOf(properties.getProperty("id")),selectedEarningCategoryId, Long.valueOf(properties.getProperty("budgetId")), Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
         earningService.save(earning);
         try {
             FXMLLoader loader =
@@ -124,12 +119,10 @@ public class UserEarningController extends Message implements Initializable {
                                     .getResource(
                                             "/com/fanta/money-with-soul/fxml/useractions/UserEarningMain.fxml"));
             StackPane userEarning = loader.load();
-            // Replace the children of the StackPane with the new root node
             mainStackPane.getChildren().setAll(userEarning);
         } catch (IOException e) {
             e.printStackTrace();
         }
-// Replace the children of the StackPane with the new root node
     }
 
     private Node createEarningsCategoryNode(EarningCategory earningCategory) throws IOException {
@@ -155,10 +148,10 @@ public class UserEarningController extends Message implements Initializable {
             List<Earning> earnings = earningService.getByUser(Long.valueOf(properties.getProperty("id")), Long.valueOf(properties.getProperty("budgetId")));
             for (Earning earning : earnings) {
                 try {
-                    Node costNode = createEarningNode(earning);
-                    earningBox.getChildren().add(costNode);
-                } catch (Exception exception) {
-                    exception.printStackTrace();
+                    Node earningNode = createEarningNode(earning);
+                    earningBox.getChildren().add(earningNode);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
@@ -166,27 +159,22 @@ public class UserEarningController extends Message implements Initializable {
         {
             alert.setHeaderText("Спочатку оберіть бюджет");
             alert.showAndWait();
+            throw new RuntimeException();
         }
-        // Отрима
         List<EarningCategory> earningCategories = earningCategoryDAO.findByUserId(Long.valueOf(properties.getProperty("id")));
+        hiddenParams = new HashMap<>();
 
         ObservableList<String> categoryNames = FXCollections.observableArrayList();
 
+
         for (EarningCategory earningCategory : earningCategories) {
-            categoryNames.add(earningCategory.getEarningCategoryName());
+            String categoryName = earningCategory.getEarningCategoryName();
+            String categoryId = String.valueOf(earningCategory.getEarningCategoryId());
+
+            categoryNames.add(categoryName);
+            hiddenParams.put(categoryName, categoryId);
         }
 
-        earningCategoryIdComboBox.setItems(categoryNames);
-
-// Прикріпити об'єкт costCategory до кожного елемента комбобокса
-        for (int i = 0; i < categoryNames.size(); i++) {
-            Long categoryId = earningCategories.get(i).getEarningCategoryId();
-            earningCategoryIdComboBox.setUserData(categoryId);
-        }
-
-
-
-// Налаштувати модель ComboBox з використанням ObservableList
         earningCategoryIdComboBox.setItems(categoryNames);
 
         for (EarningCategory earningCategory : earningCategories) {

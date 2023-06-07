@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="600.0" fx:id="mainStackPane" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostController">
+<StackPane fx:id="mainStackPane" prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserCostController">
     <Pane styleClass="rounded-pane-main">
         <children>
             <Label layoutX="175.0" styleClass="label-info" text="Your Costs">
@@ -23,7 +23,7 @@
                     <Font name="MS Outlook" size="16.0" />
                 </font>
             </TextField>
-            <Button fx:id="createCostCategoryButton" onAction="#createCostCategory" layoutX="643.0" layoutY="120.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+            <Button fx:id="createCostCategoryButton" layoutX="643.0" layoutY="170.0" mnemonicParsing="false" onAction="#createCostCategory" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
                 <font>
                     <Font name="MS Outlook" size="16.0" />
                 </font>
@@ -40,7 +40,7 @@
                     <Font name="MS Outlook" size="16.0" />
                 </font>
             </TextField>
-            <Button fx:id="createCostButton" onAction="#createCost" layoutX="164.0" layoutY="170.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+            <Button fx:id="createCostButton" layoutX="164.0" layoutY="170.0" mnemonicParsing="false" onAction="#createCost" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
                 <font>
                     <Font name="MS Outlook" size="16.0" />
                 </font>

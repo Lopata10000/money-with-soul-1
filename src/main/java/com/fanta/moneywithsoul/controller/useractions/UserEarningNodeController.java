@@ -28,7 +28,7 @@ public class UserEarningNodeController {
     EarningCategoryDAO earningCategoryDAO = new EarningCategoryDAO();
     EarningService earningService = new EarningService();
     public void displayEarningCategoryData(EarningCategory earningCategory) {
-        String earningCategoryName = (earningCategoryService.getById(earningCategory.getEarningCategoryId())).getEarningCategoryName();
+        String earningCategoryName = earningCategoryDAO.findById(earningCategory.getEarningCategoryId()).getEarningCategoryName();
         deleteEarningCategoryButton.setUserData(String.valueOf(earningCategory.getEarningCategoryId()));
         setLabelText(nameEarningCategoryLabel, "Earning category name: ", earningCategoryName);
     }

@@ -37,7 +37,10 @@ public class EarningCategory {
         this.userId = userId;
     }
 
-    public EarningCategory(Long earning_category_id, Long user_id, String earning_category_name) {
+    public EarningCategory(Long earningCategoryId, Long userId, String earningCategoryName) {
+        this.earningCategoryId = earningCategoryId;
+        this.userId = userId;
+        this.earningCategoryName = earningCategoryName;
     }
 
     public Long getEarningCategoryId() {

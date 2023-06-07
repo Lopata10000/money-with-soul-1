@@ -59,6 +59,10 @@ public class LeftListUserController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        if (budgetService.getByUser(Long.valueOf(properties.getProperty("id"))).equals(null))
+        {
+
+        }
         List<Budget> budgets = budgetService.getByUser(Long.valueOf(properties.getProperty("id")));
 
         Map<Long, String> budgetNames = new HashMap<>();

@@ -16,7 +16,9 @@ import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
@@ -42,6 +44,8 @@ public class UserCostController extends Message implements Initializable {
     @FXML private ComboBox costCategoryIdComboBox;
     @FXML private TextField costAmount;
     @FXML private TextField costDescription;
+    private Map<String, String> hiddenParams;
+
     private MainController mainController;
     private BudgetService budgetService = new BudgetService();
     private CostService costService = new CostService();
@@ -104,7 +108,9 @@ public class UserCostController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Cost cost = new Cost(Long.valueOf(properties.getProperty("id")),Long.parseLong(costCategoryIdComboBox.getUserData().toString()), Long.valueOf(properties.getProperty("budgetId")), Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(costAmount.getText())), costDescription.getText());
+        String selectedCategoryName = costCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
+        Long selectedCostCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
+        Cost cost = new Cost(Long.valueOf(properties.getProperty("id")),selectedCostCategoryId, Long.valueOf(properties.getProperty("budgetId")), Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(costAmount.getText())), costDescription.getText());
         costService.save(cost);
         try {
             FXMLLoader loader =
@@ -165,26 +171,24 @@ public class UserCostController extends Message implements Initializable {
         {
             alert.setHeaderText("Спочатку оберіть бюджет");
             alert.showAndWait();
+            throw new RuntimeException();
         }
         // Отримати список категорій витрат
-        List<CostCategory> costCategories = costCategoryDAO.findByUserId(Long.valueOf(properties.getProperty("id")));
+        List<CostCategory> costCategories = costCategoryDAO.findyByUser(Long.valueOf(properties.getProperty("id")));
+        hiddenParams = new HashMap<>();
 
         ObservableList<String> categoryNames = FXCollections.observableArrayList();
 
+
         for (CostCategory costCategory : costCategories) {
-            categoryNames.add(costCategory.getCostCategoryName());
-        }
+            String categoryName = costCategory.getCostCategoryName();
+            String categoryId = String.valueOf(costCategory.getCostCategoryId());
 
-        costCategoryIdComboBox.setItems(categoryNames);
-
-// Прикріпити об'єкт costCategory до кожного елемента комбобокса
-        for (int i = 0; i < categoryNames.size(); i++) {
-            Long userId = costCategories.get(i).getUserId();
-            costCategoryIdComboBox.setUserData(userId);
+            categoryNames.add(categoryName);
+            hiddenParams.put(categoryName, categoryId);
         }
 
 
-// Налаштувати модель ComboBox з використанням ObservableList
         costCategoryIdComboBox.setItems(categoryNames);
 
         for (CostCategory costCategory : costCategories) {

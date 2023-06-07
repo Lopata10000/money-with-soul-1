@@ -15,8 +15,8 @@ public class PoolConfig implements DataBaseConfig {
         pullConfiguration.setUsername(user);
         pullConfiguration.setPassword(password);
         pullConfiguration.setMaximumPoolSize(10);
-        pullConfiguration.setConnectionTimeout(5000);
-        pullConfiguration.setMaxLifetime(18000000);
+        pullConfiguration.setConnectionTimeout(100000);
+        pullConfiguration.setMaxLifetime(1800000000);
         pullConfiguration.setPoolName("money-with-soul Pool");
         dataSource = new HikariDataSource(pullConfiguration);
     }

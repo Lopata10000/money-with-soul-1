@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane prefHeight="600.0" fx:id="mainStackPane" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserEarningController">
+<StackPane fx:id="mainStackPane" prefHeight="600.0" prefWidth="958.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fanta.moneywithsoul.controller.useractions.UserEarningController">
     <Pane styleClass="rounded-pane-main">
         <children>
             <Label layoutX="175.0" styleClass="label-info" text="Your Earnings">
@@ -23,7 +23,7 @@
                     <Font name="MS Outlook" size="16.0" />
                 </font>
             </TextField>
-            <Button fx:id="createEarningCategoryButton" onAction="#createEarningCategory" layoutX="643.0" layoutY="120.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+            <Button fx:id="createEarningCategoryButton" layoutX="644.0" layoutY="170.0" mnemonicParsing="false" onAction="#createEarningCategory" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
                 <font>
                     <Font name="MS Outlook" size="16.0" />
                 </font>
@@ -35,7 +35,7 @@
                     <Font name="MS Outlook" size="16.0" />
                 </font>
             </TextField>
-            <Button fx:id="createEarningButton" onAction="#createEarning" layoutX="164.0" layoutY="170.0" mnemonicParsing="false" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
+            <Button fx:id="createEarningButton" layoutX="164.0" layoutY="170.0" mnemonicParsing="false" onAction="#createEarning" prefWidth="150.0" styleClass="jfx-button-main" text="Create">
                 <font>
                     <Font name="MS Outlook" size="16.0" />
                 </font>
