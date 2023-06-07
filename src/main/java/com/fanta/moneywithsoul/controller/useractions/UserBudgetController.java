@@ -48,6 +48,7 @@ public class UserBudgetController extends LeftListUserController implements Init
     private static final double SPACING = 5.0;
 
     private MainController mainController;
+
     private BudgetService budgetService = new BudgetService();
     private CostService costService = new CostService();
     private EarningService earningService = new EarningService();
@@ -74,7 +75,8 @@ public class UserBudgetController extends LeftListUserController implements Init
                 e.printStackTrace();
             }
         }
-        List<Earning> earnings = earningService.getByUser(Long.valueOf(properties.getProperty("id")), Long.valueOf(properties.getProperty("budgetId")));;
+        List<Earning> earnings = earningService.getByUser(Long.valueOf(properties.getProperty("id")), Long.valueOf(properties.getProperty("budgetId")));
+        ;
 
         // Для кожного бюджету створюємо новий вузол і додаємо його до TilePane
         for (Earning earning : earnings) {

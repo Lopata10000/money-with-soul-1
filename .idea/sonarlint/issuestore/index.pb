@@ -13,8 +13,6 @@ W
 '.idea/artifacts/money_with_soul_jar.xml,1\c\1c5defc974499d5958785d406171322ba516fcbd
 h
 8src/main/java/com/fanta/moneywithsoul/entity/Budget.java,5\2\5285a09da0cf69638f2065ad730d4af8e110d51e
-p
-@src/main/java/com/fanta/moneywithsoul/service/BudgetService.java,e\e\ee0373531496bfd7e1a4240b45d3a53aa5dc8927
 w
 Gsrc/main/java/com/fanta/moneywithsoul/validator/ChronologicalDates.java,8\d\8d5856420b7f621515af10c23f0a36ae6576678b
 €
@@ -57,10 +55,6 @@ f
 6src/main/java/com/fanta/moneywithsoul/entity/User.java,8\8\88501d29a53234275efe4aca46a24e9a75072ed3
 „
 Tsrc/main/java/com/fanta/moneywithsoul/controller/tablecontroller/UserController.java,9\6\96f76c023f91f187534b7e5d7e5832ff6471442a
-f
-6src/main/java/com/fanta/moneywithsoul/dao/UserDAO.java,c\a\ca7d63e49b1daf2ba1e42420932518fed4546cf5
-n
->src/main/java/com/fanta/moneywithsoul/service/UserService.java,3\4\34c23501f84f5a214bfa9849240432302bf0c9b5
 s
 Csrc/main/java/com/fanta/moneywithsoul/database/MigrationFlyway.java,d\b\dbdff6e6943f740248a68d1ed0f7ecd9440e068a
 s
@@ -69,12 +63,8 @@ Csrc/main/java/com/fanta/moneywithsoul/service/ServiceInterface.java,4\7\47889b
 _src/main/java/com/fanta/moneywithsoul/controller/tablecontroller/EarningCategoryController.java,a\0\a0f80617ddf26e15a1f5d7f796da6b5b8a2a85b1
 n
 >src/main/java/com/fanta/moneywithsoul/dao/PlanningCostDAO.java,1\8\18f779df119824774395c29cb3faae88d481c030
-s
-Csrc/main/java/com/fanta/moneywithsoul/service/PropertiesLoader.java,9\4\943f7431acb59bc99f2baba5a87f9a7b29174c8d
 v
 Fsrc/main/java/com/fanta/moneywithsoul/service/CostCategoryService.java,f\a\fae31d7514c6d15d7f29f28f738797135146a009
-i
-9src/main/java/com/fanta/moneywithsoul/entity/Earning.java,c\2\c24c5316b39d061eaf32cb62bb0573c49cd7925c
 y
 Isrc/main/java/com/fanta/moneywithsoul/service/EarningCategoryService.java,a\1\a19849cc59b76e3b3779999df7fa9ad2378cb601
 q
@@ -83,8 +73,6 @@ l
 <src/main/java/com/fanta/moneywithsoul/validator/Message.java,0\6\061a00955d7d914f5df8b821a0d8aba68e8bb132
 n
 >src/main/java/com/fanta/moneywithsoul/service/CostService.java,8\9\89bb6a6a5555448f4e82ffed07d2ef63e8db3db9
-Š
-Zsrc/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetNodeController.java,d\3\d370da5f7c4f37093e10383f9d20ed183b77752a
 n
 >src/main/java/com/fanta/moneywithsoul/entity/CostCategory.java,b\5\b5e4e33f558f003bdea2139e939ddf811fa528a0
 b
@@ -99,9 +87,5 @@ f
 6src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java,c\2\c21e104982e0910da73d7266abbb15ae7ab4abdc
 r
 Bsrc/main/java/com/fanta/moneywithsoul/database/DataBaseConfig.java,0\9\0971fd2788b2a1b4d3a2f86a3a052cf48896e309
-h
-8src/main/java/com/fanta/moneywithsoul/dao/BudgetDAO.java,1\0\103bd637493ed2ef8c2e80ca141ac07effc51113
-Œ
-\src/main/java/com/fanta/moneywithsoul/controller/authentication/AuthorizationController.java,7\e\7e1b0c55718600a3af76b18f4e1f6dc3af447704
 q
 Asrc/main/java/com/fanta/moneywithsoul/dao/EarningCategoryDAO.java,f\e\fed866b15866317cd2568bc882f6d6c81da9b565

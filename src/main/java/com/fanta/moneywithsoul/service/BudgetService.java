@@ -31,10 +31,12 @@ public class BudgetService implements ServiceInterface<Budget> {
     public List<Budget> getByUser(Long userId) {
         if (userId == null || userId <= 0) {
             showErrorMessage("Недійсний ідентифікатор користувача");
+            throw new RuntimeException();
         } else {
-            Budget budget = budgetDAO.findById(userId);
-            if (budget == null) {
+            List<Budget> budget = budgetDAO.findByUser(userId);
+            if (budget.isEmpty()) {
                 showErrorMessage("Бюджет з таким користувачем не знайдено");
+                return null;
             }
         }
         return budgetDAO.findByUser(userId);

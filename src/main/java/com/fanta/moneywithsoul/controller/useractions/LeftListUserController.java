@@ -47,7 +47,6 @@ public class LeftListUserController implements Initializable {
 
     public void userBudgets() {
         selectedBudget();
-        mainController.userBudgetWindow();
     }
 
     @Override
@@ -59,16 +58,13 @@ public class LeftListUserController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        if (budgetService.getByUser(Long.valueOf(properties.getProperty("id"))).equals(null))
-        {
-
-        }
         List<Budget> budgets = budgetService.getByUser(Long.valueOf(properties.getProperty("id")));
 
         Map<Long, String> budgetNames = new HashMap<>();
         for (Budget budget : budgets) {
             budgetNames.put(budget.getBudgetId(), budget.getName());
         }
+        budgetNames.put(Long.valueOf(999), "+");
 
         budgetsListComboBox.setItems(FXCollections.observableArrayList(budgetNames.values()));
     }
@@ -87,33 +83,47 @@ public class LeftListUserController implements Initializable {
 
     public void selectedBudget() {
         String newSelection = budgetsListComboBox.getValue();
-        if (newSelection != null) {
-            PropertiesLoader propertiesLoader = new PropertiesLoader();
-            Properties properties;
-            try {
-                properties = propertiesLoader.loadProperties();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            List<Budget> budgets = budgetService.getByUser(Long.valueOf(properties.getProperty("id")));
-            Map<Long, String> budgetNames = new HashMap<>();
-            for (Budget budget : budgets) {
-                budgetNames.put(budget.getBudgetId(), budget.getName());
-            }
-
-            for (Map.Entry<Long, String> entry : budgetNames.entrySet()) {
-                if (entry.getValue().equals(newSelection)) {
-                    Long selectedBudgetId = entry.getKey();
-                    properties.setProperty("budgetId", String.valueOf(selectedBudgetId));
-                    String filePath = System.getProperty("user.dir") + "/file.properties";
-                    try (FileOutputStream output = new FileOutputStream(filePath)) {
-                        properties.store(output, "User Properties");
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    break;
+        if (newSelection != "+" ) {
+            if (newSelection != null) {
+                PropertiesLoader propertiesLoader = new PropertiesLoader();
+                Properties properties;
+                try {
+                    properties = propertiesLoader.loadProperties();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
+                if (budgetService.getByUser(Long.valueOf(properties.getProperty("id"))).isEmpty()) {
+                    properties.setProperty("budgetId", String.valueOf(999));
+                    mainController.userCreateBudgetWindow();
+                } else {
+                    List<Budget> budgets = budgetService.getByUser(Long.valueOf(properties.getProperty("id")));
+                    Map<Long, String> budgetNames = new HashMap<>();
+                    for (Budget budget : budgets) {
+                        budgetNames.put(budget.getBudgetId(), budget.getName());
+                    }
+                    for (Map.Entry<Long, String> entry : budgetNames.entrySet()) {
+                        if (entry.getValue().equals(newSelection)) {
+
+                            Long selectedBudgetId = entry.getKey();
+                            properties.setProperty("budgetId", String.valueOf(selectedBudgetId));
+                            String filePath = System.getProperty("user.dir") + "/file.properties";
+                            try (FileOutputStream output = new FileOutputStream(filePath)) {
+                                properties.store(output, "User Properties");
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        }
+                    }
+                    mainController.userBudgetWindow();
+                }
+            }
+        }
+        else {
+            try {
+                mainController.userCreateBudgetWindow();
+            } catch (Exception e) {
+                System.out.println(e);
             }
         }
     }

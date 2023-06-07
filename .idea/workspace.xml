@@ -9,23 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Bad((">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgets.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCreateBudget.fxml" afterDir="false" />
+    <list default="true" id="34f90c5d-cb74-4d91-bf30-e25079bc3ee0" name="Changes" comment="Costs and Earning">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetsNodeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/main/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/main/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/LeftListUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/LeftListUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserCostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningNodeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserEarningNodeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostCategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/dao/CostCategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/PoolConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/database/PoolConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/EarningCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/EarningCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgetMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgetMain.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserEarningMain.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserEarningMain.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/UserBudgetsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/BudgetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/service/BudgetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/fanta/money-with-soul/fxml/useractions/UserBudgets.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +218,8 @@
       <workItem from="1685557223919" duration="605000" />
       <workItem from="1685773588733" duration="69934000" />
       <workItem from="1685920396583" duration="20289000" />
-      <workItem from="1686120327095" duration="1898000" />
+      <workItem from="1686120327095" duration="10230000" />
+      <workItem from="1686132990618" duration="3473000" />
     </task>
     <task id="LOCAL-00001" summary="Hibernate">
       <created>1683640914215</created>
@@ -380,7 +375,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685909367923</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Costs and Earning">
+      <created>1686122280766</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1686122280766</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -442,7 +444,8 @@
     <MESSAGE value="Well done" />
     <MESSAGE value="Design" />
     <MESSAGE value="Budget" />
-    <option name="LAST_COMMIT_MESSAGE" value="Budget" />
+    <MESSAGE value="Costs and Earning" />
+    <option name="LAST_COMMIT_MESSAGE" value="Costs and Earning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -451,6 +454,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/entity/Earning.java</url>
           <line>241</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fanta/moneywithsoul/controller/useractions/LeftListUserController.java</url>
+          <line>84</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

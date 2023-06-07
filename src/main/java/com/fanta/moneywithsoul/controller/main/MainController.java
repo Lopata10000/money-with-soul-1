@@ -11,6 +11,8 @@ import com.fanta.moneywithsoul.controller.tablecontroller.PlanningCostController
 import com.fanta.moneywithsoul.controller.tablecontroller.UserController;
 import com.fanta.moneywithsoul.controller.useractions.LeftListUserController;
 import com.fanta.moneywithsoul.controller.useractions.UserBudgetController;
+import com.fanta.moneywithsoul.controller.useractions.UserBudgetsController;
+import com.fanta.moneywithsoul.controller.useractions.UserBudgetsNodeController;
 import com.fanta.moneywithsoul.controller.useractions.UserCostController;
 import com.fanta.moneywithsoul.controller.useractions.UserEarningController;
 import java.io.IOException;
@@ -158,6 +160,24 @@ public class MainController {
             e.printStackTrace();
         }
     }
+    public void userCreateBudgetWindow() {
+        try {
+            FXMLLoader loader =
+                    new FXMLLoader(
+                            getClass()
+                                    .getResource(
+                                            "/com/fanta/money-with-soul/fxml/useractions/UserCreateBudget.fxml"));
+            StackPane userCost = loader.load();
+
+            UserBudgetsController userCostController = loader.getController();
+            userCostController.setMainController(this);
+
+            mainApp.setCenter(userCost);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void userEarningWindow() {
         try {
