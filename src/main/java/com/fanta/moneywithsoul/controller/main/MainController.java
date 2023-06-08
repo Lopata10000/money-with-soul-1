@@ -7,12 +7,10 @@ import com.fanta.moneywithsoul.controller.tablecontroller.CostCategoryController
 import com.fanta.moneywithsoul.controller.tablecontroller.CostController;
 import com.fanta.moneywithsoul.controller.tablecontroller.EarningCategoryController;
 import com.fanta.moneywithsoul.controller.tablecontroller.EarningController;
-import com.fanta.moneywithsoul.controller.tablecontroller.PlanningCostController;
 import com.fanta.moneywithsoul.controller.tablecontroller.UserController;
 import com.fanta.moneywithsoul.controller.useractions.LeftListUserController;
 import com.fanta.moneywithsoul.controller.useractions.UserBudgetController;
 import com.fanta.moneywithsoul.controller.useractions.UserBudgetsController;
-import com.fanta.moneywithsoul.controller.useractions.UserBudgetsNodeController;
 import com.fanta.moneywithsoul.controller.useractions.UserCostController;
 import com.fanta.moneywithsoul.controller.useractions.UserEarningController;
 import java.io.IOException;
@@ -120,6 +118,7 @@ public class MainController {
             leftController.setMainController(this);
 
             mainApp.setLeft(dataBasePane);
+            userCreateBudgetWindow();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -272,26 +271,6 @@ public class MainController {
             e.printStackTrace();
         }
     }
-
-    /** Planning cost window. */
-    public void planningCostWindow() {
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass()
-                                    .getResource(
-                                            "/com/fanta/money-with-soul/fxml/database/PlanningCostTable.fxml"));
-            StackPane planningCostController = loader.load();
-
-            PlanningCostController controller = loader.getController();
-            controller.setMainController(this);
-
-            mainApp.setCenter(planningCostController);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     /** Cost category window. */
     public void costCategoryWindow() {
         try {

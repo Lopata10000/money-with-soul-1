@@ -20,6 +20,5 @@
         <mapping class="com.fanta.moneywithsoul.entity.Earning"/>
         <mapping class="com.fanta.moneywithsoul.entity.CostCategory"/>
         <mapping class="com.fanta.moneywithsoul.entity.EarningCategory"/>
-        <mapping class="com.fanta.moneywithsoul.entity.PlanningCost"/>
     </session-factory>
 </hibernate-configuration>

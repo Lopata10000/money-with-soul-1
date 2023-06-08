@@ -36,11 +36,6 @@
                   </ImageView>
                   <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../images/Costs.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../../images/Back.png" />
                      </image>
                   </ImageView>
@@ -58,11 +53,6 @@
                   </font>
                </JFXButton>
                <JFXButton styleClass="jfx-button-fab" fx:id="usersEarningButton" onAction="#userEarning"  prefWidth="150.0" text="Earning">
-                  <font>
-                     <Font name="MS Outlook" size="16.0" />
-                  </font>
-               </JFXButton>
-               <JFXButton styleClass="jfx-button-fab"  fx:id="planingCostsTableButton"   prefWidth="150.0" text="Planing Costs">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
                   </font>

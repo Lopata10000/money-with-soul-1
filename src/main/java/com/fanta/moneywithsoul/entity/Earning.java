@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /** The type Earning. */
@@ -57,6 +58,7 @@ public class Earning {
     private Timestamp earningDate;
 
     @NotNull(message = "Сума прибутку не може бути пустою")
+    @Min(value = 0, message = "Прибуток повинен бути додатнім числом")
     @Digits(integer = 10, fraction = 2, message = "Сума може бути вказана тільки в цифрах")
     @Column(name = "earning_amount")
     private BigDecimal earningAmount;

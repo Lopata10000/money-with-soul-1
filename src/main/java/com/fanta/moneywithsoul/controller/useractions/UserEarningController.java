@@ -2,6 +2,7 @@ package com.fanta.moneywithsoul.controller.useractions;
 
 import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
+import com.fanta.moneywithsoul.entity.Budget;
 import com.fanta.moneywithsoul.entity.Cost;
 import com.fanta.moneywithsoul.entity.CostCategory;
 import com.fanta.moneywithsoul.entity.Earning;
@@ -99,8 +100,7 @@ public class UserEarningController extends Message implements Initializable {
         }
     }
 
-    public void createEarning()
-    {
+    public void createEarning() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties properties;
         try {
@@ -108,21 +108,31 @@ public class UserEarningController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String selectedCategoryName = earningCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
-        Long selectedEarningCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
-        Earning earning = new Earning(Long.valueOf(properties.getProperty("id")),selectedEarningCategoryId, Long.valueOf(properties.getProperty("budgetId")), Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
-        earningService.save(earning);
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass()
-                                    .getResource(
-                                            "/com/fanta/money-with-soul/fxml/useractions/UserEarningMain.fxml"));
-            StackPane userEarning = loader.load();
-            mainStackPane.getChildren().setAll(userEarning);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Long budgetId = Long.valueOf(properties.getProperty("budgetId"));
+        Long userId = Long.valueOf(properties.getProperty("id"));
+        if (!earningCategoryIdComboBox.equals(null)) {
+            String selectedCategoryName = earningCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
+            Long selectedEarningCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
+            Earning earning = new Earning(userId, selectedEarningCategoryId, budgetId, Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
+            earningService.save(earning);
+            Budget budget = budgetService.getById(Long.valueOf(properties.getProperty("budgetId")));
+            Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
+            Long newBudgetAmount = budgetAmount + Long.parseLong(String.valueOf(earning.getEarningAmount().intValueExact()));
+            Budget budgetUpdate = budgetService.updateBudget(budgetId, userId, budget.getName(), budget.getStartDate(), budget.getEndDate(), BigDecimal.valueOf(newBudgetAmount));
+            budgetService.update(budgetId, budgetUpdate);
+            try {
+                FXMLLoader loader =
+                        new FXMLLoader(
+                                getClass()
+                                        .getResource(
+                                                "/com/fanta/money-with-soul/fxml/useractions/UserEarningMain.fxml"));
+                StackPane userEarning = loader.load();
+                mainStackPane.getChildren().setAll(userEarning);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else
+            alert.setHeaderText("Оберіть категорію");
     }
 
     private Node createEarningsCategoryNode(EarningCategory earningCategory) throws IOException {
@@ -161,7 +171,7 @@ public class UserEarningController extends Message implements Initializable {
             alert.showAndWait();
             throw new RuntimeException();
         }
-        List<EarningCategory> earningCategories = earningCategoryDAO.findByUserId(Long.valueOf(properties.getProperty("id")));
+        List<EarningCategory> earningCategories = earningCategoryService.getByUser(Long.valueOf(properties.getProperty("id")));
         hiddenParams = new HashMap<>();
 
         ObservableList<String> categoryNames = FXCollections.observableArrayList();

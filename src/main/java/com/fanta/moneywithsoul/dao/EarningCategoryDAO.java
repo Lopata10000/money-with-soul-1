@@ -32,7 +32,7 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
         }
         return earningCategory;
     }
-    public List<EarningCategory> findByUserId(Long userId) {
+    public List<EarningCategory> findByUser(Long userId) {
         List<EarningCategory> earningCategories = new ArrayList<>();
         try (Connection connection = dataSource.getConnection()) {
             String sql = "SELECT * FROM earning_categories WHERE user_id = ?";
@@ -103,7 +103,8 @@ public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<
                                          "UPDATE earning_categories SET earning_category_name = ?, user_id = ?"
                                                  + " WHERE earning_category_id = ?")) {
                         statement.setString(1, earningCategory.getEarningCategoryName());
-                        statement.setLong(2, earningCategory.getUser().getUserId());
+                        statement.setLong(2, earningCategory.getUserId());
+                        statement.setLong(3, earningCategoryId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

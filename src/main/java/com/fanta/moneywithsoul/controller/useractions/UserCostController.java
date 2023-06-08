@@ -2,8 +2,10 @@ package com.fanta.moneywithsoul.controller.useractions;
 
 import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
+import com.fanta.moneywithsoul.entity.Budget;
 import com.fanta.moneywithsoul.entity.Cost;
 import com.fanta.moneywithsoul.entity.CostCategory;
+import com.fanta.moneywithsoul.entity.Earning;
 import com.fanta.moneywithsoul.service.BudgetService;
 import com.fanta.moneywithsoul.service.CostCategoryService;
 import com.fanta.moneywithsoul.service.CostService;
@@ -108,23 +110,39 @@ public class UserCostController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        String selectedCategoryName = costCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
-        Long selectedCostCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
-        Cost cost = new Cost(Long.valueOf(properties.getProperty("id")),selectedCostCategoryId, Long.valueOf(properties.getProperty("budgetId")), Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(costAmount.getText())), costDescription.getText());
-        costService.save(cost);
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(
-                            getClass()
-                                    .getResource(
-                                            "/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml"));
-            StackPane userCost = loader.load();
-            // Replace the children of the StackPane with the new root node
-            mainStackPane.getChildren().setAll(userCost);
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!costCategoryIdComboBox.equals(null)) {
+            Long budgetId = Long.valueOf(properties.getProperty("budgetId"));
+            Long userId = Long.valueOf(properties.getProperty("id"));
+            String selectedCategoryName = costCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
+            Long selectedCostCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
+            Cost cost = new Cost(userId, selectedCostCategoryId, budgetId, Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(costAmount.getText())), costDescription.getText());
+            costService.save(cost);
+            Budget budget = budgetService.getById(Long.valueOf(properties.getProperty("budgetId")));
+            Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
+            Long newBudgetAmount = budgetAmount - Long.parseLong(String.valueOf(cost.getCostAmount().intValueExact()));
+            Budget budgetUpdate = budgetService.updateBudget(budgetId, userId, budget.getName(), budget.getStartDate(), budget.getEndDate(), BigDecimal.valueOf(newBudgetAmount));
+            if (newBudgetAmount < 0) {
+                alert.setHeaderText("Бюджет не може бути відємним");
+                alert.showAndWait();
+
+            } else
+                budgetService.update(budgetId, budgetUpdate);
+            try {
+                FXMLLoader loader =
+                        new FXMLLoader(
+                                getClass()
+                                        .getResource(
+                                                "/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml"));
+                StackPane userCost = loader.load();
+                // Replace the children of the StackPane with the new root node
+                mainStackPane.getChildren().setAll(userCost);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-// Replace the children of the StackPane with the new root node
+        else
+            alert.setHeaderText("Оберіть категорію");
+
     }
 
     private Node createCostsCategoryNode(CostCategory costCategory) throws IOException {
@@ -174,7 +192,7 @@ public class UserCostController extends Message implements Initializable {
             throw new RuntimeException();
         }
         // Отримати список категорій витрат
-        List<CostCategory> costCategories = costCategoryDAO.findyByUser(Long.valueOf(properties.getProperty("id")));
+        List<CostCategory> costCategories = costCategoryService.getByUser(Long.valueOf(properties.getProperty("id")));
         hiddenParams = new HashMap<>();
 
         ObservableList<String> categoryNames = FXCollections.observableArrayList();

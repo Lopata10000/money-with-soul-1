@@ -25,6 +25,7 @@ public class UserBudgetsNodeController {
     @FXML
     Button deleteBudgetButton;
     BudgetService budgetService = new BudgetService();
+    UserBudgetsController userBudgetsController = new UserBudgetsController();
 
     public void displayBudgetData(Budget budget) {
         deleteBudgetButton.setUserData(String.valueOf(budget.getBudgetId()));

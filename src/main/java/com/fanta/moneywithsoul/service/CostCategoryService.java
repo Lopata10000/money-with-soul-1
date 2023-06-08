@@ -2,6 +2,7 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
+import com.fanta.moneywithsoul.entity.Earning;
 import com.fanta.moneywithsoul.entity.User;
 
 import java.util.List;
@@ -26,6 +27,10 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
             }
         }
         return costCategoryDAO.findById(costCategoryId);
+    }
+    public List<CostCategory> getByUser(Long userId) {
+        List<CostCategory> costCategories = costCategoryDAO.findyByUser(userId);
+        return costCategoryDAO.findyByUser(userId);
     }
 
     @Override
@@ -66,9 +71,9 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
      * @param costCategoryName the cost category name
      * @return the cost category
      */
-    public CostCategory updateCostCategory(Long costCategoryId, String costCategoryName) {
+    public CostCategory updateCostCategory(Long userId, String costCategoryName) {
         CostCategory costCategory = new CostCategory();
-        costCategory.setCostCategoryId(costCategoryId);
+        costCategory.setUserId(userId);
         costCategory.setCostCategoryName(costCategoryName);
         return costCategory;
     }
@@ -79,8 +84,9 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
      * @param costCategoryName the cost category name
      * @return the cost category
      */
-    public CostCategory saveCostCategory(String costCategoryName) {
+    public CostCategory saveCostCategory(Long userId, String costCategoryName) {
         CostCategory costCategory = new CostCategory();
+        costCategory.setUserId(userId);
         costCategory.setCostCategoryName(costCategoryName);
         return costCategory;
     }

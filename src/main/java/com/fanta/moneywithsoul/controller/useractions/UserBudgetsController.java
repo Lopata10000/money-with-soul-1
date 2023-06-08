@@ -38,6 +38,7 @@ public class UserBudgetsController implements Initializable {
     @FXML private DatePicker endDate;
     @FXML private FlowPane budgetsFlowPane;
     private final BudgetService budgetService = new BudgetService();
+
     @FXML
     public void createBudget() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
@@ -71,6 +72,7 @@ public class UserBudgetsController implements Initializable {
             budgetService.save(budget);
         } catch (Exception e) {
             showAlert("Неправильний формат");
+            throw new RuntimeException();
         }
         showAlert("Успішно створено бюджет");
         mainController.userActionsWindow();
@@ -84,7 +86,6 @@ public class UserBudgetsController implements Initializable {
 
         return node;
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

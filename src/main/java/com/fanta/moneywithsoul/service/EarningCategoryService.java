@@ -1,6 +1,7 @@
 package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
+import com.fanta.moneywithsoul.entity.Earning;
 import com.fanta.moneywithsoul.entity.EarningCategory;
 import java.util.List;
 
@@ -17,6 +18,11 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
     public EarningCategory getById(Long earningCategoryId) {
             EarningCategory earningCategory = earningCategoryDAO.findById(earningCategoryId);
             return earningCategory;
+    }
+
+    public List<EarningCategory> getByUser(Long userId) {
+        List<EarningCategory> earningCategory = earningCategoryDAO.findByUser(userId);
+        return earningCategoryDAO.findByUser(userId);
     }
 
     @Override
@@ -54,14 +60,13 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
     /**
      * Update earning category earning category.
      *
-     * @param earningCategoryId the earning category id
      * @param earningCategoryName the earning category name
      * @return the earning category
      */
     public EarningCategory updateEarningCategory(
-            Long earningCategoryId, String earningCategoryName) {
+            Long userId, String earningCategoryName) {
         EarningCategory earningCategory = new EarningCategory();
-        earningCategory.setEarningCategoryId(earningCategoryId);
+        earningCategory.setUserId(userId);
         earningCategory.setEarningCategoryName(earningCategoryName);
         return earningCategory;
     }
@@ -72,8 +77,9 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
      * @param earningCategoryName the earning category name
      * @return the earning category
      */
-    public EarningCategory saveEarningCategory(String earningCategoryName) {
+    public EarningCategory saveEarningCategory(Long userId, String earningCategoryName) {
         EarningCategory earningCategory = new EarningCategory();
+        earningCategory.setUserId(userId);
         earningCategory.setEarningCategoryName(earningCategoryName);
         return earningCategory;
     }

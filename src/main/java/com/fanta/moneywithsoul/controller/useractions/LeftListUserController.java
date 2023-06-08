@@ -58,15 +58,20 @@ public class LeftListUserController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        List<Budget> budgets = budgetService.getByUser(Long.valueOf(properties.getProperty("id")));
-
         Map<Long, String> budgetNames = new HashMap<>();
-        for (Budget budget : budgets) {
-            budgetNames.put(budget.getBudgetId(), budget.getName());
-        }
-        budgetNames.put(Long.valueOf(999), "+");
+        if (budgetService.getByUser(Long.valueOf(properties.getProperty("id"))).equals(null)) {
+            budgetNames.put(Long.valueOf(999), "+");
+        } else {
 
-        budgetsListComboBox.setItems(FXCollections.observableArrayList(budgetNames.values()));
+            List<Budget> budgets = budgetService.getByUser(Long.valueOf(properties.getProperty("id")));
+
+            for (Budget budget : budgets) {
+                budgetNames.put(budget.getBudgetId(), budget.getName());
+            }
+            budgetNames.put(Long.valueOf(999), "+");
+
+            budgetsListComboBox.setItems(FXCollections.observableArrayList(budgetNames.values()));
+        }
     }
 
     public void backToMenu() {

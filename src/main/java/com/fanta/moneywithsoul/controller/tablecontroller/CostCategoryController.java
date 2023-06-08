@@ -26,6 +26,7 @@ import org.hibernate.exception.ConstraintViolationException;
 public class CostCategoryController implements Initializable {
     @FXML private TableView<CostCategory> costCategoryTable;
     @FXML private TextField costCategoryName;
+    @FXML private TextField userId;
     @FXML private TextField findByIdField;
 
     private final CostCategoryService costCategoryService = new CostCategoryService();
@@ -34,8 +35,9 @@ public class CostCategoryController implements Initializable {
     @FXML
     public void createCostCategory() {
         try {
+            Long userID = Long.valueOf(userId.getText());
             String costName = costCategoryName.getText();
-            CostCategory costCategory = costCategoryService.saveCostCategory(costName);
+            CostCategory costCategory = costCategoryService.saveCostCategory(userID, costName);
             costCategoryService.save(costCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
@@ -53,10 +55,7 @@ public class CostCategoryController implements Initializable {
                     costCategoryTable.getSelectionModel().getSelectedItem();
             Long costCategoryId =
                     Long.parseLong(String.valueOf(selectedCostCategory.getCostCategoryId()));
-            String costName = costCategoryName.getText();
-            CostCategory costCategory =
-                    costCategoryService.updateCostCategory(costCategoryId, costName);
-            costCategoryService.update(costCategoryId, costCategory);
+            costCategoryService.update(costCategoryId, selectedCostCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
             showAlert("Категорія витрат з таким іменем уже існує");
@@ -132,6 +131,8 @@ public class CostCategoryController implements Initializable {
             if (selectedCostCategory != null) {
                 costCategoryName.setText(
                         String.valueOf(selectedCostCategory.getCostCategoryName()));
+                userId.setText(
+                        String.valueOf(selectedCostCategory.getUserId()));
             }
         }
     }

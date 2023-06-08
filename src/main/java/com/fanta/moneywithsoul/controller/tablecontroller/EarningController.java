@@ -67,6 +67,7 @@ public class EarningController implements Initializable {
         } catch (Exception e) {
             showAlert("Неправильний формат");
         }
+
     }
 
     /** Update earning. */

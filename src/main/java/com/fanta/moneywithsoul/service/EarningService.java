@@ -35,7 +35,7 @@ public class EarningService implements ServiceInterface<Earning> {
 
     public List<Earning> getByUser(Long userId, Long budgetId) {
         Earning earning = earningDAO.findById(userId);
-        return earningDAO.searchEarningsByUserAndBudget(userId, budgetId);
+        return earningDAO.findEarningsByUserAndBudget(userId, budgetId);
     }
 
     @Override

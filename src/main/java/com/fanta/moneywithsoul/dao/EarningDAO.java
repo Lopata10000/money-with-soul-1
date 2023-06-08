@@ -34,13 +34,35 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         return earning;
     }
 
-    public List<Earning> searchEarningsByUserAndBudget(long userId, long budgetId) {
+    public List<Earning> findEarningsByUserAndBudget(long userId, long budgetId) {
         List<Earning> earnings = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement =
                      connection.prepareStatement("SELECT * FROM earnings WHERE user_id = ? AND budget_id = ?")) {
             statement.setLong(1, userId);
             statement.setLong(2, budgetId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Earning earning = new Earning();
+                earning.setEarningId(resultSet.getLong("earning_id"));
+                earning.setUserId(resultSet.getLong("user_id"));
+                earning.setEarningCategoryId(resultSet.getLong("earning_category_id"));
+                earning.setBudgetId(resultSet.getLong("budget_id"));
+                earning.setEarningDate(resultSet.getTimestamp("earning_date"));
+                earning.setEarningAmount(resultSet.getBigDecimal("earning_amount"));
+                earnings.add(earning);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return earnings;
+    }
+    public List<Earning> findEarningsByCategory(Long earningCategoryId) {
+        List<Earning> earnings = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement =
+                     connection.prepareStatement("SELECT * FROM earnings WHERE earning_category_id = ?")) {
+            statement.setLong(1, earningCategoryId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Earning earning = new Earning();

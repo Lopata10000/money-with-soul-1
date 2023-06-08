@@ -94,11 +94,11 @@ public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCa
                     try (Connection connection = dataSource.getConnection();
                             PreparedStatement statement =
                                     connection.prepareStatement(
-                                            "UPDATE cost_categories SET cost_category_name = ?"
+                                            "UPDATE cost_categories SET cost_category_name = ?, user_id = ?"
                                                     + " WHERE cost_category_id = ?")) {
                         statement.setString(1, costCategory.getCostCategoryName());
-                        statement.setString(2, String.valueOf(costCategory.getCostCategoryId()));
-                        statement.setLong(3, costCategory.getCostCategoryId());
+                        statement.setLong(2, costCategory.getUserId());
+                        statement.setLong(3, costCategoryId);
                         statement.executeUpdate();
                     } catch (SQLException e) {
                         throw new RuntimeException(e);

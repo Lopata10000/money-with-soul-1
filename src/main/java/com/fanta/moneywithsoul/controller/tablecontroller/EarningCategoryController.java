@@ -26,6 +26,7 @@ import org.hibernate.exception.ConstraintViolationException;
 public class EarningCategoryController implements Initializable {
     @FXML private TableView<EarningCategory> earningCategoryTable;
     @FXML private TextField earningCategoryName;
+    @FXML private TextField userId;
     @FXML private TextField findByIdField;
     private final EarningCategoryService earningCategoryService = new EarningCategoryService();
 
@@ -34,7 +35,8 @@ public class EarningCategoryController implements Initializable {
     public void createEarningCategory() {
         try {
             String costName = earningCategoryName.getText();
-            EarningCategory earningCategory = earningCategoryService.saveEarningCategory(costName);
+            Long userID = Long.valueOf(userId.getText());
+            EarningCategory earningCategory = earningCategoryService.saveEarningCategory(userID, costName);
             earningCategoryService.save(earningCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
@@ -53,8 +55,9 @@ public class EarningCategoryController implements Initializable {
             Long earningCategoryId =
                     Long.parseLong(String.valueOf(selectedEarningCategory.getEarningCategoryId()));
             String costName = earningCategoryName.getText();
+            Long userID = Long.valueOf(userId.getText());
             EarningCategory earningCategory =
-                    earningCategoryService.updateEarningCategory(earningCategoryId, costName);
+                    earningCategoryService.updateEarningCategory(userID, costName);
             earningCategoryService.update(earningCategoryId, earningCategory);
             refreshTable();
         } catch (ConstraintViolationException e) {
@@ -131,6 +134,8 @@ public class EarningCategoryController implements Initializable {
             if (selectedEarningCategory != null) {
                 earningCategoryName.setText(
                         String.valueOf(selectedEarningCategory.getEarningCategoryName()));
+                userId.setText(
+                        String.valueOf(selectedEarningCategory.getUserId()));
             }
         }
     }

@@ -109,7 +109,7 @@ public class UserBudgetController extends LeftListUserController implements Init
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/fxml/useractions/UserEarningForBudget.fxml"));
         Node node = loader.load();
 
-        UserEarningNodeController controller = loader.getController();
+        UserBudgetNodeController controller = loader.getController();
         controller.displayEarningData(earning);
 
         return node;

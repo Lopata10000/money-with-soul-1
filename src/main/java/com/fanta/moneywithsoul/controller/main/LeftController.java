@@ -81,11 +81,6 @@ public class LeftController implements Initializable {
         mainController.earningWindow();
     }
 
-    /** Planing costs table. */
-    public void planingCostsTable() {
-        mainController.planningCostWindow();
-    }
-
     /** Cost category table. */
     public void costCategoryTable() {
         mainController.costCategoryWindow();

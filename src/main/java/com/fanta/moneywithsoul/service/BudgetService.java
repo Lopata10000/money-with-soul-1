@@ -34,10 +34,6 @@ public class BudgetService implements ServiceInterface<Budget> {
             throw new RuntimeException();
         } else {
             List<Budget> budget = budgetDAO.findByUser(userId);
-            if (budget.isEmpty()) {
-                showErrorMessage("Бюджет з таким користувачем не знайдено");
-                return null;
-            }
         }
         return budgetDAO.findByUser(userId);
     }
