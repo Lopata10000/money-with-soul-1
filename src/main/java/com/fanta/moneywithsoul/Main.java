@@ -6,7 +6,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-/** The type Main. */
+
+/**
+ * The type Main.
+ */
 public class Main extends Application {
 
     public void start(Stage primaryStage) throws Exception {
@@ -17,5 +20,14 @@ public class Main extends Application {
         Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
     }
 }

@@ -4,7 +4,10 @@ import java.sql.Timestamp;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-/** The type Or future validator. */
+
+/**
+ * The type Or future validator.
+ */
 public class OrFutureValidator implements ConstraintValidator<OrFutureDate, Timestamp> {
 
     @Override

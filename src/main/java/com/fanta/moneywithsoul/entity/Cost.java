@@ -17,7 +17,10 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
-/** The type Cost. */
+
+/**
+ * The type Cost.
+ */
 @Entity
 @Table(name = "costs")
 public class Cost {
@@ -69,6 +72,7 @@ public class Cost {
     @Column(name = "cost_description")
     private String costDescription;
 
+
     /**
      * Gets cost id.
      *
@@ -77,6 +81,7 @@ public class Cost {
     public Long getCostId() {
         return costId;
     }
+
 
     /**
      * Sets cost id.
@@ -87,6 +92,7 @@ public class Cost {
         this.costId = costId;
     }
 
+
     /**
      * Gets user.
      *
@@ -95,6 +101,7 @@ public class Cost {
     public User getUser() {
         return user;
     }
+
 
     /**
      * Sets user.
@@ -105,6 +112,7 @@ public class Cost {
         this.user = user;
     }
 
+
     /**
      * Gets cost category.
      *
@@ -113,6 +121,7 @@ public class Cost {
     public CostCategory getCostCategory() {
         return costCategory;
     }
+
 
     /**
      * Sets cost category.
@@ -123,6 +132,7 @@ public class Cost {
         this.costCategory = costCategory;
     }
 
+
     /**
      * Gets budget.
      *
@@ -131,6 +141,7 @@ public class Cost {
     public Budget getBudget() {
         return budget;
     }
+
 
     /**
      * Sets budget.
@@ -141,6 +152,7 @@ public class Cost {
         this.budget = budget;
     }
 
+
     /**
      * Gets cost date.
      *
@@ -149,6 +161,7 @@ public class Cost {
     public Timestamp getCostDate() {
         return costDate;
     }
+
 
     /**
      * Sets cost date.
@@ -159,6 +172,7 @@ public class Cost {
         this.costDate = costDate;
     }
 
+
     /**
      * Gets cost amount.
      *
@@ -167,6 +181,7 @@ public class Cost {
     public BigDecimal getCostAmount() {
         return costAmount;
     }
+
 
     /**
      * Sets cost amount.
@@ -177,6 +192,7 @@ public class Cost {
         this.costAmount = costAmount;
     }
 
+
     /**
      * Gets cost description.
      *
@@ -185,6 +201,7 @@ public class Cost {
     public String getCostDescription() {
         return costDescription;
     }
+
 
     /**
      * Sets cost description.
@@ -195,6 +212,7 @@ public class Cost {
         this.costDescription = costDescription;
     }
 
+
     /**
      * Gets user id.
      *
@@ -203,6 +221,7 @@ public class Cost {
     public Long getUserId() {
         return userId;
     }
+
 
     /**
      * Sets user id.
@@ -213,6 +232,7 @@ public class Cost {
         this.userId = userId;
     }
 
+
     /**
      * Gets cost category id.
      *
@@ -221,6 +241,7 @@ public class Cost {
     public Long getCostCategoryId() {
         return costCategoryId;
     }
+
 
     /**
      * Sets cost category id.
@@ -231,6 +252,7 @@ public class Cost {
         this.costCategoryId = costCategoryId;
     }
 
+
     /**
      * Gets budget id.
      *
@@ -239,6 +261,7 @@ public class Cost {
     public Long getBudgetId() {
         return budgetId;
     }
+
 
     /**
      * Sets budget id.
@@ -249,15 +272,15 @@ public class Cost {
         this.budgetId = budgetId;
     }
 
+
     /**
      * Instantiates a new Cost.
      *
-     * @param costId the cost id
-     * @param userId the user id
-     * @param costCategoryId the cost category id
-     * @param budgetId the budget id
-     * @param costDate the cost date
-     * @param costAmount the cost amount
+     * @param userId          the user id
+     * @param costCategoryId  the cost category id
+     * @param budgetId        the budget id
+     * @param costDate        the cost date
+     * @param costAmount      the cost amount
      * @param costDescription the cost description
      */
     public Cost(
@@ -275,6 +298,9 @@ public class Cost {
         this.costDescription = costDescription;
     }
 
-    /** Instantiates a new Cost. */
+
+    /**
+     * Instantiates a new Cost.
+     */
     public Cost() {}
 }

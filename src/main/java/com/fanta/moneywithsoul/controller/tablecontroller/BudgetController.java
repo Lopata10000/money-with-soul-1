@@ -27,12 +27,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
+
 /**
- * Клас контролера для управління бюджетами. Реалізує інтерфейс Initializable для ініціалізації
- * контролера при завантаженні FXML-файлу.
- *
- * @author fanta
- * @version 1.0
+ * The type Budget controller.
  */
 public class BudgetController implements Initializable {
     @FXML private TableView<Budget> budgetTable;
@@ -45,7 +42,10 @@ public class BudgetController implements Initializable {
 
     private final BudgetService budgetService = new BudgetService();
 
-    /** Метод для створення бюджету. Викликається при натисканні на кнопку "Створити бюджет". */
+
+    /**
+     * Create budget.
+     */
     @FXML
     public void createBudget() {
         try {
@@ -76,7 +76,10 @@ public class BudgetController implements Initializable {
         }
     }
 
-    /** Метод для оновлення бюджету. Викликається при натисканні на кнопку "Оновити бюджет". */
+
+    /**
+     * Update budget.
+     */
     @FXML
     public void updateBudget() {
         try {
@@ -112,7 +115,10 @@ public class BudgetController implements Initializable {
         }
     }
 
-    /** Метод для видалення бюджету. Викликається при натисканні на кнопку "Видалити бюджет". */
+
+    /**
+     * Delete budget.
+     */
     @FXML
     public void deleteBudget() {
         Budget selectedBudget = budgetTable.getSelectionModel().getSelectedItem();
@@ -125,7 +131,10 @@ public class BudgetController implements Initializable {
         }
     }
 
-    /** Метод для пошуку бюджету за Id. Викликається при натисканні на кнопку "Знайти бюджет". */
+
+    /**
+     * Search budget.
+     */
     @FXML
     void searchBudget() {
         try {
@@ -144,11 +153,7 @@ public class BudgetController implements Initializable {
         }
     }
 
-    /**
-     * Метод для показу повідомлення про помилку.
-     *
-     * @param message Повідомлення про помилку.
-     */
+    
     private void showAlert(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Помилка");
@@ -163,7 +168,7 @@ public class BudgetController implements Initializable {
         refreshTable();
     }
 
-    /** Метод для оновлення таблиці бюджетів. */
+    
     @FXML
     private void refreshTable() {
         List<Budget> budgets = budgetService.getAll();
@@ -174,11 +179,7 @@ public class BudgetController implements Initializable {
         budgetTable.getItems().addAll(budgets);
     }
 
-    /**
-     * Метод для обробки події кліку на таблицю.
-     *
-     * @param event Подія кліку мишею.
-     */
+    
     @FXML
     private void handleTableClick(MouseEvent event) {
         if (event.getClickCount() == 1) {
@@ -194,10 +195,7 @@ public class BudgetController implements Initializable {
         }
     }
 
-    /**
-     * Метод для оновлення структури таблиці бюджетів. Використовується для відображення відповідних
-     * стовпців у таблиці.
-     */
+    
     @FXML
     private void updateTableView() {
         try (Connection connection = dataSource.getConnection()) {
@@ -220,12 +218,7 @@ public class BudgetController implements Initializable {
         }
     }
 
-    /**
-     * Метод для перетворення назви стовпця в назву змінної.
-     *
-     * @param columnName Назва стовпця.
-     * @return Назва змінної.
-     */
+    
     private String convertColumnNameToVariableName(String columnName) {
         // Розділяємо назву стовпця по символу "_"
         String[] words = columnName.split("_");
@@ -240,20 +233,25 @@ public class BudgetController implements Initializable {
         return variableName.toString();
     }
 
-    /** Конструктор класу BudgetController. */
-    public BudgetController() {}
 
     /**
-     * Конструктор класу BudgetController з параметром.
+     * Instantiates a new Budget controller.
+     */
+    public BudgetController() {}
+
+
+    /**
+     * Instantiates a new Budget controller.
      *
-     * @param mainController Об'єкт головного контролера.
+     * @param mainController the main controller
      */
     public BudgetController(MainController mainController) {}
 
+
     /**
-     * Метод для встановлення головного контролера.
+     * Sets main controller.
      *
-     * @param mainController Об'єкт головного контролера.
+     * @param mainController the main controller
      */
     public void setMainController(MainController mainController) {}
 }

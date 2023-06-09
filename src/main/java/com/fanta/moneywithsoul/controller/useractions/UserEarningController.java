@@ -3,8 +3,6 @@ package com.fanta.moneywithsoul.controller.useractions;
 import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.EarningCategoryDAO;
 import com.fanta.moneywithsoul.entity.Budget;
-import com.fanta.moneywithsoul.entity.Cost;
-import com.fanta.moneywithsoul.entity.CostCategory;
 import com.fanta.moneywithsoul.entity.Earning;
 import com.fanta.moneywithsoul.entity.EarningCategory;
 import com.fanta.moneywithsoul.service.BudgetService;
@@ -13,7 +11,6 @@ import com.fanta.moneywithsoul.service.EarningService;
 import com.fanta.moneywithsoul.service.PropertiesLoader;
 import com.fanta.moneywithsoul.service.UserService;
 import com.fanta.moneywithsoul.validator.Message;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -24,8 +21,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.logging.ErrorManager;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,10 +33,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.StackPane;
 
+/**
+ * The type User earning controller.
+ */
 public class UserEarningController extends Message implements Initializable {
     private MainController mainController;
-    @FXML
-    private FlowPane earningBox;
+    @FXML private FlowPane earningBox;
     @FXML private FlowPane earningCategoryBox;
     @FXML private TextField earningCategoryName;
     @FXML private Button createEarningCategoryButton;
@@ -55,6 +52,7 @@ public class UserEarningController extends Message implements Initializable {
     private UserService userService = new UserService();
     private EarningCategoryDAO earningCategoryDAO = new EarningCategoryDAO();
     private EarningCategoryService earningCategoryService = new EarningCategoryService();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadInfo();
@@ -68,7 +66,11 @@ public class UserEarningController extends Message implements Initializable {
     }
 
     private Node createEarningNode(Earning earning) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/fxml/useractions/UserEarning.fxml"));
+        FXMLLoader loader =
+                new FXMLLoader(
+                        getClass()
+                                .getResource(
+                                        "/com/fanta/money-with-soul/fxml/useractions/UserEarning.fxml"));
         Node node = loader.load();
 
         UserEarningNodeController controller = loader.getController();
@@ -77,6 +79,9 @@ public class UserEarningController extends Message implements Initializable {
         return node;
     }
 
+    /**
+     * Create earning category.
+     */
     public void createEarningCategory() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties properties;
@@ -85,7 +90,9 @@ public class UserEarningController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        EarningCategory category = new EarningCategory(earningCategoryName.getText(),Long.valueOf(properties.getProperty("id")));
+        EarningCategory category =
+                new EarningCategory(
+                        earningCategoryName.getText(), Long.valueOf(properties.getProperty("id")));
         earningCategoryService.save(category);
         try {
             FXMLLoader loader =
@@ -100,6 +107,9 @@ public class UserEarningController extends Message implements Initializable {
         }
     }
 
+    /**
+     * Create earning.
+     */
     public void createEarning() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties properties;
@@ -111,14 +121,31 @@ public class UserEarningController extends Message implements Initializable {
         Long budgetId = Long.valueOf(properties.getProperty("budgetId"));
         Long userId = Long.valueOf(properties.getProperty("id"));
         if (!earningCategoryIdComboBox.equals(null)) {
-            String selectedCategoryName = earningCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
+            String selectedCategoryName =
+                    earningCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
             Long selectedEarningCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
-            Earning earning = new Earning(userId, selectedEarningCategoryId, budgetId, Timestamp.valueOf(LocalDateTime.now()), BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
+            Earning earning =
+                    new Earning(
+                            userId,
+                            selectedEarningCategoryId,
+                            budgetId,
+                            Timestamp.valueOf(LocalDateTime.now()),
+                            BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
             earningService.save(earning);
             Budget budget = budgetService.getById(Long.valueOf(properties.getProperty("budgetId")));
             Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
-            Long newBudgetAmount = budgetAmount + Long.parseLong(String.valueOf(earning.getEarningAmount().intValueExact()));
-            Budget budgetUpdate = budgetService.updateBudget(budgetId, userId, budget.getName(), budget.getStartDate(), budget.getEndDate(), BigDecimal.valueOf(newBudgetAmount));
+            Long newBudgetAmount =
+                    budgetAmount
+                            + Long.parseLong(
+                                    String.valueOf(earning.getEarningAmount().intValueExact()));
+            Budget budgetUpdate =
+                    budgetService.updateBudget(
+                            budgetId,
+                            userId,
+                            budget.getName(),
+                            budget.getStartDate(),
+                            budget.getEndDate(),
+                            BigDecimal.valueOf(newBudgetAmount));
             budgetService.update(budgetId, budgetUpdate);
             try {
                 FXMLLoader loader =
@@ -131,12 +158,15 @@ public class UserEarningController extends Message implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else
-            alert.setHeaderText("Оберіть категорію");
+        } else alert.setHeaderText("Оберіть категорію");
     }
 
     private Node createEarningsCategoryNode(EarningCategory earningCategory) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/fxml/useractions/UserEarningCategory.fxml"));
+        FXMLLoader loader =
+                new FXMLLoader(
+                        getClass()
+                                .getResource(
+                                        "/com/fanta/money-with-soul/fxml/useractions/UserEarningCategory.fxml"));
         Node node = loader.load();
 
         UserEarningNodeController controller = loader.getController();
@@ -145,8 +175,10 @@ public class UserEarningController extends Message implements Initializable {
         return node;
     }
 
-    public void loadInfo()
-    {
+    /**
+     * Load info.
+     */
+    public void loadInfo() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties properties;
         try {
@@ -155,7 +187,10 @@ public class UserEarningController extends Message implements Initializable {
             throw new RuntimeException(e);
         }
         try {
-            List<Earning> earnings = earningService.getByUser(Long.valueOf(properties.getProperty("id")), Long.valueOf(properties.getProperty("budgetId")));
+            List<Earning> earnings =
+                    earningService.getByUser(
+                            Long.valueOf(properties.getProperty("id")),
+                            Long.valueOf(properties.getProperty("budgetId")));
             for (Earning earning : earnings) {
                 try {
                     Node earningNode = createEarningNode(earning);
@@ -164,18 +199,16 @@ public class UserEarningController extends Message implements Initializable {
                     e.printStackTrace();
                 }
             }
-        }
-        catch (NumberFormatException numberFormatException)
-        {
+        } catch (NumberFormatException numberFormatException) {
             alert.setHeaderText("Спочатку оберіть бюджет");
             alert.showAndWait();
             throw new RuntimeException();
         }
-        List<EarningCategory> earningCategories = earningCategoryService.getByUser(Long.valueOf(properties.getProperty("id")));
+        List<EarningCategory> earningCategories =
+                earningCategoryService.getByUser(Long.valueOf(properties.getProperty("id")));
         hiddenParams = new HashMap<>();
 
         ObservableList<String> categoryNames = FXCollections.observableArrayList();
-
 
         for (EarningCategory earningCategory : earningCategories) {
             String categoryName = earningCategory.getEarningCategoryName();
@@ -197,11 +230,19 @@ public class UserEarningController extends Message implements Initializable {
         }
     }
 
+    /**
+     * Instantiates a new User earning controller.
+     *
+     * @param mainController the main controller
+     */
     public UserEarningController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    /** Instantiates a new Left controller. */
+
+    /**
+     * Instantiates a new User earning controller.
+     */
     public UserEarningController() {}
 
     public void setMainController(MainController mainController) {

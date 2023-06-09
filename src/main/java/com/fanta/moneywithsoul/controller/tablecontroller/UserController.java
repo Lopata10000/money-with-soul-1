@@ -22,7 +22,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/** The type User controller. */
+
+/**
+ * The type User controller.
+ */
 public class UserController implements Initializable {
     @FXML private TableView<User> userTable;
     @FXML private TextField firstNameField;
@@ -34,7 +37,10 @@ public class UserController implements Initializable {
 
     private final UserService userService = new UserService();
 
-    /** Create user. */
+
+    /**
+     * Create user.
+     */
     @FXML
     public void createUser() {
         User user =
@@ -48,7 +54,10 @@ public class UserController implements Initializable {
         refreshTable();
     }
 
-    /** Update user. */
+
+    /**
+     * Update user.
+     */
     @FXML
     public void updateUser() {
 
@@ -77,7 +86,10 @@ public class UserController implements Initializable {
         }
     }
 
-    /** Delete user. */
+
+    /**
+     * Delete user.
+     */
     @FXML
     public void deleteUser() {
         User selectedUser = userTable.getSelectionModel().getSelectedItem();
@@ -90,7 +102,10 @@ public class UserController implements Initializable {
         }
     }
 
-    /** Search user. */
+
+    /**
+     * Search user.
+     */
     @FXML
     void searchUser() {
         try {
@@ -186,8 +201,12 @@ public class UserController implements Initializable {
         return variableName.toString();
     }
 
-    /** Instantiates a new User controller. */
+
+    /**
+     * Instantiates a new User controller.
+     */
     public UserController() {}
+
 
     /**
      * Instantiates a new User controller.
@@ -195,6 +214,7 @@ public class UserController implements Initializable {
      * @param mainController the main controller
      */
     public UserController(MainController mainController) {}
+
 
     /**
      * Sets main controller.

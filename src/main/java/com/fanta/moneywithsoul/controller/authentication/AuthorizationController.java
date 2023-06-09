@@ -4,7 +4,6 @@ import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.validator.Message;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -18,22 +17,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/** The type Authorization controller. */
+
+/**
+ * The type Authorization controller.
+ */
 public class AuthorizationController extends Message implements Initializable {
-    private final UserDAO userDAO;
     private MainController mainController;
 
     @FXML private TextField emailTextField;
     @FXML private TextField passwordTextField;
+    UserDAO userDAO = new UserDAO();
 
-    public AuthorizationController(UserDAO userDAO, MainController mainController) {
-        this.userDAO = userDAO;
+    
+    public AuthorizationController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    public AuthorizationController(UserDAO userDAO) {
-        this.userDAO = userDAO;
-    }
+    
+    public AuthorizationController() {}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {}
@@ -42,18 +43,24 @@ public class AuthorizationController extends Message implements Initializable {
     public void authorization() {
         String email = emailTextField.getText();
         String password = passwordTextField.getText();
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.submit(
+
+        // Create an ExecutorService for concurrent task execution
+        ExecutorService executorService = Executors.newFixedThreadPool(2);
+
+        // Submit a task to be executed in a separate thread
+        executorService.submit(
                 () -> {
                     User user = getUserFromDB(email, password);
                     if (user != null) {
                         saveUserPropertiesToFile(user);
-                        handleUserStatus(user);
+                        // Updating UI should be on the JavaFX Application Thread
+                        Platform.runLater(() -> handleUserStatus(user));
                     } else {
-                        failedAuthorization();
+                        Platform.runLater(this::failedAuthorization);
                     }
                 });
-        executor.shutdown();
+
+        executorService.shutdown();
     }
 
     private void handleUserStatus(User user) {
@@ -87,12 +94,12 @@ public class AuthorizationController extends Message implements Initializable {
     }
 
     public void successfulUserAuthorization() {
-        showInfoAlert("Успіх", "Успішний вхід!", "Ви успішно увійшли!");
+        showInfoAlert("Успіх", "Успішнийа вхід!", "Ви успішно увійшли!");
         mainController.userActionsWindow();
     }
 
     public void successfulAdminAuthorization() {
-        showInfoAlert("Успіх", "Успішн авторизація", "Ви успішно авторизувалися!");
+        showInfoAlert("Успіх", "Успішна авторизація", "Ви успішно авторизувалися!");
         mainController.dataBaseWindow();
     }
 

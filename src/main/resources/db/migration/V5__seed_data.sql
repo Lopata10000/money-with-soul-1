@@ -55,7 +55,7 @@ CREATE TABLE cost_categories
 (
     cost_category_id   SERIAL PRIMARY KEY,
     cost_category_name VARCHAR(100) NOT NULL,
-    user_id            INTEGER REFERENCES users(user_id) NOT NULL
+    user_id            INTEGER REFERENCES users(user_id) NOT NULL ON DELETE CASCADE ON UPDATE CASCADE,
 );
 ELSE
             RAISE NOTICE 'Table cost_categories already exists';
@@ -72,7 +72,7 @@ CREATE TABLE earning_categories
 (
     earning_category_id   SERIAL PRIMARY KEY,
     earning_category_name VARCHAR(100) NOT NULL,
-    user_id               INTEGER REFERENCES users(user_id) NOT NULL
+    user_id               INTEGER REFERENCES users(user_id) NOT NULL ON DELETE CASCADE ON UPDATE CASCADE,
 );
 ELSE
             RAISE NOTICE 'Table earning_categories already exists';

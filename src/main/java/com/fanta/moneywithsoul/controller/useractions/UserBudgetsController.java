@@ -5,12 +5,9 @@ import static com.fanta.moneywithsoul.controller.useractions.UserBudgetNodeContr
 import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.dao.UserDAO;
 import com.fanta.moneywithsoul.entity.Budget;
-import com.fanta.moneywithsoul.entity.Cost;
-import com.fanta.moneywithsoul.entity.Earning;
 import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.service.BudgetService;
 import com.fanta.moneywithsoul.service.PropertiesLoader;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
@@ -19,7 +16,6 @@ import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,9 +24,11 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 
+/**
+ * The type User budgets controller.
+ */
 public class UserBudgetsController implements Initializable {
-    @FXML
-    private TextField amount;
+    @FXML private TextField amount;
     private MainController mainController;
 
     @FXML private TextField budgetName;
@@ -39,6 +37,9 @@ public class UserBudgetsController implements Initializable {
     @FXML private FlowPane budgetsFlowPane;
     private final BudgetService budgetService = new BudgetService();
 
+    /**
+     * Create budget.
+     */
     @FXML
     public void createBudget() {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
@@ -77,8 +78,13 @@ public class UserBudgetsController implements Initializable {
         showAlert("Успішно створено бюджет");
         mainController.userActionsWindow();
     }
+
     private Node createBudgetNode(Budget budget) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/fanta/money-with-soul/fxml/useractions/UserBudgets.fxml"));
+        FXMLLoader loader =
+                new FXMLLoader(
+                        getClass()
+                                .getResource(
+                                        "/com/fanta/money-with-soul/fxml/useractions/UserBudgets.fxml"));
         Node node = loader.load();
 
         UserBudgetsNodeController controller = loader.getController();
@@ -109,13 +115,27 @@ public class UserBudgetsController implements Initializable {
             }
         }
     }
+
+    /**
+     * Instantiates a new User budgets controller.
+     *
+     * @param mainController the main controller
+     */
     public UserBudgetsController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    /** Instantiates a new Left controller. */
+
+    /**
+     * Instantiates a new User budgets controller.
+     */
     public UserBudgetsController() {}
 
+    /**
+     * Sets main controller.
+     *
+     * @param mainController the main controller
+     */
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }

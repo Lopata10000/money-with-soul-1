@@ -16,7 +16,10 @@ import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-/** The type Earning. */
+
+/**
+ * The type Earning.
+ */
 @Entity
 @Table(name = "earnings")
 public class Earning {
@@ -63,6 +66,7 @@ public class Earning {
     @Column(name = "earning_amount")
     private BigDecimal earningAmount;
 
+
     /**
      * Gets earning id.
      *
@@ -71,6 +75,7 @@ public class Earning {
     public Long getEarningId() {
         return earningId;
     }
+
 
     /**
      * Sets earning id.
@@ -81,6 +86,7 @@ public class Earning {
         this.earningId = earningId;
     }
 
+
     /**
      * Gets user.
      *
@@ -89,6 +95,7 @@ public class Earning {
     public User getUser() {
         return user;
     }
+
 
     /**
      * Sets user.
@@ -99,6 +106,7 @@ public class Earning {
         this.user = user;
     }
 
+
     /**
      * Gets earning category.
      *
@@ -107,6 +115,7 @@ public class Earning {
     public EarningCategory getEarningCategory() {
         return earningCategory;
     }
+
 
     /**
      * Sets earning category.
@@ -117,6 +126,7 @@ public class Earning {
         this.earningCategory = earningCategory;
     }
 
+
     /**
      * Gets budget.
      *
@@ -125,6 +135,7 @@ public class Earning {
     public Budget getBudget() {
         return budget;
     }
+
 
     /**
      * Sets budget.
@@ -135,6 +146,7 @@ public class Earning {
         this.budget = budget;
     }
 
+
     /**
      * Gets earning date.
      *
@@ -143,6 +155,7 @@ public class Earning {
     public Timestamp getEarningDate() {
         return earningDate;
     }
+
 
     /**
      * Sets earning date.
@@ -153,6 +166,7 @@ public class Earning {
         this.earningDate = earningDate;
     }
 
+
     /**
      * Gets earning amount.
      *
@@ -161,6 +175,7 @@ public class Earning {
     public BigDecimal getEarningAmount() {
         return earningAmount;
     }
+
 
     /**
      * Gets user id.
@@ -171,6 +186,7 @@ public class Earning {
         return userId;
     }
 
+
     /**
      * Sets user id.
      *
@@ -180,6 +196,7 @@ public class Earning {
         this.userId = userId;
     }
 
+
     /**
      * Gets earning category id.
      *
@@ -188,6 +205,7 @@ public class Earning {
     public Long getEarningCategoryId() {
         return earningCategoryId;
     }
+
 
     /**
      * Sets earning category id.
@@ -208,6 +226,7 @@ public class Earning {
         return budgetId;
     }
 
+
     /**
      * Sets budget id.
      *
@@ -216,6 +235,7 @@ public class Earning {
     public void setBudgetId(Long budgetId) {
         this.budgetId = budgetId;
     }
+
 
     /**
      * Sets earning amount.
@@ -226,14 +246,15 @@ public class Earning {
         this.earningAmount = earningAmount;
     }
 
+
     /**
      * Instantiates a new Earning.
      *
-     * @param userId the user id
+     * @param userId            the user id
      * @param earningCategoryId the earning category id
-     * @param budgetId the budget id
-     * @param earningDate the earning date
-     * @param earningAmount the earning amount
+     * @param budgetId          the budget id
+     * @param earningDate       the earning date
+     * @param earningAmount     the earning amount
      */
     public Earning(
             Long userId,
@@ -248,6 +269,9 @@ public class Earning {
         this.earningAmount = earningAmount;
     }
 
-    /** Instantiates a new Earning. */
+
+    /**
+     * Instantiates a new Earning.
+     */
     public Earning() {}
 }

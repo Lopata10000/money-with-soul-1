@@ -21,11 +21,6 @@
                <children>
                   <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../images/Budget.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
-                     <image>
                         <Image url="@../../../images/Costs.png" />
                      </image>
                   </ImageView>
@@ -39,14 +34,14 @@
                         <Image url="@../../../images/Back.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="35" fitWidth="35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/Budget.png" />
+                     </image>
+                  </ImageView>
                </children>
             </VBox>
             <VBox spacing="10.0">
-               <ComboBox fx:id="budgetsListComboBox" onAction="#userBudgets" promptText="Budget" styleClass="combo-box">
-                  <items>
-
-                  </items>
-               </ComboBox>
                <JFXButton styleClass="jfx-button-fab" fx:id="userCostsButton" onAction="#userCost"   prefWidth="150.0" text="Costs">
                   <font>
                      <Font name="MS Outlook" size="16.0" />
@@ -62,6 +57,11 @@
                      <Font name="MS Outlook" size="16.0" />
                   </font>
                </JFXButton>
+               <ComboBox fx:id="budgetsListComboBox" onAction="#userBudgets" promptText="Budget" styleClass="combo-box">
+                  <items>
+
+                  </items>
+               </ComboBox>
             </VBox>
          </children>
       </HBox>

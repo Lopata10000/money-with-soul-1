@@ -4,9 +4,15 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import javax.sql.DataSource;
 
-/** The type Pool config. */
+
+/**
+ * The type Pool config.
+ */
 public class PoolConfig implements DataBaseConfig {
-    /** The constant dataSource. */
+
+    /**
+     * The constant dataSource.
+     */
     public static final HikariDataSource dataSource;
 
     static {
@@ -20,6 +26,7 @@ public class PoolConfig implements DataBaseConfig {
         pullConfiguration.setPoolName("money-with-soul Pool");
         dataSource = new HikariDataSource(pullConfiguration);
     }
+
 
     /**
      * Close data source.

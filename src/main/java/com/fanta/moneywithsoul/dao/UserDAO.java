@@ -12,7 +12,10 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-/** The type User dao. */
+
+/**
+ * The type User dao.
+ */
 public class UserDAO extends BaseDAO<User> implements DAO<User> {
 
     @Override
@@ -41,6 +44,7 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         return user;
     }
 
+
     /**
      * Exists by email boolean.
      *
@@ -64,6 +68,12 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
         return false;
     }
 
+    /**
+     * Exists by email update boolean.
+     *
+     * @param email the email
+     * @return the boolean
+     */
     public boolean existsByEmailUpdate(String email) {
         try (Connection connection = dataSource.getConnection()) {
             String query = "SELECT COUNT(*) FROM users WHERE email = ?";
@@ -154,10 +164,11 @@ public class UserDAO extends BaseDAO<User> implements DAO<User> {
                 });
     }
 
+
     /**
      * Find user by email and password user.
      *
-     * @param email the email
+     * @param email    the email
      * @param password the password
      * @return the user
      */

@@ -21,24 +21,38 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
-/** The type Main controller. */
+
+/**
+ * The type Main controller.
+ */
 public class MainController {
-    @FXML
-    protected BorderPane mainApp;
+    /**
+     * The Main app.
+     */
+    @FXML protected BorderPane mainApp;
     @FXML private Button registrationButton;
     @FXML private Button authorizationButton;
 
-    /** Instantiates a new Main controller. */
+
+    /**
+     * Instantiates a new Main controller.
+     */
     public MainController() {}
 
-    /** Initialize. */
+
+    /**
+     * Initialize.
+     */
     @FXML
     public void initialize() {
         authorizationButton.setOnAction(event -> authorizationWindow());
         registrationButton.setOnAction(event -> registrationWindow());
     }
 
-    /** Authorization window. */
+
+    /**
+     * Authorization window.
+     */
     public void authorizationWindow() {
         try {
             FXMLLoader loader =
@@ -57,7 +71,10 @@ public class MainController {
         }
     }
 
-    /** Registration window. */
+
+    /**
+     * Registration window.
+     */
     public void registrationWindow() {
         try {
             FXMLLoader loader =
@@ -76,7 +93,10 @@ public class MainController {
         }
     }
 
-    /** Data base window. */
+
+    /**
+     * Data base window.
+     */
     public void dataBaseWindow() {
         try {
             FXMLLoader loader =
@@ -105,6 +125,9 @@ public class MainController {
         }
     }
 
+    /**
+     * User actions window.
+     */
     public void userActionsWindow() {
         try {
             FXMLLoader loader =
@@ -124,6 +147,9 @@ public class MainController {
         }
     }
 
+    /**
+     * User budget window.
+     */
     public void userBudgetWindow() {
         try {
             FXMLLoader loader =
@@ -142,6 +168,9 @@ public class MainController {
         }
     }
 
+    /**
+     * User cost window.
+     */
     public void userCostWindow() {
         try {
             FXMLLoader loader =
@@ -159,6 +188,10 @@ public class MainController {
             e.printStackTrace();
         }
     }
+
+    /**
+     * User create budget window.
+     */
     public void userCreateBudgetWindow() {
         try {
             FXMLLoader loader =
@@ -177,7 +210,9 @@ public class MainController {
         }
     }
 
-
+    /**
+     * User earning window.
+     */
     public void userEarningWindow() {
         try {
             FXMLLoader loader =
@@ -196,7 +231,10 @@ public class MainController {
         }
     }
 
-    /** User window. */
+
+    /**
+     * User window.
+     */
     public void userWindow() {
         try {
             FXMLLoader loader =
@@ -215,7 +253,10 @@ public class MainController {
         }
     }
 
-    /** Budget window. */
+
+    /**
+     * Budget window.
+     */
     public void budgetWindow() {
         try {
             FXMLLoader loader =
@@ -234,7 +275,10 @@ public class MainController {
         }
     }
 
-    /** Cost window. */
+
+    /**
+     * Cost window.
+     */
     public void costWindow() {
         try {
             FXMLLoader loader =
@@ -253,7 +297,10 @@ public class MainController {
         }
     }
 
-    /** Earning window. */
+
+    /**
+     * Earning window.
+     */
     public void earningWindow() {
         try {
             FXMLLoader loader =
@@ -271,7 +318,10 @@ public class MainController {
             e.printStackTrace();
         }
     }
-    /** Cost category window. */
+
+    /**
+     * Cost category window.
+     */
     public void costCategoryWindow() {
         try {
             FXMLLoader loader =
@@ -290,7 +340,10 @@ public class MainController {
         }
     }
 
-    /** Earning category window. */
+
+    /**
+     * Earning category window.
+     */
     public void earningCategoryWindow() {
         try {
             FXMLLoader loader =
@@ -309,7 +362,10 @@ public class MainController {
         }
     }
 
-    /** Reset left pane. */
+
+    /**
+     * Reset left pane.
+     */
     public void resetLeftPane() {
         try {
             FXMLLoader leftLoader =
@@ -324,7 +380,10 @@ public class MainController {
         }
     }
 
-    /** Main window. */
+
+    /**
+     * Main window.
+     */
     public void mainWindow() {
         try {
             FXMLLoader loader =

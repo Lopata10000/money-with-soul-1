@@ -26,7 +26,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/** The type Cost controller. */
+
+/**
+ * The type Cost controller.
+ */
 public class CostController implements Initializable {
     @FXML private TableView<Cost> costTable;
     @FXML private TextField userId;
@@ -38,7 +41,10 @@ public class CostController implements Initializable {
     @FXML private TextField findByIdField;
     private final CostService costService = new CostService();
 
-    /** Create cost. */
+
+    /**
+     * Create cost.
+     */
     @FXML
     public void createCost() {
         try {
@@ -69,7 +75,10 @@ public class CostController implements Initializable {
         }
     }
 
-    /** Update cost. */
+
+    /**
+     * Update cost.
+     */
     @FXML
     public void updateCost() {
         try {
@@ -103,7 +112,10 @@ public class CostController implements Initializable {
         }
     }
 
-    /** Delete cost. */
+
+    /**
+     * Delete cost.
+     */
     @FXML
     public void deleteCost() {
         Cost selectedCost = costTable.getSelectionModel().getSelectedItem();
@@ -116,7 +128,10 @@ public class CostController implements Initializable {
         }
     }
 
-    /** Search cost. */
+
+    /**
+     * Search cost.
+     */
     @FXML
     void searchCost() {
         try {
@@ -211,8 +226,12 @@ public class CostController implements Initializable {
         return variableName.toString();
     }
 
-    /** Instantiates a new Cost controller. */
+
+    /**
+     * Instantiates a new Cost controller.
+     */
     public CostController() {}
+
 
     /**
      * Instantiates a new Cost controller.
@@ -220,6 +239,7 @@ public class CostController implements Initializable {
      * @param mainController the main controller
      */
     public CostController(MainController mainController) {}
+
 
     /**
      * Sets main controller.

@@ -1,18 +1,17 @@
 package com.fanta.moneywithsoul.dao;
 
 import com.fanta.moneywithsoul.entity.Cost;
-import com.fanta.moneywithsoul.entity.CostCategory;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-/** The type Cost dao. */
+
+/**
+ * The type Cost dao.
+ */
 public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
 
     @Override
@@ -39,11 +38,19 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
         return cost;
     }
 
+    /**
+     * Search costs by user and budget list.
+     *
+     * @param userId   the user id
+     * @param budgetId the budget id
+     * @return the list
+     */
     public List<Cost> searchCostsByUserAndBudget(long userId, long budgetId) {
         List<Cost> costs = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM costs WHERE user_id = ? AND budget_id = ?")) {
+                PreparedStatement statement =
+                        connection.prepareStatement(
+                                "SELECT * FROM costs WHERE user_id = ? AND budget_id = ?")) {
             statement.setLong(1, userId);
             statement.setLong(2, budgetId);
             ResultSet resultSet = statement.executeQuery();
@@ -63,7 +70,6 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
         }
         return costs;
     }
-
 
     @Override
     public List<Cost> findAll() {
@@ -96,9 +102,8 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "INSERT INTO costs (user_id, cost_category_id,"
-                                                + " budget_id, cost_date,"
-                                                + " cost_amount, cost_description) VALUES (?, ?, ?,"
-                                                + " ?, ?, ?)")) {
+                                                + " budget_id, cost_date, cost_amount,"
+                                                + " cost_description) VALUES (?, ?, ?, ?, ?, ?)")) {
                         statement.setLong(1, cost.getUserId());
                         statement.setLong(2, cost.getCostCategoryId());
                         statement.setLong(3, cost.getBudgetId());
@@ -120,9 +125,8 @@ public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "UPDATE costs SET user_id= ?, cost_category_id = ?,"
-                                                + " budget_id = ?, cost_date ="
-                                                + " ?, cost_amount = ?, cost_description = ? WHERE"
-                                                + " cost_id = ?")) {
+                                                + " budget_id = ?, cost_date = ?, cost_amount = ?,"
+                                                + " cost_description = ? WHERE cost_id = ?")) {
                         statement.setLong(1, cost.getUserId());
                         statement.setLong(2, cost.getCostCategoryId());
                         statement.setLong(3, cost.getBudgetId());

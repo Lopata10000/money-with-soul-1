@@ -6,7 +6,6 @@ import com.fanta.moneywithsoul.entity.User;
 import com.fanta.moneywithsoul.enumrole.UserRole;
 import com.fanta.moneywithsoul.service.UserService;
 import com.fanta.moneywithsoul.validator.Message;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -17,31 +16,35 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
-/** The type Registration controller. */
+/**
+ * The type Registration controller.
+ */
 public class RegistrationController extends Message implements Initializable {
-    private final UserService userService;
-    private final UserDAO userDAO;
-    private MainController mainController;
-
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;
     @FXML private TextField emailTextField;
     @FXML private TextField passwordTextField;
+    private final UserService userService = new UserService();
+    private final UserDAO userDAO = new UserDAO();
+    private MainController mainController;
 
-    public RegistrationController(UserService userService, UserDAO userDAO, MainController mainController) {
-        this.userService = userService;
-        this.userDAO = userDAO;
+    /**
+     * Instantiates a new Registration controller.
+     */
+    public RegistrationController() {}
+
+    /**
+     * Instantiates a new Registration controller.
+     *
+     * @param mainController the main controller
+     */
+    public RegistrationController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    public RegistrationController(UserService userService, UserDAO userDAO) {
-        this.userService = userService;
-        this.userDAO = userDAO;
-    }
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {}
-
+    /**
+     * Create user.
+     */
     public void createUser() {
         User user = createNewUser();
         userService.save(user);
@@ -62,7 +65,11 @@ public class RegistrationController extends Message implements Initializable {
 
     private void saveUserPropertiesToFile(User user) {
         Properties properties = new Properties();
-        properties.setProperty("id", String.valueOf(userDAO.findUserByEmailAndPassword(user.getEmail(), user.getPasswordHash()).getUserId()));
+        properties.setProperty(
+                "id",
+                String.valueOf(
+                        userDAO.findUserByEmailAndPassword(user.getEmail(), user.getPasswordHash())
+                                .getUserId()));
         String filePath = System.getProperty("user.dir") + "/file.properties";
         try (FileOutputStream output = new FileOutputStream(filePath)) {
             properties.store(output, "User Properties");
@@ -71,6 +78,9 @@ public class RegistrationController extends Message implements Initializable {
         }
     }
 
+    /**
+     * Successful user authorization.
+     */
     public void successfulUserAuthorization() {
         showInfoAlert("Успіх", "Успішний вхід!", "Ви успішно увійшли!");
         mainController.userActionsWindow();
@@ -87,4 +97,7 @@ public class RegistrationController extends Message implements Initializable {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {}
 }

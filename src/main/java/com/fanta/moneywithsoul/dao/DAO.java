@@ -2,12 +2,14 @@ package com.fanta.moneywithsoul.dao;
 
 import java.util.List;
 
+
 /**
  * The interface Dao.
  *
  * @param <T> the type parameter
  */
 public interface DAO<T> {
+
     /**
      * Find by id t.
      *
@@ -16,12 +18,14 @@ public interface DAO<T> {
      */
     T findById(Long id);
 
+
     /**
      * Find all list.
      *
      * @return the list
      */
     List<T> findAll();
+
 
     /**
      * Save.
@@ -30,13 +34,15 @@ public interface DAO<T> {
      */
     void save(T entity);
 
+
     /**
      * Update.
      *
-     * @param id the id
+     * @param id     the id
      * @param entity the entity
      */
     void update(Long id, T entity);
+
 
     /**
      * Delete.

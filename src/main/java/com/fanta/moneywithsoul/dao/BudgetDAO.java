@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** The type Budget dao. */
+
+/**
+ * The type Budget dao.
+ */
 public class BudgetDAO extends BaseDAO implements DAO<Budget> {
 
     @Override
@@ -35,11 +38,17 @@ public class BudgetDAO extends BaseDAO implements DAO<Budget> {
         return budget;
     }
 
+    /**
+     * Find by user list.
+     *
+     * @param userId the user id
+     * @return the list
+     */
     public List<Budget> findByUser(Long userId) {
         List<Budget> budgets = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM budgets WHERE user_id = ?")) {
+                PreparedStatement statement =
+                        connection.prepareStatement("SELECT * FROM budgets WHERE user_id = ?")) {
             statement.setLong(1, userId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

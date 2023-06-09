@@ -8,12 +8,14 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+
 /**
  * The interface Service interface.
  *
  * @param <T> the type parameter
  */
 public interface ServiceInterface<T> {
+
     /**
      * Gets by id.
      *
@@ -22,12 +24,14 @@ public interface ServiceInterface<T> {
      */
     T getById(Long id);
 
+
     /**
      * Gets all.
      *
      * @return the all
      */
     List<T> getAll();
+
 
     /**
      * Save.
@@ -36,13 +40,15 @@ public interface ServiceInterface<T> {
      */
     void save(T entity);
 
+
     /**
      * Update.
      *
-     * @param id the id
+     * @param id     the id
      * @param entity the entity
      */
     void update(Long id, T entity);
+
 
     /**
      * Delete.
@@ -50,6 +56,7 @@ public interface ServiceInterface<T> {
      * @param id the id
      */
     void delete(Long id);
+
 
     /**
      * Validate and save.
@@ -74,10 +81,11 @@ public interface ServiceInterface<T> {
         }
     }
 
+
     /**
      * Validate and update.
      *
-     * @param id the id
+     * @param id     the id
      * @param object the object
      */
     default void validateAndUpdate(Long id, T object) {
@@ -97,6 +105,7 @@ public interface ServiceInterface<T> {
             throw new RuntimeException();
         }
     }
+
 
     /**
      * Show error message.

@@ -15,9 +15,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
-/** The type User. */
+
+/**
+ * The type User.
+ */
 @Entity
 @Table(name = "users")
 public class User {
@@ -50,9 +54,11 @@ public class User {
     @Column(name = "registered_at")
     private Timestamp registeredAt;
 
+
     @Enumerated(EnumType.STRING)
     @Column(name = "user_status")
     private UserRole userStatus = UserRole.active;
+
 
     /**
      * Gets user id.
@@ -63,6 +69,7 @@ public class User {
         return userId;
     }
 
+
     /**
      * Sets user id.
      *
@@ -71,6 +78,7 @@ public class User {
     public void setUserId(Long userId) {
         this.userId = userId;
     }
+
 
     /**
      * Gets first name.
@@ -81,6 +89,7 @@ public class User {
         return firstName;
     }
 
+
     /**
      * Sets first name.
      *
@@ -89,6 +98,7 @@ public class User {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
 
     /**
      * Gets last name.
@@ -99,6 +109,7 @@ public class User {
         return lastName;
     }
 
+
     /**
      * Sets last name.
      *
@@ -107,6 +118,7 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 
     /**
      * Gets email.
@@ -117,6 +129,7 @@ public class User {
         return email;
     }
 
+
     /**
      * Sets email.
      *
@@ -125,6 +138,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
     /**
      * Gets password hash.
@@ -135,6 +149,7 @@ public class User {
         return passwordHash;
     }
 
+
     /**
      * Sets password hash.
      *
@@ -143,6 +158,7 @@ public class User {
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
     }
+
 
     /**
      * Gets registered at.
@@ -153,10 +169,14 @@ public class User {
         return registeredAt;
     }
 
-    /** Sets registered at. */
+
+    /**
+     * Sets registered at.
+     */
     public void setRegisteredAt() {
         this.registeredAt = Timestamp.valueOf(LocalDateTime.now());
     }
+
 
     /**
      * Gets user status.
@@ -167,6 +187,7 @@ public class User {
         return userStatus;
     }
 
+
     /**
      * Sets user status.
      *
@@ -176,16 +197,17 @@ public class User {
         this.userStatus = userStatus;
     }
 
+
     /**
      * Instantiates a new User.
      *
-     * @param userId the user id
-     * @param firstName the first name
-     * @param lastName the last name
-     * @param email the email
+     * @param userId       the user id
+     * @param firstName    the first name
+     * @param lastName     the last name
+     * @param email        the email
      * @param passwordHash the password hash
      * @param registeredAt the registered at
-     * @param userStatus the user status
+     * @param userStatus   the user status
      */
     public User(
             Long userId,
@@ -204,6 +226,9 @@ public class User {
         this.userStatus = userStatus;
     }
 
-    /** Instantiates a new User. */
+
+    /**
+     * Instantiates a new User.
+     */
     public User() {}
 }

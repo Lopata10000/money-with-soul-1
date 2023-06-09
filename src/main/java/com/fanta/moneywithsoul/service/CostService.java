@@ -2,17 +2,21 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostDAO;
 import com.fanta.moneywithsoul.entity.Cost;
-import com.fanta.moneywithsoul.entity.CostCategory;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 
-/** The type Cost service. */
+
+/**
+ * The type Cost service.
+ */
 public class CostService implements ServiceInterface<Cost> {
     private CostDAO costDAO;
 
-    /** Instantiates a new Cost service. */
+
+    /**
+     * Instantiates a new Cost service.
+     */
     public CostService() {
         costDAO = new CostDAO();
     }
@@ -34,6 +38,7 @@ public class CostService implements ServiceInterface<Cost> {
         Cost cost = costDAO.findById(userId);
         return costDAO.searchCostsByUserAndBudget(userId, budgerId);
     }
+
     @Override
     public List<Cost> getAll() {
         return costDAO.findAll();
@@ -65,14 +70,15 @@ public class CostService implements ServiceInterface<Cost> {
         }
     }
 
+
     /**
      * Save cost cost.
      *
-     * @param userId the user id
-     * @param costCategoryId the cost category id
-     * @param budgetId the budget id
-     * @param costDate the cost date
-     * @param costAmount the cost amount
+     * @param userId          the user id
+     * @param costCategoryId  the cost category id
+     * @param budgetId        the budget id
+     * @param costDate        the cost date
+     * @param costAmount      the cost amount
      * @param costDescription the cost description
      * @return the cost
      */
@@ -93,15 +99,16 @@ public class CostService implements ServiceInterface<Cost> {
         return cost;
     }
 
+
     /**
      * Update cost cost.
      *
-     * @param costId the cost id
-     * @param userId the user id
-     * @param costCategoryId the cost category id
-     * @param budgetId the budget id
-     * @param costDate the cost date
-     * @param costAmount the cost amount
+     * @param costId          the cost id
+     * @param userId          the user id
+     * @param costCategoryId  the cost category id
+     * @param budgetId        the budget id
+     * @param costDate        the cost date
+     * @param costAmount      the cost amount
      * @param costDescription the cost description
      * @return the cost
      */

@@ -10,11 +10,17 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
 
-/** The type User service. */
+
+/**
+ * The type User service.
+ */
 public class UserService implements ServiceInterface<User> {
     private final UserDAO userDAO;
 
-    /** Instantiates a new User service. */
+
+    /**
+     * Instantiates a new User service.
+     */
     public UserService() {
         userDAO = new UserDAO();
     }
@@ -88,14 +94,15 @@ public class UserService implements ServiceInterface<User> {
         }
     }
 
+
     /**
      * Update user user.
      *
-     * @param userId the user id
-     * @param firstName the first name
-     * @param lastName the last name
-     * @param email the email
-     * @param password the password
+     * @param userId     the user id
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param email      the email
+     * @param password   the password
      * @param userStatus the user status
      * @return the user
      */
@@ -117,13 +124,14 @@ public class UserService implements ServiceInterface<User> {
         return user;
     }
 
+
     /**
      * Save user user.
      *
-     * @param firstName the first name
-     * @param lastName the last name
-     * @param email the email
-     * @param password the password
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param email      the email
+     * @param password   the password
      * @param userStatus the user status
      * @return the user
      */
@@ -135,7 +143,13 @@ public class UserService implements ServiceInterface<User> {
         user.setEmail(email);
         user.setPasswordHash(password);
         user.setRegisteredAt();
-        user.setUserStatus(UserRole.valueOf(userStatus));
+        try {
+            user.setUserStatus(UserRole.valueOf(userStatus));
+        }
+        catch (Exception exception)
+        {
+            showErrorMessage("Не валідний статус користувача(active|admin|inactive)");
+        }
         return user;
     }
 }

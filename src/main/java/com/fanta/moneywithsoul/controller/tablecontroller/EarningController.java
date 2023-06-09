@@ -26,7 +26,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-/** The type Earning controller. */
+
+/**
+ * The type Earning controller.
+ */
 public class EarningController implements Initializable {
     @FXML private TableView<Earning> earningTable;
     @FXML private TextField userId;
@@ -39,7 +42,10 @@ public class EarningController implements Initializable {
 
     private final EarningService earningService = new EarningService();
 
-    /** Create earning. */
+
+    /**
+     * Create earning.
+     */
     @FXML
     public void createEarning() {
         try {
@@ -57,20 +63,18 @@ public class EarningController implements Initializable {
 
             Earning earning =
                     earningService.saveEarning(
-                            userID,
-                            earningCategory,
-                            budgetID,
-                            dateEarning,
-                            amountEarning);
+                            userID, earningCategory, budgetID, dateEarning, amountEarning);
             earningService.save(earning);
             refreshTable();
         } catch (Exception e) {
             showAlert("Неправильний формат");
         }
-
     }
 
-    /** Update earning. */
+
+    /**
+     * Update earning.
+     */
     @FXML
     public void updateEarning() {
         try {
@@ -96,7 +100,10 @@ public class EarningController implements Initializable {
         }
     }
 
-    /** Delete earning. */
+
+    /**
+     * Delete earning.
+     */
     @FXML
     public void deleteEarning() {
         Earning selectedEarning = earningTable.getSelectionModel().getSelectedItem();
@@ -109,7 +116,10 @@ public class EarningController implements Initializable {
         }
     }
 
-    /** Search earning. */
+
+    /**
+     * Search earning.
+     */
     @FXML
     void searchEarning() {
         try {
@@ -204,8 +214,12 @@ public class EarningController implements Initializable {
         return variableName.toString();
     }
 
-    /** Instantiates a new Earning controller. */
+
+    /**
+     * Instantiates a new Earning controller.
+     */
     public EarningController() {}
+
 
     /**
      * Instantiates a new Earning controller.
@@ -213,6 +227,7 @@ public class EarningController implements Initializable {
      * @param mainController the main controller
      */
     public EarningController(MainController mainController) {}
+
 
     /**
      * Sets main controller.

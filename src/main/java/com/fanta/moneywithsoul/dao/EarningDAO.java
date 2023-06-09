@@ -8,7 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/** The type Earning dao. */
+
+/**
+ * The type Earning dao.
+ */
 public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
 
     @Override
@@ -34,11 +37,19 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         return earning;
     }
 
+    /**
+     * Find earnings by user and budget list.
+     *
+     * @param userId   the user id
+     * @param budgetId the budget id
+     * @return the list
+     */
     public List<Earning> findEarningsByUserAndBudget(long userId, long budgetId) {
         List<Earning> earnings = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM earnings WHERE user_id = ? AND budget_id = ?")) {
+                PreparedStatement statement =
+                        connection.prepareStatement(
+                                "SELECT * FROM earnings WHERE user_id = ? AND budget_id = ?")) {
             statement.setLong(1, userId);
             statement.setLong(2, budgetId);
             ResultSet resultSet = statement.executeQuery();
@@ -57,11 +68,19 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
         }
         return earnings;
     }
+
+    /**
+     * Find earnings by category list.
+     *
+     * @param earningCategoryId the earning category id
+     * @return the list
+     */
     public List<Earning> findEarningsByCategory(Long earningCategoryId) {
         List<Earning> earnings = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement =
-                     connection.prepareStatement("SELECT * FROM earnings WHERE earning_category_id = ?")) {
+                PreparedStatement statement =
+                        connection.prepareStatement(
+                                "SELECT * FROM earnings WHERE earning_category_id = ?")) {
             statement.setLong(1, earningCategoryId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -111,8 +130,8 @@ public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
                             PreparedStatement statement =
                                     connection.prepareStatement(
                                             "INSERT INTO earnings (user_id, earning_category_id,"
-                                                + " budget_id, earning_date,"
-                                                + " earning_amount) VALUES (?, ?, ?, ?, ?)")) {
+                                                    + " budget_id, earning_date,"
+                                                    + " earning_amount) VALUES (?, ?, ?, ?, ?)")) {
                         statement.setLong(1, earning.getUserId());
                         statement.setLong(2, earning.getEarningCategoryId());
                         statement.setLong(3, earning.getBudgetId());

@@ -22,7 +22,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import org.hibernate.exception.ConstraintViolationException;
 
-/** The type Cost category controller. */
+
+/**
+ * The type Cost category controller.
+ */
 public class CostCategoryController implements Initializable {
     @FXML private TableView<CostCategory> costCategoryTable;
     @FXML private TextField costCategoryName;
@@ -31,7 +34,10 @@ public class CostCategoryController implements Initializable {
 
     private final CostCategoryService costCategoryService = new CostCategoryService();
 
-    /** Create cost category. */
+
+    /**
+     * Create cost category.
+     */
     @FXML
     public void createCostCategory() {
         try {
@@ -47,7 +53,10 @@ public class CostCategoryController implements Initializable {
         }
     }
 
-    /** Update cost category. */
+
+    /**
+     * Update cost category.
+     */
     @FXML
     public void updateCostCategory() {
         try {
@@ -64,7 +73,10 @@ public class CostCategoryController implements Initializable {
         }
     }
 
-    /** Delete cost category. */
+
+    /**
+     * Delete cost category.
+     */
     @FXML
     public void deleteCostCategory() {
         try {
@@ -79,7 +91,7 @@ public class CostCategoryController implements Initializable {
         }
     }
 
-    /** Search cost category. */
+    
     @FXML
     void searchCostCategory() {
         try {
@@ -131,8 +143,7 @@ public class CostCategoryController implements Initializable {
             if (selectedCostCategory != null) {
                 costCategoryName.setText(
                         String.valueOf(selectedCostCategory.getCostCategoryName()));
-                userId.setText(
-                        String.valueOf(selectedCostCategory.getUserId()));
+                userId.setText(String.valueOf(selectedCostCategory.getUserId()));
             }
         }
     }
@@ -173,8 +184,12 @@ public class CostCategoryController implements Initializable {
         return variableName.toString();
     }
 
-    /** Instantiates a new Cost category controller. */
+
+    /**
+     * Instantiates a new Cost category controller.
+     */
     public CostCategoryController() {}
+
 
     /**
      * Instantiates a new Cost category controller.
@@ -182,6 +197,7 @@ public class CostCategoryController implements Initializable {
      * @param mainController the main controller
      */
     public CostCategoryController(MainController mainController) {}
+
 
     /**
      * Sets main controller.

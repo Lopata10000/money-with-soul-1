@@ -2,16 +2,17 @@ package com.fanta.moneywithsoul.service;
 
 import com.fanta.moneywithsoul.dao.CostCategoryDAO;
 import com.fanta.moneywithsoul.entity.CostCategory;
-import com.fanta.moneywithsoul.entity.Earning;
-import com.fanta.moneywithsoul.entity.User;
-
 import java.util.List;
 
-/** The type Cost category service. */
+/**
+ * The type Cost category service.
+ */
 public class CostCategoryService implements ServiceInterface<CostCategory> {
     private final CostCategoryDAO costCategoryDAO;
 
-    /** Instantiates a new Cost category service. */
+    /**
+     * Instantiates a new Cost category service.
+     */
     public CostCategoryService() {
         costCategoryDAO = new CostCategoryDAO();
     }
@@ -28,6 +29,13 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
         }
         return costCategoryDAO.findById(costCategoryId);
     }
+
+    /**
+     * Gets by user.
+     *
+     * @param userId the user id
+     * @return the by user
+     */
     public List<CostCategory> getByUser(Long userId) {
         List<CostCategory> costCategories = costCategoryDAO.findyByUser(userId);
         return costCategoryDAO.findyByUser(userId);
@@ -67,7 +75,7 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
     /**
      * Update cost category cost category.
      *
-     * @param costCategoryId the cost category id
+     * @param userId           the user id
      * @param costCategoryName the cost category name
      * @return the cost category
      */
@@ -81,6 +89,7 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
     /**
      * Save cost category cost category.
      *
+     * @param userId           the user id
      * @param costCategoryName the cost category name
      * @return the cost category
      */

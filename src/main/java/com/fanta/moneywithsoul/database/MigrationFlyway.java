@@ -2,8 +2,12 @@ package com.fanta.moneywithsoul.database;
 
 import org.flywaydb.core.Flyway;
 
-/** The type Migration flyway. */
+
+/**
+ * The type Migration flyway.
+ */
 public class MigrationFlyway implements DataBaseConfig {
+
 
     /**
      * The entry point of application.
