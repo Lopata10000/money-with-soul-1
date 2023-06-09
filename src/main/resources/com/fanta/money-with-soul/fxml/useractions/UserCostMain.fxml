@@ -46,7 +46,7 @@
                 </font>
             </Button>
             <ScrollPane layoutX="479.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="479.0" styleClass="scroll-pane">
-                <FlowPane fx:id="costCategoryBox" hgap="20" vgap="20">
+                <FlowPane fx:id="costCategoryBox" hgap="20" vgap="20" >
                     <children>
 
                     </children>

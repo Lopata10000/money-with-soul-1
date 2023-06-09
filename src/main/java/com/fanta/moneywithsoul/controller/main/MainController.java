@@ -179,8 +179,8 @@ public class MainController {
                                     .getResource(
                                             "/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml"));
             StackPane userCost = loader.load();
-
-            UserCostController userCostController = loader.getController();
+            MainController mainController = new MainController();
+            UserCostController userCostController = new UserCostController(mainController);
             userCostController.setMainController(this);
 
             mainApp.setCenter(userCost);

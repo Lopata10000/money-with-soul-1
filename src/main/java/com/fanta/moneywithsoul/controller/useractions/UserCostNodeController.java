@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
  * The type User cost node controller.
  */
 public class UserCostNodeController extends Message {
+        UserCostController userCostController = new UserCostController();
     private MainController mainController;
     /**
      * The Cost category label.
@@ -152,7 +153,4 @@ public class UserCostNodeController extends Message {
     /**
      * Load info.
      */
-    public void loadInfo() {
-        mainController.userCostWindow();
-    }
 }

@@ -57,14 +57,17 @@ public class UserCostController extends Message implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        costBox.setOnMouseClicked(event -> {
+            costCategoryBox.getChildren().clear();
+            costBox.getChildren().clear();
+            loadInfo();
+        });
+        costCategoryBox.setOnMouseClicked(event -> {
+            costBox.getChildren().clear();
+            costCategoryBox.getChildren().clear();
+            loadInfo();
+        });
         loadInfo();
-        PropertiesLoader propertiesLoader = new PropertiesLoader();
-        Properties properties;
-        try {
-            properties = propertiesLoader.loadProperties();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     private Node createCostNode(Cost cost) throws IOException {
@@ -96,6 +99,10 @@ public class UserCostController extends Message implements Initializable {
                 new CostCategory(
                         costCategoryName.getText(), Long.valueOf(properties.getProperty("id")));
         costCategoryService.save(category);
+       uploadCosts();
+    }
+    public void uploadCosts()
+    {
         try {
             FXMLLoader loader =
                     new FXMLLoader(
@@ -109,7 +116,6 @@ public class UserCostController extends Message implements Initializable {
             e.printStackTrace();
         }
     }
-
     /**
      * Create cost.
      */
@@ -121,54 +127,67 @@ public class UserCostController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        if (!costCategoryIdComboBox.equals(null)) {
+        if (costCategoryIdComboBox != null && costCategoryIdComboBox.getSelectionModel().getSelectedItem() != null && !costCategoryIdComboBox.getSelectionModel().getSelectedItem().toString().isEmpty()) {
+            try {
+                Long.parseLong(costAmount.getText());
+            }  catch (Exception e) {
+                alert.setHeaderText("Не правильна сума");
+                alert.showAndWait();
+                throw new RuntimeException();
+            }
             Long budgetId = Long.valueOf(properties.getProperty("budgetId"));
             Long userId = Long.valueOf(properties.getProperty("id"));
             String selectedCategoryName =
                     costCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
-            Long selectedCostCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
-            Cost cost =
-                    new Cost(
-                            userId,
-                            selectedCostCategoryId,
-                            budgetId,
-                            Timestamp.valueOf(LocalDateTime.now()),
-                            BigDecimal.valueOf(Long.parseLong(costAmount.getText())),
-                            costDescription.getText());
-            Budget budget = budgetService.getById(Long.valueOf(properties.getProperty("budgetId")));
-            Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
-            Long newBudgetAmount =
-                    budgetAmount
-                            - Long.parseLong(String.valueOf(cost.getCostAmount().intValueExact()));
-            Budget budgetUpdate =
-                    budgetService.updateBudget(
-                            budgetId,
-                            userId,
-                            budget.getName(),
-                            budget.getStartDate(),
-                            budget.getEndDate(),
-                            BigDecimal.valueOf(newBudgetAmount));
-            if (newBudgetAmount < 0) {
-                alert.setHeaderText("Бюджет не може бути відємним");
-                alert.showAndWait();
 
-            } else {
-                budgetService.update(budgetId, budgetUpdate);
-                costService.save(cost);
-                try {
-                    FXMLLoader loader =
-                            new FXMLLoader(
-                                    getClass()
-                                            .getResource(
-                                                    "/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml"));
-                    StackPane userCost = loader.load();
-                    // Replace the children of the StackPane with the new root node
-                    mainStackPane.getChildren().setAll(userCost);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                Long selectedCostCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
+                Cost cost =
+                        costService.saveCost(
+                                userId,
+                                selectedCostCategoryId,
+                                budgetId,
+                                Timestamp.valueOf(LocalDateTime.now()),
+                                BigDecimal.valueOf(Long.parseLong(costAmount.getText())),
+                                costDescription.getText());
+                Budget budget = budgetService.getById(Long.valueOf(properties.getProperty("budgetId")));
+                Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
+                Long newBudgetAmount =
+                        budgetAmount
+                                - Long.parseLong(String.valueOf(cost.getCostAmount().intValueExact()));
+                Budget budgetUpdate =
+                        budgetService.updateBudget(
+                                budgetId,
+                                userId,
+                                budget.getName(),
+                                budget.getStartDate(),
+                                budget.getEndDate(),
+                                BigDecimal.valueOf(newBudgetAmount));
+                if (newBudgetAmount < 0) {
+                    alert.setHeaderText("Бюджет не може бути відємним");
+                    alert.showAndWait();
+
+                } else {
+                    budgetService.update(budgetId, budgetUpdate);
+                    costService.save(cost);
+                    try {
+                        FXMLLoader loader =
+                                new FXMLLoader(
+                                        getClass()
+                                                .getResource(
+                                                        "/com/fanta/money-with-soul/fxml/useractions/UserCostMain.fxml"));
+                        StackPane userCost = loader.load();
+                        // Replace the children of the StackPane with the new root node
+                        mainStackPane.getChildren().setAll(userCost);
+                    } catch (IOException exception) {
+                        throw new RuntimeException();
+                    }
                 }
-            }
-        } else alert.setHeaderText("Оберіть категорію");
+
+        }
+        else {
+            alert.setHeaderText("Оберіть категорію");
+            alert.showAndWait();
+        }
     }
 
     private Node createCostsCategoryNode(CostCategory costCategory) throws IOException {
@@ -194,7 +213,6 @@ public class UserCostController extends Message implements Initializable {
         this.mainController = mainController;
     }
 
-
     /**
      * Instantiates a new User cost controller.
      */
@@ -203,7 +221,6 @@ public class UserCostController extends Message implements Initializable {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
-
     /**
      * Load info.
      */
@@ -214,24 +231,6 @@ public class UserCostController extends Message implements Initializable {
             properties = propertiesLoader.loadProperties();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }
-        try {
-            List<Cost> costs =
-                    costService.getByUser(
-                            Long.valueOf(properties.getProperty("id")),
-                            Long.valueOf(properties.getProperty("budgetId")));
-            for (Cost cost : costs) {
-                try {
-                    Node costNode = createCostNode(cost);
-                    costBox.getChildren().add(costNode);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (NumberFormatException numberFormatException) {
-            alert.setHeaderText("Спочатку оберіть бюджет");
-            alert.showAndWait();
-            throw new RuntimeException();
         }
         // Отримати список категорій витрат
         List<CostCategory> costCategories =
@@ -257,6 +256,24 @@ public class UserCostController extends Message implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        try {
+            List<Cost> costs =
+                    costService.getByUser(
+                            Long.valueOf(properties.getProperty("id")),
+                            Long.valueOf(properties.getProperty("budgetId")));
+            for (Cost cost : costs) {
+                try {
+                    Node costNode = createCostNode(cost);
+                    costBox.getChildren().add(costNode);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (NumberFormatException numberFormatException) {
+            alert.setHeaderText("Спочатку оберіть бюджет");
+            alert.showAndWait();
+            throw new RuntimeException();
         }
     }
 }

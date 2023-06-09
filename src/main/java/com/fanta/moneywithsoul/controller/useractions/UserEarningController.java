@@ -56,13 +56,16 @@ public class UserEarningController extends Message implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadInfo();
-        PropertiesLoader propertiesLoader = new PropertiesLoader();
-        Properties properties;
-        try {
-            properties = propertiesLoader.loadProperties();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        earningBox.setOnMouseClicked(event -> {
+            earningBox.getChildren().clear();
+            earningCategoryBox.getChildren().clear();
+            loadInfo();
+        });
+        earningCategoryBox.setOnMouseClicked(event -> {
+            earningCategoryBox.getChildren().clear();
+            earningBox.getChildren().clear();
+            loadInfo();
+        });
     }
 
     private Node createEarningNode(Earning earning) throws IOException {
@@ -120,17 +123,25 @@ public class UserEarningController extends Message implements Initializable {
         }
         Long budgetId = Long.valueOf(properties.getProperty("budgetId"));
         Long userId = Long.valueOf(properties.getProperty("id"));
-        if (!earningCategoryIdComboBox.equals(null)) {
+
+        if (earningCategoryIdComboBox != null && earningCategoryIdComboBox.getSelectionModel().getSelectedItem() !=null) {
+            try{
+                Long.parseLong(earningAmount.getText());
+            }
+            catch (Exception e)
+            {
+            alert.setHeaderText("Не правильна сума");
+            alert.showAndWait();
+                throw new RuntimeException();
+            }
             String selectedCategoryName =
                     earningCategoryIdComboBox.getSelectionModel().getSelectedItem().toString();
             Long selectedEarningCategoryId = Long.valueOf(hiddenParams.get(selectedCategoryName));
-            Earning earning =
-                    new Earning(
-                            userId,
-                            selectedEarningCategoryId,
-                            budgetId,
-                            Timestamp.valueOf(LocalDateTime.now()),
-                            BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
+            Earning earning = earningService.saveEarning( userId,
+                    selectedEarningCategoryId,
+                    budgetId,
+                    Timestamp.valueOf(LocalDateTime.now()),
+                    BigDecimal.valueOf(Long.parseLong(earningAmount.getText())));
             earningService.save(earning);
             Budget budget = budgetService.getById(Long.valueOf(properties.getProperty("budgetId")));
             Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
@@ -158,7 +169,9 @@ public class UserEarningController extends Message implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else alert.setHeaderText("Оберіть категорію");
+        } else
+        {alert.setHeaderText("Оберіть категорію");
+        alert.showAndWait();}
     }
 
     private Node createEarningsCategoryNode(EarningCategory earningCategory) throws IOException {
@@ -186,24 +199,6 @@ public class UserEarningController extends Message implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        try {
-            List<Earning> earnings =
-                    earningService.getByUser(
-                            Long.valueOf(properties.getProperty("id")),
-                            Long.valueOf(properties.getProperty("budgetId")));
-            for (Earning earning : earnings) {
-                try {
-                    Node earningNode = createEarningNode(earning);
-                    earningBox.getChildren().add(earningNode);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        } catch (NumberFormatException numberFormatException) {
-            alert.setHeaderText("Спочатку оберіть бюджет");
-            alert.showAndWait();
-            throw new RuntimeException();
-        }
         List<EarningCategory> earningCategories =
                 earningCategoryService.getByUser(Long.valueOf(properties.getProperty("id")));
         hiddenParams = new HashMap<>();
@@ -227,6 +222,24 @@ public class UserEarningController extends Message implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        try {
+            List<Earning> earnings =
+                    earningService.getByUser(
+                            Long.valueOf(properties.getProperty("id")),
+                            Long.valueOf(properties.getProperty("budgetId")));
+            for (Earning earning : earnings) {
+                try {
+                    Node earningNode = createEarningNode(earning);
+                    earningBox.getChildren().add(earningNode);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (NumberFormatException numberFormatException) {
+            alert.setHeaderText("Спочатку оберіть бюджет");
+            alert.showAndWait();
+            throw new RuntimeException();
         }
     }
 

@@ -95,6 +95,10 @@ public class UserBudgetsController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        budgetsFlowPane.setOnMouseClicked(event -> {
+            mainController.userCreateBudgetWindow();
+            mainController.userActionsWindow();
+                });
         PropertiesLoader propertiesLoader = new PropertiesLoader();
         Properties properties;
         try {
