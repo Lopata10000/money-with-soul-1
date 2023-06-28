@@ -38,15 +38,16 @@ public class UserBudgetController extends LeftListUserController implements Init
     private static final int WINDOW_HEIGHT = 360;
     private static final double MIN_RADIUS = 20.0; // Мінімальний радіус кола
     private static final double MAX_RADIUS = 100.0;
-    private static final double SPACING = 5.0;
+    private static final double SPACING = 10.0;
 
     private MainController mainController;
 
-    private BudgetService budgetService = new BudgetService();
-    private CostService costService = new CostService();
-    private EarningService earningService = new EarningService();
-    private CostCategoryService costCategoryService = new CostCategoryService();
-    private EarningCategoryService earningCategoryService = new EarningCategoryService();
+    private final BudgetService budgetService = new BudgetService();
+    private final CostService costService = new CostService();
+    private final EarningService earningService = new EarningService();
+    private final CostCategoryService costCategoryService = new CostCategoryService();
+    private final EarningCategoryService earningCategoryService = new EarningCategoryService();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -73,7 +74,7 @@ public class UserBudgetController extends LeftListUserController implements Init
 
     private void loadCosts() {
         Task<List<Cost>> loadCostsTask =
-                new Task<List<Cost>>() {
+                new Task<>() {
                     @Override
                     protected List<Cost> call() throws Exception {
                         PropertiesLoader propertiesLoader = new PropertiesLoader();
@@ -99,7 +100,7 @@ public class UserBudgetController extends LeftListUserController implements Init
 
     private void loadEarnings() {
         Task<List<Earning>> loadEarningsTask =
-                new Task<List<Earning>>() {
+                new Task<>() {
                     @Override
                     protected List<Earning> call() throws Exception {
                         PropertiesLoader propertiesLoader = new PropertiesLoader();
@@ -184,11 +185,13 @@ public class UserBudgetController extends LeftListUserController implements Init
         Random rand = new Random(0);
         double centerX = WINDOW_WIDTH / 2;
         double centerY = WINDOW_HEIGHT / 2;
-        double angleIncrement = 360.0 / categoryExpenses.size();
+        double angleIncrement = 1.0; // Reduce angle increment for a tighter spiral
         double currentAngle = 0;
         double minRadius = MIN_RADIUS;
         double maxRadius = MAX_RADIUS;
         double spacing = SPACING;
+
+        double currentRadius = minRadius;
 
         for (Map.Entry<Long, Double> entry : categoryExpenses.entrySet()) {
             Long categoryId = entry.getKey();
@@ -196,8 +199,8 @@ public class UserBudgetController extends LeftListUserController implements Init
             double ratio = expense / totalExpense;
             double radius = minRadius + (maxRadius - minRadius) * ratio;
 
-            double circleX = centerX + (radius + spacing) * Math.cos(Math.toRadians(currentAngle));
-            double circleY = centerY + (radius + spacing) * Math.sin(Math.toRadians(currentAngle));
+            double circleX = centerX + currentRadius * Math.cos(Math.toRadians(currentAngle));
+            double circleY = centerY + currentRadius * Math.sin(Math.toRadians(currentAngle));
 
             Circle circle = new Circle();
             circle.setRadius(radius);
@@ -224,6 +227,7 @@ public class UserBudgetController extends LeftListUserController implements Init
             infoCostPane.getChildren().addAll(circle, label);
 
             currentAngle += angleIncrement;
+            currentRadius += 2 * radius + spacing; // Adjust the spiral radius after each circle
         }
     }
 

@@ -16,7 +16,7 @@ public class EarningCategoryService implements ServiceInterface<EarningCategory>
      * Instantiates a new Earning category service.
      */
     public EarningCategoryService() {
-        earningCategoryDAO = new EarningCategoryDAO();
+        earningCategoryDAO = EarningCategoryDAO.getInstance();
     }
 
     @Override

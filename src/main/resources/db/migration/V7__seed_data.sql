@@ -47,35 +47,39 @@ $$
 $$;
 
 --- таблиця категорій витрат
+-- таблиця категорій витрат
 DO
 $$
 BEGIN
-        IF NOT EXISTS(SELECT 1 FROM pg_catalog.pg_tables WHERE tablename = 'cost_categories' AND schemaname = 'public') THEN
+    IF NOT EXISTS(SELECT 1 FROM pg_catalog.pg_tables WHERE tablename = 'cost_categories' AND schemaname = 'public') THEN
 CREATE TABLE cost_categories
 (
     cost_category_id   SERIAL PRIMARY KEY,
     cost_category_name VARCHAR(100) NOT NULL,
-    user_id            INTEGER REFERENCES users(user_id) NOT NULL ON DELETE CASCADE ON UPDATE CASCADE,
+    user_id            INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE
 );
 ELSE
-            RAISE NOTICE 'Table cost_categories already exists';
+        RAISE NOTICE 'Table cost_categories already exists';
 END IF;
 END
 $$;
 
+
+
+-- таблиця категорій доходів
 -- таблиця категорій доходів
 DO
 $$
 BEGIN
-        IF NOT EXISTS(SELECT 1 FROM pg_catalog.pg_tables WHERE tablename = 'earning_categories' AND schemaname = 'public') THEN
+    IF NOT EXISTS(SELECT 1 FROM pg_catalog.pg_tables WHERE tablename = 'earning_categories' AND schemaname = 'public') THEN
 CREATE TABLE earning_categories
 (
     earning_category_id   SERIAL PRIMARY KEY,
     earning_category_name VARCHAR(100) NOT NULL,
-    user_id               INTEGER REFERENCES users(user_id) NOT NULL ON DELETE CASCADE ON UPDATE CASCADE,
+    user_id               INTEGER NOT NULL REFERENCES users(user_id) ON DELETE CASCADE
 );
 ELSE
-            RAISE NOTICE 'Table earning_categories already exists';
+        RAISE NOTICE 'Table earning_categories already exists';
 END IF;
 END
 $$;

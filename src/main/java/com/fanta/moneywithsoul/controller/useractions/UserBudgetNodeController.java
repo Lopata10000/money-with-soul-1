@@ -3,7 +3,6 @@ package com.fanta.moneywithsoul.controller.useractions;
 import com.fanta.moneywithsoul.controller.main.MainController;
 import com.fanta.moneywithsoul.entity.Cost;
 import com.fanta.moneywithsoul.entity.Earning;
-import com.fanta.moneywithsoul.service.BudgetService;
 import com.fanta.moneywithsoul.service.CostCategoryService;
 import com.fanta.moneywithsoul.service.EarningCategoryService;
 import javafx.fxml.FXML;
@@ -15,7 +14,6 @@ import javafx.scene.control.Label;
  */
 public class UserBudgetNodeController {
 
-    private BudgetService budgetService = new BudgetService();
     private CostCategoryService costCategoryService = new CostCategoryService();
     private EarningCategoryService earningCategoryService = new EarningCategoryService();
     private MainController mainController;
@@ -27,25 +25,6 @@ public class UserBudgetNodeController {
     @FXML private Label earningCategoryLabel;
     @FXML private Label earningDateLabel;
     @FXML private Label earningAmountLabel;
-
-    /**
-     * Instantiates a new User budget node controller.
-     *
-     * @param mainController         the main controller
-     * @param budgetService          the budget service
-     * @param costCategoryService    the cost category service
-     * @param earningCategoryService the earning category service
-     */
-    public UserBudgetNodeController(
-            MainController mainController,
-            BudgetService budgetService,
-            CostCategoryService costCategoryService,
-            EarningCategoryService earningCategoryService) {
-        this.mainController = mainController;
-        this.budgetService = budgetService;
-        this.costCategoryService = costCategoryService;
-        this.earningCategoryService = earningCategoryService;
-    }
 
     private void setLabelText(Label label, String prefix, String text) {
         label.setText(prefix + text);

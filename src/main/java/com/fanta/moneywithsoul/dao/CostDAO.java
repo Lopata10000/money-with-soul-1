@@ -13,7 +13,16 @@ import java.util.List;
  * The type Cost dao.
  */
 public class CostDAO extends BaseDAO<Cost> implements DAO<Cost> {
+    private static CostDAO instance;
 
+    private CostDAO() {}
+
+    public static CostDAO getInstance() {
+        if (instance == null) {
+            instance = new CostDAO();
+        }
+        return instance;
+    }
     @Override
     public Cost findById(Long costId) {
         Cost cost = null;

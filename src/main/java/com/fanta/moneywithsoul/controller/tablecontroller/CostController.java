@@ -49,7 +49,7 @@ public class CostController implements Initializable {
     public void createCost() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             User user = userDAO.findById(userIdLong);
             if (user == null) {
                 showAlert("Користувача з таким id не існує");
@@ -85,7 +85,7 @@ public class CostController implements Initializable {
             Cost selectedCost = costTable.getSelectionModel().getSelectedItem();
             Long costID = Long.parseLong(String.valueOf(selectedCost.getCostId()));
             Long userIdLong = Long.valueOf(userId.getText());
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             User user = userDAO.findById(userIdLong);
             if (user == null) {
                 showAlert("Користувача з таким id не існує");

@@ -13,6 +13,16 @@ import java.util.List;
  * The type Earning category dao.
  */
 public class EarningCategoryDAO extends BaseDAO<EarningCategory> implements DAO<EarningCategory> {
+    private static EarningCategoryDAO instance;
+
+    private EarningCategoryDAO() {}
+
+    public static EarningCategoryDAO getInstance() {
+        if (instance == null) {
+            instance = new EarningCategoryDAO();
+        }
+        return instance;
+    }
     @Override
     public EarningCategory findById(Long earningCategoryId) {
         EarningCategory earningCategory = null;

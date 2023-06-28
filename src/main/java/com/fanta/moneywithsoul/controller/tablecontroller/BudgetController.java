@@ -50,7 +50,7 @@ public class BudgetController implements Initializable {
     public void createBudget() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             User user = userDAO.findById(userIdLong);
             if (user == null) {
                 showAlert("Користувача з таким id не існує");
@@ -86,7 +86,7 @@ public class BudgetController implements Initializable {
             Budget selectedBudget = budgetTable.getSelectionModel().getSelectedItem();
             Long budgetID = Long.parseLong(String.valueOf(selectedBudget.getBudgetId()));
             Long userIdLong = Long.valueOf(userId.getText());
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             User user = userDAO.findById(userIdLong);
             if (user == null) {
                 showAlert("Користувача з таким id не існує");

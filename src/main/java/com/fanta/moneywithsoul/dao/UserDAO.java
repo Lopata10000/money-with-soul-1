@@ -17,6 +17,16 @@ import org.hibernate.query.Query;
  * The type User dao.
  */
 public class UserDAO extends BaseDAO<User> implements DAO<User> {
+    private static UserDAO instance;
+
+    private UserDAO() {}
+
+    public static UserDAO getInstance() {
+        if (instance == null) {
+            instance = new UserDAO();
+        }
+        return instance;
+    }
 
     @Override
     public User findById(Long userId) {

@@ -202,7 +202,7 @@ public class Budget {
      */
     public void setUserId(Long userId) {
         this.userId = userId;
-        this.user = new UserDAO().findById(userId);
+        this.user = UserDAO.getInstance().findById(userId);
     }
 
 

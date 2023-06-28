@@ -14,7 +14,7 @@ public class CostCategoryService implements ServiceInterface<CostCategory> {
      * Instantiates a new Cost category service.
      */
     public CostCategoryService() {
-        costCategoryDAO = new CostCategoryDAO();
+        costCategoryDAO = CostCategoryDAO.getInstance();
     }
 
     @Override

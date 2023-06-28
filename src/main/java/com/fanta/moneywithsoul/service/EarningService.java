@@ -18,7 +18,7 @@ public class EarningService implements ServiceInterface<Earning> {
      * Instantiates a new Earning service.
      */
     public EarningService() {
-        earningDAO = new EarningDAO();
+        earningDAO = EarningDAO.getInstance();
     }
 
     @Override

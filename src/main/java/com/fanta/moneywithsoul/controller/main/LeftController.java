@@ -23,19 +23,10 @@ public class LeftController implements Initializable {
     @FXML JFXButton usersTableButton;
 
     /**
-     * The Transactions table button.
-     */
-    @FXML JFXButton transactionsTableButton;
-
-    /**
      * The Costs table button.
      */
     @FXML JFXButton costsTableButton;
 
-    /**
-     * The Planing costs table button.
-     */
-    @FXML JFXButton planingCostsTableButton;
 
     /**
      * The Earning category table button.
@@ -51,11 +42,6 @@ public class LeftController implements Initializable {
      * The Cost category table button.
      */
     @FXML JFXButton costCategoryTableButton;
-
-    /**
-     * The Exchange rate table button.
-     */
-    @FXML JFXButton exchangeRateTableButton;
 
     private MainController mainController; // Додано приватне поле mainController
 

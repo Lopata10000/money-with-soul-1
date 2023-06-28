@@ -13,7 +13,16 @@ import java.util.List;
  * The type Cost category dao.
  */
 public class CostCategoryDAO extends BaseDAO<CostCategory> implements DAO<CostCategory> {
+    private static CostCategoryDAO instance;
 
+    private CostCategoryDAO() {}
+
+    public static CostCategoryDAO getInstance() {
+        if (instance == null) {
+            instance = new CostCategoryDAO();
+        }
+        return instance;
+    }
     @Override
     public CostCategory findById(Long costCategoryId) {
         CostCategory costCategory = null;

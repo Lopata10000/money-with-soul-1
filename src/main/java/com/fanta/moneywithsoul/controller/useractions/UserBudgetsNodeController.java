@@ -37,11 +37,6 @@ public class UserBudgetsNodeController {
      */
     BudgetService budgetService = new BudgetService();
     /**
-     * The User budgets controller.
-     */
-    UserBudgetsController userBudgetsController = new UserBudgetsController();
-
-    /**
      * Display budget data.
      *
      * @param budget the budget
@@ -89,10 +84,4 @@ public class UserBudgetsNodeController {
         this.mainController = mainController;
     }
 
-    /**
-     * Load info.
-     */
-    public void loadInfo() {
-        mainController.userCostWindow();
-    }
 }

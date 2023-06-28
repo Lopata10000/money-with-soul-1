@@ -22,7 +22,7 @@ public class UserService implements ServiceInterface<User> {
      * Instantiates a new User service.
      */
     public UserService() {
-        userDAO = new UserDAO();
+        userDAO = UserDAO.getInstance();
     }
 
     @Override
@@ -46,7 +46,7 @@ public class UserService implements ServiceInterface<User> {
     @Override
     public void save(User user) {
 
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = UserDAO.getInstance();
         boolean emailExists = userDAO.existsByEmail(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");
@@ -69,7 +69,7 @@ public class UserService implements ServiceInterface<User> {
 
     @Override
     public void update(Long userId, User user) {
-        UserDAO userDAO = new UserDAO();
+        UserDAO userDAO = UserDAO.getInstance();
         boolean emailExists = userDAO.existsByEmailUpdate(user.getEmail());
         if (emailExists) {
             showErrorMessage("Користувач з таким email вже існує, використайте іншу.");

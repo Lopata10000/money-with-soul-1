@@ -13,7 +13,16 @@ import java.util.List;
  * The type Earning dao.
  */
 public class EarningDAO extends BaseDAO<Earning> implements DAO<Earning> {
+    private static EarningDAO instance;
 
+    private EarningDAO() {}
+
+    public static EarningDAO getInstance() {
+        if (instance == null) {
+            instance = new EarningDAO();
+        }
+        return instance;
+    }
     @Override
     public Earning findById(Long earningId) {
         Earning earning = null;

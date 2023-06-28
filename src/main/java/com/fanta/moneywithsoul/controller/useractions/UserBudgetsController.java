@@ -51,7 +51,7 @@ public class UserBudgetsController implements Initializable {
         }
         try {
             Long userIdLong = Long.valueOf(properties.getProperty("id"));
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             User user = userDAO.findById(userIdLong);
             if (user == null) {
                 showAlert("Користувача з таким id не існує");

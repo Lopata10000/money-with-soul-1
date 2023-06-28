@@ -53,7 +53,7 @@ public class UserEarningNodeController extends Message {
     /**
      * The Earning category dao.
      */
-    EarningCategoryDAO earningCategoryDAO = new EarningCategoryDAO();
+    EarningCategoryDAO earningCategoryDAO = EarningCategoryDAO.getInstance();
     /**
      * The Earning service.
      */
@@ -61,8 +61,8 @@ public class UserEarningNodeController extends Message {
     /**
      * The Earning dao.
      */
-    EarningDAO earningDAO = new EarningDAO();
-    private BudgetService budgetService = new BudgetService();
+    EarningDAO earningDAO = EarningDAO.getInstance();
+    private final BudgetService budgetService = new BudgetService();
 
     /**
      * Display earning category data.

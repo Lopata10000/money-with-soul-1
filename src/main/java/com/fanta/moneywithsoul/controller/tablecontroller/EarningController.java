@@ -50,7 +50,7 @@ public class EarningController implements Initializable {
     public void createEarning() {
         try {
             Long userIdLong = Long.valueOf(userId.getText());
-            UserDAO userDAO = new UserDAO();
+            UserDAO userDAO = UserDAO.getInstance();
             User user = userDAO.findById(userIdLong);
             if (user == null) {
                 showAlert("Користувача з таким id не існує");

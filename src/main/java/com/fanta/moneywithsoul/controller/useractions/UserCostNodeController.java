@@ -20,7 +20,6 @@ import javafx.scene.control.Label;
  * The type User cost node controller.
  */
 public class UserCostNodeController extends Message {
-        UserCostController userCostController = new UserCostController();
     private MainController mainController;
     /**
      * The Cost category label.
@@ -50,7 +49,7 @@ public class UserCostNodeController extends Message {
      * The Delete cost category button.
      */
     @FXML Button deleteCostCategoryButton;
-    private BudgetService budgetService = new BudgetService();
+    private final BudgetService budgetService = new BudgetService();
 
     /**
      * The Cost category service.
@@ -104,8 +103,8 @@ public class UserCostNodeController extends Message {
         Long budgetId = Long.valueOf(properties.getProperty("budgetId"));
         Long userId = Long.valueOf(properties.getProperty("id"));
         Budget budget = budgetService.getById(budgetId);
-        Long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
-        Long newBudgetAmount =
+        long budgetAmount = Long.parseLong(String.valueOf(budget.getAmount().intValueExact()));
+        long newBudgetAmount =
                 budgetAmount + Long.parseLong(String.valueOf(cost.getCostAmount().intValueExact()));
         Budget budgetUpdate =
                 budgetService.updateBudget(
@@ -146,11 +145,9 @@ public class UserCostNodeController extends Message {
      */
     public UserCostNodeController() {}
 
+    @Override
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
 
-    /**
-     * Load info.
-     */
 }

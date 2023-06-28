@@ -25,7 +25,7 @@ public class RegistrationController extends Message implements Initializable {
     @FXML private TextField emailTextField;
     @FXML private TextField passwordTextField;
     private final UserService userService = new UserService();
-    private final UserDAO userDAO = new UserDAO();
+    private final UserDAO userDAO = UserDAO.getInstance();
     private MainController mainController;
 
     /**

@@ -18,7 +18,7 @@ public class CostService implements ServiceInterface<Cost> {
      * Instantiates a new Cost service.
      */
     public CostService() {
-        costDAO = new CostDAO();
+        costDAO = CostDAO.getInstance();
     }
 
     @Override

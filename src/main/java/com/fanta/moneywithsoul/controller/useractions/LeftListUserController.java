@@ -54,6 +54,7 @@ public class LeftListUserController extends Message implements Initializable {
      *
      * @param mainController the main controller
      */
+    @Override
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
@@ -184,23 +185,5 @@ public class LeftListUserController extends Message implements Initializable {
         } catch (Exception e) {
             throw new RuntimeException("Не вдалося створити вікно бюджету", e);
         }
-    }
-
-
-    private void saveSelectedBudgetId(String newSelection, Properties properties, Map<Long, String> budgetNames) {
-        budgetNames.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(newSelection))
-                .findFirst()
-                .ifPresent(entry -> {
-                    Long selectedBudgetId = entry.getKey();
-                    properties.setProperty("budgetId", String.valueOf(selectedBudgetId));
-
-                    String filePath = System.getProperty("user.dir") + "/file.properties";
-                    try (FileOutputStream output = new FileOutputStream(filePath)) {
-                        properties.store(output, "User Properties");
-                    } catch (IOException e) {
-                        throw new RuntimeException("Failed to store properties", e);
-                    }
-                });
     }
 }

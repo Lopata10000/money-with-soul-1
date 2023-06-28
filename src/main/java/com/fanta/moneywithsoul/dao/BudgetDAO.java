@@ -13,7 +13,16 @@ import java.util.List;
  * The type Budget dao.
  */
 public class BudgetDAO extends BaseDAO implements DAO<Budget> {
+    private static BudgetDAO instance;
 
+    private BudgetDAO() {}
+
+    public static BudgetDAO getInstance() {
+        if (instance == null) {
+            instance = new BudgetDAO();
+        }
+        return instance;
+    }
     @Override
     public Budget findById(Long budgetId) {
         Budget budget = null;

@@ -26,7 +26,7 @@ public class AuthorizationController extends Message implements Initializable {
 
     @FXML private TextField emailTextField;
     @FXML private TextField passwordTextField;
-    UserDAO userDAO = new UserDAO();
+    UserDAO userDAO = UserDAO.getInstance();
 
     
     public AuthorizationController(MainController mainController) {
@@ -94,7 +94,7 @@ public class AuthorizationController extends Message implements Initializable {
     }
 
     public void successfulUserAuthorization() {
-        showInfoAlert("Успіх", "Успішнийа вхід!", "Ви успішно увійшли!");
+        showInfoAlert("Успіх", "Успішний вхід!", "Ви успішно увійшли!");
         mainController.userActionsWindow();
     }
 

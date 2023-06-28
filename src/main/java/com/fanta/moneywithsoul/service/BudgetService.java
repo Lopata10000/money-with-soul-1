@@ -18,7 +18,7 @@ public class BudgetService implements ServiceInterface<Budget> {
      * Instantiates a new Budget service.
      */
     public BudgetService() {
-        budgetDAO = new BudgetDAO();
+        budgetDAO = BudgetDAO.getInstance();
     }
 
     @Override
