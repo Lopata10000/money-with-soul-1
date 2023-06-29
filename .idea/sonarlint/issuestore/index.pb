@@ -55,8 +55,6 @@ s
 Csrc/main/java/com/fanta/moneywithsoul/database/MigrationFlyway.java,d\b\dbdff6e6943f740248a68d1ed0f7ecd9440e068a
 n
 >src/main/java/com/fanta/moneywithsoul/database/PoolConfig.java,9\e\9e4fa59245b848d130779e66ea5329765e1e5192
-f
-6src/main/java/com/fanta/moneywithsoul/dao/BaseDAO.java,c\2\c21e104982e0910da73d7266abbb15ae7ab4abdc
 r
 Bsrc/main/java/com/fanta/moneywithsoul/database/DataBaseConfig.java,0\9\0971fd2788b2a1b4d3a2f86a3a052cf48896e309
 è

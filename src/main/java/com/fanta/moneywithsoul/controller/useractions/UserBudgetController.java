@@ -12,6 +12,8 @@ import com.fanta.moneywithsoul.service.PropertiesLoader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Collectors;
+
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +40,7 @@ public class UserBudgetController extends LeftListUserController implements Init
     private static final int WINDOW_HEIGHT = 360;
     private static final double MIN_RADIUS = 20.0; // Мінімальний радіус кола
     private static final double MAX_RADIUS = 100.0;
-    private static final double SPACING = 10.0;
+
 
     private MainController mainController;
 
@@ -47,7 +49,6 @@ public class UserBudgetController extends LeftListUserController implements Init
     private final EarningService earningService = new EarningService();
     private final CostCategoryService costCategoryService = new CostCategoryService();
     private final EarningCategoryService earningCategoryService = new EarningCategoryService();
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -152,55 +153,159 @@ public class UserBudgetController extends LeftListUserController implements Init
         return node;
     }
 
+    private void displayEarningInfo() throws IOException {
+        Properties properties = loadProperties();
+        displayBudgetAmount(properties);
+        List<Earning> earnings = getEarnings(properties);
+        Map<Long, Double> categoryEarnings = calculateCategoryEarnings(earnings);
+        double totalEarning = calculateTotalEarning(categoryEarnings);
+        displayEarningCircles(categoryEarnings, totalEarning);
+    }
+
     private void displayCostInfo() throws IOException {
+        Properties properties = loadProperties();
+        displayBudgetAmount(properties);
+        List<Cost> costs = getCosts(properties);
+        Map<Long, Double> categoryExpenses = calculateCategoryExpenses(costs);
+        double totalExpense = calculateTotalExpense(categoryExpenses);
+        displayCostCircles(categoryExpenses, totalExpense);
+    }
+
+    private Properties loadProperties() throws IOException {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
-        Properties properties;
         try {
-            properties = propertiesLoader.loadProperties();
+            return propertiesLoader.loadProperties();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 
-        String budgetAmount =
-                String.valueOf(
-                        budgetService
-                                .getById(Long.valueOf(properties.getProperty("budgetId")))
-                                .getAmount());
+    private void displayBudgetAmount(Properties properties) {
+        String budgetId = properties.getProperty("budgetId");
+        String budgetAmount = String.valueOf(budgetService.getById(Long.valueOf(budgetId)).getAmount());
         budgetAmountLabel.setText("Your balance = " + budgetAmount);
-        List<Cost> costs =
-                costService.getByUser(
-                        Long.valueOf(properties.getProperty("id")),
-                        Long.valueOf(properties.getProperty("budgetId")));
+    }
+
+    private List<Earning> getEarnings(Properties properties) {
+        String userId = properties.getProperty("id");
+        String budgetId = properties.getProperty("budgetId");
+        return earningService.getByUser(Long.valueOf(userId), Long.valueOf(budgetId));
+    }
+
+    private Map<Long, Double> calculateCategoryEarnings(List<Earning> earnings) {
+        Map<Long, Double> categoryEarnings = new HashMap<>();
+
+        for (Earning earning : earnings) {
+            Long categoryId = earning.getEarningCategoryId();
+            double amount = earning.getEarningAmount().doubleValue();
+            categoryEarnings.put(categoryId, categoryEarnings.getOrDefault(categoryId, 0.0) + amount);
+        }
+
+        return categoryEarnings;
+    }
+
+    private double calculateTotalEarning(Map<Long, Double> categoryEarnings) {
+        return categoryEarnings.values().stream().mapToDouble(Double::doubleValue).sum();
+    }
+
+    private void displayEarningCircles(Map<Long, Double> categoryEarnings, double totalEarning) {
+        Random rand = new Random(0);
+        double centerX = WINDOW_WIDTH / 2;
+        double centerY = WINDOW_HEIGHT / 2;
+        double minRadius = MIN_RADIUS;
+        double maxRadius = MAX_RADIUS;
+        double centralCircleRadius = 30; // Define this value
+
+        List<Map.Entry<Long, Double>> sortedEarnings = categoryEarnings.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .collect(Collectors.toList());
+
+        double currentAngle = 0.0;
+        double lastRadius = centralCircleRadius;
+
+        for (Map.Entry<Long, Double> entry : sortedEarnings) {
+            Long categoryId = entry.getKey();
+            double earning = entry.getValue();
+            double ratio = earning / totalEarning;
+            double radius = minRadius + (maxRadius - minRadius) * ratio;
+
+            double circleX = centerX + (lastRadius + radius) * Math.cos(Math.toRadians(currentAngle));
+            double circleY = centerY + (lastRadius + radius) * Math.sin(Math.toRadians(currentAngle));
+
+            Circle circle = new Circle();
+            circle.setRadius(radius);
+            circle.setFill(Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble()));
+            circle.setCenterX(circleX);
+            circle.setCenterY(circleY);
+
+            String categoryName = earningCategoryService.getById(categoryId).getEarningCategoryName();
+            String text = String.format("%.2f\n%s", earning, categoryName);
+            Label label = new Label(text);
+            label.setAlignment(Pos.CENTER);
+
+            label.widthProperty()
+                    .addListener(
+                            (obs, oldWidth, newWidth) ->
+                                    label.setLayoutX(
+                                            circle.getCenterX() - newWidth.doubleValue() / 2));
+            label.heightProperty()
+                    .addListener(
+                            (obs, oldHeight, newHeight) ->
+                                    label.setLayoutY(
+                                            circle.getCenterY() - newHeight.doubleValue() / 2));
+
+            infoEarningPane.getChildren().addAll(circle, label);
+
+            lastRadius = radius;
+            currentAngle += 360.0 / sortedEarnings.size();
+        }
+    }
+
+    private List<Cost> getCosts(Properties properties) {
+        String userId = properties.getProperty("id");
+        String budgetId = properties.getProperty("budgetId");
+        return costService.getByUser(Long.valueOf(userId), Long.valueOf(budgetId));
+    }
+
+    private Map<Long, Double> calculateCategoryExpenses(List<Cost> costs) {
         Map<Long, Double> categoryExpenses = new HashMap<>();
 
         for (Cost cost : costs) {
             Long categoryId = cost.getCostCategoryId();
             double amount = cost.getCostAmount().doubleValue();
-            categoryExpenses.put(
-                    categoryId, categoryExpenses.getOrDefault(categoryId, 0.0) + amount);
+            categoryExpenses.put(categoryId, categoryExpenses.getOrDefault(categoryId, 0.0) + amount);
         }
 
-        double totalExpense =
-                categoryExpenses.values().stream().mapToDouble(Double::doubleValue).sum();
+        return categoryExpenses;
+    }
+
+    private double calculateTotalExpense(Map<Long, Double> categoryExpenses) {
+        return categoryExpenses.values().stream().mapToDouble(Double::doubleValue).sum();
+    }
+
+    private void displayCostCircles(Map<Long, Double> categoryExpenses, double totalExpense) {
         Random rand = new Random(0);
         double centerX = WINDOW_WIDTH / 2;
         double centerY = WINDOW_HEIGHT / 2;
-        double angleIncrement = 1.0; // Reduce angle increment for a tighter spiral
-        double currentAngle = 0;
         double minRadius = MIN_RADIUS;
         double maxRadius = MAX_RADIUS;
-        double spacing = SPACING;
+        double centralCircleRadius = 30; // Define this value
 
-        double currentRadius = minRadius;
+        List<Map.Entry<Long, Double>> sortedExpenses = categoryExpenses.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .collect(Collectors.toList());
 
-        for (Map.Entry<Long, Double> entry : categoryExpenses.entrySet()) {
+        double currentAngle = 0.0;
+        double lastRadius = centralCircleRadius;
+
+        for (Map.Entry<Long, Double> entry : sortedExpenses) {
             Long categoryId = entry.getKey();
             double expense = entry.getValue();
             double ratio = expense / totalExpense;
             double radius = minRadius + (maxRadius - minRadius) * ratio;
 
-            double circleX = centerX + currentRadius * Math.cos(Math.toRadians(currentAngle));
-            double circleY = centerY + currentRadius * Math.sin(Math.toRadians(currentAngle));
+            double circleX = centerX + (lastRadius + radius) * Math.cos(Math.toRadians(currentAngle));
+            double circleY = centerY + (lastRadius + radius) * Math.sin(Math.toRadians(currentAngle));
 
             Circle circle = new Circle();
             circle.setRadius(radius);
@@ -226,87 +331,11 @@ public class UserBudgetController extends LeftListUserController implements Init
 
             infoCostPane.getChildren().addAll(circle, label);
 
-            currentAngle += angleIncrement;
-            currentRadius += 2 * radius + spacing; // Adjust the spiral radius after each circle
+            lastRadius = radius;
+            currentAngle += 360.0 / sortedExpenses.size();
         }
     }
 
-    private void displayEarningInfo() throws IOException {
-        PropertiesLoader propertiesLoader = new PropertiesLoader();
-        Properties properties;
-        try {
-            properties = propertiesLoader.loadProperties();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        String budgetAmount =
-                String.valueOf(
-                        budgetService
-                                .getById(Long.valueOf(properties.getProperty("budgetId")))
-                                .getAmount());
-        budgetAmountLabel.setText("Your balance = " + budgetAmount);
-        List<Earning> earnings =
-                earningService.getByUser(
-                        Long.valueOf(properties.getProperty("id")),
-                        Long.valueOf(properties.getProperty("budgetId")));
-        Map<Long, Double> categoryEarnings = new HashMap<>();
-
-        for (Earning earning : earnings) {
-            Long categoryId = earning.getEarningCategoryId();
-            double amount = earning.getEarningAmount().doubleValue();
-            categoryEarnings.put(
-                    categoryId, categoryEarnings.getOrDefault(categoryId, 0.0) + amount);
-        }
-
-        double totalEarning =
-                categoryEarnings.values().stream().mapToDouble(Double::doubleValue).sum();
-        Random rand = new Random(0);
-        double centerX = WINDOW_WIDTH / 2;
-        double centerY = WINDOW_HEIGHT / 2;
-        double angleIncrement = 360.0 / categoryEarnings.size();
-        double currentAngle = 0;
-        double minRadius = MIN_RADIUS;
-        double maxRadius = MAX_RADIUS;
-        double spacing = SPACING;
-
-        for (Map.Entry<Long, Double> entry : categoryEarnings.entrySet()) {
-            Long categoryId = entry.getKey();
-            double expense = entry.getValue();
-            double ratio = expense / totalEarning;
-            double radius = minRadius + (maxRadius - minRadius) * ratio;
-
-            double circleX = centerX + (radius + spacing) * Math.cos(Math.toRadians(currentAngle));
-            double circleY = centerY + (radius + spacing) * Math.sin(Math.toRadians(currentAngle));
-
-            Circle circle = new Circle();
-            circle.setRadius(radius);
-            circle.setFill(Color.color(rand.nextDouble(), rand.nextDouble(), rand.nextDouble()));
-            circle.setCenterX(circleX);
-            circle.setCenterY(circleY);
-
-            String categoryName =
-                    earningCategoryService.getById(categoryId).getEarningCategoryName();
-            String text = String.format("%.2f\n%s", expense, categoryName);
-            Label label = new Label(text);
-            label.setAlignment(Pos.CENTER);
-
-            label.widthProperty()
-                    .addListener(
-                            (obs, oldWidth, newWidth) ->
-                                    label.setLayoutX(
-                                            circle.getCenterX() - newWidth.doubleValue() / 2));
-            label.heightProperty()
-                    .addListener(
-                            (obs, oldHeight, newHeight) ->
-                                    label.setLayoutY(
-                                            circle.getCenterY() - newHeight.doubleValue() / 2));
-
-            infoEarningPane.getChildren().addAll(circle, label);
-
-            currentAngle += angleIncrement;
-        }
-    }
 
     /**
      * Instantiates a new User budget controller.

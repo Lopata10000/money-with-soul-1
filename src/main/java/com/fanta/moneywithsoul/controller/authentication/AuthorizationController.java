@@ -96,11 +96,13 @@ public class AuthorizationController extends Message implements Initializable {
     public void successfulUserAuthorization() {
         showInfoAlert("Успіх", "Успішний вхід!", "Ви успішно увійшли!");
         mainController.userActionsWindow();
+        mainController.userCreateBudgetWindow();
     }
 
     public void successfulAdminAuthorization() {
         showInfoAlert("Успіх", "Успішна авторизація", "Ви успішно авторизувалися!");
         mainController.dataBaseWindow();
+        mainController.userWindow();
     }
 
     private void showInfoAlert(String title, String header, String content) {
